@@ -3,7 +3,7 @@ class TowerController < ApplicationController
   def escom_refill 
     @tower = Tower.find(params[:tower_id])
     @prev_refill = Refill.where(" tower_id = #{@tower.id} AND refill_type = 'ESCOM'  ")
-                    .order(" refill_date ASC ").last
+                    .order(" refill_date ASC, created_at ASC ").last
     @refill = Refill.new 
 
     if request.post?
@@ -78,7 +78,7 @@ class TowerController < ApplicationController
   end
 
   def view
-    
+
     @tower = Tower.find(params[:tower_id])
     @tower_type = TowerType.find(@tower.tower_type_id).name
     @district_name = Location.find(@tower.district_id).name

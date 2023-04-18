@@ -45,5 +45,5 @@ group :development do
   gem 'spring'
 end
 gem 'will_paginate'
-gem 'bcrypt', '3.1.7'
+gem 'bcrypt', '3.1.13'
 gem 'countries'

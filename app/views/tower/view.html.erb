@@ -1,3 +1,29 @@
+<style>
+.encounter-btn:hover{
+  background:  #006699 !important;;
+}
+
+.encounter-btn{
+  background: #0099CC !important;
+  font-size: 1.1em;
+  padding: 11px;
+  color: white !important;
+  box-shadow: 4px 4px 3px lightgrey;
+  border-radius: 0px !important;
+}
+
+.module-btn:hover{
+  background-color: white !important;
+}
+
+.display-details{
+  border-right: 1px solid lightgray;
+}
+
+.display-details strong{
+  width: 40%;
+}
+</style>
 <div>
   <ol class="breadcrumb " style="margin: 3px; padding: 5px;">
     <li><a href="/">Home</a></li>
@@ -21,7 +47,7 @@
         <div class="row">
           <div class="col-md-4">
             <div class="display-details">
-              <h3><strong>Name</strong><%= @tower.name%></h3>
+              <h4><strong>Name</strong><%= @tower.name%></h4>
               <p><strong>Tower Type</strong><%=@tower_type%></p>
               <p><strong>District</strong><%= @district_name %></p>
               <p><strong>Latitude</strong><%= @tower.lat%></p>

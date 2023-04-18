@@ -108,17 +108,12 @@ class TowerController < ApplicationController
     tag_filter = ''
     code_filter = ''
 
-    if (params[:search][:value] rescue nil).present?
-      search_code = search_val.soundex rescue '_'
-      code_filter = " OR first_name_code = '#{search_code}' OR last_name_code = '#{search_code}'"
-    end
-
     if params[:type_id].present?
       tag_filter = " AND tower.tower_type_id = #{params[:type_id]}"
     end
 
-    data = tower.order(' tower.created_at DESC ')
-    data = data.where(" ((CONCAT_WS(first_name, middle_name, last_name, gender, birthdate, address, email, occupation, phone_number, '_') REGEXP '#{search_val}')
+    data = Tower.order(' tower.created_at DESC ')
+    data = data.where(" ((CONCAT_WS(name, description, '_') REGEXP '#{search_val}')
          #{tag_filter}) #{code_filter}")
     total = data.select(" count(*) c ")[0]['c'] rescue 0
     page = (params[:start].to_i / params[:length].to_i) + 1
@@ -128,11 +123,9 @@ class TowerController < ApplicationController
 
     @records = []
     data.each do |p|
-      gender = p.gender.to_i == 1 ? "M" : 'F'
       type = TowerType.find(p.tower_type_id).name rescue nil
-      name = "#{p.first_name} #{p.middle_name} #{p.last_name}(#{gender})".gsub(/\s+/, ' ')
-      dob = p.birthdate.to_date.strftime("%d-%b-%Y") rescue nil
-      row = [name, p.identifier, dob, type, p.phone_number, p.address, p.id]
+      district_name = Location.find(p.district_id).name
+      row = [p.name, district_name, type, p.lat, p.long, p.description, p.id]
       @records << row
     end
 

@@ -2,21 +2,21 @@
 <div>
   <ol class="breadcrumb " style="margin: 3px; padding: 5px;">
     <li><a href="/">Home</a></li>
-    <li><a href="/client/index">Clients</a></li>
-    <li><a class='active' href="/client/new">Add Client</a></li>
+    <li><a href="/tower/tower_types">Towers</a></li>
+    <li><a class='active' href="/tower/edit_type?type_id=<%= @tower_type.id%>">Edit Tower Type</a></li>
 
   </ol>
 </div>
 <div class="panel panel-primary">
   <div class="panel-heading ">
     <span class="glyphicon glyphicon-user" style="padding: 7px;"></span>
-    <b>Add / Search Client</b>
+    <b>Edit Tower Type</b>
 
   </div>
   <div class="panel-body">
 
   <div style="margin-top: 5px; margin-left: 10px; padding: 10px;">
-    <%= render 'form' %>
+    <%= render 'type_form' %>
   </div>
 
 </div>

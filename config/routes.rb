@@ -64,26 +64,26 @@ Rails.application.routes.draw do
   post "location/edit"
 
   get "location/ajax_locations"
-  get "client/client_types"
-  get "client/new_type"
-  post "client/new_type"
+  get "tower/tower_types"
+  get "tower/new_type"
+  post "tower/new_type"
 
-  get "client/edit_type"
-  post "client/edit_type"
+  get "tower/edit_type"
+  post "tower/edit_type"
 
-  get "client/view_type"
-  get "client/delete_type"
+  get "tower/view_type"
+  get "tower/delete_type"
 
-  get "client/index"
-  get "client/ajax_clients"
+  get "tower/index"
+  get "tower/ajax_towers"
 
-  get "client/new"
-  post "client/new"
+  get "tower/new"
+  post "tower/new"
 
-  get "client/edit"
-  post "client/edit"
+  get "tower/edit"
+  post "tower/edit"
 
-  get "client/view"
+  get "tower/view"
 
-  get "client/client_suggestions"
+  get "tower/tower_suggestions"
 end

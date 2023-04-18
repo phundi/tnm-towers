@@ -6,15 +6,15 @@
 
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
 
-    <%= hidden_field_tag :type_id, @client_type.id -%>
+    <%= hidden_field_tag :type_id, @tower_type.id -%>
 
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" class="form-control" data-validation="required" value="<%= @client_type.name%>">
+      <input type="text" id="name" name="name" class="form-control" data-validation="required" value="<%= @tower_type.name%>">
     </div>
     <div class="form-group">
       <label for="description">Description</label>
-      <input type="text" id="description" name="description" class="form-control" value="<%= @client_type.description%>">
+      <input type="text" id="description" name="description" class="form-control" value="<%= @tower_type.description%>">
     </div>
 
     <div class="form-group actions-row">

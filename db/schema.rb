@@ -13,30 +13,6 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "patient", primary_key: "patient_id", force: :cascade do |t|
-    t.string   "patient_number",          limit: 255,             null: false
-    t.string   "first_name",                    limit: 255
-    t.string   "middle_name",                    limit: 255
-    t.string   "last_name",                    limit: 255
-    t.date     "dob",                                             null: false
-    t.integer  "dob_estimated",           limit: 1,   default: 0, null: false
-    t.integer  "gender",                  limit: 1,               null: false
-    t.string   "email",                   limit: 100
-    t.string   "home_district",           limit: 150
-    t.string   "address",                 limit: 150
-    t.string   "phone_number",            limit: 255
-    t.string   "npid",                    limit: 20
-    t.integer  "creator",              limit: 4,   default: 0, null: false
-    t.datetime "deleted_at"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.string   "first_name_code",         limit: 255
-    t.string   "last_name_code",          limit: 255
-  end
-
-  add_index "patient", ["creator"], name: "patient_creator_index", using: :btree
-  add_index "patient", ["npid"], name: "patient_npid_index", using: :btree
-
   create_table "location", primary_key: "location_id", force: :cascade do |t|
     t.string   "code",            limit: 45
     t.string   "name",            limit: 255, default: "",    null: false
@@ -118,7 +94,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "client_type", primary_key: "client_type_id", force: :cascade do |t|
+  create_table "tower_type", primary_key: "tower_type_id", force: :cascade do |t|
     t.string   "name",        limit: 255, null: false
     t.string   "description", limit: 200
     t.boolean  "voided",                      default: false, null: false
@@ -147,25 +123,19 @@ ActiveRecord::Schema.define(version: 0) do
 
   add_index "user", ["username"], name: "user_username_unique", unique: true, using: :btree
 
-  create_table "client", primary_key: "client_id", force: :cascade do |t|
-    t.string   "identifier"
-    t.string   "first_name",                    limit: 255
-    t.string   "middle_name",                    limit: 255
-    t.string   "last_name",                    limit: 255
-    t.string   "first_name_code",         limit: 255
-    t.string   "last_name_code",          limit: 255
-    t.integer  "client_type_id",  null: false
-    t.integer  "gender",         limit: 1,   default: 0, null: false
-    t.date     "birthdate"
-    t.string   "occupation"
-    t.string   "address"
-    t.string   "phone_number"
-    t.string   "email",          limit: 100,             null: false
+  create_table "tower", primary_key: "tower_id", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "district_id",         limit: 4,   default: 0,     null: false
+    t.integer  "tower_type_id",  null: false
+    t.integer   "lat"
+    t.integer   "long"
+    t.integer  "creator",  null: false
+    t.string   "description",                    limit: 255
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end
 
-  add_foreign_key "client", "client_type", primary_key: "client_type_id", name: "fk_client_1"
+  add_foreign_key "tower", "tower_type", primary_key: "tower_type_id", name: "fk_tower_1"
 
   add_foreign_key "location_tag_map", "location", primary_key: "location_id", name: "fk_location_tag_map_1"
   add_foreign_key "location_tag_map", "location_tag", primary_key: "location_tag_id", name: "fk_location_tag_map_2"

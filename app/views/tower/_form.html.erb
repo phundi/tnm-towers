@@ -32,11 +32,11 @@
             action="<%= @action%>" method="POST"><input type="hidden">
 
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-        <%= hidden_field_tag :client_id, @client.id -%>
+        <%= hidden_field_tag :tower_id, @tower.id -%>
 
         <fieldset>
           <div class="form-group" style="width: 100%;">
-            <label style="color: darkgreen" for="type">Client Type</label>
+            <label style="color: darkgreen" for="type">Tower Type</label>
             <select type="text" id="type" name="type" class="form-control" data-validation="required" style="margin-right: 2px;">
               <option></option>
               <%@types.each do |t|%>
@@ -45,60 +45,34 @@
             </select>
           </div>
 
-          <div class="form-group">
-              <label for="first_name">First Name</label>
-              <input type="text" id="first_name" name="first_name" class="form-control" data-validation="required" value="<%= @client.first_name%>">
-           </div>
-
-          <% if false %>
-              <div class="form-group">
-                <label for="middle_name">Middle Name</label>
-                <input type="text" id="middle_name" name="middle_name" class="form-control"  value="<%= @client.middle_name%>">
-              </div>
-          <% end %>
-
            <div class="form-group">
-            <label for="last_name">Last Name</label>
-            <input type="text" id="last_name" name="last_name" class="form-control" data-validation="required" value="<%= @client.last_name%>">
-          </div>
-
-
-          <div class="form-group" style="width: 100%;">
-            <label for="gender">Gender</label>
-            <select style="display: inline-block" onchange="suggest('name_and_gender')" type="text" id="gender" name="gender" class="form-control">
-              <option></option>
-              <option value="1">Male</option>
-              <option value="0">Female</option>
-            </select> <span class="glyphicon glyphicon-search"></span>
+            <label for="name">Tower name</label>
+            <input type="text" id="name" name="name" class="form-control" data-validation="required" value="<%= @tower.name%>">
           </div>
 
           <div class="form-group">
-            <label for="birthdate">Date of Birth</label>
-            <input onchange="suggest('name_and_gender_and_birthdate');" type="text" id="birthdate" name="birthdate"
-                   class="form-control" data-validation="required" value="<%= (@client.birthdate.strftime('%d-%b-%Y') rescue nil)%>"><span class="glyphicon glyphicon-search"></span>
-          </div>
-
-
-          <div class="form-group">
-            <label for="address">Physical Address</label>
-            <input type="text" id="address" name="address" class="form-control"  value="<%= @client.address%>">
-          </div>
-
-          <div class="form-group">
-            <label for="phone_number">Phone Number</label>
-            <input onchange="suggest('phone_number');" type="text" id="phone_number" name="phone_number" class="form-control"  value="<%= @client.phone_number%>">
-            <span class="glyphicon glyphicon-search"></span>
+              <label for="district">District</label>
+              <select style="display: inline-block" type="text" id="district" name="district" class="form-control" data-validation="required">
+                <option></option>
+                <% @districts.each do |c| %>
+                  <option value="<%=c.id%>"><%= c.name%></option>
+                <% end %>
+            </select>
           </div>
 
           <div class="form-group">
-            <label for="email">E-mail</label>
-            <input onchange="suggest('email');" type="text" id="email" name="email" class="form-control"  value="<%= @client.email%>">
-            <span class="glyphicon glyphicon-search"></span>
+            <label for="lat">Latitude</label>
+            <input type="text" id="lat" name="lat" class="form-control" value="<%= @tower.lat%>">
           </div>
 
           <div class="form-group">
-            <label for="occupation">Occupation</label>
-            <input type="text" id="occupation" name="occupation" class="form-control" value="<%= @client.occupation%>">
+            <label for="long">Longitude</label>
+            <input type="text" id="long" name="long" class="form-control" value="<%= @tower.long%>">
+          </div>
+
+          <div class="form-group">
+            <label for="desc">Details (Optional)</label>
+            <textarea type="text" id="desc" name="description" class="form-control"><%= @tower.description%></textarea>
           </div>
 
         </fieldset>
@@ -118,10 +92,10 @@
                 </caption>
               <tr>
                 <th>Name</th>
-                <th>DOB</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Occupation</th>
+                <th>District</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Description</th>
                 <th></th>
               </tr>
 
@@ -144,31 +118,14 @@
 
          var data = {};
 
-        if(key == 'name_and_gender'){
+        if(key == 'name'){
             data = {
-                'first_name' : __$('first_name').value,
-                'last_name' : __$('last_name').value,
-                'gender' : __$('gender').value
-            }
-        }else if (key == 'phone_number'){
-            data = {
-                'phone_number' : __$('phone_number').value
-            }
-        }else if (key == 'email'){
-            data = {
-                'email' : __$('email').value
-            }
-        }else if (key == 'name_and_gender_and_birthdate'){
-            data = {
-                'birthdate' : __$('birthdate').value,
-                'gender' : __$('gender').value,
-                'first_name' : __$('first_name').value,
-                'last_name' : __$('last_name').value
+                'name' : __$('name').value
             }
         }
 
         jQuery.ajax({
-            url: "/client/client_suggestions",
+            url: "/tower/tower_suggestions",
             data: {
                 'search_params' : data
             },
@@ -194,7 +151,7 @@
         clone.getElementsByClassName('occupation')[0].innerHTML = record['occupation'];
 
         clone.getElementsByClassName('btn')[0].onmousedown = function(){
-            window.location = "/client/view?client_id=" + record['client_id'];
+            window.location = "/tower/view?tower_id=" + record['tower_id'];
         };
 
         clone.className = "temp-row";
@@ -209,10 +166,10 @@
     });
 
     jQuery(document).ready(function(){
-        jQuery("#type option[value='<%=@client.client_type_id%>']").attr('selected', 'selected');
+        jQuery("#type option[value='<%=@tower.tower_type_id%>']").attr('selected', 'selected');
 
         <% if @action.match(/edit/)%>
-        jQuery("#gender option[value='<%= @client.gender%>']").attr('selected', 'selected');
+          jQuery("#district option[value='<%= @tower.district_id%>']").attr('selected', 'selected');
         <% end %>
     })
 </script>

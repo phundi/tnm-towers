@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Software</title>
+  <title>TNM Towers</title>
 
   <link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/sb-admin.css" rel="stylesheet">
@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="Kenneth Kapundi" content="Homepage for HMIS">
+    <meta name="Kenneth Kapundi" content="Homepage for TNM Towers">
     <link href="/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
   <%= csrf_meta_tags %>
@@ -71,7 +71,7 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
 
-          <a class="navbar-brand" href="/">System</a>
+          <a class="navbar-brand" href="/">TNM Towers</a>
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
@@ -85,12 +85,7 @@
               <li>
                 <a href="/user/view?user_id=<%= @cur_user.id%>"><i class="fa fa-fw fa-user"></i> My Account</a>
               </li>
-              <li>
-                <a href="/"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-              </li>
-              <li>
-                <a href="/"><i class="fa fa-fw fa-gear"></i> Settings</a>
-              </li>
+              
               <li class="divider"></li>
               <li>
                 <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -104,15 +99,10 @@
             <li id="home">
               <a href="/?active_tab=home"><i class="fa fa-fw fa-home"></i> Home</a>
             </li>
-            <li id="clients">
-              <a href="/client/index?active_tab=clients"><i class="fa fa-fw fa-list"></i> Clients</a>
+            <li id="towers">
+              <a href="/client/index?active_tab=clients"><i class="fa fa-fw fa-list"></i> Towers</a>
             </li>
-            <li id="workflow">
-              <a href="/?active_tab=workflow"><i class="fa fa-fw fa-list"></i> Workflow</a>
-            </li>
-            <li id="modules">
-              <a href="/?active_tab=modules"><i class="fa fa-fw fa-list"></i> Modules</a>
-            </li>
+
             <li id="config">
               <a href="javascript:" data-toggle="collapse" data-target="#configs"><i class="fa fa-cog">
               </i> Configurations <i class="fa fa-fw fa-caret-down"></i>

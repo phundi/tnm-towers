@@ -71,7 +71,7 @@
               <ul class="list-group">
                 <% (@common_encounters || []).each do |name, link|%>
                 <li class="list-group-item encounter-btn btn-sm" style=" cursor: pointer;" 
-                  onclick="window.location = '<%= link%>?fridge_id=<%= params[:fridge_id]%>' " ><%= name%> </li>
+                  onclick="window.location = '<%= link%>?tower_id=<%= params[:tower_id]%>' " ><%= name%> </li>
                 <% end %>
               </ul>
             </div>

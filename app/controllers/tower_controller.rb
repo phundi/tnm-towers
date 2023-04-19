@@ -22,6 +22,28 @@ class TowerController < ApplicationController
 
   end 
 
+  def fuel_refill 
+    @tower = Tower.find(params[:tower_id])
+    @prev_refill = Refill.where(" tower_id = #{@tower.id} AND refill_type = 'FUEL'  ")
+                    .order(" refill_date ASC, created_at ASC ").last
+    @refill = Refill.new 
+
+    if request.post?
+
+      @refill.refill_date = params[:refill_date]
+      @refill.reading_before_refill  = params[:reading_before_refill]
+      @refill.reading_after_refill  = params[:reading_after_refill]
+      @refill.refill_amount  = params[:refill_amount]
+      @refill.refill_type  = "FUEL"
+      @refill.tower_id  = @tower.id 
+      @refill.creator = @cur_user.id
+      @refill.save!
+
+      redirect_to "/tower/view?tower_id=#{@tower.id}"
+    end 
+
+  end 
+
   def tower_types
     @tower_types = TowerType.where(voided: 0).order('name')
   end
@@ -93,7 +115,7 @@ class TowerController < ApplicationController
 
     @common_encounters = []
     @common_encounters << ['New Escom Units Refill', '/tower/escom_refill']
-    @common_encounters << ['New Fuel Refill', '/tower/full_refill']
+    @common_encounters << ['New Fuel Refill', '/tower/fuel_refill']
   end
 
   def new_type

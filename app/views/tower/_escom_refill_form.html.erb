@@ -17,7 +17,7 @@
     <div class="form-group">
       <label for="previous_reading_date">Previous reading date</label>
       <input  disabled='disabled' type="text" id="previous_reading_date" name="previous_reading_date" 
-          class="form-control" value="<%= @prev_refill.refill_date rescue 'N/A' %>">
+        class="form-control" value="<%= @prev_refill.refill_date.strftime('%d/%b/%Y') rescue 'N/A' %>">
     </div>
 
     <div class="form-group">
@@ -29,24 +29,28 @@
     <div class="form-group">
     <label for="reading">Current refill date</label>
     <input type="date" id="refill_date" name="refill_date" 
-        class="form-control" value="<%= @refill.refill_date %>">
+       data-validation="required"  class="form-control" value="<%= @refill.refill_date %>">
     </div>
 
     <div class="form-group">
       <label for="reading_before_refill">New reading before refill (Units)</label>
       <input type="text" id="reading_before_refill" name="reading_before_refill" 
+          data-validation="required"  
+
           class="form-control" value="<%= @refill.reading_before_refill rescue nil %>">
     </div>
 
     <div class="form-group">
     <label for="reading">Refill amount (Units)</label>
     <input type="text" id="refill_amount" name="refill_amount" 
+        data-validation="required"  
         class="form-control" value="<%= @refill.refill_amount %>">
     </div>
 
     <div class="form-group">
     <label for="final_reading">Reading after refill (Units)</label>
     <input type="text" id="final_reading" name="reading_after_refill" 
+        data-validation="required"  
         class="form-control" value="<%= @refill.reading_after_refill %>">
     </div>
 

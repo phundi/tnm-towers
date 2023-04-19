@@ -42,7 +42,7 @@
 
     <div class="form-group">
     <label for="reading">Refill amount (Units)</label>
-    <input type="text" id="refill_amount" name="refill_amount" 
+    <input type="text" id="refill_amount" name="refill_amount" onchange = "autoCalculate()"
         data-validation="required"  
         class="form-control" value="<%= @refill.refill_amount %>">
     </div>
@@ -66,7 +66,13 @@
         modules : 'security',
         onError : function(){
 
-        }
+        }    
     });
+
+    function autoCalculate(){
+      __$('final_reading').value = parseInt(__$('reading_before_refill').value) + 
+                                    parseInt(__$('refill_amount').value);
+    }
+
 
 </script>

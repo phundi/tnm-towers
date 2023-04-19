@@ -110,8 +110,8 @@ class TowerController < ApplicationController
     fuel_refills_count = Refill.where(" tower_id = #{@tower.id} AND refill_type = 'FUEL'  ").count
 
     @modules = []
-    @modules <<  ['Fuel Refills', fuel_refills_count, "/tower/refills?tower_id=#{@tower.id}"]
     @modules <<  ['ESCOM Units Refills', escom_refills_count, "/tower/refills?tower_id=#{@tower.id}" ]
+    @modules <<  ['Fuel Refills', fuel_refills_count, "/tower/refills?tower_id=#{@tower.id}"]
 
     @common_encounters = []
     @common_encounters << ['New Escom Units Refill', '/tower/escom_refill']

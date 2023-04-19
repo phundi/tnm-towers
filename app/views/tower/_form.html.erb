@@ -26,7 +26,7 @@
 <script src="/js/jquery.form-validator.min.js"></script>
 <table style="width: 100%;">
   <tr>
-     <td style="width: 45%" valign="top">
+     <td style="width: 80%" valign="top">
       <div id="form">
       <form enctype="multipart/form-data" id="form-create-role" accept-charset="UTF-8"
             action="<%= @action%>" method="POST"><input type="hidden">
@@ -84,33 +84,7 @@
       </form>
     </div>
     </td>
-    <td style="width: 55%;" valign="top">
-        <div style="width: 100%;color: darkslategray; min-height: 50vh; margin-top: 0px;">
-            <table style="width: 100%;font-size: 12px;" id="suggestions">
-                <caption style="text-align: center;border-bottom: 1px solid darkred;">
-                    <span style="font-size: 14px;" id="suggest_key" >&nbsp;</span>
-                </caption>
-              <tr>
-                <th>Name</th>
-                <th>District</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>Description</th>
-                <th></th>
-              </tr>
-
-              <tr id="clone_me" style="display:none;">
-                <td class="name"></td>
-                <td class="dob"></td>
-                <td class="address" ></td>
-                <td class="phone_number" ></td>
-                <td class="occupation"></td>
-                <td><button class="btn btn-sm btn-success" style="padding: 4px;width: 50px;">Select</button></td>
-              </tr>
-            </table>
-        </div>
-    </td>
-</tr>
+    </tr>
 </table>
 
 <script>

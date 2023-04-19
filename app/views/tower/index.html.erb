@@ -37,7 +37,7 @@
       <div class="panel-btn">
         <a class="btn btn-sm btn-info" href="/tower/new">
           <span class="glyphicon glyphicon-plus-sign"></span>
-          Add / Search Tower
+          Add New Tower
         </a>
       </div>
     </div>
@@ -45,13 +45,15 @@
 
         <table id="example" style="width: 100%;" class="data-table table table-condensed table-striped">
             <thead>
-            <tr role="row">
+            <tr role="row"> 
               <th>Name</th>
               <th>District</th>
-              <th>Type</th>
-              <th>Latitude</th>
-              <th>Longitude</th>
-              <th>Description</th>
+              <th>ESCOM refill date</th>
+              <th>Amount (Units)</th>
+              <th>Final reading (Units)</th>
+              <th>FUEL refill date</th>
+              <th>Amount(L)</th>
+              <th>Final reading(L)</th>
               <th>&nbsp;</th>
             </tr>
             </thead>
@@ -115,7 +117,6 @@
   </div>
 </div>
 
-
 <select id="tag" label="Location Type" onchange="reloadDataTable()" style="width: 200px !important;
         padding: 5px; margin-right: 20px; ;">
   <option value="">Select Tower Type</option>
@@ -145,10 +146,8 @@
                         var last_index = json['data'][i].length - 1;
                         var id = json['data'][i][last_index];
 
-                        json['data'][i][last_index] = '<a class="btn btn-sm btn-info" href="/tower/edit?tower_id=' + id + '">' +
-                                '<span class="glyphicon glyphicon-edit"></span> Edit</a>'
 
-                        json['data'][i][last_index] += '<a class="btn btn-sm btn-success" href="/tower/view?tower_id=' + id + '">' +
+                        json['data'][i][last_index] = '<a class="btn btn-sm btn-success" href="/tower/view?tower_id=' + id + '">' +
                                 '<span class="glyphicon glyphicon-eye-open"></span> Select </a>'
                     }
                     return JSON.stringify(json);

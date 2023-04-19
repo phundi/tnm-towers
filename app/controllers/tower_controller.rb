@@ -173,8 +173,23 @@ class TowerController < ApplicationController
     @records = []
     data.each do |p|
       type = TowerType.find(p.tower_type_id).name rescue nil
-      district_name = Location.find(p.district_id).name
-      row = [p.name, district_name, type, p.lat, p.long, p.description, p.id]
+      district_name = Location.find(p.district_id).code
+      
+      escom_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'ESCOM'  ")
+      .order(" refill_date ASC, created_at ASC ").last
+
+      fuel_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'FUEL'  ")
+      .order(" refill_date ASC, created_at ASC ").last
+
+      row = [p.name, 
+                district_name, 
+                (escom_refill.refill_date.strftime("%d-%b-%Y") rescue ""),
+                (escom_refill.refill_amount rescue ""), 
+                (escom_refill.reading_after_refill rescue ""), 
+                (fuel_refill.refill_date.strftime("%d-%b-%Y") rescue ""), 
+                (fuel_refill.refill_amount rescue ""), 
+                (fuel_refill.reading_after_refill rescue ""),
+            p.id]
       @records << row
     end
 
@@ -185,50 +200,4 @@ class TowerController < ApplicationController
         "data" => @records}.to_json and return
   end
 
-  def tower_suggestions
-    query = " "
-    (params[:search_params] || []).each do |k, v|
-      next if v.blank?
-
-      if k == 'first_name'
-        k = 'first_name_code'
-        v = v.soundex
-      end
-
-      if k == 'last_name'
-        k = 'last_name_code'
-        v = v.soundex
-      end
-
-      if k == 'birthdate'
-        v = v.to_date.strftime('%Y-%m-%d')
-      end
-
-      if k == 'gender'
-
-      end
-
-      query += " AND #{k} RLIKE '#{v}' "
-    end
-
-    results = []
-    if query.strip.length > 0
-      results = tower.where(" created_at IS NOT NULL #{query}").limit(20);
-    end
-
-    response = []
-    (results || []).each do |result|
-      gender = result.gender.to_i == 1 ? "M" : 'F'
-      response << {
-          'dob' => result.birthdate.to_date.strftime("%d-%b-%Y"),
-          'occupation' => result.occupation,
-          'name' => "#{result.first_name} #{(result.middle_name.split('')[0] rescue '')} #{result.last_name} (#{gender})".gsub(/\s+/, ' '),
-          'address' => result.address,
-          'phone_number' => result.phone_number,
-          'tower_id' => result.id
-      }
-    end
-
-    render text: response.to_json
-  end
 end

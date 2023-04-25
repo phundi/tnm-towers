@@ -175,16 +175,18 @@ class TowerController < ApplicationController
       type = TowerType.find(p.tower_type_id).name rescue nil
       district_name = Location.find(p.district_id).code
       
-      escom_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'ESCOM'  ").last
+      escom_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'ESCOM'  ")
+      .order(" refill_date").last
 
-      fuel_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'FUEL'  ").last
+      fuel_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'FUEL'  ")
+      .order(" refill_date ").last
 
       row = [p.name, 
                 district_name, 
-                (escom_refill.refill_date.strftime("%d-%b-%Y") rescue ""),
+                (escom_refill.refill_date.strftime("%d-%b-%Y %H:%M") rescue ""),
                 (escom_refill.refill_amount rescue ""), 
                 (escom_refill.reading_after_refill rescue ""), 
-                (fuel_refill.refill_date.strftime("%d-%b-%Y") rescue ""), 
+                (fuel_refill.refill_date.strftime("%d-%b-%Y %H:%M") rescue ""), 
                 (fuel_refill.refill_amount rescue ""), 
                 (fuel_refill.reading_after_refill rescue ""),
             p.id]

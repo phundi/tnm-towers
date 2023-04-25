@@ -26,11 +26,14 @@
           class="form-control" value="<%= @prev_refill.reading_after_refill rescue 'N/A'%>">
     </div>
 
+    <% if false %>
+
     <div class="form-group">
-    <label for="reading">Current refill date</label>
+    <label for="reading">Currwwwent refill date</label>
     <input type="date" id="refill_date" name="refill_date" 
        data-validation="required date"  class="form-control" value="<%= @refill.refill_date %>">
     </div>
+<% end %>
 
     <div class="form-group">
       <label for="reading_before_refill">New reading before refill (Units)</label>

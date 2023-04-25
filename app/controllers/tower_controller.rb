@@ -8,7 +8,7 @@ class TowerController < ApplicationController
 
     if request.post?
 
-      @refill.refill_date = params[:refill_date]
+      @refill.refill_date = Time.now #params[:refill_date]
       @refill.reading_before_refill  = params[:reading_before_refill]
       @refill.reading_after_refill  = params[:reading_after_refill]
       @refill.refill_amount  = params[:refill_amount]
@@ -30,7 +30,7 @@ class TowerController < ApplicationController
 
     if request.post?
 
-      @refill.refill_date = params[:refill_date]
+      @refill.refill_date = Time.now #params[:refill_date]
       @refill.reading_before_refill  = params[:reading_before_refill]
       @refill.reading_after_refill  = params[:reading_after_refill]
       @refill.refill_amount  = params[:refill_amount]
@@ -175,11 +175,9 @@ class TowerController < ApplicationController
       type = TowerType.find(p.tower_type_id).name rescue nil
       district_name = Location.find(p.district_id).code
       
-      escom_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'ESCOM'  ")
-      .order(" refill_date ASC, created_at ASC ").last
+      escom_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'ESCOM'  ").last
 
-      fuel_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'FUEL'  ")
-      .order(" refill_date ASC, created_at ASC ").last
+      fuel_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'FUEL'  ").last
 
       row = [p.name, 
                 district_name, 

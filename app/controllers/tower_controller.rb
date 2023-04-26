@@ -110,8 +110,8 @@ class TowerController < ApplicationController
     fuel_refills_count = Refill.where(" tower_id = #{@tower.id} AND refill_type = 'FUEL'  ").count
 
     @modules = []
-    @modules <<  ['ESCOM Units Refills', escom_refills_count, "/tower/refills?tower_id=#{@tower.id}" ]
-    @modules <<  ['Fuel Refills', fuel_refills_count, "/tower/refills?tower_id=#{@tower.id}"]
+    @modules <<  ['ESCOM Units Refills', escom_refills_count, "/tower/refills?type=escom&tower_id=#{@tower.id}" ]
+    @modules <<  ['Fuel Refills', fuel_refills_count, "/tower/refills?type=fuel&tower_id=#{@tower.id}"]
 
     @common_encounters = []
     @common_encounters << ['New Escom Units Refill', '/tower/escom_refill']
@@ -200,4 +200,77 @@ class TowerController < ApplicationController
         "data" => @records}.to_json and return
   end
 
+  def refills
+
+    start_date, end_date = date_ranges
+    tower_id = params[:tower_id]
+    tower_filter = " "; tower_name = ""
+    if tower_id.present?
+      tower_name = " for " + Tower.find(tower_id).name 
+      tower_filter = " AND t.tower_id = #{tower_id}"
+    end 
+
+    type_filter = " "
+
+    @title = "Listing of #{params[:type]} Refills #{tower_name}"
+
+    @data = [
+                ["Tower", "District", "Technician", "Refill type", "Refill date", 
+              "Reading before refill", "Refill amount", "Final reading"]
+            ]
+    
+    
+    if params[:type] == "escom"
+      type_filter = " AND r.refill_type = 'ESCOM' "
+    elsif params[:type] == "fuel"
+      type_filter = " AND r.refill_type = 'FUEL' "
+    end 
+
+    data = Tower.find_by_sql("
+          SELECT r.*, l.code, t.name FROM refill r  
+            INNER JOIN tower t ON t.tower_id = r.tower_id
+            INNER JOIN location l ON l.location_id = t.district_id
+            WHERE DATE(r.refill_date) BETWEEN '#{start_date}' AND '#{end_date}'
+            #{tower_filter} #{type_filter} ORDER BY refill_date DESC
+    ").each do |t|
+        creator = User.find(t.creator).name
+        unit = t.refill_type.downcase == 'escom' ? " Units" : " Litres"
+      row = [   t.name, 
+                t.code, 
+                creator,
+                t.refill_type,
+                t.refill_date.strftime("%d-%b-%Y %H:%M"),
+                t.reading_before_refill.to_s + unit,
+                t.refill_amount.to_s + unit,
+                t.reading_after_refill.to_s + unit,
+                t.id
+          ]
+      @data << row
+    end
+
+
+    render template: "tower/generic_table"  
 end
+
+
+
+  def date_ranges 
+      
+    start_date, end_date = ["1900-01-01".to_date.to_s, Date.today.to_s]
+    start_date = params[:start_date].to_date.to_s if params[:start_date].present?
+    end_date = params[:end_date].to_date.to_s if params[:end_date].present?
+
+    if params['period'].present?
+      start_date, end_date = {
+        "today" => [Date.today, Date.today],
+        "week"  => [Time.now.beginning_of_week.to_date, Time.now.end_of_week.to_date],
+        "month"  => [Time.now.beginning_of_month.to_date, Time.now.end_of_month.to_date],
+        "year"  => [Time.now.beginning_of_year.to_date, Time.now.end_of_year.to_date],
+        "eversince"  => ["1900-01-01".to_date.to_s, Date.today.to_s]
+      }[params['period']]
+    end 
+
+    [start_date, end_date]
+  end
+
+end 

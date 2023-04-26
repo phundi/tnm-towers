@@ -82,7 +82,7 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
 
-          <a class="navbar-brand" href="/">TNM Towers</a>
+          <a class="navbar-brand" style="color: white !important; font-weight: bold;" href="/">TNM Towers</a>
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
@@ -111,6 +111,24 @@
             <li id="towers">
               <a href="/tower/index?active_tab=towers"><i class="fa fa-fw fa-list"></i> Towers</a>
             </li>
+
+            <li id="refill">
+            <a href="javascript:" data-toggle="collapse" data-target="#refills"><i class="fa fa-cog">
+            </i> Refills <i class="fa fa-fw fa-caret-down"></i>
+            </a>
+            <ul id="refills" class="collapse">
+              <li>
+                <a href="/tower/refills?">All</a>
+              </li>
+              <li>
+                <a href="/tower/refills?type=fuel">Fuel Refills</a>
+              </li>
+              <li>
+                <a href="/tower/refills?type=escom">Escom Refills</a>
+              </li>
+
+            </ul>
+          </li>
 
             <li id="config">
               <a href="javascript:" data-toggle="collapse" data-target="#configs"><i class="fa fa-cog">
@@ -151,9 +169,7 @@
                 </li>
               </ul>
             </li>
-            <li>
-              <a href="#"><i class="fa fa-fw fa-table"></i> Reports</a>
-            </li>
+          
           </ul>
         </div>
         <!-- /.navbar-collapse -->

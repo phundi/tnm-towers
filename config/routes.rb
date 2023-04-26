@@ -44,6 +44,8 @@ Rails.application.routes.draw do
   get "user/user_roles"
   post "user/user_roles"
 
+  get "tower/refills"
+
   get "location/index"
   get "location/tags"
 

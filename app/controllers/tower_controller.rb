@@ -201,9 +201,13 @@ class TowerController < ApplicationController
 
     @data = [
                 ["Tower", "District", "Technician", "Refill type", "Refill date", 
-              "Reading before refill", "Usage", "Refill amount", "Final reading"]
-            ]
-    
+              "Reading before refill"]]
+
+    if params[:type] != 'escom'
+      @data[0] << "Run hrs"
+    end
+
+    @data[0] = @data[0] + ["Usage", "Refill amount", "Final reading"]
     
     if params[:type] == "escom"
       type_filter = " AND r.refill_type = 'ESCOM' "
@@ -225,6 +229,13 @@ class TowerController < ApplicationController
                 t.refill_type,
                 t.refill_date.strftime("%Y-%m-%d %H:%M"),
                 t.reading_before_refill,
+              ]
+
+              if params[:type] != 'escom'
+                row << t.genset_run_time
+              end 
+
+              row += [
                 t.usage,
                 t.refill_amount,
                 t.reading_after_refill,

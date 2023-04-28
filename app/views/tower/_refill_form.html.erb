@@ -1,0 +1,152 @@
+
+<style>
+  .label2{
+    font-weight:  normal;
+    font-size: 1.2em;
+  }
+
+  .label-alert{
+    color: darkred;
+  }
+
+</style>
+<script src="/js/jquery.form-validator.min.js"></script>
+
+  <form enctype="multipart/form-data" id="form-create-role" accept-charset="UTF-8"
+        action="new_refill" method="POST"><input type="hidden">
+
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+
+    <%= hidden_field_tag :tower_id, @tower.id -%>
+    <%= hidden_field_tag :type, params[:type] -%>
+    <%= hidden_field_tag :refill_usage, @refill.usage -%>
+    <%= hidden_field_tag :refill_final_reading, @refill.reading_after_refill -%>
+    <%= hidden_field_tag :refill_run_hours, @refill.genset_run_time -%>
+
+    <div class="form-group">
+      <label for="name">Tower name</label>
+      <label class="label2"><%= @tower.name%></label>
+    </div>
+
+    <div class="form-group">
+      <label for="previous_reading_date">Previous reading date</label>
+      <label class="label2"><%= @prev_refill.refill_date.strftime('%d/%b/%Y %H:%M') rescue 'N/A' %></label>
+    </div>
+
+    <div class="form-group">
+      <label for="previous_reading">Previous reading (<%= @unit%>)</label>
+      <label class="label2" id='previous_reading'><%= @prev_refill.reading_after_refill rescue 0%></label>
+
+    </div>
+
+    <% if false %>
+    <div class="form-group">
+    <label for="reading">Current refill date</label>
+    <input type="date" id="refill_date" name="refill_date"  data-validation="required date"  
+        class="form-control" value="<%= @refill.refill_date %>">
+    </div>
+
+    <% end %>
+
+    <div class="form-group">
+      <label for="reading_before_refill">Current reading (<%= @unit%>)</label>
+      <input type="text" id="reading_before_refill" onchange="calculateUsage()"
+          data-validation="required number"  name="reading_before_refill" 
+          class="form-control" value="<%= @refill.reading_before_refill rescue nil %>">
+      
+      <label  style="padding-left: 50px;" for="reading_before_refill"><%=params[:type].humanize%> usage (<%= @unit%>)</label>
+      <label  class="label2 label-alert" id="usage" name="usage" > N/A </label>
+
+    </div>
+
+    <div class="form-group">
+      <label for="reading">Refill amount (<%= @unit%>)</label>
+      <input type="text" id="refill_amount" name="refill_amount" onchange = "autoCalculate()"
+        data-validation="required number" 
+        class="form-control" value="<%= @refill.refill_amount %>">
+      
+      <label style="padding-left: 50px;" for="final_reading">Reading after refill (<%= @unit%>)</label>
+      <label class="label2 label-alert" id="final_reading" >N/A</label>
+    </div>
+
+    <% if params[:type].downcase == "fuel" %>
+
+        <div class="form-group">
+          <label for="previous_genset_reading">Previous gen. reading (hrs)</label>
+          <label class="label2 label-alert" id="previous_genset_reading" ><%= @prev_refill.genset_reading rescue 0 %></label>
+        </div>
+
+        <div class="form-group">
+          <label for="genset_reading">Current gen. reading (hrs)</label>
+          <input type="text" id="genset_reading" name="genset_reading" onchange = "genCalculate()"
+          data-validation="required number" 
+            class="form-control" value="<%= @refill.genset_reading %>">
+
+          <label style="padding-left: 50px;" for="run_hours">Run hours </label>
+          <label class="label2 label-alert" id="run_hours" >N/A</label>
+        </div>
+
+    <% end %>
+
+
+    <div class=" actions-row" style="width: 100%;">
+      <button type="button " class="btn btn-danger pull-left"
+          onclick="window.location = '/tower/view?tower_id=<%=@tower.id%>' "><span class="glyphicon glyphicon-cancel"></span> 
+        Cancel</button>
+
+      <button type="button submit" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Save</button>
+    </div>
+
+  </form>
+
+<script>
+    $.validate({
+        modules : 'security',
+        onError : function(){
+
+        }
+    });
+
+    function autoCalculate(){
+
+        var val = parseInt(__$('reading_before_refill').value) + 
+                      parseInt(__$('refill_amount').value);
+
+      __$('final_reading').innerHTML = val
+      __$('refill_final_reading').value = val
+
+    }
+
+    function calculateUsage(){
+
+      if(parseInt(__$('previous_reading').innerHTML) > 0){
+        var val = parseInt(__$('previous_reading').innerHTML) - 
+                  parseInt(__$('reading_before_refill').value);
+      }else{
+        var val = 0;
+      }
+
+      __$('usage').innerHTML = val
+      __$('refill_usage').value = val
+    }
+
+
+
+    function genCalculate(){
+
+      if((__$('previous_genset_reading').innerHTML.length > 0) && 
+            parseInt(__$('previous_genset_reading').innerHTML) > 0){
+
+         var val = parseInt(__$('genset_reading').value) - 
+                  parseInt(__$('previous_genset_reading').innerHTML);
+
+        __$('refill_run_hours').value = val;
+
+      }else{
+        var val = "N/A";
+        __$('refill_run_hours').value = null;
+
+      }
+      __$('run_hours').innerHTML = val
+    }
+</script>

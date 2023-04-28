@@ -141,7 +141,10 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer  "reading_before_refill",  null: false
     t.integer  "refill_amount",  null: false
     t.integer  "reading_after_refill",  null: false
-    t.datetime     "refill_date",      null: false
+    t.integer  "usage",  null: false, default: 0
+    t.integer  "genset_reading"
+    t.integer  "genset_run_time"
+    t.datetime "refill_date",      null: false
     t.integer  "creator",  null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false

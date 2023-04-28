@@ -76,6 +76,9 @@ Rails.application.routes.draw do
   get "tower/fuel_refill"
   post "tower/fuel_refill"
 
+  get "tower/new_refill"
+  post "tower/new_refill"
+
   get "tower/edit_type"
   post "tower/edit_type"
 

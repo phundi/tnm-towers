@@ -2,20 +2,20 @@
 <div>
   <ol class="breadcrumb " style="margin: 3px; padding: 5px;">
     <li><a href="/">Home</a></li>
-    <li><a class='active' href="/tower/fuel_refill?tower_id=<%=@tower.id%>">New Fuel Refill</a></li>
+    <li><a class='active' href="/tower/new_refill?type=<%=params[:type]%>&tower_id=<%=@tower.id%>">New <%=params[:type].humanize%> Refill</a></li>
 
   </ol>
 </div>
 <div class="panel panel-primary">
   <div class="panel-heading ">
     <span class="glyphicon glyphicon-user" style="padding: 7px;"></span>
-    <b>New Fuel Refill</b>
+    <b>New <%=params[:type].humanize%> Refill</b>
 
   </div>
   <div class="panel-body">
 
   <div style="margin-top: 5px; margin-left: 10px; padding: 10px;">
-    <%= render 'fuel_refill_form' %>
+    <%= render 'refill_form' %>
   </div>
 
 </div>

@@ -60,7 +60,7 @@
                 <% end %>
             </select>
           </div>
-
+<% if false %>
           <div class="form-group">
             <label for="lat">Latitude</label>
             <input type="text" id="lat" name="lat" class="form-control" value="<%= @tower.lat%>">
@@ -70,7 +70,7 @@
             <label for="long">Longitude</label>
             <input type="text" id="long" name="long" class="form-control" value="<%= @tower.long%>">
           </div>
-
+<% end %>
           <div class="form-group">
             <label for="desc">Details (Optional)</label>
             <textarea type="text" id="desc" name="description" class="form-control"><%= @tower.description%></textarea>

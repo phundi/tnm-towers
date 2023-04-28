@@ -24,6 +24,10 @@
   width: 40%;
 }
 </style>
+
+<script src="/js/chart.js"></script>
+
+
 <div>
   <ol class="breadcrumb " style="margin: 3px; padding: 5px;">
     <li><a href="/">Home</a></li>
@@ -50,8 +54,6 @@
               <h4><strong>Name</strong><%= @tower.name%></h4>
               <p><strong>Tower Type</strong><%=@tower_type%></p>
               <p><strong>District</strong><%= @district_name %></p>
-              <p><strong>Latitude</strong><%= @tower.lat%></p>
-              <p><strong>Longitude</strong><%= @tower.long%></p>
               <p><strong>Description</strong><%=@tower.description%></p>
               <p><strong>Created By</strong><%=@creator%></p>
               <p><strong>Date Created</strong><%=@tower.created_at.strftime("%d-%b-%Y")%></p>
@@ -71,11 +73,12 @@
               <ul class="list-group">
                 <% (@common_encounters || []).each do |name, link|%>
                 <li class="list-group-item encounter-btn btn-sm" style=" cursor: pointer;" 
-                  onclick="window.location = '<%= link%>?tower_id=<%= params[:tower_id]%>' " ><%= name%> </li>
+                  onclick="window.location = '<%= link%>&tower_id=<%= params[:tower_id]%>' " ><%= name%> </li>
                 <% end %>
               </ul>
             </div>
           </div>
+          
           
         </div>
       </div>

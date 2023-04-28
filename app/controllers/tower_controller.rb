@@ -1,40 +1,22 @@
 class TowerController < ApplicationController
 
-  def escom_refill 
+  def new_refill 
     @tower = Tower.find(params[:tower_id])
-    @prev_refill = Refill.where(" tower_id = #{@tower.id} AND refill_type = 'ESCOM'  ")
+    @prev_refill = Refill.where(" tower_id = #{@tower.id} AND refill_type = '#{params[:type]}'  ")
                     .order(" refill_date ASC, created_at ASC ").last
     @refill = Refill.new 
+    @unit = params[:type].upcase == "ESCOM" ? "Units" : "Litres"
 
     if request.post?
 
-      @refill.refill_date = Time.now #params[:refill_date]
+      @refill.refill_date = Time.now 
       @refill.reading_before_refill  = params[:reading_before_refill]
-      @refill.reading_after_refill  = params[:reading_after_refill]
+      @refill.reading_after_refill  = params[:refill_final_reading]
       @refill.refill_amount  = params[:refill_amount]
-      @refill.refill_type  = "ESCOM"
-      @refill.tower_id  = @tower.id 
-      @refill.creator = @cur_user.id
-      @refill.save!
-
-      redirect_to "/tower/view?tower_id=#{@tower.id}"
-    end 
-
-  end 
-
-  def fuel_refill 
-    @tower = Tower.find(params[:tower_id])
-    @prev_refill = Refill.where(" tower_id = #{@tower.id} AND refill_type = 'FUEL'  ")
-                    .order(" refill_date ASC, created_at ASC ").last
-    @refill = Refill.new 
-
-    if request.post?
-
-      @refill.refill_date = Time.now #params[:refill_date]
-      @refill.reading_before_refill  = params[:reading_before_refill]
-      @refill.reading_after_refill  = params[:reading_after_refill]
-      @refill.refill_amount  = params[:refill_amount]
-      @refill.refill_type  = "FUEL"
+      @refill.usage = params[:refill_usage]
+      @refill.genset_reading = params[:genset_reading]
+      @refill.genset_run_time = params[:refill_run_hours]
+      @refill.refill_type  = params[:type].upcase
       @refill.tower_id  = @tower.id 
       @refill.creator = @cur_user.id
       @refill.save!
@@ -114,8 +96,8 @@ class TowerController < ApplicationController
     @modules <<  ['Fuel Refills', fuel_refills_count, "/tower/refills?type=fuel&tower_id=#{@tower.id}"]
 
     @common_encounters = []
-    @common_encounters << ['New Escom Units Refill', '/tower/escom_refill']
-    @common_encounters << ['New Fuel Refill', '/tower/fuel_refill']
+    @common_encounters << ['New Escom Units Refill', '/tower/new_refill?type=ESCOM']
+    @common_encounters << ['New Fuel Refill', '/tower/new_refill?type=FUEL']
   end
 
   def new_type
@@ -184,9 +166,12 @@ class TowerController < ApplicationController
       row = [p.name, 
                 district_name, 
                 (escom_refill.refill_date.strftime("%d-%b-%Y %H:%M") rescue ""),
+                (escom_refill.usage rescue ""), 
                 (escom_refill.refill_amount rescue ""), 
                 (escom_refill.reading_after_refill rescue ""), 
                 (fuel_refill.refill_date.strftime("%d-%b-%Y %H:%M") rescue ""), 
+                (fuel_refill.genset_run_time rescue ""),
+                (fuel_refill.usage rescue ""),
                 (fuel_refill.refill_amount rescue ""), 
                 (fuel_refill.reading_after_refill rescue ""),
             p.id]
@@ -216,7 +201,7 @@ class TowerController < ApplicationController
 
     @data = [
                 ["Tower", "District", "Technician", "Refill type", "Refill date", 
-              "Reading before refill", "Refill amount", "Final reading"]
+              "Reading before refill", "Usage", "Refill amount", "Final reading"]
             ]
     
     
@@ -233,16 +218,16 @@ class TowerController < ApplicationController
             WHERE DATE(r.refill_date) BETWEEN '#{start_date}' AND '#{end_date}'
             #{tower_filter} #{type_filter} ORDER BY refill_date DESC
     ").each do |t|
-        creator = User.find(t.creator).name
-        unit = t.refill_type.downcase == 'escom' ? " Units" : " Litres"
-      row = [   t.name, 
+        creator = User.find(t.creator).name        
+        row = [   t.name, 
                 t.code, 
                 creator,
                 t.refill_type,
-                t.refill_date.strftime("%d-%b-%Y %H:%M"),
-                t.reading_before_refill.to_s + unit,
-                t.refill_amount.to_s + unit,
-                t.reading_after_refill.to_s + unit,
+                t.refill_date.strftime("%Y-%m-%d %H:%M"),
+                t.reading_before_refill,
+                t.usage,
+                t.refill_amount,
+                t.reading_after_refill,
                 t.id
           ]
       @data << row

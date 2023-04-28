@@ -15,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="Kenneth Kapundi" content="Homepage for TNM Towers">
+    <meta name="TNM" content="Homepage for TNM Towers">
     <link href="/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
   <%= csrf_meta_tags %>
@@ -72,6 +72,11 @@
       input, select{
           box-shadow: 2px 2px 2px #ccc;
       }
+      .side-nav {
+        
+        width: 220px;
+        margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -113,7 +118,7 @@
             </li>
 
             <li id="refill">
-            <a href="javascript:" data-toggle="collapse" data-target="#refills"><i class="fa fa-cog">
+            <a href="javascript:" data-toggle="collapse" data-target="#refills"><i class="fa fa-list">
             </i> Refills <i class="fa fa-fw fa-caret-down"></i>
             </a>
             <ul id="refills" class="collapse">

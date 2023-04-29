@@ -23,10 +23,20 @@
       float: right;
   }
 
-  #example td, #example th{
+  #example td{
     padding: 3px !important;
     font-size: 0.95em;
-    }
+
+  }
+
+  #example th{
+    padding: 5px !important;
+  }
+
+  .buttons-excel {
+    margin-left: 3% !important;
+  }
+
 </style>
 
 <script src="/js/dataTables.buttons.min.js"></script>
@@ -35,6 +45,10 @@
 <script src="/js/pdfmake.min.js"></script>
 <script src="/js/jszip.min.js"></script>
 <script src="/js/vfs_fonts.js"></script>  
+<script src="/js/buttons.colVis.min.js"></script>  
+
+<link href="/css/buttons.dataTables.min.css" rel="stylesheet">
+
 
 <div>
   <ol class="breadcrumb " style="margin: 3px; padding: 5px;">
@@ -59,17 +73,20 @@
             <thead>
             <tr role="row"> 
               <th>Name</th>
-              <th>Units date</th>
+              <th style='width: 9%;'>Units date</th>
               <th>Usage (U)</th>
-              <th>Amount (U)</th>
-              <th>Final reading (U)</th>
-              <th>MTD(U)</th>
-              <th>FUEL date</th>
-              <th>Run hrs</th>
+              <th>Usage MTD(U)</th>
+              <th>Amt(U)</th>
+              <th>Closing (U)</th>
+              <th>Refills MTD(U)</th>
+              <th style='width: 9%;'>FUEL date</th>
+              <th>Rhrs</th>
+              <th>Rhrs MTD</th>
               <th>Usage(L)</th>
-              <th>Amount(L)</th>
-              <th>Final reading(L)</th>
-              <th>MTD(L)</th>
+              <th>Usage MTD(L)</th>
+              <th>Amt(L)</th>
+              <th>Closing(L)</th>
+              <th>Refills MTD(L)</th>
               <th>&nbsp;</th>
             </tr>
             </thead>
@@ -149,7 +166,7 @@
         table = $('.data-table').DataTable({
           dom: 'lBfrtip',
             buttons: [
-                'excel', 'pdf'
+                'excel', 'pdf', 'colvis'
             ],
             "processing": true,
             "serverSide": true,

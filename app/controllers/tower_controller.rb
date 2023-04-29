@@ -162,28 +162,35 @@ class TowerController < ApplicationController
       fuel_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'FUEL'  ")
       .order(" refill_date ").last
 
-      escom_mtd = Refill.find_by_sql(" SELECT SUM(refill_amount) AS total FROM refill 
+      escom_refills_mtd = Refill.find_by_sql(" SELECT SUM(refill_amount) AS total FROM refill 
                     WHERE tower_id = #{p.id} AND refill_type = 'ESCOM' 
                     AND refill_date BETWEEN '#{escom_refill.refill_date.beginning_of_month.to_s(:db)}' 
                                       AND '#{escom_refill.refill_date.to_s(:db)}' " ).last.total rescue 0
 
-      fuel_mtd = Refill.find_by_sql(" SELECT SUM(refill_amount) AS total FROM refill 
+      fuel_refills_mtd = Refill.find_by_sql(" SELECT SUM(refill_amount) AS total FROM refill 
                     WHERE tower_id = #{p.id} AND refill_type = 'FUEL' 
                     AND refill_date BETWEEN '#{fuel_refill.refill_date.beginning_of_month.to_s(:db)}' 
                                       AND '#{fuel_refill.refill_date.to_s(:db)}' " ).last.total rescue 0
+
+      units_usage_mtd = 0                       
+      run_hrs_mtd = 0
+      fuel_usage_mtd = 0
 
       row = [p.name, 
                 (escom_refill.refill_date.strftime("%Y-%m-%d %H:%M") rescue ""),
                 (escom_refill.usage rescue ""), 
                 (escom_refill.refill_amount rescue ""), 
                 (escom_refill.reading_after_refill rescue ""), 
-                escom_mtd,
+                escom_refills_mtd,
+                units_usage_mtd,                     
                 (fuel_refill.refill_date.strftime("%Y-%m-%d %H:%M") rescue ""), 
                 (fuel_refill.genset_run_time rescue ""),
+                run_hrs_mtd,
                 (fuel_refill.usage rescue ""),
+                fuel_usage_mtd,
                 (fuel_refill.refill_amount rescue ""), 
                 (fuel_refill.reading_after_refill rescue ""),
-                fuel_mtd,
+                fuel_refills_mtd,
             p.id]
       @records << row
     end
@@ -210,7 +217,7 @@ class TowerController < ApplicationController
     @title = "Listing of #{params[:type]} Refills #{tower_name}"
 
     @data = [
-                ["Tower", "District", "Technician", "Refill type", "Refill date", 
+                ["Refill date", "Tower", "District", "Technician", "Refill type", 
               "Reading before refill"]]
 
     if params[:type] != 'escom'
@@ -233,11 +240,12 @@ class TowerController < ApplicationController
             #{tower_filter} #{type_filter} ORDER BY refill_date DESC
     ").each do |t|
         creator = User.find(t.creator).name        
-        row = [   t.name, 
+        row = [   
+          t.refill_date.strftime("%Y-%m-%d %H:%M"),
+          t.name, 
                 t.code, 
                 creator,
                 t.refill_type,
-                t.refill_date.strftime("%Y-%m-%d %H:%M"),
                 t.reading_before_refill,
               ]
 

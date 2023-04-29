@@ -25,8 +25,16 @@
 
   #example td, #example th{
     padding: 3px !important;
-  }
+    font-size: 0.95em;
+    }
 </style>
+
+<script src="/js/dataTables.buttons.min.js"></script>
+<script src="/js/buttons.html5.min.js"></script>
+<script src="/js/buttons.print.min.js"></script>
+<script src="/js/pdfmake.min.js"></script>
+<script src="/js/jszip.min.js"></script>
+<script src="/js/vfs_fonts.js"></script>  
 
 <div>
   <ol class="breadcrumb " style="margin: 3px; padding: 5px;">
@@ -51,16 +59,17 @@
             <thead>
             <tr role="row"> 
               <th>Name</th>
-              <th>District</th>
               <th>Units date</th>
               <th>Usage (U)</th>
               <th>Amount (U)</th>
               <th>Final reading (U)</th>
+              <th>MTD(U)</th>
               <th>FUEL date</th>
               <th>Run hrs</th>
               <th>Usage(L)</th>
               <th>Amount(L)</th>
               <th>Final reading(L)</th>
+              <th>MTD(L)</th>
               <th>&nbsp;</th>
             </tr>
             </thead>
@@ -138,6 +147,10 @@
     $(document).ready(function() {
 
         table = $('.data-table').DataTable({
+          dom: 'lBfrtip',
+            buttons: [
+                'excel', 'pdf'
+            ],
             "processing": true,
             "serverSide": true,
             'pageLength': 10,

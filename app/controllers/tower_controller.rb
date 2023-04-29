@@ -155,7 +155,6 @@ class TowerController < ApplicationController
     @records = []
     data.each do |p|
       type = TowerType.find(p.tower_type_id).name rescue nil
-      district_name = Location.find(p.district_id).code
       
       escom_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'ESCOM'  ")
       .order(" refill_date").last
@@ -163,17 +162,28 @@ class TowerController < ApplicationController
       fuel_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'FUEL'  ")
       .order(" refill_date ").last
 
+      escom_mtd = Refill.find_by_sql(" SELECT SUM(refill_amount) AS total FROM refill 
+                    WHERE tower_id = #{p.id} AND refill_type = 'ESCOM' 
+                    AND refill_date BETWEEN '#{escom_refill.refill_date.beginning_of_month.to_s(:db)}' 
+                                      AND '#{escom_refill.refill_date.to_s(:db)}' " ).last.total rescue 0
+
+      fuel_mtd = Refill.find_by_sql(" SELECT SUM(refill_amount) AS total FROM refill 
+                    WHERE tower_id = #{p.id} AND refill_type = 'FUEL' 
+                    AND refill_date BETWEEN '#{fuel_refill.refill_date.beginning_of_month.to_s(:db)}' 
+                                      AND '#{fuel_refill.refill_date.to_s(:db)}' " ).last.total rescue 0
+
       row = [p.name, 
-                district_name, 
-                (escom_refill.refill_date.strftime("%d-%b-%Y %H:%M") rescue ""),
+                (escom_refill.refill_date.strftime("%Y-%m-%d %H:%M") rescue ""),
                 (escom_refill.usage rescue ""), 
                 (escom_refill.refill_amount rescue ""), 
                 (escom_refill.reading_after_refill rescue ""), 
-                (fuel_refill.refill_date.strftime("%d-%b-%Y %H:%M") rescue ""), 
+                escom_mtd,
+                (fuel_refill.refill_date.strftime("%Y-%m-%d %H:%M") rescue ""), 
                 (fuel_refill.genset_run_time rescue ""),
                 (fuel_refill.usage rescue ""),
                 (fuel_refill.refill_amount rescue ""), 
                 (fuel_refill.reading_after_refill rescue ""),
+                fuel_mtd,
             p.id]
       @records << row
     end

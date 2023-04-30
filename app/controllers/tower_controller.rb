@@ -151,6 +151,10 @@ class TowerController < ApplicationController
 
     data = data.select(" tower.* ")
     data = data.page(page).per_page(params[:length].to_i)
+    
+    start_date = Date.today.beginning_of_month.to_s(:db)
+    end_date = Date.today.end_of_month.to_s(:db)
+    mtd_date_filter = " AND refill_date BETWEEN '#{start_date}' AND '#{end_date}' "
 
     @records = []
     data.each do |p|
@@ -164,17 +168,19 @@ class TowerController < ApplicationController
 
       escom_refills_mtd = Refill.find_by_sql(" SELECT SUM(refill_amount) AS total FROM refill 
                     WHERE tower_id = #{p.id} AND refill_type = 'ESCOM' 
-                    AND refill_date BETWEEN '#{escom_refill.refill_date.beginning_of_month.to_s(:db)}' 
-                                      AND '#{escom_refill.refill_date.to_s(:db)}' " ).last.total rescue 0
+                     " ).last.total rescue 0
 
       fuel_refills_mtd = Refill.find_by_sql(" SELECT SUM(refill_amount) AS total FROM refill 
-                    WHERE tower_id = #{p.id} AND refill_type = 'FUEL' 
-                    AND refill_date BETWEEN '#{fuel_refill.refill_date.beginning_of_month.to_s(:db)}' 
-                                      AND '#{fuel_refill.refill_date.to_s(:db)}' " ).last.total rescue 0
+                    WHERE tower_id = #{p.id} AND refill_type = 'FUEL' #{mtd_date_filter} " ).last.total rescue 0
 
-      units_usage_mtd = 0                       
-      run_hrs_mtd = 0
-      fuel_usage_mtd = 0
+      escom_usage_mtd = Refill.find_by_sql(" SELECT SUM(refill.usage) AS total FROM refill 
+                    WHERE tower_id = #{p.id} AND refill_type = 'ESCOM' #{mtd_date_filter} " ).last.total rescue 0
+
+      fuel_usage_mtd = Refill.find_by_sql(" SELECT SUM(refill.usage) AS total FROM refill 
+                    WHERE tower_id = #{p.id} AND refill_type = 'FUEL' #{mtd_date_filter} " ).last.total rescue 0
+
+      run_hrs_mtd = Refill.find_by_sql(" SELECT SUM(refill.genset_run_time) AS total FROM refill 
+                    WHERE tower_id = #{p.id} AND refill_type = 'FUEL' #{mtd_date_filter} " ).last.total rescue 0
 
       row = [p.name, 
                 (escom_refill.refill_date.strftime("%Y-%m-%d %H:%M") rescue ""),
@@ -182,7 +188,7 @@ class TowerController < ApplicationController
                 (escom_refill.refill_amount rescue ""), 
                 (escom_refill.reading_after_refill rescue ""), 
                 escom_refills_mtd,
-                units_usage_mtd,                     
+                escom_usage_mtd,                     
                 (fuel_refill.refill_date.strftime("%Y-%m-%d %H:%M") rescue ""), 
                 (fuel_refill.genset_run_time rescue ""),
                 run_hrs_mtd,

@@ -185,10 +185,10 @@ class TowerController < ApplicationController
       row = [p.name, 
                 (escom_refill.refill_date.strftime("%Y-%m-%d %H:%M") rescue ""),
                 (escom_refill.usage rescue ""), 
+                escom_usage_mtd,                     
                 (escom_refill.refill_amount rescue ""), 
                 (escom_refill.reading_after_refill rescue ""), 
                 escom_refills_mtd,
-                escom_usage_mtd,                     
                 (fuel_refill.refill_date.strftime("%Y-%m-%d %H:%M") rescue ""), 
                 (fuel_refill.genset_run_time rescue ""),
                 run_hrs_mtd,
@@ -224,13 +224,15 @@ class TowerController < ApplicationController
 
     @data = [
                 ["Refill date", "Tower", "District", "Technician", "Refill type", 
-              "Reading before refill"]]
+              "Reading before refill", "Usage"]]
 
     if params[:type] != 'escom'
       @data[0] << "Run hrs"
+      @data[0] << "Rate (Litres/hr)"
+
     end
 
-    @data[0] = @data[0] + ["Usage", "Refill amount", "Final reading"]
+    @data[0] = @data[0] + ["Refill amount", "Final reading"]
     
     if params[:type] == "escom"
       type_filter = " AND r.refill_type = 'ESCOM' "
@@ -245,7 +247,14 @@ class TowerController < ApplicationController
             WHERE DATE(r.refill_date) BETWEEN '#{start_date}' AND '#{end_date}'
             #{tower_filter} #{type_filter} ORDER BY refill_date DESC
     ").each do |t|
-        creator = User.find(t.creator).name        
+        
+        creator = User.find(t.creator).name   
+        
+        rate = ""
+        if t.usage.present? and t.usage > 0 and t.genset_run_time.present? and t.genset_run_time > 0
+          rate = (t.usage/t.genset_run_time.to_f).round(2)
+        end 
+        
         row = [   
           t.refill_date.strftime("%Y-%m-%d %H:%M"),
           t.name, 
@@ -253,14 +262,15 @@ class TowerController < ApplicationController
                 creator,
                 t.refill_type,
                 t.reading_before_refill,
+                t.usage
               ]
 
               if params[:type] != 'escom'
                 row << t.genset_run_time
+                row << rate
               end 
 
               row += [
-                t.usage,
                 t.refill_amount,
                 t.reading_after_refill,
                 t.id

@@ -1,28 +1,54 @@
-== README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A. OS Requirements
+    Ubuntu 22.04
+    >= 8 GB RAM 
+    >= 30GB storage 
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+B. .Installing System Requirements and Dependencies 
+
+   1. Update System 
+        Commands: 
+            sudo apt-add-repository -y ppa:rael-gc/rvm
+            sudo apt-get update
+
+   2. Install rvm (Instruction on link: https://rvm.io/rvm/install )
+      
+   3. Install Ruby 2.1.2
+        Command:
+            rvm install 2.1.2
+
+   4. Install mysql (Instruction on link: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04)
+
+   5. Install libmysqlclient-dev 
+        Command: 
+            sudo apt-get install libmysqlclient-dev
+
+C. Setting up the application
+
+    1. Clone application from github
+        Commands:
+            sudo apt-get install git 
+            git clone https://github.com/phundi/tnm-towers.git
+        
+    2. Edit database configurations to suite your MYSQL credentials using any editor
+        
+       File: config/database.yml
+
+    3. Install gem dependencies
+        Command:
+          bundle install
+
+    4. In development environment run the application 
+        Commands: 
+            passenger start -p port_number 
+             OR 
+            rails s -p port_number
+
+    5. In production, install and setup nginx load balancer
+        Commands:
+            sudo apt-get install libcurl4-openssl-dev
+            rvmsudo passenger-install-nginx-module
+
+    6. Setup nginx server blocks
+

@@ -277,6 +277,9 @@ class TowerController < ApplicationController
         rate = ""
         if t.usage.present? and t.usage > 0 and t.genset_run_time.present? and t.genset_run_time > 0
           rate = (t.usage/t.genset_run_time.to_f).round(2)
+          if rate > 2.5
+            rate = "<span style='color:red'>#{rate}</span>".html_safe
+          end 
         end 
         
         row = [   

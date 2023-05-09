@@ -24,6 +24,13 @@ UserRole.create(
     user_id: u.id, role_id: r.id
 )
 
+Role.create(
+    name: 'Technician', description: '---'
+)
+
+TowerType.create(name: "TNM Tower")
+TowerType.create(name: "Government Tower")
+
 begin
   ActiveRecord::Base.transaction do
     require Rails.root.join('db','load_location_tags.rb')

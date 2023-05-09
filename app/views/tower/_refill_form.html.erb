@@ -39,14 +39,14 @@
 
     </div>
 
-    <% if false %>
+    <%# if false %>
     <div class="form-group">
     <label for="reading">Current refill date</label>
     <input type="date" id="refill_date" name="refill_date"  data-validation="required date"  
         class="form-control" value="<%= @refill.refill_date %>">
     </div>
 
-    <% end %>
+    <%# end %>
 
     <div class="form-group">
       <label for="reading_before_refill">Current reading (<%= @unit%>)</label>
@@ -102,6 +102,9 @@
 <script>
     $.validate({
         modules : 'security',
+            rules: {
+
+            },
         onError : function(){
 
         }

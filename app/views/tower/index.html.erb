@@ -7,7 +7,7 @@
       color: #000;
   }
 
-  #tag, #example_filter{
+  #tag, #example_filter, #flagged{
       float: right;
       font-size: 14px;
       background:white;
@@ -153,6 +153,9 @@
   </div>
 </div>
 
+<input onchange="reloadDataTable()" type="checkbox" id="flagged" name="flagged" style="margin-right: 20px !important;">
+<label id="flagged-label" for="flagged">Flagged </label>
+
 <select id="tag" label="Location Type" onchange="reloadDataTable()" style="width: 200px !important;
         padding: 5px; margin-right: 20px; ;">
   <option value="">Select Tower Type</option>
@@ -160,6 +163,7 @@
     <option value="<%=t.id%>"><%= t.name%></option>
   <% end %>
 </select>
+
 
 <script>
     table = null;
@@ -178,7 +182,8 @@
             "ajax": {
                 "url": '/tower/ajax_towers',
                 data: function(d){
-                    d.type_id =__$('tag').value
+                    d.type_id =__$('tag').value,
+                    d.flagged = __$('flagged').checked
                 },
                 dataFilter: function (data) {
                     var json = jQuery.parseJSON(data);
@@ -197,6 +202,8 @@
 
         var holder = __$('example_filter');
         holder.appendChild(__$('tag'));
+        holder.appendChild(__$('flagged'));
+        holder.appendChild(__$('flagged-label'));
     })
 
     function __$(id){

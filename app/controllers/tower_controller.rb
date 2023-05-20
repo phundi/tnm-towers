@@ -134,25 +134,6 @@ class TowerController < ApplicationController
 
   def ajax_towers
 
-    search_val = params[:search][:value] rescue nil
-    search_val = '_' if search_val.blank?
-
-    tag_filter = ''
-    code_filter = ''
-
-    if params[:type_id].present?
-      tag_filter = " AND tower.tower_type_id = #{params[:type_id]}"
-    end
-
-    data = Tower.order(' tower.created_at DESC ')
-    data = data.where(" ((CONCAT_WS(name, description, '_') REGEXP '#{search_val}')
-         #{tag_filter}) #{code_filter}")
-    total = data.select(" count(*) c ")[0]['c'] rescue 0
-    page = (params[:start].to_i / params[:length].to_i) + 1
-
-    data = data.select(" tower.* ")
-    data = data.page(page).per_page(params[:length].to_i)
-    
 
     if params[:start_date].present? and params[:end_date].present?
       start_date =  params[:start_date].to_date.to_s(:db) 
@@ -162,6 +143,48 @@ class TowerController < ApplicationController
       end_date = Date.today.end_of_month.to_s(:db)
     end 
     mtd_date_filter = " AND refill_date BETWEEN '#{start_date}' AND '#{end_date}' "
+
+    search_val = params[:search][:value] rescue nil
+    search_val = '' if search_val.blank?
+
+    tag_filter = ''
+    flagged_filter = ''
+    having_filter = ''
+    search_filter = ''
+
+    if params[:type_id].present?
+      tag_filter = " AND tower.tower_type_id = #{params[:type_id]}"
+    end
+
+    if params[:flagged].present? and params[:flagged].to_s == "true"
+
+      having_filter = " AND (usage_mtd/run_hours_mtd) > 3 "
+      
+    end
+
+    if search_val.present?
+      search_filter = " AND tower.name REGEXP '#{search_filter}' "
+    end 
+
+    data = Tower.order(' tower.created_at DESC ')
+    data = data.where(" #{search_filter}
+         #{tag_filter} ")
+    total = data.select(" count(*) c ")[0]['c'] rescue 0
+    page = (params[:start].to_i / params[:length].to_i) + 1
+
+
+    data = data.select(" tower.* , 
+    
+    (SELECT SUM(refill.usage) FROM refill 
+            WHERE refill.tower_id = tower.tower_id AND refill_type = 'FUEL' #{mtd_date_filter}) AS usage_mtd,
+
+            (SELECT SUM(refill.genset_run_time) FROM refill 
+                    WHERE refill.tower_id = tower.tower_id AND refill_type = 'FUEL' #{mtd_date_filter}) AS run_hours_mtd
+
+     ").having(" true #{having_filter} ")
+
+    data = data.page(page).per_page(params[:length].to_i)
+    
 
     @records = []
     data.each do |p|
@@ -192,18 +215,13 @@ class TowerController < ApplicationController
       escom_usage_mtd = Refill.find_by_sql(" SELECT SUM(refill.usage) AS total FROM refill 
                     WHERE tower_id = #{p.id} AND refill_type = 'ESCOM' #{mtd_date_filter} " ).last.total rescue 0
 
-      fuel_usage_mtd = Refill.find_by_sql(" SELECT SUM(refill.usage) AS total FROM refill 
-                    WHERE tower_id = #{p.id} AND refill_type = 'FUEL' #{mtd_date_filter} " ).last.total rescue 0
+      rate = (p.usage_mtd.to_f/p.run_hours_mtd.to_f).round(2)
 
-      run_hrs_mtd = Refill.find_by_sql(" SELECT SUM(refill.genset_run_time) AS total FROM refill 
-                    WHERE tower_id = #{p.id} AND refill_type = 'FUEL' #{mtd_date_filter} " ).last.total rescue 0
-
-      rate = (fuel_usage_mtd.to_f/run_hrs_mtd.to_f).round(2)
 
       rdate = [(fuel_refill.refill_date rescue nil), (escom_refill.refill_date rescue nil)].delete_if{|s| 
                 s.blank?}.max.strftime("%Y-%m-%d %H:%M") rescue ""
       
-      if rate > 2.5
+      if rate > 3
           rate = "<span style='color:red'>#{rate}</span>"
       end 
 
@@ -212,10 +230,10 @@ class TowerController < ApplicationController
                 (fuel_refill_last_month.reading_after_refill rescue ""),
                 fuel_refills_mtd,
                 (fuel_refill.reading_after_refill rescue ""),
-                fuel_usage_mtd,
+                p.usage_mtd,
                 (fuel_refill_last_month.genset_reading rescue ""),
                 (fuel_refill.genset_reading rescue ""),
-                run_hrs_mtd,
+                p.run_hours_mtd,
                 rate,
                 (escom_refill_last_month.reading_after_refill rescue ""),
                 escom_refills_mtd,
@@ -277,7 +295,7 @@ class TowerController < ApplicationController
         rate = ""
         if t.usage.present? and t.usage > 0 and t.genset_run_time.present? and t.genset_run_time > 0
           rate = (t.usage/t.genset_run_time.to_f).round(2)
-          if rate > 2.5
+          if rate > 3
             rate = "<span style='color:red'>#{rate}</span>".html_safe
           end 
         end 

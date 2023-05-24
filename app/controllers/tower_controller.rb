@@ -348,4 +348,109 @@ end
     [start_date, end_date]
   end
 
+  def summary_report 
+
+    if request.post?
+
+      start_date, end_date = date_ranges
+      ongrid = Tower.where(" created_at <= '#{end_date}'  AND grid_type = 'On Grid Site' ").count
+      offgrid = Tower.where(" created_at <= '#{end_date}'  AND grid_type = 'Off Grid Site' ").count
+
+      bt_ids = Location.where(" name IN ('Blantyre', 'Blantyre City') ").pluck :location_id
+      ll_ids = Location.where(" name IN ('Lilongwe', 'Lilongwe City') ").pluck :location_id
+      south_ids = Location.where(" description = 'SOUTH'  AND location_id NOT IN (#{bt_ids.join(',')}) ").pluck :location_id
+      centre_ids = Location.where(" description = 'CENTRE'  AND location_id NOT IN (#{ll_ids.join(',')}) ").pluck :location_id
+      north_ids = Location.where(" description = 'NORTH'  AND location_id NOT IN (#{bt_ids.join(',')}) ").pluck :location_id
+
+
+
+      bt_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
+        INNER JOIN tower t ON t.tower_id = r.tower_id  AND r.refill_type = 'FUEL'
+        WHERE t.district_id IN (#{bt_ids.join(",")}) AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
+      ").last.total || 0
+     
+      ll_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
+        INNER JOIN tower t ON t.tower_id = r.tower_id 
+        WHERE t.district_id IN (#{ll_ids.join(",")}) AND r.refill_type = 'FUEL'
+          AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
+      ").last.total || 0
+
+      south_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
+      INNER JOIN tower t ON t.tower_id = r.tower_id 
+      WHERE t.district_id IN (#{south_ids.join(",")}) AND r.refill_type = 'FUEL'
+        AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
+      ").last.total || 0
+          
+
+      centre_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
+      INNER JOIN tower t ON t.tower_id = r.tower_id 
+      WHERE t.district_id IN (#{centre_ids.join(",")}) AND r.refill_type = 'FUEL'
+        AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
+      ").last.total || 0
+
+      north_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
+      INNER JOIN tower t ON t.tower_id = r.tower_id 
+      WHERE t.district_id IN (#{north_ids.join(",")}) AND r.refill_type = 'FUEL'
+        AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
+      ").last.total || 0
+
+      all_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
+      WHERE r.refill_type = 'FUEL'
+        AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
+      ").last.total || 0
+
+      variance_usage = all_usage - params[:budgeted_usage].to_i
+      
+      actual_dg_running_hours = Refill.find_by_sql(" SELECT SUM(r.genset_run_time) AS total FROM refill r
+      WHERE r.refill_type = 'FUEL'
+        AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
+      ").last.total || 0
+
+      variance_run_hours = actual_dg_running_hours - params[:budgeted_dg_running_hours].to_i 
+     
+      rate = (all_usage.to_f/actual_dg_running_hours.to_f).round(2)
+      
+      rate_variance = (rate - params[:budgeted_dg_consumption_rate].to_f).round(2)
+
+      if rate > 1
+        rate = "<span style='color:red'>#{rate}</span>"
+      end 
+
+      @data = [
+                          ["", "Unit of Measure", 'Description', params[:end_date].to_date.strftime("%d-%b-%Y")],
+
+                          ["Number of sites", "Count", 'Off Grid Sites', offgrid],
+                              ["", "", 'On Grid Sites', ongrid],
+                              ["", "", 'Total No. of Sites', (ongrid + offgrid)],
+                              ['', '', "", ""],
+                              ["", "", "<b>Usage (Litres)</b>", ""],
+                              ["", "", "Blantyre", bt_usage],
+                              ["", "", "Lilongwe", (ll_usage + centre_usage)],
+                              ["", "", "North", north_usage],
+                              ["", "", "South", south_usage],
+                              ["", "", "", ""],
+
+                          ["DG Fuel Usage",  "Litres", '<b>Actual Usage</b>', "<b>#{all_usage}</b>"],
+                              ["", "", '<b>Budgeted Usage</b>', "<b>#{params[:budgeted_usage]}</b>"],
+                              ["", "", '<b>Variance</b>', "<b>#{variance_usage}</b>"],
+                              ["", "", "", ""],
+
+                          ["DG Running Hours", "Hours", 'Actual DG Running Hours', actual_dg_running_hours],
+                              ["", "", 'Budgeted DG Running Hours', params[:budgeted_dg_running_hours]],
+                              ["", "", 'Variance Running Hours', variance_run_hours],
+                              ["", "", "", ""],
+
+                          ["DG Fuel Consumption Rate", "Litres/Hour", 
+                                          'Actual Consumption Rate', rate],
+                              ["", "", 'Budgeted Consumption Rate', 
+                                            params[:budgeted_dg_consumption_rate]],
+                              ["", "", 'Variance Consumption Rate', rate_variance],
+                              ["", "", "", ""],
+                      ]
+
+            render :template => "tower/generic_report_table" and return
+
+    end 
+  end 
+
 end 

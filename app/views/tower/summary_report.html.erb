@@ -1,0 +1,93 @@
+<style>
+  fieldset{
+      border: 1px solid ghostwhite;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px;
+  }
+
+  .form-error{
+      display: none;
+  }
+
+  input, select{
+      display: inline-block;
+      margin-right: 10px !important;
+  }
+  select{
+      margin-right: 5px !important;
+  }
+
+</style>
+<script src="/js/jquery.form-validator.min.js"></script>
+<table style="width: 100%;">
+  <tr>
+     <td style="width: 80%" valign="top">
+      <div id="form">
+      <form enctype="multipart/form-data" id="form-create-role" accept-charset="UTF-8"
+            action="summary_report" method="POST"><input type="hidden">
+
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+
+        <fieldset>         
+
+           <div class="form-group">
+            <label for="name">Start Date</label>
+            <input type="date" id="name" name="start_date" class="form-control" 
+            data-validation="required"  />
+          </div>
+
+          <div class="form-group">
+            <label for="name">End Date</label>
+            <input type="date"  name="end_date" class="form-control" 
+            data-validation="required"  />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Budgeted Usage</label>
+            <input type="text" name="budgeted_usage" class="form-control" 
+            data-validation="required number"  />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Budgeted DG Running Hours</label>
+            <input type="text" name="budgeted_dg_running_hours" class="form-control" 
+            data-validation="required number"  />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Budgeted DG Consumption Rate</label>
+            <input type="text" name="budgeted_dg_consumption_rate" class="form-control" 
+            data-validation="required number"  data-validation-allowing="float"/>
+          </div>
+
+       
+
+        </fieldset>
+
+        <div class="form-group actions-row" style="padding-right: 52%;">
+          <button type="button submit" class="btn btn-primary">
+          <span class="glyphicon glyphicon-save"></span> Generate Report</button>
+        </div>
+
+      </form>
+    </div>
+    </td>
+    </tr>
+</table>
+
+<script>
+    
+
+
+
+    $.validate({
+        onError : function(){
+
+        }
+    });
+
+    jQuery(document).ready(function(){
+        
+    })
+</script>

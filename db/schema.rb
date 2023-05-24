@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "name"
     t.integer  "district_id",         limit: 4,   default: 0,     null: false
     t.integer  "tower_type_id",  null: false
+    t.string  "grid_type", null: false, default: "On Grid Site"
     t.integer   "lat"
     t.integer   "long"
     t.integer  "creator",  null: false

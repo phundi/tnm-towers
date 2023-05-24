@@ -412,7 +412,7 @@ end
       
       rate_variance = (rate - params[:budgeted_dg_consumption_rate].to_f).round(2)
 
-      if rate > 1
+      if rate > 3
         rate = "<span style='color:red'>#{rate}</span>"
       end 
 

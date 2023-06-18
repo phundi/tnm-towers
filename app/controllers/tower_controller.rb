@@ -399,18 +399,27 @@ end
         AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
       ").last.total || 0
 
-      variance_usage = all_usage - params[:budgeted_usage].to_i
-      
+      variance_usage = params[:budgeted_usage].to_i - all_usage
+      if variance_usage < 0
+        variance_usage = "<span style='color:red'>#{variance_usage}</span>"
+      end 
+
       actual_dg_running_hours = Refill.find_by_sql(" SELECT SUM(r.genset_run_time) AS total FROM refill r
       WHERE r.refill_type = 'FUEL'
         AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
       ").last.total || 0
 
-      variance_run_hours = actual_dg_running_hours - params[:budgeted_dg_running_hours].to_i 
-     
+      variance_run_hours = params[:budgeted_dg_running_hours].to_i  - actual_dg_running_hours 
+      if variance_run_hours < 0
+        variance_run_hours = "<span style='color:red'>#{variance_run_hours}</span>"
+      end 
+
       rate = (all_usage.to_f/actual_dg_running_hours.to_f).round(2)
       
-      rate_variance = (rate - params[:budgeted_dg_consumption_rate].to_f).round(2)
+      rate_variance = (params[:budgeted_dg_consumption_rate].to_f - rate ).round(2)
+      if rate_variance < 0
+        rate_variance = "<span style='color:red'>#{rate_variance}</span>"
+      end 
 
       if rate > 3
         rate = "<span style='color:red'>#{rate}</span>"

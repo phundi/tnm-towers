@@ -1,0 +1,179 @@
+Sites Name,Region,District,Site Status,If Grid           (Postpaid/Prepaid), Tank Size (Litres) , Opening Litres , Disbursed , Closing Litres , Usage in Litres , Opening Hours , Closing Hours , Hours Run ,Average Usage Per Hour,Opening Readings,Units Bought,Closing Readings,Power Usage
+Bangwe Clinic ,Blantyre,Blantyre,Grid,Prepaid,500,480,170,500,170,21705,21747,42,4, -   , -   , -   , -   
+Bangwe Police,Blantyre,Blantyre,Grid,Prepaid,1000,1000,361,1000,361,16166,16220,54,6.7, -   , -   , -   , -   
+BCA Hill,Blantyre,Blantyre,Grid,Prepaid,500,500,462,490,462,418,607,189,2.4, -   , -   , -   , -   
+Bvumbwe,Blantyre,Thyolo,Grid,Prepaid,600,600, -   ,540, -   ,2116,2137,21, -   , -   , -   , -   , -   
+Chilomoni Hema,Blantyre,Blantyre,Off Grid,Prepaid,1000,1000,877,630,877,3745,4171,426,2.1, -   , -   , -   , -   
+Chemusa,Blantyre,Blantyre,Grid,Prepaid,500,250,491,500,491,20438,20511,73,6.7, -   , -   , -   , -   
+Chichiri school,Blantyre,Blantyre,Grid,Prepaid,600,380,388,430,388,631,781,150,2.6, -   , -   , -   , -   
+Chichiri shop,Blantyre,Blantyre,Grid,Prepaid,500,150,400,500,400,10643,10944,301,1.3, -   , -   , -   , -   
+Chikuli,Blantyre,Blantyre,Grid,Prepaid,600,410, -   ,360, -   ,9617,9639,22, -   , -   , -   , -   , -   
+Chilobwe,Blantyre,Blantyre,Grid,Prepaid,600,600, -   ,460, -   ,11065,11114,49, -   , -   , -   , -   , -   
+Chilomoni Police,Blantyre,Blantyre,Grid,Prepaid,1000,220, -   ,180, -   ,8565,8591,26, -   , -   , -   , -   , -   
+Chilomoni Fargo,Blantyre,Blantyre,Off Grid,Prepaid,1000,1000,1885,1000,1885,6912,7529,617,3.1, -   , -   , -   , -   
+CHIMALIRO,Blantyre,Blantyre,Grid,Prepaid,500,500, -   ,480, -   ,32441,32451,10, -   , -   , -   , -   , -   
+Chiradzulu Hosp,Blantyre,Chiradzulu,Grid,Prepaid,600,450,243,490,243,17259,17403,144,1.7, -   , -   , -   , -   
+Chisitu,Blantyre,Mulanje,Grid,Prepaid,1000,1000, -   ,995, -   ,2853,2855,2, -   , -   , -   , -   , -   
+Chigumula extension,Blantyre,Blantyre,Off Grid,Prepaid,1000,670,737,990,737,4697,4778,81,9.1, -   , -   , -   , -   
+Faiti,Blantyre,Mwanza,Prime,Prepaid,500,500, -   ,460, -   ,15954,15985,31, -   , -   , -   , -   , -   
+Fatima,Blantyre,Nsanje,Grid,Prepaid,1000,540, -   ,530, -   ,11541,11544,3, -   , -   , -   , -   , -   
+Henred,Blantyre,Blantyre,Grid,Prepaid,1000,408,651,980,651,3698,3711,13,50.1, -   , -   , -   , -   
+HHI,Blantyre,Blantyre,Grid,Prepaid,600,600, -   ,590, -   ,11999,12003,4, -   , -   , -   , -   , -   
+Illovo,Blantyre,Chikwawa,Grid,Prepaid,1000,900, -   ,880, -   ,414,420,6, -   , -   , -   , -   , -   
+Nchalo Shop,Blantyre,Chikwawa,Grid,Prepaid,100,100, -   ,100, -   ,13880,13880, -   ,#DIV/0!, -   , -   , -   , -   
+Kadzimete  ,Blantyre,Chikwawa,Grid,Prepaid,1000,350,780,770,780,3452,3514,62,12.6, -   , -   , -   , -   
+Kanjedza,Blantyre,Blantyre,Grid,Prepaid,500,260, -   ,250, -   ,17816,17826,10, -   , -   , -   , -   , -   
+Khama,Blantyre,Blantyre,Off Grid,Prepaid,1000,440,782,650,782,5602,5850,248,3.2, -   , -   , -   , -   
+Limbe TNM Shop,Blantyre,Blantyre,Grid,Prepaid,150,25, -   ,13, -   ,2685,2685, -   ,#DIV/0!, -   , -   , -   , -   
+Limbe Town,Blantyre,Blantyre,Grid,Prepaid,100,50, -   ,10, -   ,12486,12521,35, -   , -   , -   , -   , -   
+Lirangwe,Blantyre,Blantyre,Grid,Prepaid,600,380, -   ,380, -   ,13759,13759, -   ,#DIV/0!, -   , -   , -   , -   
+Lunzu,Blantyre,Blantyre,Grid,Prepaid,600,600, -   ,380, -   ,18790,18861,71, -   , -   , -   , -   , -   
+Machinjiri Hill,Blantyre,Blantyre,Grid,Prepaid,600,354, -   ,348, -   ,15943,15945,2, -   , -   , -   , -   , -   
+Manja,Blantyre,Blantyre,Grid,Prepaid,1000,400,876,1000,876,10624,10874,250,3.5, -   , -   , -   , -   
+Matindi,Blantyre,Blantyre,Grid,Prepaid,600,450, -   ,390, -   ,16649,16668,19, -   , -   , -   , -   , -   
+Mbame,Blantyre,Blantyre,Grid,Prepaid,600,565, -   ,450, -   ,19790,19841,51, -   , -   , -   , -   , -   
+Mbayani,Blantyre,Blantyre,Grid,Prepaid,1000,400, -   ,396, -   ,16698,16700,2, -   , -   , -   , -   , -   
+CEO residence,Blantyre,Blantyre,Grid,Prepaid,600,600, -   ,600, -   ,14808,14808, -   ,#DIV/0!, -   , -   , -   , -   
+QECH,Blantyre,Blantyre,Grid,Prepaid,600,190, -   ,260, -   ,15502,15502, -   ,#DIV/0!, -   , -   , -   , -   
+Milepa,Blantyre,Chiradzulu,Grid,Prepaid,1000,250,750,950,750,4874,4887,13,57.7, -   , -   , -   , -   
+Mimosa,Blantyre,Mulanje,Grid,Prepaid,500,700, -   ,620, -   ,13831,13869,38, -   , -   , -   , -   , -   
+Misesa,Blantyre,Blantyre,Grid,Prepaid,1000,1000, -   ,600, -   ,6245,6433,188, -   , -   , -   , -   , -   
+Mpemba Hill,Blantyre,Blantyre,Off Grid,Prepaid,1000,517,1031,690,1031,3289,3560,271,3.8, -   , -   , -   , -   
+Manja Ext,Blantyre,Blantyre,Off Grid,Prepaid,1000,680, -   ,585, -   ,4048,4081,33, -   , -   , -   , -   , -   
+Money Men,Blantyre,Blantyre,Grid,Prepaid,1000,730, -   ,560, -   ,18310,18363,53, -   , -   , -   , -   , -   
+Mpemba,Blantyre,Blantyre,Grid,Prepaid,1000,880, -   ,860, -   ,5987,5994,7, -   , -   , -   , -   , -   
+Mpingwe,Blantyre,Blantyre,Grid,Prepaid,500,490, -   ,480, -   ,2909,2914,5, -   , -   , -   , -   , -   
+Mt Pleasant,Blantyre,Blantyre,Grid,Prepaid,1000,900, -   ,840, -   ,1461,1473,12, -   , -   , -   , -   , -   
+Ndirande Nchalo,Blantyre,Chikwawa,Grid,Prepaid,1000,580,427,600,427,1922,2056,134,3.2, -   , -   , -   , -   
+Mulongolela,Blantyre,Mulanje,Prime,Prepaid,600,324,571,400,571,15719,15926,207,2.8, -   , -   , -   , -   
+Muloza,Blantyre,Mulanje,Grid,Prepaid,1000,760,1269,1000,1269,12204,12556,352,3.6, -   , -   , -   , -   
+Mwanza Residential,Blantyre,Mwanza,Grid,Prepaid,,, -   ,, -   ,,,,#DIV/0!, -   , -   , -   , -   
+Namiwawa,Blantyre,Blantyre,Grid,Prepaid,1000,320,657,620,657,3961,4099,138,4.8, -   , -   , -   , -   
+Green Malata,Blantyre,Blantyre,Grid,Prepaid,600,400,872,570,872,3455,3688,233,3.7, -   , -   , -   , -   
+Naperi,Blantyre,Blantyre,Grid,Prepaid,1000,850, -   ,310, -   ,22569,22699,130, -   , -   , -   , -   , -   
+Ndirande Peak,Blantyre,Blantyre,Grid,Prepaid,600,47,681,600,681,4142,4215,73,9.3, -   , -   , -   , -   
+Ndirande Town,Blantyre,Blantyre,Grid,Prepaid,600,480,138,600,138,36713,36722,9,15.3, -   , -   , -   , -   
+Neno Turn Off,Blantyre,Neno,Grid,Prepaid,1000,1000,1801,830,1801,8588,9465,877,2.1, -   , -   , -   , -   
+Ngumbe,Blantyre,Blantyre,Grid,Prepaid,1000,920, -   ,640, -   ,9950,10032,82, -   , -   , -   , -   , -   
+Njuli Hill,Blantyre,Blantyre,Grid,Prepaid,1000,390, -   ,320, -   ,7604,7643,39, -   , -   , -   , -   , -   
+Nkando,Blantyre,Mulanje,Grid,Prepaid,600,280, -   ,260, -   ,19279,19291,12, -   , -   , -   , -   , -   
+Nkolokosa,Blantyre,Blantyre,Grid,Prepaid,500,500, -   ,490, -   ,21572,21576,4, -   , -   , -   , -   , -   
+Nkolokoti,Blantyre,Blantyre,Grid,Prepaid,1000,230,818,960,818,14689,14705,16,51.1, -   , -   , -   , -   
+Nsanje,Blantyre,Nsanje,Grid,Prepaid,600,540, -   ,520, -   ,19707,19714,7, -   , -   , -   , -   , -   
+Nthukwa,Blantyre,Blantyre,Grid,Prepaid,600,600,351,600,351,22879,23004,125,2.8, -   , -   , -   , -   
+Nyambadwe,Blantyre,Blantyre,Grid,Prepaid,1000,370, -   ,362, -   ,1085,1088,3, -   , -   , -   , -   , -   
+Pasani,Blantyre,Mulanje,Prime,Prepaid,1000,1000,963,850,963,6111,6485,374,2.6, -   , -   , -   , -   
+Premier Lodge,Blantyre,Blantyre,Grid,Prepaid,600,444,174,552, -   ,14371,14387,16, -   , -   , -   , -   , -   
+Railways,Blantyre,Blantyre,Grid,Prepaid,600,400,160,220,174,19164,19410,246,0.7, -   , -   , -   , -   
+Salambidwe,Blantyre,Nsanje,Prime,Prepaid,1000,700, -   ,460,160,31367,31442,75,2.1, -   , -   , -   , -   
+Motel Paradise,Blantyre,Blantyre,Grid,Prepaid,1000,350,808,790, -   ,4182,4439,257, -   , -   , -   , -   , -   
+Naming'omba,Blantyre,Mulanje,Off Grid,Prepaid,1000,790, -   ,380,808,4671,4809,138,5.9, -   , -   , -   , -   
+Sigerege,Blantyre,Blantyre,Off Grid,Prepaid,1000,1000,910,540, -   ,11331,12347,1016, -   , -   , -   , -   , -   
+Sorgin,Blantyre,Nsanje,Grid,Prepaid,600,550, -   ,550,910,22816,22816, -   ,#DIV/0!, -   , -   , -   , -   
+SunnySide,Blantyre,Blantyre,Grid,Prepaid,1000,1000, -   ,870, -   ,6666,6704,38, -   , -   , -   , -   , -   
+Pakeni,Blantyre,Blantyre,Off Grid,Prepaid,1000,650,922,880, -   ,3345,3648,303, -   , -   , -   , -   , -   
+Tengani,Blantyre,Nsanje,Grid,Prepaid,1000,350,1704,480,922,3474,4127,653,1.4, -   , -   , -   , -   
+Thambani,Blantyre,Nsanje,Prime,Prepaid,1000,500, -   ,190,1704,19092,19182,90,18.9, -   , -   , -   , -   
+Mbulumbuzi,Blantyre,Chiradzulu,Off Grid,Prepaid,1000,1000,758,1000, -   ,3203,3539,336, -   , -   , -   , -   , -   
+Thekerani,Blantyre,Thyolo,Grid,Prepaid,600,530, -   ,515,758,23615,23625,10,75.8, -   , -   , -   , -   
+Thyolo Number One,Blantyre,Thyolo,Grid,Prepaid,600,380,268,590, -   ,12225,12246,21, -   , -   , -   , -   , -   
+Chileka Ex/ 10 miles,Blantyre,Blantyre,Prime,Prepaid,800,200,764,800,268,21259,21346,87,3.1, -   , -   , -   , -   
+Zalewa ,Blantyre,Mwanza,Prime,Prepaid,600,225,419,340,764,1922,2002,80,9.6, -   , -   , -   , -   
+Zoa,Blantyre,Mulanje,Grid,Prepaid,500,80,150,70,419,19618,19749,131,3.2, -   , -   , -   , -   
+Green Corner,Blantyre,Blantyre,Grid,Prepaid,600,108,550,550,150,8968,8997,29,5.2, -   , -   , -   , -   
+Bangula,Blantyre,Thyolo,Grid,Prepaid,600,310, -   ,310,550,24166,24166, -   ,#DIV/0!, -   , -   , -   , -   
+Njamba ,Blantyre,Blantyre,Grid,Prepaid,500,500, -   ,500, -   ,10193,10193, -   ,#DIV/0!, -   , -   , -   , -   
+Bvumbwe Court,Blantyre,Thyolo,Off Grid,Prepaid,1000,830,479,1000, -   ,2244,2400,156, -   , -   , -   , -   , -   
+Bvumbwe Market,Blantyre,Thyolo,Off Grid,Prepaid,1000,630,977,1000,479,4036,4300,264,1.8, -   , -   , -   , -   
+Manjolo Hill,Blantyre,Mulanje,Off Grid,Prepaid,1000,950, -   ,250,977,7193,7323,130,7.5, -   , -   , -   , -   
+Chileka road,Blantyre,Blantyre,Grid,Prepaid,600,396,364,600, -   ,22409,22530,121, -   , -   , -   , -   , -   
+Green Corner- Road Block,Blantyre,Blantyre,Off Grid,Prepaid,1000,1000, -   ,985,364,2062,2068,6,60.7, -   , -   , -   , -   
+Makwasa MTL,Blantyre,Thyolo,Grid,Prepaid,600,540, -   ,510, -   ,27347,27362,15, -   , -   , -   , -   , -   
+Adventist ,Blantyre,Blantyre,Grid,Prepaid,600,590, -   ,480, -   ,17057,17106,49, -   , -   , -   , -   , -   
+ Sunnyside extension,Blantyre,Blantyre,Grid,Prepaid,600,600, -   ,588, -   ,13070,13076,6, -   , -   , -   , -   , -   
+Ulimi House,Blantyre,Blantyre,Grid,Prepaid,600,600,412,600, -   ,13194,13378,184, -   , -   , -   , -   , -   
+Naotcha CCAP,Blantyre,Blantyre,Grid,Prepaid,600,600, -   ,200,412,11082,11426,344,1.2, -   , -   , -   , -   
+Mlambalala,Blantyre,Blantyre,Grid,Prepaid,600,500,434,580, -   ,17256,17380,124, -   , -   , -   , -   , -   
+Pensulo,Blantyre,Blantyre,Grid,Prepaid,600,355, -   ,312,434,15904,15938,34,12.8, -   , -   , -   , -   
+Mapanga,Blantyre,Blantyre,Grid,Prepaid,600,380, -   ,370, -   ,11564,11571,7, -   , -   , -   , -   , -   
+Nyambadwe Extension,Blantyre,Blantyre,Grid,Prepaid,600,201, -   ,190, -   ,21801,21804,3, -   , -   , -   , -   , -   
+Chirimba Denis,Blantyre,Blantyre,Grid,Prepaid,600,426,481,360, -   ,13842,14031,189, -   , -   , -   , -   , -   
+Chinyonga ,Blantyre,Blantyre,Grid,Prepaid,600,596, -   ,510,481,16084,16107,23,20.9, -   , -   , -   , -   
+Ndirande Chinseu,Blantyre,Blantyre,Grid,Prepaid,600,220,1013,525, -   ,17279,17658,379, -   , -   , -   , -   , -   
+Manyowe,Blantyre,Blantyre,Grid,Prepaid,600,300, -   ,295,1013,14139,14141,2,506.5, -   , -   , -   , -   
+Luchenza,Blantyre,Thyolo,Grid,Prepaid,600,560,128,590, -   ,25789,25847,58, -   , -   , -   , -   , -   
+Bereu,Blantyre,Chikwawa,Grid,Prepaid,600,588, -   ,474,128,26525,26599,74,1.7, -   , -   , -   , -   
+Zalewa Extension,Blantyre,Mwanza,Grid,Prepaid,600,606, -   ,588, -   ,26701,26721,20, -   , -   , -   , -   , -   
+PIM,Blantyre,Chiradzulu,Off Grid,Prepaid,1000,1000, -   ,700, -   ,480,544,64, -   , -   , -   , -   , -   
+Mulanje Mission,Blantyre,Mulanje,Grid,Prepaid,1000,900, -   ,860, -   ,16942,16962,20, -   , -   , -   , -   , -   
+Mulanje MTL,Blantyre,Mulanje,Grid,Prepaid,600,600, -   ,595, -   ,10275,10278,3, -   , -   , -   , -   , -   
+Mangunda,Blantyre,Mulanje,Grid,Prepaid,600,400, -   ,250, -   ,23518,23588,70, -   , -   , -   , -   , -   
+TBS Maselema,Blantyre,Blantyre,Grid,Prepaid,1000,630,995,970, -   ,5901,5969,68, -   , -   , -   , -   , -   
+Chinakanaka,Blantyre,Thyolo,Grid,Prepaid,600,500, -   ,400,995,18310,18399,89,11.2, -   , -   , -   , -   
+Chilomoni Market,Blantyre,Blantyre,Grid,Prepaid,600,150,614,550, -   ,23817,23892,75, -   , -   , -   , -   , -   
+Moneymen extension,Blantyre,Blantyre,Grid,Prepaid,600,200,1082,462,614,686,1072,386,1.6, -   , -   , -   , -   
+Msika Wanjala,Blantyre,Thyolo,Off Grid,Prepaid,1000,830,802,1000,1082,2638,3018,380,2.8, -   , -   , -   , -   
+Makheta ,Blantyre,Blantyre,Grid,Prepaid,600,80,600,550,802,32756,32808,52,15.4, -   , -   , -   , -   
+NGABU,Blantyre,Chikwawa,Grid,Prepaid,600,570, -   ,570,600,10100,10100,10100,0.1, -   , -   , -   , -   
+Chikwawa,Blantyre,Chikwawa,Grid,Prepaid,500,400, -   ,344, -   ,23180,23202,22, -   , -   , -   , -   , -   
+Fukafuka,Blantyre,Mulanje,Grid,Prepaid,1000,1000, -   ,850, -   ,5388,5457,69, -   , -   , -   , -   , -   
+Soche Hill,Blantyre,Blantyre,Grid,Prepaid,600,300, -   ,290, -   ,15659,15667,8, -   , -   , -   , -   , -   
+Mwanza Hill,Blantyre,Mwanza,Off Grid,Prepaid,1000,250,1000,900, -   ,1299,1362,63, -   , -   , -   , -   , -   
+Kunenekude,Blantyre,Mwanza,Prime,Prepaid,1000,640,571,780,1000,8101,8252,151,6.6, -   , -   , -   , -   
+Jombo TC,Blantyre,Chikwawa,Off Grid,Prepaid,600,350,457,420,571,4859,5006,147,3.9, -   , -   , -   , -   
+Limbe Police,Blantyre,Blantyre,Grid,Prepaid,600,220, -   ,220,457,13327,13328,1,457, -   , -   , -   , -   
+Michiru,Blantyre,Blantyre,Grid,Prepaid,600,330,600,600, -   ,32533,32689,156, -   , -   , -   , -   , -   
+BCA Extension,Blantyre,Blantyre,Grid,Prepaid,500,400, -   ,370,600,28343,28357,14,42.9, -   , -   , -   , -   
+Chirimba Mwachande MTL,Blantyre,Blantyre,Grid,Prepaid,250,200,257,400, -   ,27756,27775,19, -   , -   , -   , -   , -   
+Ruo,Blantyre,Mulanje,Grid,Prepaid,500,100, -   ,100,257,407,407, -   ,#DIV/0!, -   , -   , -   , -   
+Dziwe /Boko Hill,Blantyre,Blantyre,Off Grid,Prepaid,1000,500,460,1000, -   ,2269,2377,108, -   , -   , -   , -   , -   
+Limbe Health Centre,Blantyre,Blantyre,Grid,Prepaid,600,530, -   ,460,460,16095,16133,38,12.1, -   , -   , -   , -   
+M.C.H.S,Blantyre,Blantyre,Grid,Prepaid,600,330, -   ,280, -   ,14395,14538,143, -   , -   , -   , -   , -   
+Changoima,Blantyre,Thyolo,Off Grid,Prepaid,600,450, -   ,220, -   ,10927,11004,77, -   , -   , -   , -   , -   
+Limbe cathedral,Blantyre,Blantyre,Grid,Prepaid,1000,680, -   ,660, -   ,2369,2385,16, -   , -   , -   , -   , -   
+Ngumbe Extension,Blantyre,Blantyre,Grid,Prepaid,600,320, -   ,318, -   ,13930,13931,1, -   , -   , -   , -   , -   
+CONFORZ,Blantyre,Thyolo,Prime,Prepaid,1000,640,887,870, -   ,20137,20335,198, -   , -   , -   , -   , -   
+Mtunda Osema,Blantyre,Thyolo,Prime,Prepaid,1000,990, -   ,920,887,7192,7240,48,18.5, -   , -   , -   , -   
+Muloza Court,Blantyre,Mulanje,Grid,Prepaid,600,200,893,600, -   ,22729,22906,177, -   , -   , -   , -   , -   
+Mitengo Parish,Blantyre,Mulanje,Grid,Prepaid,1000,320,610,920,893,13920,13926,6,148.8, -   , -   , -   , -   
+Namphungo,Blantyre,Mulanje,Grid,Prepaid,500,420, -   ,240,610,14189,14259,70,8.7, -   , -   , -   , -   
+Thyolo MTL,Blantyre,Thyolo,Grid,Prepaid,,, -   ,, -   ,,,,#DIV/0!, -   , -   , -   , -   
+Nsanje CCAP,Blantyre,Nsanje,Off Grid,Prepaid,1000,870,713,1000, -   ,2127,2228,101, -   , -   , -   , -   , -   
+Makapwa,Blantyre,Mulanje,Prime,Prepaid,600,318,559,550,713,11085,11200,115,6.2, -   , -   , -   , -   
+Tedzani,Blantyre,Mwanza,Grid,Prepaid,500,497, -   ,497,559,11102,11102, -   ,#DIV/0!, -   , -   , -   , -   
+Mathambi,Blantyre,Thyolo,Grid,Prepaid,600,380, -   ,370, -   ,13482,13488,6, -   , -   , -   , -   , -   
+Makande,Blantyre,Thyolo,Grid,Prepaid,600,, -   ,, -   ,,, -   ,#DIV/0!, -   , -   , -   , -   
+Ntambanyama,Blantyre,Thyolo,Grid,Prepaid,600,500, -   ,460, -   ,2100,2125,25, -   , -   , -   , -   , -   
+Kakoma,Blantyre,Chikwawa,Grid,Prepaid,1000,520, -   ,515, -   ,3843,3845,2, -   , -   , -   , -   , -   
+Catholic University ,Blantyre,Chiradzulu,Grid,Prepaid,600,600,350,570, -   ,43981,44144,163, -   , -   , -   , -   , -   
+Chididi,Blantyre,Nsanje,Grid,Prepaid,1000,500,925,900,350,5270,5359,89,3.9, -   , -   , -   , -   
+Ndunde,Blantyre,Chiradzulu,Prime,Prepaid,500,80,397,350,925,16489,16578,89,10.4, -   , -   , -   , -   
+DAPP Chilangoma,Blantyre,Mulanje,Grid,Prepaid,1000,710,530,900,397,9552,9639,87,4.6, -   , -   , -   , -   
+Chitakale,Blantyre,Thyolo,Off Grid,Prepaid,1000,790, -   ,788,530,2910,2911,1,530, -   , -   , -   , -   
+Zinziri,Blantyre,Blantyre,Off Grid,Prepaid,1000,950, -   ,950, -   ,3048,3048, -   ,#DIV/0!, -   , -   , -   , -   
+Mapazi,Blantyre,Mulanje,Off Grid,Prepaid,1000,330,909,870, -   ,11054,11134,80, -   , -   , -   , -   , -   
+Sigerege Extension,Blantyre,Blantyre,Grid,Prepaid,1000,, -   ,,909,,, -   ,#DIV/0!, -   , -   , -   , -   
+Machinjiri Area 1,Blantyre,Blantyre,Off Grid,Prepaid,1000,220,918,760, -   ,10291,10590,299, -   , -   , -   , -   , -   
+Ndirande Goliyo,Blantyre,Blantyre,Grid,Prepaid,1000,438, -   ,430,918,34536,34540,4,229.5, -   , -   , -   , -   
+Chatha Residential,Blantyre,Blantyre,Grid,Prepaid,1000,700, -   ,700, -   ,4782,4782, -   ,#DIV/0!, -   , -   , -   , -   
+Machinjiri Area 6,Blantyre,Blantyre,Grid,Prepaid,1000,330, -   ,310, -   ,4963,4974,11, -   , -   , -   , -   , -   
+Angelo Goveya,Blantyre,Blantyre,Grid,Prepaid,600,435, -   ,426, -   ,16915,17061,146, -   , -   , -   , -   , -   
+Manase,Blantyre,Blantyre,Grid,Prepaid,1000,760, -   ,758, -   ,5195,5196,1, -   , -   , -   , -   , -   
+Gestetner,Blantyre,Blantyre,Grid,Prepaid,600,600, -   ,540, -   ,35909,35930,21, -   , -   , -   , -   , -   
+Ndelema Dembo,Blantyre,Chikwawa,Off Grid,Prepaid,1000,100,1419,690, -   ,11271,11546,275, -   , -   , -   , -   , -   
+Nsangwe,Blantyre,Chikwawa,Off Grid,Prepaid,1000,650,827,550,1419,8854,9029,175,8.1, -   , -   , -   , -   
+Nchalo Admarc,Blantyre,Chikwawa,Off Grid,Prepaid,600,500,436,240,827,26048,26281,233,3.5, -   , -   , -   , -   
+Nyachilenda ,Blantyre,Nsanje,Prime,Prepaid,600,500, -   ,380,436,23419,23470,51,8.5, -   , -   , -   , -   
+Bangwe Market,Blantyre,Blantyre,Grid,Prepaid,1000,20,742,762, -   ,5038,5038, -   ,#DIV/0!, -   , -   , -   , -   
+Matchuwana,Blantyre,Thyolo,Off Grid,Prepaid,600,300,554,380,742,7482,7632,150,4.9, -   , -   , -   , -   
+Zingwangwa ,Blantyre,Blantyre,Grid,Prepaid,600,600, -   ,600,554,2636,2636, -   ,#DIV/0!, -   , -   , -   , -   
+Malota,Blantyre,Blantyre,Off Grid,Prepaid,600,500, -   ,420, -   ,40460,40518,58, -   , -   , -   , -   , -   
+Luchenza  MTL,Blantyre,Thyolo,Grid,Prepaid,1000,850, -   ,790, -   ,2802,2814,12, -   , -   , -   , -   , -   
+Chilobwe Police,Blantyre,Blantyre,Grid,Prepaid,500,500, -   ,485, -   ,21000,21007,7, -   , -   , -   , -   , -   
+Ngolongoliwa,Blantyre,Thyolo,Grid,Prepaid,600,550, -   ,400, -   ,20276,20354,78, -   , -   , -   , -   , -   
+Ntonda,Blantyre,Blantyre,Off Grid,Prepaid,1000,950,924,780, -   ,5811,6090,279, -   , -   , -   , -   , -   
+NEW NAPERI,Blantyre,Blantyre,Grid,Prepaid,1000,700, -   ,640,924,21622,21679,57,16.2, -   , -   , -   , -   
+Chigumula Commercial,Blantyre,Blantyre,Grid,Prepaid,600,600, -   ,570, -   ,37971,37984,13, -   , -   , -   , -   , -   
+,,,,,,,,, -   ,,,,,,,,
+,,,,,,,,, -   ,,,,,,,,
+,,,,,,,,, -   ,,,,,,,,

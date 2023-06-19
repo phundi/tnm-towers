@@ -1,0 +1,120 @@
+Sites Name,Region,District,Site Status,ESCOM, Tank Size ,Opening  Litres , Litres Dispensed ,Closing Litres ,Usage in Litres , Opening Hours , Closing Hours , Hours Run , Average Usage Per Hour , Opening Readings , Units Bought , Closing Readings , Power Usage 
+LIWALADZI,North,NKHOTAKOTA,Grid,Prepaid,1000,1000, -   ,870,130,5249,5319,70,2, -   , -   , -   , -   
+KASASA,North,NKHOTAKOTA,Grid,Prepaid,1000,960,160,978,142,1330,1371,41,3, -   , -   , -   , -   
+DWANGWA FACTORY,North,NKHOTAKOTA,Grid,Prepaid,1000,690, -   ,624,66,994,1024,30,2, -   , -   , -   , -   
+DWANGWA TRADING,North,NKHOTAKOTA,Grid,Prepaid,600,670,366,966,70,1856,1884,28,3,600,2927, -   ,3527
+NGALA,North,NKHOTAKOTA,Grid,Prepaid,600,300, -   , -   ,300,12304,12480,176,2, -   , -   , -   , -   
+TUKOMBO,North,Nkhata bay,Grid,Postpaid,1000,1000, -   ,956,44,2461,2481,20,2,18021, -   ,17111,910
+KABUNDI,North,Nkhata bay,Grid,Prepaid,600,626,1469,876,1219,11420,11825,405,3, -   , -   , -   , -   
+CHIKWINA,North,Nkhata bay,Grid,Prepaid,600, -   , -   , -   , -   , -   , -   , -   ,#DIV/0!, -   , -   , -   , -   
+Mzimba BSC EXCHANGE,North,Mzimba,Grid,Prepaid,2000,2000, -   ,1540,460,3871,3921,50,9,9006,8666,2007,15665
+Mzimba GESTETNER,North,Mzimba,Grid,Prepaid,1000,892,918,1000,810,2506,2769,263,3,1897,2927,1687,3137
+Mzimba OFFICE,North,Mzimba,Grid,Prepaid,210,210, -   ,170,40,5597,5618,21,2,1197,3658,1028,3827
+Mzimba CHIMALIRO,North,Mzimba,Grid,Prepaid,1000,900, -   ,802,98,7197,7239,42,2,150,3658,286,3522
+Mzimba FOREST,North,Mzimba,Grid,Prepaid,210,600,358,500,458,11685,11939,254,2,200,2927,575,2552
+USISYA,North,Nkhata bay,Grid,Prepaid,600,600, -   ,487,113,14343,14474,131,1,500,2561,987,2074
+NKHORONGO,North,Mzimba,Grid,Prepaid,600,525,122,600,47,7570,7598,28,2,100,2927,500,2527
+Mzimba CHIBANJA,North,Mzimba,Grid,Prepaid,1000,970, -   ,880,90,6977,7013,36,3,250,2927,447,2730
+KATOTO,North,Mzimba,Grid,Prepaid,60,600, -   ,558,42,7559,7581,22,2,320,2927,900,2347
+MCHENGAUTUBA,North,Mzimba,Grid,Prepaid,1000,747, -   ,678,69,3458,3481,23,3,2061,5124,1008,6177
+LUSANGAZI,North,Mzimba,Grid,Prepaid,600,570, -   ,534,36,1448,1468,20,2,1891,2927,950,3868
+LUWAWA FOREST,North,MZIMBA,OFFGRID,Prepaid,800,800,460,800,460,836,967,131,4, -   , -   , -   , -   
+LWANJATI,North,MZIMBA,OFFGRID,Prepaid,800,500,879,800,579,30309,30461,152,4, -   , -   , -   , -   
+JENDA,North,MZIMBA,Grid,Prepaid,1000,640,759,1000,399,4132,4257,125,3,943,2927,840,3030
+EDINGENI,North,MZIMBA,Grid,Prepaid,600,600,230,600,230,12199,12289,90,3,968,2927,1257,2638
+LUPERERE,North,MZIMBA,OFFGRID,Prepaid,600,600,500,528,572,23630,23797,167,3, -   , -   , -   , -   
+MANYAMULA,North,MZIMBA,Grid,Prepaid,600,600,291,600,291,14144,14305,161,2,1102,4026,1029,4099
+ESWAZINI,North,MZIMBA,Grid,Prepaid,600,600,318,564,354,9411,9509,98,4, -   , -   , -   , -   
+MPHEREMBE,North,MZIMBA,Grid,Prepaid,600,1000, -   ,780,220,4205,4308,103,2,899,2927,999,2827
+RUMPHI TOWN,North,RUMPHI,Grid,Prepaid,600,600, -   ,561,39,10004,10020,16,2,900,2927,801,3026
+BOLERO,North,RUMPHI,Grid,Prepaid,210,600, -   ,553,47,11639,11660,21,2,750,2927,652,3025
+THAZIMA,North,RUMPHI,OFFGRID,Prepaid,1000,1000,341,326,1015,7534,7864,330,3, -   , -   , -   , -   
+CHILINDA/CHOSI,North,RUMPHI,OFFGRID,Prepaid,1000,120,1376,614,882,11828,12096,268,3, -   , -   , -   , -   
+DOMWE,North,RUMPHI,OFFGRID,Prepaid,1000,595,1380,600,1375,6336,6609,273,5, -   , -   , -   , -   
+MPHOMPHA,North,RUMPHI,OFFGRID,Prepaid,1000,1000, -   ,790,210,5104,5174,70,3, -   , -   , -   , -   
+PHWEZI,North,RUMPHI,Grid,Prepaid,210,170,54,210,14,14388,14396,8,2,746,2927,412,3261
+MLOWE,North,RUMPHI,OFFGRID,Prepaid,800,800,252,800,252,33789,33876,87,3, -   , -   , -   , -   
+JALAWE,North,RUMPHI,Grid,Prepaid,210,204, -   ,204, -   ,4314,4314, -   ,#DIV/0!,3299, -   ,2011,1288
+MWEYEYE,North,RUMPHI,Grid,Prepaid,600,560,470,600,430,6377,6615,238,2,2911, -   ,1504,1407
+LIVINGSTONIA,North,RUMPHI,Grid,Prepaid,600,880, -   ,781,99,4127,4185,58,2, -   , -   , -   , -   
+CHITIMBA,North,KARONGA,Grid,Prepaid,800,800, -   ,712,88,13288,13326,38,2,40,2927,400,2567
+UNDANINGE,North,KARONGA,Grid,Prepaid,1000,713,240,936,17,2284,2299,15,1, -   , -   , -   , -   
+NGARA,North,KARONGA,Grid,Prepaid,600,600, -   ,572,28,8904,8920,16,2,559,2927,385,3101
+LUPEMBE,North,KARONGA,Grid,Prepaid,600,595, -   ,592,3, -   ,3,3,1,889,2561,1078,2372
+MAYOKA,North,KARONGA,Grid,Prepaid,210,210,37,210,37,9250,9274,24,2, -   , -   , -   , -   
+SONGWE,North,KARONGA,Grid,Prepaid,1000,1000,300,1000,300,4933,5047,114,3,608,2927,700,2835
+MPATA,North,KARONGA,Grid,Prepaid,600,600, -   ,567,33,5035,5053,18,2,1248,2561,777,3032
+MISUKU,North,KARONGA,Grid,Prepaid,600,1000, -   ,835,165,3781,3847,66,3,1561,2927,1401,3087
+ELEPHANT TREE,North,KARONGA,Grid,Prepaid,600,776, -   ,440,336,995,1115,120,3,4310, -   ,2210,2100
+BUNDI,North,Nkhata bay,OFFGRID,Prepaid,600,600, -   ,520,80,14628,14668,40,2, -   , -   , -   , -   
+KARONGA PROPER,North,KARONGA,Grid,Prepaid,2000,78,544,570,52,3674,3687,13,4,439,5856,371,5924
+MZIMBA MTL,North,MZIMBA,Grid,Prepaid,1000,906, -   ,863,43,2950,2971,21,2, -   , -   , -   , -   
+BWENGU MTL,North,RUMPHI,Grid,Prepaid,1000,1000, -   ,958,42,2010,2033,23,2, -   , -   , -   , -   
+LUBINGA ACCESS,North,Mzimba,Grid,Prepaid,600,508, -   ,474,34,10117,10135,18,2, -   , -   , -   , -   
+MZIMBA HOSPITAL,North,MZIMBA,Grid,Prepaid,600,600,70,600,70,29554,29592,38,2,881,2561,1871,1571
+CHINTHECHE MTL,North,Nkhata bay,Grid,Prepaid,600,476, -   ,373,103,5063,5104,41,3,901,2927,541,3287
+BOTANIC,North,Mzimba,Grid,Prepaid,600,534, -   ,470,64,5746,5778,32,2,568,2927,847,2648
+CLUB MARINA,North,KARONGA,Grid,Prepaid,600,600,185,600,185,8135,8243,108,2,910,2927,520,3317
+Mzimba STADIUM,North,Mzimba,Grid,Prepaid,600,600,194,488,306,8174,8284,110,3,30,2927,308,2649
+KATOTO SCHOOL,North,Mzimba,Grid,Prepaid,1000,980, -   ,827,153,1810,1859,49,3,301,5490,110,5681
+KATAWA,North,Mzimba,Grid,Prepaid,600,500,210,495,215,8760,8843,83,3, -   , -   , -   , -   
+MSENJERE,North,NKHOTAKOTA,Grid,Prepaid,600,471,384,581,274,10246,10327,81,3,906,2927,326,3507
+HILL TOP,North,Mzimba,Grid,Prepaid,600,600, -   ,417,183,9764,9837,73,3,300,2927,580,2647
+Nkhata bay HOSP,North,Nkhata bay,Grid,Prepaid,600,600,170,580,190,14290,14385,95,2,885,2927,890,2922
+MOBILE DG,North,Nkhata bay,Grid,Prepaid,100, -   , -   , -   , -   , -   , -   , -   ,#DIV/0!, -   , -   , -   , -   
+Nkhata bay PROPER,North,Nkhata bay,Grid,Prepaid,600,600,200,600,200,12589,12694,105,2, -   , -   , -   , -   
+KARONGA MTL,North,KARONGA,Grid,Prepaid,600,600,52,600,52,18672,18691,19,3, -   , -   , -   , -   
+RAFIQ FOUNDATION,North,Mzimba,Grid,Prepaid,1000,823, -   ,708,115,10978,11019,41,3,64,4392,260,4196
+KARONGA DIOCESE,North,KARONGA,Grid,Prepaid,600,600,98,600,98,6266,6327,61,2, -   , -   , -   , -   
+MATETE,North,Nkhata bay,OFFGRID,Prepaid,600,1000, -   ,890,110,9217,9275,58,2,625,2927,742,2810
+KAZUNI,North,MZIMBA,GRID,Prepaid,210,553, -   ,402,151,17357,17434,77,2,910,2927,561,3276
+Mzimba EXCHANGE 2,North,Mzimba,GRID,Prepaid,2000,2000, -   ,1840,160,3079,3095,16,10, -   , -   , -   , -   
+KARONGA PROPER 2,North,KARONGA,Grid,Prepaid,600,600, -   ,600, -   ,5652,5652, -   ,#DIV/0!, -   , -   , -   , -   
+TUKUMPHIRE,North,Mzimba,GRID,Prepaid,800,1000, -   ,940,60,720,744,24,3,1087,7320,2303,6104
+Mzimba CENTRAL HOSP,North,Mzimba,GRID,Prepaid,800,944, -   ,830,114,7438,7498,60,2,999,2927,1858,2068
+TARGET,North,Mzimba,GRID,Prepaid,800,919, -   ,886,33,4348,4360,12,3,300,2927,115,3112
+DWANGWA CLUB,North,NKHOTAKOTA,GRID,Prepaid,800,804, -   ,800,4,5122,5126,4,1, -   , -   , -   , -   
+CHOMA,North,Nkhata bay,OFFGRID,off-grid,1000,850,825,1000,675,8034,8210,176,4, -   , -   , -   , -   
+TCC,North,Mzimba,GRID,Prepaid,1000,914, -   ,868,46,5041,5065,24,2, -   , -   , -   , -   
+AREA 1B,North,Mzimba,GRID,Prepaid,1000,540, -   ,540, -   ,26313,26313, -   ,#DIV/0!,263,2927,300,2890
+CHITIPA RESIDENTIAL,North,CHITIPA,Grid,Prepaid,1000,600, -   ,569,31,8858,8869,11,3,1975,2561,1315,3221
+CHIKALE,North,Nkhata bay,GRID,Prepaid,1000,530,1279,1000,809,8210,8615,405,2,841,3660,998,3503
+KHOSOLO,North,MZIMBA,GRID,Prepaid,1000,228,781,992,17,3762,3771,9,2,2201, -   ,1150,1051
+ZUBAYUMO,North,MZIMBA,OFFGRID,off-grid,1000,1000,900,840,1060,10296,10564,268,4, -   , -   , -   , -   
+MPHEREMBE TC,North,MZIMBA,OFFGRID,PREPAID,1000,954, -   ,761,193,2799,2872,73,3,1020,2927,600,3347
+Mzimba GOVERNMENT SCHO,North,Mzimba,Grid,Prepaid,1000,576,61,575,62,8290,8326,36,2,900,2561,841,2620
+WOVWE,North,KARONGA,Grid,Prepaid,1000,366, -   ,366, -   ,6019,6019, -   ,#DIV/0!,2203, -   ,381,1822
+MLALE,North,KARONGA,Grid,Prepaid,600,600, -   ,600, -   ,7636,7636, -   ,#DIV/0!,918,2927,1458,2387
+CHINUNKHA,North,KARONGA,GRID,Prepaid,1000,845, -   ,834,11,1091,1098,7,2,8668, -   ,7186,1482
+NGAZI,North,MZIMBA,OFFGRID,Prepaid,1000,922,888,1000,810,12853,13229,376,2, -   , -   , -   , -   
+KAFOTEKA,North,MZIMBA,GRID,Prepaid, -   ,500,500,980,20,6363,6373,10,2,900,2561,800,2661
+Mzimba TECHNICAL COLLEE,North,Mzimba,GRID,Prepaid, -   , -   , -   , -   , -   , -   , -   , -   ,#DIV/0!,600,2927,1069,2458
+SONDA,North,Mzimba,GRID,Prepaid,50,50,40,50,40,9131,9157,26,2,1105,2927,1117,2915
+Mzimba VHF,North,Mzimba,GRID,Prepaid,1000,863,157,934,86,1249,1283,34,3, -   , -   , -   , -   
+KABOKO,North,Mzimba,GRID,Prepaid,600, -   , -   , -   , -   , -   , -   , -   ,#DIV/0!,987,2927,890,3024
+KADIKECHI,North,MZIMBA,OFFGRID,Prepaid,1000,386,650,895,141,7218,7265,47,3, -   , -   , -   , -   
+BWABWA,North,MZIMBA,OFFGRID,Prepaid,1000,1000, -   ,960,40,2649,2669,20,2, -   , -   , -   , -   
+MUYEWA,North,Nkhata bay,OFFGRID,Prepaid,1000,1000,770,437,1333,8926,9452,526,3, -   , -   , -   , -   
+MALAZA,North,Nkhata bay,GRID,Prepaid,1000,670, -   ,574,96,4380,4433,53,2,780,2927,500,3207
+LISALE,North,Nkhata bay,GRID,Prepaid, -   ,500,1240,1000,740,6272,6661,389,2,1887,2927,1297,3517
+ENDYONGOLENI,North,MZIMBA,OFFGRID,Prepaid,1000,1000, -   ,910,90,2447,2477,30,3, -   , -   , -   , -   
+ENGALAWENI,North,MZIMBA,GRID,Prepaid,1000,595,405,1000, -   ,3013,3014,1, -   ,1654,2561,1524,2691
+IPONGA,North,KARONGA,Grid,Prepaid,1000,918, -   ,918, -   ,2167,2167, -   ,#DIV/0!,1900, -   ,889,1011
+MASASA,North,Mzimba,Grid,Prepaid,600,600,27,542,85,9935,9980,45,2,887,2561,1757,1691
+MTWALO,North,MZIMBA,OFFGRID,Prepaid,1000,737, -   ,704,33,3217,3235,18,2,680,2561,1287,1954
+AREA 6,North,Mzimba,Grid,Prepaid,1000,600, -   ,576,24,302,317,15,2,620,2561,800,2381
+KAPOKA,North,CHITIPA,OFFGRID,Prepaid,600,600,182,600,182,5200,5248,48,4, -   , -   , -   , -   
+MZIMBA DAPP,North,MZIMBA,OFFGRID,Prepaid,1000,236,1242,890,588,1726,1848,122,5, -   , -   , -   , -   
+MZALANGWE,North,MZIMBA,OFFGRID,Prepaid,600,600, -   ,450,150,10204,10264,60,3, -   , -   , -   , -   
+UZUMALA,North,RUMPHI,OFFGRID,Prepaid,600,400,495,600,295,14884,15057,173,2, -   , -   , -   , -   
+MZIMBA TURN OFF,North,MZIMBA,OFFGRID,Prepaid,600,280,740,600,420,11614,11713,99,4, -   , -   , -   , -   
+MTUPI,North,NKHOTAKOTA,OFFGRID,Prepaid,600,600,590,399,791,24504,24788,284,3, -   , -   , -   , -   
+MSONGWE Mzimba,North,Mzimba,Grid,Prepaid,600,598, -   ,590,8,6872,6877,5,2,923,2561,1684,1800
+ST ANDREWS Mzimba,North,Mzimba,OFFGRID,Prepaid,600,600,250,546,304,11187,11276,89,3,1090,2927,1269,2748
+CHIZUMULU,North,LIKOMA,OFFGRID,Prepaid,1000,600,800,1000,400,1603,1715,112,4, -   , -   , -   , -   
+DOROBA,North,Mzimba,Grid,Prepaid,300, -   , -   , -   , -   , -   , -   , -   ,#DIV/0!, -   , -   , -   , -   
+MKOMBEZI,North,RUMPHI,OFFGRID,Prepaid,600,600,400,600,400,1543,1657,114,4, -   , -   , -   , -   
+ULIWA,North,KARONGA,Grid,Prepaid,600,400, -   ,400, -   ,6989,6999,10, -   ,800,2561,1432,1929
+BULA,North,Nkhata bay,OFFGRID,Prepaid,1000,1000, -   ,680,320,6538,6666,128,3, -   , -   , -   , -   
+NTHUNGWA,North,MZIMBA,OFFGRID,Prepaid,1000,441,430,800,71,22908,22944,36,2, -   , -   , -   , -   
+SANGA,North,Nkhata bay,OFFGRID,Prepaid,600, -   ,600,560,40,12480,12502,22,2, -   , -   , -   , -   

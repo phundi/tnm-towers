@@ -163,11 +163,11 @@ class TowerController < ApplicationController
     end
 
     if search_val.present?
-      search_filter = " AND tower.name REGEXP '#{search_filter}' "
+      search_filter = " AND tower.name REGEXP '#{search_val}' "
     end 
 
     data = Tower.order(' tower.created_at DESC ')
-    data = data.where(" #{search_filter}
+    data = data.where(" true #{search_filter}
          #{tag_filter} ")
     total = data.select(" count(*) c ")[0]['c'] rescue 0
     page = (params[:start].to_i / params[:length].to_i) + 1
@@ -219,7 +219,7 @@ class TowerController < ApplicationController
 
 
       rdate = [(fuel_refill.refill_date rescue nil), (escom_refill.refill_date rescue nil)].delete_if{|s| 
-                s.blank?}.max.strftime("%Y-%m-%d %H:%M") rescue ""
+                s.blank?}.max.strftime("%Y-%m-%d") rescue ""
       
       if rate > 3
           rate = "<span style='color:red'>#{rate}</span>"
@@ -301,7 +301,7 @@ class TowerController < ApplicationController
         end 
         
         row = [   
-          t.refill_date.strftime("%Y-%m-%d %H:%M"),
+          t.refill_date.strftime("%Y-%m-%d"),
           t.name, 
                 t.code, 
                 creator,

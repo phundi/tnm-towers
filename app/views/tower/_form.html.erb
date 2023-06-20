@@ -85,9 +85,16 @@
             <input type="text" id="long" name="long" class="form-control" value="<%= @tower.long%>">
           </div>
 <% end %>
+
           <div class="form-group">
-            <label for="desc">Details (Optional)</label>
-            <textarea type="text" id="desc" name="description" class="form-control"><%= @tower.description%></textarea>
+          <label for="desc">Region</label>
+            <select style="display: inline-block" type="text" id="desc" name="description"
+            class="form-control" data-validation="required">
+                    <option></option>
+                    <% ["", "Blantyre", "Lilongwe", "South", "North"].each do |c| %>
+                      <option value="<%=c%>"><%= c%></option>
+                    <% end %>
+              </select>
           </div>
 
         </fieldset>

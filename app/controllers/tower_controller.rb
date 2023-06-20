@@ -151,9 +151,14 @@ class TowerController < ApplicationController
     flagged_filter = ''
     having_filter = ''
     search_filter = ''
+    region_filter = ''
 
     if params[:type_id].present?
       tag_filter = " AND tower.tower_type_id = #{params[:type_id]}"
+    end
+
+    if params[:region].present?
+      region_filter = " AND tower.description = '#{params[:region]}' "
     end
 
     if params[:flagged].present? and params[:flagged].to_s == "true"
@@ -168,7 +173,7 @@ class TowerController < ApplicationController
 
     data = Tower.order(' tower.created_at DESC ')
     data = data.where(" true #{search_filter}
-         #{tag_filter} ")
+         #{tag_filter}  #{region_filter} ")
     total = data.select(" count(*) c ")[0]['c'] rescue 0
     page = (params[:start].to_i / params[:length].to_i) + 1
 
@@ -388,12 +393,6 @@ end
       ").last.total || 0
           
 
-      centre_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
-      INNER JOIN tower t ON t.tower_id = r.tower_id 
-      WHERE t.description = 'Lilongwe' AND r.refill_type = 'FUEL'
-        AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
-      ").last.total || 0
-
       north_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
       INNER JOIN tower t ON t.tower_id = r.tower_id 
       WHERE t.description = 'North' AND r.refill_type = 'FUEL'
@@ -440,7 +439,7 @@ end
                               ['', '', "", ""],
                               ["", "", "<b>Usage (Litres)</b>", ""],
                               ["", "", "Blantyre", bt_usage],
-                              ["", "", "Lilongwe", (ll_usage + centre_usage)],
+                              ["", "", "Lilongwe", ll_usage],
                               ["", "", "North", north_usage],
                               ["", "", "South", south_usage],
                               ["", "", "", ""],

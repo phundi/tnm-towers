@@ -171,6 +171,14 @@
   <% end %>
 </select>
 
+<select id="region" label="Region" onchange="reloadDataTable()" style="width: 150px !important;
+        padding: 5px; margin-right: 20px;">
+  <option value="">Select Regin</option>
+  <% ["Blantyre", "Lilongwe", "South", "North"].each do |r|%>
+    <option value="<%=r%>"><%= r%></option>
+  <% end %>
+</select>
+
 
 <script>
     table = null;
@@ -193,7 +201,7 @@
             "ajax": {
                 "url": '/tower/ajax_towers',
                 data: function(d){
-                    d.type_id =__$('tag').value,
+                    d.region =__$('region').value,
                     d.flagged = __$('flagged').checked,
                     d.period = __$('period').value
                 },
@@ -214,7 +222,7 @@
 
         var holder = __$('example_filter');
 
-        holder.appendChild(__$('tag'));
+        holder.appendChild(__$('region'));
         holder.appendChild(__$('flagged'));
         holder.appendChild(__$('flagged-label'));
 

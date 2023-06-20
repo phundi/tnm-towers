@@ -467,4 +467,18 @@ end
     end 
   end 
 
+  def backup 
+
+    require 'yaml'
+    configs = YAML.load_file("#{Rails.root}/config/database.yml")[Rails.env]
+    file_name = "backups/#{Time.now.strftime('%Y_%b_%d_backup_%H_%M.sql')}"
+    
+    `rm backups/*.sql.gz`
+
+    `mysqldump -u#{configs['username']} -p#{configs['password']} #{configs['database']} > #{file_name}`
+    `gzip #{file_name}`
+
+    send_file ("#{file_name}.gz")
+  end 
+
 end 

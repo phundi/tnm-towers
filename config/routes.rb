@@ -73,6 +73,9 @@ Rails.application.routes.draw do
   get "tower/escom_refill"
   post "tower/escom_refill"
 
+  get "tower/backup"
+  post "tower/backup"
+
   get "tower/summary_report"
   post "tower/summary_report"
 

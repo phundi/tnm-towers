@@ -189,7 +189,8 @@ class TowerController < ApplicationController
      ").having(" true #{having_filter} ")
 
     data = data.page(page).per_page(params[:length].to_i)
-    
+    rescue_value = "0"
+
     @records = []
     data.each do |p|
       type = TowerType.find(p.tower_type_id).name rescue nil
@@ -229,27 +230,29 @@ class TowerController < ApplicationController
       rdate = [(fuel_refill.refill_date rescue nil), (escom_refill.refill_date rescue nil)].delete_if{|s| 
                 s.blank?}.max.strftime("%Y-%m-%d") rescue ""
       
-      if rate > 3
+      rate = "?" if rate.to_s == "NaN" || rate.to_s == "Infinity"
+
+      if rate == "?" || rate > 3
           rate = "<span style='color:red'>#{rate}</span>"
       end 
-      gen_last_month = (fuel_refill.genset_reading - fuel_refill.genset_run_time) rescue ""
+      gen_last_month = (fuel_refill.genset_reading - fuel_refill.genset_run_time) rescue rescue_value
 
       row = [rdate,
                 p.name, 
                 (fuel_refill_last_month.reading_after_refill rescue 
-                    (fuel_refill.reading_before_refill rescue "")),
-                fuel_refills_mtd,
-                (fuel_refill.reading_after_refill rescue ""),
-                p.usage_mtd,
+                    (fuel_refill.reading_before_refill rescue rescue_value)),
+                (fuel_refills_mtd || 0),
+                (fuel_refill.reading_after_refill rescue rescue_value),
+                (p.usage_mtd || 0),
                 (fuel_refill_last_month.genset_reading rescue gen_last_month),
-                (fuel_refill.genset_reading rescue ""),
-                p.run_hours_mtd,
+                (fuel_refill.genset_reading rescue rescue_value),
+                (p.run_hours_mtd || 0),
                 rate,
                 (escom_refill_last_month.reading_after_refill rescue 
-                  (escom_refill.reading_before_refill rescue "")),
-                escom_refills_mtd,
-                (escom_refill.reading_after_refill rescue ""),
-                escom_usage_mtd,
+                  (escom_refill.reading_before_refill rescue rescue_value)),
+                (escom_refills_mtd || 0),
+                (escom_refill.reading_after_refill rescue rescue_value),
+                (escom_usage_mtd || 0),
                 p.id]
       @records << row
     end

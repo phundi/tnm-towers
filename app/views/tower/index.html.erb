@@ -67,7 +67,14 @@
         </a>
       </div>
 
-      <b class="pull-right" style="padding-right: 25px;" ><%= @label%></b>
+
+      <select id="period" label="Period" onchange="reloadDataTable()" style="width: 200px !important;
+      padding: 5px; margin-right: 10px;padding: 5px; font-size: 0.9em; float: right; background: white; border-radius: 0px;">
+      <% @periods.reverse.each do |v|%>
+        <option><%= v%></option>
+      <% end %>
+      </select>
+
 
     </div>
     <div class="panel-body">
@@ -156,8 +163,8 @@
 <input onchange="reloadDataTable()" type="checkbox" id="flagged" name="flagged" style="margin-right: 20px !important;">
 <label id="flagged-label" for="flagged">Flagged </label>
 
-<select id="tag" label="Location Type" onchange="reloadDataTable()" style="width: 200px !important;
-        padding: 5px; margin-right: 20px; ;">
+<select id="tag" label="Location Type" onchange="reloadDataTable()" style="width: 150px !important;
+        padding: 5px; margin-right: 20px;">
   <option value="">Select Tower Type</option>
   <% @types.each do |t|%>
     <option value="<%=t.id%>"><%= t.name%></option>
@@ -183,7 +190,8 @@
                 "url": '/tower/ajax_towers',
                 data: function(d){
                     d.type_id =__$('tag').value,
-                    d.flagged = __$('flagged').checked
+                    d.flagged = __$('flagged').checked,
+                    d.period = __$('period').value
                 },
                 dataFilter: function (data) {
                     var json = jQuery.parseJSON(data);
@@ -201,9 +209,11 @@
         });
 
         var holder = __$('example_filter');
+
         holder.appendChild(__$('tag'));
         holder.appendChild(__$('flagged'));
         holder.appendChild(__$('flagged-label'));
+
     })
 
     function __$(id){

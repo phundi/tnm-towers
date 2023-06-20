@@ -32,7 +32,8 @@ class TowerController < ApplicationController
 
   def index
     @types = TowerType.where(voided: 0)
-    @label = Date.today.strftime("%b, %Y")
+    @label = Date.today.strftime("%d %b, %Y")
+    @periods = ["May, 2023", "June, 2023"]
   end
 
   def new
@@ -43,7 +44,6 @@ class TowerController < ApplicationController
     district_tag = LocationTag.where(name: "District").first 
     @districts = Location.find_by_sql("select * from location l INNER JOIN location_tag_map tm ON tm.location_id = l.location_id 
       WHERE tm.location_tag_id = #{district_tag.id}")
-
 
     if request.post?
       @tower = Tower.new
@@ -134,10 +134,10 @@ class TowerController < ApplicationController
 
   def ajax_towers
 
-
-    if params[:start_date].present? and params[:end_date].present?
-      start_date =  params[:start_date].to_date.to_s(:db) 
-      end_date =  params[:end_date].to_date.to_s(:db) 
+    if params[:period].present?
+      d = "10 #{params[:period]}".to_date 
+      start_date = d.beginning_of_month.to_s(:db)
+      end_date = d.end_of_month.to_s(:db)
     else
       start_date = Date.today.beginning_of_month.to_s(:db)
       end_date = Date.today.end_of_month.to_s(:db)
@@ -190,10 +190,10 @@ class TowerController < ApplicationController
     data.each do |p|
       type = TowerType.find(p.tower_type_id).name rescue nil
       
-      escom_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'ESCOM'  ")
+      escom_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'ESCOM'  #{mtd_date_filter} ")
       .order(" refill_date").last
 
-      fuel_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'FUEL'  ")
+      fuel_refill = Refill.where(" tower_id = #{p.id} AND refill_type = 'FUEL'  #{mtd_date_filter}")
       .order(" refill_date ").last
 
 
@@ -206,7 +206,7 @@ class TowerController < ApplicationController
       ").order(" refill_date ").last  
 
       escom_refills_mtd = Refill.find_by_sql(" SELECT SUM(refill_amount) AS total FROM refill 
-                    WHERE tower_id = #{p.id} AND refill_type = 'ESCOM' 
+                    WHERE tower_id = #{p.id} AND refill_type = 'ESCOM' #{mtd_date_filter}
                      " ).last.total rescue 0
 
       fuel_refills_mtd = Refill.find_by_sql(" SELECT SUM(refill_amount) AS total FROM refill 
@@ -224,18 +224,21 @@ class TowerController < ApplicationController
       if rate > 3
           rate = "<span style='color:red'>#{rate}</span>"
       end 
+      gen_last_month = (fuel_refill.genset_reading - fuel_refill.genset_run_time) rescue ""
 
       row = [rdate,
                 p.name, 
-                (fuel_refill_last_month.reading_after_refill rescue ""),
+                (fuel_refill_last_month.reading_after_refill rescue 
+                    (fuel_refill.reading_before_refill rescue "")),
                 fuel_refills_mtd,
                 (fuel_refill.reading_after_refill rescue ""),
                 p.usage_mtd,
-                (fuel_refill_last_month.genset_reading rescue ""),
+                (fuel_refill_last_month.genset_reading rescue gen_last_month),
                 (fuel_refill.genset_reading rescue ""),
                 p.run_hours_mtd,
                 rate,
-                (escom_refill_last_month.reading_after_refill rescue ""),
+                (escom_refill_last_month.reading_after_refill rescue 
+                  (escom_refill.reading_before_refill rescue "")),
                 escom_refills_mtd,
                 (escom_refill.reading_after_refill rescue ""),
                 escom_usage_mtd,

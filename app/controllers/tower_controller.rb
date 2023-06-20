@@ -175,8 +175,8 @@ class TowerController < ApplicationController
 
     data = data.select(" tower.* , 
     
-    (SELECT SUM(refill.usage) FROM refill 
-            WHERE refill.tower_id = tower.tower_id AND refill_type = 'FUEL' #{mtd_date_filter}) AS usage_mtd,
+            (SELECT SUM(refill.usage) FROM refill 
+                    WHERE refill.tower_id = tower.tower_id AND refill_type = 'FUEL' #{mtd_date_filter}) AS usage_mtd,
 
             (SELECT SUM(refill.genset_run_time) FROM refill 
                     WHERE refill.tower_id = tower.tower_id AND refill_type = 'FUEL' #{mtd_date_filter}) AS run_hours_mtd
@@ -185,7 +185,6 @@ class TowerController < ApplicationController
 
     data = data.page(page).per_page(params[:length].to_i)
     
-
     @records = []
     data.each do |p|
       type = TowerType.find(p.tower_type_id).name rescue nil
@@ -215,7 +214,11 @@ class TowerController < ApplicationController
       escom_usage_mtd = Refill.find_by_sql(" SELECT SUM(refill.usage) AS total FROM refill 
                     WHERE tower_id = #{p.id} AND refill_type = 'ESCOM' #{mtd_date_filter} " ).last.total rescue 0
 
-      rate = (p.usage_mtd.to_f/p.run_hours_mtd.to_f).round(2)
+     # if p.run_hours_mtd.to_f > 0
+       rate = (p.usage_mtd.to_f/p.run_hours_mtd.to_f).round(2)
+      #else
+      #  rate = 0
+      #end 
 
 
       rdate = [(fuel_refill.refill_date rescue nil), (escom_refill.refill_date rescue nil)].delete_if{|s| 
@@ -369,31 +372,31 @@ end
 
       bt_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
         INNER JOIN tower t ON t.tower_id = r.tower_id  AND r.refill_type = 'FUEL'
-        WHERE t.district_id IN (#{bt_ids.join(",")}) AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
+        WHERE t.description = 'Blantyre' AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
       ").last.total || 0
      
       ll_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
         INNER JOIN tower t ON t.tower_id = r.tower_id 
-        WHERE t.district_id IN (#{ll_ids.join(",")}) AND r.refill_type = 'FUEL'
+        WHERE t.description = 'Lilongwe' AND r.refill_type = 'FUEL'
           AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
       ").last.total || 0
 
       south_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
       INNER JOIN tower t ON t.tower_id = r.tower_id 
-      WHERE t.district_id IN (#{south_ids.join(",")}) AND r.refill_type = 'FUEL'
+      WHERE t.description = 'South' AND r.refill_type = 'FUEL'
         AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
       ").last.total || 0
           
 
       centre_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
       INNER JOIN tower t ON t.tower_id = r.tower_id 
-      WHERE t.district_id IN (#{centre_ids.join(",")}) AND r.refill_type = 'FUEL'
+      WHERE t.description = 'Lilongwe' AND r.refill_type = 'FUEL'
         AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
       ").last.total || 0
 
       north_usage = Refill.find_by_sql(" SELECT SUM(r.usage) AS total FROM refill r
       INNER JOIN tower t ON t.tower_id = r.tower_id 
-      WHERE t.district_id IN (#{north_ids.join(",")}) AND r.refill_type = 'FUEL'
+      WHERE t.description = 'North' AND r.refill_type = 'FUEL'
         AND r.refill_date BETWEEN '#{start_date}' AND '#{end_date}' 
       ").last.total || 0
 

@@ -268,7 +268,21 @@ class TowerController < ApplicationController
 
   def refills
 
-    start_date, end_date = date_ranges
+    @periods = ["May, 2023", "June, 2023"]
+    region_filter = " "
+
+    if params[:region].present?
+      region_filter = " AND t.description = '#{params[:region]}' "
+    end 
+
+    if params[:period].present? 
+      d = "10 #{params[:period]}".to_date 
+      start_date = d.beginning_of_month.to_s(:db)
+      end_date = d.end_of_month.to_s(:db)
+    else
+      start_date, end_date = ["1900-01-01".to_date.to_s, Date.today.to_s]
+    end 
+
     tower_id = params[:tower_id]
     tower_filter = " "; tower_name = ""
     if tower_id.present?
@@ -302,7 +316,7 @@ class TowerController < ApplicationController
           SELECT r.*, l.code , t.code AS code2, t.description AS region, t.name FROM refill r  
             INNER JOIN tower t ON t.tower_id = r.tower_id
             INNER JOIN location l ON l.location_id = t.district_id
-            WHERE DATE(r.refill_date) BETWEEN '#{start_date}' AND '#{end_date}'
+            WHERE DATE(r.refill_date) BETWEEN '#{start_date}' AND '#{end_date}' #{region_filter}
             #{tower_filter} #{type_filter} ORDER BY refill_date DESC
     ").each do |t|
         

@@ -6,16 +6,13 @@ CSV.read(filename).each_with_index do |t, i|
 
     code = t[1].strip rescue next
     name = t[0].strip
-    region = t[2].strip
 
     next if name.blank? 
 
-    towers = Tower.where(name: name, description: region)
-
-    raise towers.inspect if towers.count > 1
+    towers = Tower.where(name: name)
 
     tower = towers.first
-
+raise name.inspect if tower.blank?
     next if tower.blank? 
 
     tower.code = code 

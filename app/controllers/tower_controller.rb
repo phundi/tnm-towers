@@ -281,7 +281,7 @@ class TowerController < ApplicationController
     @title = "Listing of #{params[:type]} Refills #{tower_name}"
 
     @data = [
-                ["Refill date", "Tower", "District", "Technician", "Refill type", 
+                ["Refill date", "Tower", "Code", "Region", "District", "Technician", "Refill type", 
               "Reading before refill", "Usage"]]
 
     if params[:type] != 'escom'
@@ -299,7 +299,7 @@ class TowerController < ApplicationController
     end 
 
     data = Tower.find_by_sql("
-          SELECT r.*, l.code, t.name FROM refill r  
+          SELECT r.*, l.code , t.code AS code2, t.description AS region, t.name FROM refill r  
             INNER JOIN tower t ON t.tower_id = r.tower_id
             INNER JOIN location l ON l.location_id = t.district_id
             WHERE DATE(r.refill_date) BETWEEN '#{start_date}' AND '#{end_date}'
@@ -319,6 +319,8 @@ class TowerController < ApplicationController
         row = [   
           t.refill_date.strftime("%Y-%m-%d"),
           t.name, 
+          t.code2,
+          t.region,
                 t.code, 
                 creator,
                 t.refill_type,

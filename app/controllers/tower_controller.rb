@@ -44,11 +44,11 @@ class TowerController < ApplicationController
     district_tag = LocationTag.where(name: "District").first 
     @districts = Location.find_by_sql("select * from location l INNER JOIN location_tag_map tm ON tm.location_id = l.location_id 
       WHERE tm.location_tag_id = #{district_tag.id}")
-
     if request.post?
       @tower = Tower.new
       @tower.tower_type_id = params[:type]
       @tower.name = params[:name]
+      @tower.code = params[:code]
       @tower.district_id = params[:district]
       @tower.lat = params[:lat]
       @tower.long = params[:long]
@@ -72,6 +72,7 @@ class TowerController < ApplicationController
     if request.post?
       @tower.tower_type_id = params[:type]
       @tower.name = params[:name]
+      @tower.code = params[:code]
       @tower.district_id = params[:district]
       @tower.lat = params[:lat]
       @tower.long = params[:long]

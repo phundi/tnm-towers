@@ -239,6 +239,7 @@ class TowerController < ApplicationController
 
       row = [rdate,
                 p.name, 
+                p.code,
                 (fuel_refill_last_month.reading_after_refill rescue 
                     (fuel_refill.reading_before_refill rescue rescue_value)),
                 (fuel_refills_mtd || 0),

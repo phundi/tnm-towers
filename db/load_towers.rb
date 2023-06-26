@@ -1,4 +1,4 @@
-headers = ["Sites Name", "Region", "District", "Site Status", 
+headers = ["Sites Name", "Code", "Region", "District", "Site Status", 
             "ESCOM", "Tank Size", "Opening Litres", "Litres Dispensed", 
             "Closing Litres", "Usage in Litres", "Opening Hours", "Closing Hours",
              "Hours Run", "Average Usage Per Hour", 
@@ -11,13 +11,18 @@ CSV.read(filename).each_with_index do |t, i|
         next
     end 
 
+    t.each_with_index {|v, i| t[i] = (v.strip.gsub(/\s+/, " ") rescue v)}
+
     next if t[headers.index("Sites Name")].blank? 
     tower = Tower.new 
     tower.name = t[headers.index("Sites Name")].strip
-    tower.district_id = Location.find_by_name(t[headers.index("District")].strip).id 
+    tower.district_id = Location.find_by_name(t[headers.index("District")].strip).id rescue (raise t.inspect)
     tower.description = ARGV[1]
     tower.tower_type_id = TowerType.first.id
     tower.creator = creator
+
+    code = t[1].strip rescue nil
+    tower.code = code 
 
     status = t[headers.index("Site Status")]
     if status.downcase.strip == "grid"
@@ -33,11 +38,11 @@ CSV.read(filename).each_with_index do |t, i|
         frefill.refill_type = "FUEL"
         frefill.tower_id = tower.id 
         frefill.reading_before_refill = t[headers.index("Opening Litres")].strip
-        frefill.refill_amount = t[headers.index("Litres Dispensed")].strip
-        frefill.reading_after_refill = t[headers.index("Closing Litres")].strip
-        frefill.usage = t[headers.index("Usage in Litres")].strip
-        frefill.genset_reading = t[headers.index("Closing Hours")].strip
-        frefill.genset_run_time = t[headers.index("Hours Run")].strip
+        frefill.refill_amount = t[headers.index("Litres Dispensed")].strip  rescue 0
+        frefill.reading_after_refill = t[headers.index("Closing Litres")].strip rescue 0    
+        frefill.usage = t[headers.index("Usage in Litres")].strip rescue 0
+        frefill.genset_reading = t[headers.index("Closing Hours")].strip rescue 0
+        frefill.genset_run_time = t[headers.index("Hours Run")].strip rescue 0
         frefill.creator = creator
         frefill.refill_date = "31-May-2023".to_date
         frefill.save!
@@ -66,6 +71,6 @@ CSV.read(filename).each_with_index do |t, i|
 
 
 
-    puts "#{i} # #{tower.name}"
+    puts "#{i} # #{tower.name} # #{code}"
 end
 

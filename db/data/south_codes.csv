@@ -1,132 +1,132 @@
- Sites Name , site ID , Region , District , Site Status (Grid/Prime) , ESCOM , Tank Size , Opening  Litres , Litres Dispensed , Closing Litres , Usage in Litres , Opening Hours , Closing Hours , Hours Run , Average Usage Per Hour , Opening Readings , Units Bought , Closing Readings , Power Usage 
- WALALA , TN42011 , South , Zomba , GRID , PREPAID ," 1,000 ", 630 , -   , 600 , 30 ," 2,914 "," 2,928 ", 14 , 2 ," 5,825 ", -   , -   , -   
- NASAWA  , TN31023 , South , Zomba , GRID , PREPAID , 600 , 600 , -   , 535 , 65 ," 22,672 "," 22,698 ", 26 , 3 ,, -   , -   , -   
- DZAONE , TN31028 , South , Zomba , GRID , PREPAID , 600 ," 1,000 "," 1,082 ", 690 ," 1,392 "," 4,437 "," 4,985 ", 548 , 3 ," 4,271 ", -   , -   , -   
- ZOMBA ESCOM , TN30031 , South , Zomba , GRID , POSTPAID , 600 , 592 , -   , 592 , -   ," 11,511 "," 11,511 ", -   ,#DIV/0!,, -   , -   , -   
- THONDWE , TN31027 , South , Zomba , OFF GRID  ,, 600 , 800 , -   , 790 , 10 ," 13,676 "," 13,680 ", 4 , 3 ,, -   , -   , -   
- ZOMBA WICO MOBILE , TN30035 , South , Zomba , GRID , POSTPAID ACCESS , 600 , 510 , -   , 400 , 110 ," 15,779 "," 15,834 ", 55 , 2 ,, -   , -   , -   
- CHICHIRI_SCHOOL , TN30030 , South , Zomba , GRID  , PREPAID  , 600 , 641 , -   , 633 , 8 , 373 , 377 , 4 , 2 , 399 , -   , -   , -   
- LIKUNGWATI , TN30009 , South , Zomba , GRID , PREPAID , 600 , 591 , -   , 501 , 90 ," 3,167 "," 3,192 ", 25 , 4 ," 1,026 ", -   , -   , -   
- KAMOTO , TN44004 , South , Chiradzulo , OFF GRID  , OFF GRID , 600 , 649 , 593 ," 1,000 ", 242 ," 6,187 "," 6,287 ", 100 , 2 ,, -   , -   , -   
- NAISI  , TN30021 , South , Zomba , GRID , PREPAID , 600 , 900 , -   , 853 , 47 ," 8,018 "," 8,038 ", 20 , 2 ," 2,718 ", -   , -   , -   
- DOMASI , TN31004 , South , Zomba , GRID , PREPAID , 800 , 450 , -   , 357 , 93 ," 23,188 "," 23,232 ", 44 , 2 ," 5,121 ", -   , -   , -   
- JALI , TN31005 , South , Zomba , GRID , POSTPAID MTL , 600 , 520 , -   , 520 , -   ," 13,803 "," 13,803 ", -   ,#DIV/0!," 16,328 ", -   , -   , -   
- PHALOMBE , TN45012 , South , Phalombe , GRID , POSTPAID , 600 , 518 , 108 , 600 , 26 ," 34,073 "," 34,092 ", 19 , 1 ,, -   , -   , -   
- NOLO (NEW) , TN45009 , South , Phalombe , GRID , PREPAID , 600 , 992 , -   , 992 , -   ," 16,915 "," 16,915 ", -   ,#DIV/0!," 1,300 ", -   , -   , -   
- NJUMWA NEW , TN45007 , South , Phalombe , GRID , PREPAID MTL ," 1,000 ", 662 , -   , 660 , 2 ," 9,261 "," 9,262 ", 1 , 2 , -   , -   , -   , -   
- OLD NAISI NEWLINES , TN30039 , South , Zomba , OFF GRID , OFF GRID , 600 , 486 , -   , 478 , 8 ," 20,567 "," 20,571 ", 4 , 2 ," 8,855 ", -   , -   , -   
- CHIRINGA , TN45001 , South , Phalombe , OFF GRID  ,," 1,000 "," 1,000 "," 1,141 ", 905 ," 1,236 "," 1,767 "," 2,324 ", 557 , 2 ,, -   , -   , -   
- ST MARYS , TN30034 , South , Zomba , GRID , PREPAID , 600 , 600 , -   , 554 , 46 , 1 , 23 , 22 , 2 ,, -   , -   , -   
- SADZI , TN30024 , South , Zomba , GRID , PREPAID , 600 , 590 , -   , 590 , -   ," 12,847 "," 12,847 ", -   ,#DIV/0!, 811 , -   , -   , -   
- CHANCO , TN30001 , South , Zomba , GRID , PREPAID , 600 , 990 , -   , 984 , 6 ," 3,287 "," 3,289 ", 2 , 3 ," 4,738 ", -   , -   , -   
- KACHULU , TN31007 , South , Zomba , GRID , PREPAID , 600 , 550 , -   , 550 , -   ," 22,248 "," 22,248 ", -   ,#DIV/0!," 2,274 ", -   , -   , -   
- NANDOLO , TN30022 , South , Zomba , GRID , PREPAID ," 1,000 ", 600 , -   , 598 , 2 ," 14,223 "," 14,224 ", 1 , 2 ," 3,274 ", -   , -   , -   
- MULUNGUZI , TN30020 , South , Zomba , GRID , PREPAID , 800 , 585 , -   , 583 , 2 ," 14,084 "," 14,085 ", 1 , 2 ," 5,123 ", -   , -   , -   
- COBBE , TN30043 , South , Zomba , GRID , PREPAID , 600 , 600 , -   , 560 , 40 ," 11,726 "," 11,743 ", 17 , 2 ,, -   , -   , -   
- MPITA TRADING , TN45005 , South , Machinga , GRID , PREPAID , 800 , 414 , 547 , 490 , 471 ," 17,196 "," 17,356 ", 160 , 3 ,, -   , -   , -   
- CHISUGULU - HILL , TN45002 , South , Phalombe , OFF GRID  , OFF GRID , 600 , 390 ," 2,033 ", 760 ," 1,663 "," 6,427 "," 6,723 ", 296 , 6 ,, -   , -   , -   
- MKAMWA , TN30018 , South , Zomba , OFF GRID  , OFF GRID , 600 , 342 , 381 , 420 , 303 ," 18,932 "," 19,016 ", 84 , 4 ,, -   , -   , -   
- ZOMBA DAM , TN30040 , South , Zomba , GRID , PREPAID , 600 , 522 , 396 , 591 , 327 ," 9,237 "," 9,249 ", 12 , 27 ," 9,139 ", -   , -   , -   
- ZOMBA CENTRAL , TN30029 , South , Zomba , GRID , PREPAID , 600 ," 1,000 ", -   , 978 , 22 ," 3,086 "," 3,091 ", 5 , 4 ," 2,464 ", -   , -   , -   
- MCHEMA , TN42004 , South , Zomba , OFF GRID  , OFF GRID , 600 , 710 , 728 , 930 , 508 ," 4,693 "," 4,786 ", 93 , 5 ,, -   , -   , -   
- AT Nasawa (Former JALI HILL) , TN31023 , South , Zomba , GRID , PREPAID , 600 ,, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
- CHISUGULU NEW DG , TN45002 , South , Zomba , OFF GRID ,, 600 , 480 , -   , 480 , 480 ," 6,904 "," 6,904 ", -   ,#DIV/0!,, -   , -   , -   
- Mphyuphyu , TN31019 , South , Zomba , OFF GRID  ,, 600 , 622 , 958 , 901 , 901 ," 10,721 "," 10,969 ", 248 , 4 ,, -   , -   , -   
- Mikongoni Hill , TN45004 , South , Phalombe , OFF GRID ,, 600 , 905 , -   , 750 , 750 ," 5,568 "," 5,630 ", 62 , 12 ,, -   , -   , -   
- Thom Allan , TN30041 , South , Zomba , OFF GRID ,, 600 , 807 , 469 , 905 , 905 ," 8,379 "," 8,579 ", 200 , 5 ,, -   , -   , -   
- ZA CENTRAL Ex Likungwati , TN30029 , South , Zomba , GRID , PREPAID , 600 , 600 , -   , 600 , 600 ," 9,186 "," 9,186 ", -   ,#DIV/0!,, -   , -   , -   
- Mposa , TN33017 , South , Machinga , OFF GRID ,," 1,000 ", 836 , -   , 700 , 700 ," 9,505 "," 9,635 ", 130 , 5 ,, -   , -   , -   
- Nayuchi , TN33009 , South , Machinga , GRID , PREPAID ," 1,000 ", 700 , -   , 650 , 650 ," 28,943 "," 28,970 ", 27 , 24 ," 1,983 ", -   , -   , -   
- Nselema , TN33012 , South , Machinga , GRID , PREPAID , 800 , 420 , -   , 366 , 366 ," 11,889 "," 11,917 ", 28 , 13 ," 3,714 ", -   , -   , -   
- Chikweo , TN33001 , South , Machinga , GRID , PREPAID , 600 , 670 , -   , 582 , 582 ," 3,137 "," 3,177 ", 40 , 15 ," 2,096 ", -   , -   , -   
- Mwima , TN32010 , South , Machinga , GRID , postpaid , 800 , 421 ," 1,143 ", 160 , 160 ," 18,443 "," 19,085 ", 642 , 0 ,, -   , -   , -   
- Ulongwe , TN32018 , South , Machinga , GRID , postpaid , 800 , 580 , -   , 350 , 350 ," 15,379 "," 15,379 ", -   ,#DIV/0!, x , -   , -   , -   
- Ntaja , TN33013 , South , Machinga , GRID , postpaid ," 1,000 ", 300 , 340 , 560 , 560 ," 16,656 "," 16,686 ", 30 , 19 , -   , -   , -   , -   
- Nsanama , TN33011 , South , Machinga , GRID , PREPAID , 600 , 343 , -   , 268 , 268 ," 11,904 "," 11,934 ", 30 , 9 ," 3,689 ", -   , -   , -   
- Mvuu camp , TN33006 , South , Machinga , OFF GRID  ,, 600 ," 1,347 ", -   ," 1,206 "," 1,206 "," 3,216 "," 3,277 ", 61 , 20 ,, -   , -   , -   
- Namanja , TN33007 , South , Machinga , GRID , PREPAID , 600 , 500 , 534 , 500 , 500 ," 24,776 "," 24,998 ", 222 , 2 ," 2,005 ", -   , -   , -   
- Liwonde Road Block , TN32020 , South , Machinga , GRID , PREPAID , 600 , 490 , -   , 490 , 490 ," 3,543 "," 3,543 ", -   ,#DIV/0!," 1,568 ", -   , -   , -   
- Liwonde Residential , TN33003 , South , Machinga , GRID , PREPAID ," 1,000 ", 515 , -   , 370 , 370 ," 11,726 "," 11,784 ", 58 , 6 ," 2,376 ", -   , -   , -   
- Liwonde MTL , TN33002 , South , Machinga , GRID , postpaid , 800 , 588 , -   , 420 , 420 ," 2,850 "," 2,900 ", 50 , 8 ,, -   , -   , -   
- Namanolo , TN32012 , South , Machinga , GRID , PREPAID , 600 , 500 , -   , 320 , 320 ," 6,954 "," 7,557 ", 603 , 1 ," 2,550 ", -   , -   , -   
- Ulongwe DG 2 , TN32018 , South , Machinga , GRID , POSTPAID  , 600 , 827 , -   , 780 , 780 ," 7,929 "," 7,949 ", 20 , 39 ,, -   , -   , -   
- Mkwepere , TN33014 , South , Machinga , OFF GRID ,," 1,000 ", 466 , 679 , 718 , 718 ," 6,043 "," 6,298 ", 255 , 3 ,, -   , -   , -   
- MOBILE DG ZOMBA , TNMSRMOB01 , South , Zomba , OFF GRID , AT CHAPOLA ," 1,000 ", 265 , -   , 265 , 265 , 805 , 805 , -   ,#DIV/0!,, -   , -   , -   
- Lizulu , TN21005 , South , Ntcheu , OFF GRID , OFF GRID , 600 , 230 , 919 , 600 , 600 ," 28,924 "," 29,267 ", 343 , 2 ,, -   , -   , -   
- Phombeya Fiber Repeater , TN32015 , South , Balaka , GRID , OFF GRID ," 1,000 ", 810 , -   , 746 , 746 ," 3,794 "," 3,823 ", 29 , 26 ,, -   , -   , -   
- Mota 3.2 , TN49003 , South , Balaka , OFF GRID , OFF GRID , 600 , 800 , -   , 517 , 517 ," 1,017 "," 1,080 ", 63 , 8 ,, -   , -   , -   
- Kandeu , TN21004 , South , Balaka , GRID , PREPAID , 600 , 650 , -   , 642 , 642 ," 25,183 "," 25,186 ", 3 , 214 ,, -   , -   , -   
- Balaka  BSC , TN32002 , South , Balaka , GRID , PREPAID ," 1,000 ", 596 , -   , 596 , 596 ," 1,484 "," 1,484 ", -   ,#DIV/0!, 455 , -   , -   , -   
- Tsangano Proper , TN21016 , South , Ntcheu , GRID , PREPAID ," 1,000 "," 1,000 ", -   ," 1,000 "," 1,000 "," 2,450 "," 2,450 ", -   ,#DIV/0!," 2,197 ", -   , -   , -   
- Neno , TN49005 , South , neno , GRID , POSTPAID , 500 , 480 , -   , 467 , 467 ," 2,764 "," 2,769 ", 5 , 93 ," 5,529 ", -   , -   , -   
- Phalula , TN32014 , South , Balaka , GRID , POSTPAID ," 1,000 ", 783 , 655 , 745 , 745 ," 13,624 "," 13,954 ", 330 , 2 ,, -   , -   , -   
- Senzani , TN21014 , South , Balaka , GRID , POSTPAID ," 1,000 ", 550 , -   , 497 , 497 ," 17,127 "," 17,151 ", 24 , 21 ," 6,763 ", -   , -   , -   
- Andiamo , TN32001 , South , Balaka , GRID , PREPAID ," 1,000 ", 530 , -   , 482 , 482 ," 17,181 "," 17,197 ", 16 , 30 ,, -   , -   , -   
- Nachitheme , TN32011 , South , Balaka , GRID , POSTPAID ," 1,000 ", 950 , -   , 937 , 937 ," 6,727 "," 6,732 ", 5 , 187 ,, -   , -   , -   
- Manjawira , TN32008 , South , Balaka , GRID , PREPAID , 600 , 437 , -   , 413 , 413 ," 13,219 "," 13,229 ", 10 , 41 ,, -   , -   , -   
- Ntcheu Peak , TN21012 , South , Ntcheu , GRID , POSTPAID , 600 , 557 , -   , 490 , 490 ," 7,745 "," 7,777 ", 32 , 15 ,, -   , -   , -   
- New Balaka BSC , TN32002 , South , Balaka , GRID , BACK UP DG , 600 , 600 , -   , 555 , 555 ," 3,274 "," 3,281 ", 7 , 79 ,, -   , -   , -   
- Chembera , TN32005 , South , Balaka , GRID , POSTPAID , 600 , 563 , -   , 548 , 548 ," 18,644 "," 18,651 ", 7 , 78 ,, -   , -   , -   
- Nkaya , TN32013 , South , Balaka , OFF GRID  ,, 600 , 850 , -   , 850 , 850 ," 7,803 "," 7,803 ", -   ,#DIV/0!,, -   , -   , -   
- Balaka Macra , TN32003 , South , Balaka , GRID , PREPAID , 600 , 489 , -   , 480 , 480 ," 9,531 "," 9,536 ", 5 , 96 ,, -   , -   , -   
- Balaka Majiga , TN32004 , South , Balaka , GRID , PREPAID , 600 , 400 , 177 , 550 , 550 ," 13,000 "," 13,011 ", 11 , 50 ,, -   , -   , -   
- Khwisa , TN32007 , South , Balaka , GRID , PREPAID , 600 , 655 , -   , 628 , 628 ," 3,635 "," 3,646 ", 11 , 57 ," 3,538 ", -   , -   , -   
- Mphombeya BTS , TN32015 , South , Balaka , GRID  , PREPAID , 600 , 590 , -   , 538 , 538 ," 5,516 "," 5,542 ", 26 , 21 ,, -   , -   , -   
- Ntcheu MTL , TN21011 , South , Ntcheu , GRID , PREPAID AIRTEL , 600 , 882 , -   , 875 , 875 ," 2,406 "," 2,410 ", 4 , 219 ,, -   , -   , -   
- UTALE , TN32019 , South , Balaka , OFFGRID , OFFGRID , 600 , 606 , -   , 606 , 606 ," 28,728 "," 28,728 ", -   ,#DIV/0!,, -   , -   , -   
- BLK Shop , TNMShop , South , Balaka , GRID ,, 600 ,, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
-  MAWIRA new DG , TN33016 , South , Machinga , OFF GRID ,, 800 , 410 , -   , 335 , 335 ," 10,599 "," 10,629 ", 30 , 11 ,, -   , -   , -   
- MANGOCHI ACL , TN34022 , South , Mangochi , GRID , ACCESS ," 1,000 ", 403 , 497 , 590 , 590 ," 3,757 "," 3,861 ", 104 , 6 , access , -   , -   , -   
- MANGOCHI NORTH , TN34025 , South , mangochi , GRID , PREPAID , 600 , 284 , -   , 161 , 161 ," 12,769 "," 12,818 ", 49 , 3 ," 1,638 ", -   , -   , -   
- MANGOCHI AIRPORT , TN34023 , South , Mangochi , GRID , PREPAID , 600 , 392 , -   , 374 , 374 ," 5,970 "," 5,979 ", 9 , 42 ," 3,693 ", -   , -   , -   
- NANSENGA , TN34036 , South , Mangochi , OFF GRID  , PREPAID , 600 , 619 , -   , 582 , 582 ," 33,062 "," 33,078 ", 16 , 36 , B/O , -   , -   , -   
- PALM BEACH , TN34040 , South , Mangochi , GRID , PREPAID , 600 , 490 , 271 , 738 , 738 ," 27,128 "," 27,135 ", 7 , 105 ," 3,827 ", -   , -   , -   
- NAMIYASI , TN34032 , South , Mangochi , GRID , PREPAID , 600 , 565 , -   , 502 , 502 ," 9,506 "," 9,543 ", 37 , 14 ," 4,468 ", -   , -   , -   
- SUN AND SAND , TN34042 , South , Mangochi , GRID , PREPAID , 600 , 685 , 135 , 735 , 735 ," 7,278 "," 7,312 ", 34 , 22 ,, -   , -   , -   
- CHIKOWA , TN34005 , South , Mangochi , GRID , PREPAID ," 1,000 ", 419 , -   , 408 , 408 ," 7,398 "," 7,404 ", 6 , 68 ," 2,652 ", -   , -   , -   
- CHIKOKOBAY , TN34003 , South , Mangochi , GRID , PREPAID , 600 , 576 , -   , 237 , 237 ," 16,861 "," 17,002 ", 141 , 2 ," 2,629 ", -   , -   , -   
- MANZINZIBAY , TN34027 , South , Mangochi , GRID , PREPAID ," 1,000 ", 680 , -   , 659 , 659 ," 7,128 "," 7,140 ", 12 , 55 ," 4,296 ", -   , -   , -   
- CHIKOKO STATE , TN34004 , South , Mangochi , GRID , PREPAID , 300 , 510 , -   , 469 , 469 ," 9,774 "," 9,791 ", 17 , 28 ," 2,594 ", -   , -   , -   
- MONKEY BAY , TN34028 , South , Mangochi , GRID , POSTPAID , 600 , 341 , 305 , 608 , 608 ," 7,698 "," 7,718 ", 20 , 30 , mtl , -   , -   , -   
- NAMBANDE , TN34031 , South , Mangochi , OFF GRID , POSTPAID , 600 , 104 , 724 , 500 , 500 ," 2,125 "," 2,330 ", 205 , 2 ,, -   , -   , -   
- NGAPANI from Mbaluku , TN34037 , South , Mangochi , OFF GRID , POSTPAID ," 1,000 ", 883 , -   , 522 , 522 ," 2,884 "," 2,972 ", 88 , 6 ,, -   , -   , -   
- NAMWERA , TN34033 , South , Mangochi , GRID , PREPAID , 600 , 287 , 333 , 528 , 528 ," 16,668 "," 16,715 ", 47 , 11 ," 4,196 ", -   , -   , -   
- CHIPHOLE , TN34008 , South , Mangochi , OFF GRID  , OFFGRID ," 1,000 ", 920 , -   , 773 , 773 ," 7,153 "," 7,207 ", 54 , 14 ,, -   , -   , -   
- MALEKANO , TN34018 , South , Mangochi , OFF GRID  , PREPAID , 600 , 512 , 448 , 620 , 620 ," 19,988 "," 20,042 ", 54 , 11 ,, -   , -   , -   
- KATULI , TN34012 , South , Mangochi , GRID , PREPAID , 600 , 302 , 320 , 538 , 538 ," 10,501 "," 10,543 ", 42 , 13 ," 2,722 ", -   , -   , -   
- NANKHWALI , TN34034 , South , Mangochi , OFF GRID , PREPAID , 600 , 476 , -   , 476 , 476 ," 12,601 "," 12,601 ", -   ,#DIV/0!, B/O , -   , -   , -   
- NKHUZIBAY , TN34038 , South , Mangochi , OFF GRID  , PREPAID , 600 , 285 , -   , 193 , 193 ," 19,225 "," 19,271 ", 46 , 4 , B/O , -   , -   , -   
- CHING'OMBE , TN34007 , South , Mangochi , GRID , PREPAID , 600 , 600 , -   , 584 , 584 ," 29,026 "," 29,034 ", 8 , 73 ," 2,863 ", -   , -   , -   
- NKOPOLA , TN34039 , South , Mangochi , GRID , PREPAID , 600 , 451 , 149 , 524 , 524 ," 8,785 "," 8,811 ", 26 , 20 ," 1,209 ", -   , -   , -   
- LULANGA , TN34015 , South , Mangochi , OFF GRID  , OFFGRID ," 1,000 ", 730 , -   , 474 , 474 ," 14,532 "," 14,596 ", 64 , 7 ,, -   , -   , -   
- Nambande Backup Dg , TN34031 , South , Mangochi , OFF GRID  , OFFGRID , 600 , 534 , -   , 534 , 534 ," 9,380 "," 9,380 ", -   ,#DIV/0!,, -   , -   , -   
- Mulibwanji  , TN34029 , South , Mangochi , OFF GRID  , OFFGRID ," 1,000 ",, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
- MOBILE DG MH , TNMSRMOB02 , South , Mangochi ,, AT NKHUDZIBAY , 600 , 300 , -   , 300 , 300 , 15 , 15 , -   ,#DIV/0!,, -   , -   , -   
- MH MTL , TN34021 , South , Mangochi , GRID  , PREPAID  ," 1,000 ", 993 , -   , 765 , 765 ," 9,427 "," 9,498 ", 71 , 11 ,, -   , -   , -   
- LUGOLA , TN34044 , South , Mangochi , OFF GRID  , PREPAID  ," 1,000 "," 1,071 ", -   , 455 , 455 ," 8,287 "," 8,595 ", 308 , 1 ,, -   , -   , -   
- MH KARONGA , TN34052 , South , Mangochi , OFF GRID  , PREPAID  ," 1,000 ", 860 , -   , 703 , 703 ," 16,403 "," 16,474 ", 71 , 10 ,, -   , -   , -   
- LUNGWENA  , TN34045 , South , Mangochi , OFF GRID  , PREPAID  , 600 , 577 , 873 , 865 , 865 ," 6,859 "," 7,054 ", 195 , 4 ,, -   , -   , -   
- Mbaluku , TN34047 , South , Mangochi , GRID , PREPAID  , 600 , 100 , -   , 74 , 74 , 806 , 819 , 13 , 6 ,, -   , -   , -   
- Makunganya , TN34046 , South , Mangochi , OFF GRID  , PREPAID  , 600 , 372 ," 1,000 "," 1,000 "," 1,000 "," 8,893 "," 9,248 ", 355 , 3 ,, -   , -   , -   
- Chembe  , TN34013 , South , Mangochi , OFF GRID  , PREPAID  , 600 , 243 , -   , 215 , 215 ," 27,170 "," 27,184 ", 14 , 15 ,, -   , -   , -   
- Majiga 1 , TN32021 , South , Balaka , OFF GRID  , PREPAID  , 600 , 600 , 906 ," 1,000 "," 1,000 "," 2,611 "," 2,794 ", 183 , 5 ,, -   , -   , -   
- Dziwe , TN32022 , South , Balaka , OFF GRID  , PREPAID  ," 1,000 ", 770 , 552 , 800 , 800 ," 2,171 "," 2,286 ", 115 , 7 ,, -   , -   , -   
- Chapola , TN31036 , South , Balaka , OFF GRID , PREPAID  , 600 , 412 , 642 , 620 , 620 ," 2,099 "," 2,253 ", 154 , 4 ,, -   , -   , -   
- St Therese/Liwonde Hospital , TN33018 , South , Machinga , OFF GRID  , PREPAID  ," 1,000 "," 1,000 ", -   , 440 , 440 ," 2,866 "," 3,050 ", 184 , 2 ,, -   , -   , -   
- Dzunje , TN21018 , South , Zomba , OFF GRID  , PREPAID  , 600 , 619 , 920 ," 1,043 "," 1,043 "," 2,760 "," 2,895 ", 135 , 8 ,, -   , -   , -   
- MPOTOLA , TN31035 , South , Machinga , OFF GRID  , PREPAID  , 600 , 344 , 375 , 550 , 550 ," 14,632 "," 14,706 ", 74 , 7 ,, -   , -   , -   
- Dzenje , TN45013 , South , Zomba , OFF GRID  , PREPAID  ," 1,000 ", 710 , -   , 570 , 570 ," 1,300 "," 1,342 ", 42 , 14 ,, -   , -   , -   
- chingondo , TN31010 , South , Zomba , OFF GRID  , PREPAID  , 600 , 600 , -   , 600 , 600 ," 19,810 "," 19,810 ", -   ,#DIV/0!,, -   , -   , -   
- Namasalima , TN31033 , South , Zomba , OFF GRID  , PREPAID  , 600 , 600 , -   , 600 , 600 , 318 , 318 , -   ,#DIV/0!,, -   , -   , -   
- Ulumba , TN31034 , South , Zomba , OFF GRID  , PREPAID  , 600 , 510 , -   , 325 , 325 , 202 , 310 , 108 , 3 ,, -   , -   , -   
- Skinner(former Chanco) , TN30028 , South , Zomba , OFF GRID  , PREPAID  , 600 , 490 , -   , 490 , 490 ," 13,842 "," 13,842 ", -   ,#DIV/0!,, -   , -   , -   
- KOKOLO , TN45014 , South , Zomba , OFF GRID  , PREPAID  ," 1,000 ", 630 , 820 ," 1,000 "," 1,000 "," 3,015 "," 3,200 ", 185 , 5 ,, -   , -   , -   
- MBANIRA , TN33021 , South , Machinga , OFF GRID  , PREPAID  , 600 , 560 , -   , 400 , 400 ," 6,030 "," 6,096 ", 66 , 6 ,, -   , -   , -   
+ Sites Name , site ID , Region ,District, Site Status (Grid/Prime) , ESCOM , Tank Size , Opening  Litres , Litres Dispensed , Closing Litres , Usage in Litres , Opening Hours , Closing Hours , Hours Run , Average Usage Per Hour , Opening Readings , Units Bought , Closing Readings , Power Usage 
+ WALALA , TN42011 , South , Zomba , GRID , PREPAID ,1000,630, -   ,600,30,2914,2928,14,2,5825, -   , -   , -   
+ NASAWA  , TN31023 , South , Zomba , GRID , PREPAID ,600,600, -   ,535,65,22672,22698,26,3,, -   , -   , -   
+ DZAONE , TN31028 , South , Zomba , GRID , PREPAID ,600,1000,1082,690,1392,4437,4985,548,3,4271, -   , -   , -   
+ ZOMBA ESCOM , TN30031 , South , Zomba , GRID , POSTPAID ,600,592, -   ,592, -   ,11511,11511, -   ,#DIV/0!,, -   , -   , -   
+ THONDWE , TN31027 , South , Zomba , OFF GRID  ,,600,800, -   ,790,10,13676,13680,4,3,, -   , -   , -   
+ ZOMBA WICO MOBILE , TN30035 , South , Zomba , GRID , POSTPAID ACCESS ,600,510, -   ,400,110,15779,15834,55,2,, -   , -   , -   
+ CHICHIRI_SCHOOL , TN30030 , South , Zomba , GRID  , PREPAID  ,600,641, -   ,633,8,373,377,4,2,399, -   , -   , -   
+ LIKUNGWATI , TN30009 , South , Zomba , GRID , PREPAID ,600,591, -   ,501,90,3167,3192,25,4,1026, -   , -   , -   
+ KAMOTO , TN44004 , South , Chiradzulu, OFF GRID  , OFF GRID ,600,649,593,1000,242,6187,6287,100,2,, -   , -   , -   
+ NAISI  , TN30021 , South , Zomba , GRID , PREPAID ,600,900, -   ,853,47,8018,8038,20,2,2718, -   , -   , -   
+ DOMASI , TN31004 , South , Zomba , GRID , PREPAID ,800,450, -   ,357,93,23188,23232,44,2,5121, -   , -   , -   
+ JALI , TN31005 , South , Zomba , GRID , POSTPAID MTL ,600,520, -   ,520, -   ,13803,13803, -   ,#DIV/0!,16328, -   , -   , -   
+ PHALOMBE , TN45012 , South , Phalombe , GRID , POSTPAID ,600,518,108,600,26,34073,34092,19,1,, -   , -   , -   
+ NOLO (NEW) , TN45009 , South , Phalombe , GRID , PREPAID ,600,992, -   ,992, -   ,16915,16915, -   ,#DIV/0!,1300, -   , -   , -   
+ NJUMWA NEW , TN45007 , South , Phalombe , GRID , PREPAID MTL ,1000,662, -   ,660,2,9261,9262,1,2, -   , -   , -   , -   
+ OLD NAISI NEWLINES , TN30039 , South , Zomba , OFF GRID , OFF GRID ,600,486, -   ,478,8,20567,20571,4,2,8855, -   , -   , -   
+ CHIRINGA , TN45001 , South , Phalombe , OFF GRID  ,,1000,1000,1141,905,1236,1767,2324,557,2,, -   , -   , -   
+ ST MARYS , TN30034 , South , Zomba , GRID , PREPAID ,600,600, -   ,554,46,1,23,22,2,, -   , -   , -   
+ SADZI , TN30024 , South , Zomba , GRID , PREPAID ,600,590, -   ,590, -   ,12847,12847, -   ,#DIV/0!,811, -   , -   , -   
+ CHANCO , TN30001 , South , Zomba , GRID , PREPAID ,600,990, -   ,984,6,3287,3289,2,3,4738, -   , -   , -   
+ KACHULU , TN31007 , South , Zomba , GRID , PREPAID ,600,550, -   ,550, -   ,22248,22248, -   ,#DIV/0!,2274, -   , -   , -   
+ NANDOLO , TN30022 , South , Zomba , GRID , PREPAID ,1000,600, -   ,598,2,14223,14224,1,2,3274, -   , -   , -   
+ MULUNGUZI , TN30020 , South , Zomba , GRID , PREPAID ,800,585, -   ,583,2,14084,14085,1,2,5123, -   , -   , -   
+ COBBE , TN30043 , South , Zomba , GRID , PREPAID ,600,600, -   ,560,40,11726,11743,17,2,, -   , -   , -   
+ MPITA TRADING , TN45005 , South , Machinga , GRID , PREPAID ,800,414,547,490,471,17196,17356,160,3,, -   , -   , -   
+ CHISUGULU - HILL , TN45002 , South , Phalombe , OFF GRID  , OFF GRID ,600,390,2033,760,1663,6427,6723,296,6,, -   , -   , -   
+ MKAMWA , TN30018 , South , Zomba , OFF GRID  , OFF GRID ,600,342,381,420,303,18932,19016,84,4,, -   , -   , -   
+ ZOMBA DAM , TN30040 , South , Zomba , GRID , PREPAID ,600,522,396,591,327,9237,9249,12,27,9139, -   , -   , -   
+ ZOMBA CENTRAL , TN30029 , South , Zomba , GRID , PREPAID ,600,1000, -   ,978,22,3086,3091,5,4,2464, -   , -   , -   
+ MCHEMA , TN42004 , South , Zomba , OFF GRID  , OFF GRID ,600,710,728,930,508,4693,4786,93,5,, -   , -   , -   
+ AT Nasawa (Former JALI HILL) , TN31023 , South , Zomba , GRID , PREPAID ,600,, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
+ CHISUGULU NEW DG , TN45002 , South , Zomba , OFF GRID ,,600,480, -   ,480,480,6904,6904, -   ,#DIV/0!,, -   , -   , -   
+ Mphyuphyu , TN31019 , South , Zomba , OFF GRID  ,,600,622,958,901,901,10721,10969,248,4,, -   , -   , -   
+ Mikongoni Hill , TN45004 , South , Phalombe , OFF GRID ,,600,905, -   ,750,750,5568,5630,62,12,, -   , -   , -   
+ Thom Allan , TN30041 , South , Zomba , OFF GRID ,,600,807,469,905,905,8379,8579,200,5,, -   , -   , -   
+ ZA CENTRAL Ex Likungwati , TN30029 , South , Zomba , GRID , PREPAID ,600,600, -   ,600,600,9186,9186, -   ,#DIV/0!,, -   , -   , -   
+ Mposa , TN33017 , South , Machinga , OFF GRID ,,1000,836, -   ,700,700,9505,9635,130,5,, -   , -   , -   
+ Nayuchi , TN33009 , South , Machinga , GRID , PREPAID ,1000,700, -   ,650,650,28943,28970,27,24,1983, -   , -   , -   
+ Nselema , TN33012 , South , Machinga , GRID , PREPAID ,800,420, -   ,366,366,11889,11917,28,13,3714, -   , -   , -   
+ Chikweo , TN33001 , South , Machinga , GRID , PREPAID ,600,670, -   ,582,582,3137,3177,40,15,2096, -   , -   , -   
+ Mwima , TN32010 , South , Machinga , GRID , postpaid ,800,421,1143,160,160,18443,19085,642,0,, -   , -   , -   
+ Ulongwe , TN32018 , South , Machinga , GRID , postpaid ,800,580, -   ,350,350,15379,15379, -   ,#DIV/0!, x , -   , -   , -   
+ Ntaja , TN33013 , South , Machinga , GRID , postpaid ,1000,300,340,560,560,16656,16686,30,19, -   , -   , -   , -   
+ Nsanama , TN33011 , South , Machinga , GRID , PREPAID ,600,343, -   ,268,268,11904,11934,30,9,3689, -   , -   , -   
+ Mvuu camp , TN33006 , South , Machinga , OFF GRID  ,,600,1347, -   ,1206,1206,3216,3277,61,20,, -   , -   , -   
+ Namanja , TN33007 , South , Machinga , GRID , PREPAID ,600,500,534,500,500,24776,24998,222,2,2005, -   , -   , -   
+ Liwonde Road Block , TN32020 , South , Machinga , GRID , PREPAID ,600,490, -   ,490,490,3543,3543, -   ,#DIV/0!,1568, -   , -   , -   
+ Liwonde Residential , TN33003 , South , Machinga , GRID , PREPAID ,1000,515, -   ,370,370,11726,11784,58,6,2376, -   , -   , -   
+ Liwonde MTL , TN33002 , South , Machinga , GRID , postpaid ,800,588, -   ,420,420,2850,2900,50,8,, -   , -   , -   
+ Namanolo , TN32012 , South , Machinga , GRID , PREPAID ,600,500, -   ,320,320,6954,7557,603,1,2550, -   , -   , -   
+ Ulongwe DG 2 , TN32018 , South , Machinga , GRID , POSTPAID  ,600,827, -   ,780,780,7929,7949,20,39,, -   , -   , -   
+ Mkwepere , TN33014 , South , Machinga , OFF GRID ,,1000,466,679,718,718,6043,6298,255,3,, -   , -   , -   
+ MOBILE DG ZOMBA , TNMSRMOB01 , South , Zomba , OFF GRID , AT CHAPOLA ,1000,265, -   ,265,265,805,805, -   ,#DIV/0!,, -   , -   , -   
+ Lizulu , TN21005 , South , Ntcheu , OFF GRID , OFF GRID ,600,230,919,600,600,28924,29267,343,2,, -   , -   , -   
+ Phombeya Fiber Repeater , TN32015 , South , Balaka , GRID , OFF GRID ,1000,810, -   ,746,746,3794,3823,29,26,, -   , -   , -   
+ Mota 3.2 , TN49003 , South , Balaka , OFF GRID , OFF GRID ,600,800, -   ,517,517,1017,1080,63,8,, -   , -   , -   
+ Kandeu , TN21004 , South , Balaka , GRID , PREPAID ,600,650, -   ,642,642,25183,25186,3,214,, -   , -   , -   
+ Balaka  BSC , TN32002 , South , Balaka , GRID , PREPAID ,1000,596, -   ,596,596,1484,1484, -   ,#DIV/0!,455, -   , -   , -   
+ Tsangano Proper , TN21016 , South , Ntcheu , GRID , PREPAID ,1000,1000, -   ,1000,1000,2450,2450, -   ,#DIV/0!,2197, -   , -   , -   
+ Neno , TN49005 , South , neno , GRID , POSTPAID ,500,480, -   ,467,467,2764,2769,5,93,5529, -   , -   , -   
+ Phalula , TN32014 , South , Balaka , GRID , POSTPAID ,1000,783,655,745,745,13624,13954,330,2,, -   , -   , -   
+ Senzani , TN21014 , South , Balaka , GRID , POSTPAID ,1000,550, -   ,497,497,17127,17151,24,21,6763, -   , -   , -   
+ Andiamo , TN32001 , South , Balaka , GRID , PREPAID ,1000,530, -   ,482,482,17181,17197,16,30,, -   , -   , -   
+ Nachitheme , TN32011 , South , Balaka , GRID , POSTPAID ,1000,950, -   ,937,937,6727,6732,5,187,, -   , -   , -   
+ Manjawira , TN32008 , South , Balaka , GRID , PREPAID ,600,437, -   ,413,413,13219,13229,10,41,, -   , -   , -   
+ Ntcheu Peak , TN21012 , South , Ntcheu , GRID , POSTPAID ,600,557, -   ,490,490,7745,7777,32,15,, -   , -   , -   
+ New Balaka BSC , TN32002 , South , Balaka , GRID , BACK UP DG ,600,600, -   ,555,555,3274,3281,7,79,, -   , -   , -   
+ Chembera , TN32005 , South , Balaka , GRID , POSTPAID ,600,563, -   ,548,548,18644,18651,7,78,, -   , -   , -   
+ Nkaya , TN32013 , South , Balaka , OFF GRID  ,,600,850, -   ,850,850,7803,7803, -   ,#DIV/0!,, -   , -   , -   
+ Balaka Macra , TN32003 , South , Balaka , GRID , PREPAID ,600,489, -   ,480,480,9531,9536,5,96,, -   , -   , -   
+ Balaka Majiga , TN32004 , South , Balaka , GRID , PREPAID ,600,400,177,550,550,13000,13011,11,50,, -   , -   , -   
+ Khwisa , TN32007 , South , Balaka , GRID , PREPAID ,600,655, -   ,628,628,3635,3646,11,57,3538, -   , -   , -   
+ Mphombeya BTS , TN32015 , South , Balaka , GRID  , PREPAID ,600,590, -   ,538,538,5516,5542,26,21,, -   , -   , -   
+ Ntcheu MTL , TN21011 , South , Ntcheu , GRID , PREPAID AIRTEL ,600,882, -   ,875,875,2406,2410,4,219,, -   , -   , -   
+ UTALE , TN32019 , South , Balaka , OFFGRID , OFFGRID ,600,606, -   ,606,606,28728,28728, -   ,#DIV/0!,, -   , -   , -   
+ BLK Shop , TNMShop , South , Balaka , GRID ,,600,, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
+  MAWIRA new DG , TN33016 , South , Machinga , OFF GRID ,,800,410, -   ,335,335,10599,10629,30,11,, -   , -   , -   
+ MANGOCHI ACL , TN34022 , South , Mangochi , GRID , ACCESS ,1000,403,497,590,590,3757,3861,104,6, access , -   , -   , -   
+ MANGOCHI NORTH , TN34025 , South , mangochi , GRID , PREPAID ,600,284, -   ,161,161,12769,12818,49,3,1638, -   , -   , -   
+ MANGOCHI AIRPORT , TN34023 , South , Mangochi , GRID , PREPAID ,600,392, -   ,374,374,5970,5979,9,42,3693, -   , -   , -   
+ NANSENGA , TN34036 , South , Mangochi , OFF GRID  , PREPAID ,600,619, -   ,582,582,33062,33078,16,36, B/O , -   , -   , -   
+ PALM BEACH , TN34040 , South , Mangochi , GRID , PREPAID ,600,490,271,738,738,27128,27135,7,105,3827, -   , -   , -   
+ NAMIYASI , TN34032 , South , Mangochi , GRID , PREPAID ,600,565, -   ,502,502,9506,9543,37,14,4468, -   , -   , -   
+ SUN AND SAND , TN34042 , South , Mangochi , GRID , PREPAID ,600,685,135,735,735,7278,7312,34,22,, -   , -   , -   
+ CHIKOWA , TN34005 , South , Mangochi , GRID , PREPAID ,1000,419, -   ,408,408,7398,7404,6,68,2652, -   , -   , -   
+ CHIKOKOBAY , TN34003 , South , Mangochi , GRID , PREPAID ,600,576, -   ,237,237,16861,17002,141,2,2629, -   , -   , -   
+ MANZINZIBAY , TN34027 , South , Mangochi , GRID , PREPAID ,1000,680, -   ,659,659,7128,7140,12,55,4296, -   , -   , -   
+ CHIKOKO STATE , TN34004 , South , Mangochi , GRID , PREPAID ,300,510, -   ,469,469,9774,9791,17,28,2594, -   , -   , -   
+ MONKEY BAY , TN34028 , South , Mangochi , GRID , POSTPAID ,600,341,305,608,608,7698,7718,20,30, mtl , -   , -   , -   
+ NAMBANDE , TN34031 , South , Mangochi , OFF GRID , POSTPAID ,600,104,724,500,500,2125,2330,205,2,, -   , -   , -   
+ NGAPANI from Mbaluku , TN34037 , South , Mangochi , OFF GRID , POSTPAID ,1000,883, -   ,522,522,2884,2972,88,6,, -   , -   , -   
+ NAMWERA , TN34033 , South , Mangochi , GRID , PREPAID ,600,287,333,528,528,16668,16715,47,11,4196, -   , -   , -   
+ CHIPHOLE , TN34008 , South , Mangochi , OFF GRID  , OFFGRID ,1000,920, -   ,773,773,7153,7207,54,14,, -   , -   , -   
+ MALEKANO , TN34018 , South , Mangochi , OFF GRID  , PREPAID ,600,512,448,620,620,19988,20042,54,11,, -   , -   , -   
+ KATULI , TN34012 , South , Mangochi , GRID , PREPAID ,600,302,320,538,538,10501,10543,42,13,2722, -   , -   , -   
+ NANKHWALI , TN34034 , South , Mangochi , OFF GRID , PREPAID ,600,476, -   ,476,476,12601,12601, -   ,#DIV/0!, B/O , -   , -   , -   
+ NKHUZIBAY , TN34038 , South , Mangochi , OFF GRID  , PREPAID ,600,285, -   ,193,193,19225,19271,46,4, B/O , -   , -   , -   
+ CHING'OMBE , TN34007 , South , Mangochi , GRID , PREPAID ,600,600, -   ,584,584,29026,29034,8,73,2863, -   , -   , -   
+ NKOPOLA , TN34039 , South , Mangochi , GRID , PREPAID ,600,451,149,524,524,8785,8811,26,20,1209, -   , -   , -   
+ LULANGA , TN34015 , South , Mangochi , OFF GRID  , OFFGRID ,1000,730, -   ,474,474,14532,14596,64,7,, -   , -   , -   
+ Nambande Backup Dg , TN34031 , South , Mangochi , OFF GRID  , OFFGRID ,600,534, -   ,534,534,9380,9380, -   ,#DIV/0!,, -   , -   , -   
+ Mulibwanji  , TN34029 , South , Mangochi , OFF GRID  , OFFGRID ,1000,, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
+ MOBILE DG MH , TNMSRMOB02 , South , Mangochi , GRID , AT NKHUDZIBAY ,600,300, -   ,300,300,15,15, -   ,#DIV/0!,, -   , -   , -   
+ MH MTL , TN34021 , South , Mangochi , GRID  , PREPAID  ,1000,993, -   ,765,765,9427,9498,71,11,, -   , -   , -   
+ LUGOLA , TN34044 , South , Mangochi , OFF GRID  , PREPAID  ,1000,1071, -   ,455,455,8287,8595,308,1,, -   , -   , -   
+ MH KARONGA , TN34052 , South , Mangochi , OFF GRID  , PREPAID  ,1000,860, -   ,703,703,16403,16474,71,10,, -   , -   , -   
+ LUNGWENA  , TN34045 , South , Mangochi , OFF GRID  , PREPAID  ,600,577,873,865,865,6859,7054,195,4,, -   , -   , -   
+ Mbaluku , TN34047 , South , Mangochi , GRID , PREPAID  ,600,100, -   ,74,74,806,819,13,6,, -   , -   , -   
+ Makunganya , TN34046 , South , Mangochi , OFF GRID  , PREPAID  ,600,372,1000,1000,1000,8893,9248,355,3,, -   , -   , -   
+ Chembe  , TN34013 , South , Mangochi , OFF GRID  , PREPAID  ,600,243, -   ,215,215,27170,27184,14,15,, -   , -   , -   
+ Majiga 1 , TN32021 , South , Balaka , OFF GRID  , PREPAID  ,600,600,906,1000,1000,2611,2794,183,5,, -   , -   , -   
+ Dziwe , TN32022 , South , Balaka , OFF GRID  , PREPAID  ,1000,770,552,800,800,2171,2286,115,7,, -   , -   , -   
+ Chapola , TN31036 , South , Balaka , OFF GRID , PREPAID  ,600,412,642,620,620,2099,2253,154,4,, -   , -   , -   
+ St Therese/Liwonde Hospital , TN33018 , South , Machinga , OFF GRID  , PREPAID  ,1000,1000, -   ,440,440,2866,3050,184,2,, -   , -   , -   
+ Dzunje , TN21018 , South , Zomba , OFF GRID  , PREPAID  ,600,619,920,1043,1043,2760,2895,135,8,, -   , -   , -   
+ MPOTOLA , TN31035 , South , Machinga , OFF GRID  , PREPAID  ,600,344,375,550,550,14632,14706,74,7,, -   , -   , -   
+ Dzenje , TN45013 , South , Zomba , OFF GRID  , PREPAID  ,1000,710, -   ,570,570,1300,1342,42,14,, -   , -   , -   
+ chingondo , TN31010 , South , Zomba , OFF GRID  , PREPAID  ,600,600, -   ,600,600,19810,19810, -   ,#DIV/0!,, -   , -   , -   
+ Namasalima , TN31033 , South , Zomba , OFF GRID  , PREPAID  ,600,600, -   ,600,600,318,318, -   ,#DIV/0!,, -   , -   , -   
+ Ulumba , TN31034 , South , Zomba , OFF GRID  , PREPAID  ,600,510, -   ,325,325,202,310,108,3,, -   , -   , -   
+ Skinner(former Chanco) , TN30028 , South , Zomba , OFF GRID  , PREPAID  ,600,490, -   ,490,490,13842,13842, -   ,#DIV/0!,, -   , -   , -   
+ KOKOLO , TN45014 , South , Zomba , OFF GRID  , PREPAID  ,1000,630,820,1000,1000,3015,3200,185,5,, -   , -   , -   
+ MBANIRA , TN33021 , South , Machinga , OFF GRID  , PREPAID  ,600,560, -   ,400,400,6030,6096,66,6,, -   , -   , -   
  NANYUMBU ,, South , Machinga , OFF GRID , PREPAID  ,,, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
- KAWINGA , TN33020 , South , Machinga , OFF GRID  , PREPAID  ," 1,000 ", 600 , 907 , 770 , 770 ," 4,809 "," 5,200 ", 391 , 2 ,, -   , -   , -   
- GOSHEN CITY , TN34055 , South , Mangochi , OFF GRID  , PREPAID  ," 1,000 ", 792 ," 1,239 "," 1,000 "," 1,000 "," 3,212 "," 3,461 ", 249 , 4 ,, -   , -   , -   
- NTCHEU SHOP , TNMShop , South , Ntcheu , GRID , PREPAID  ," 1,000 ",, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
- MANGOCHI SHOP , TNMShop , South , Mangochi , GRID , PREPAID  ," 1,000 ",, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
- LIKUNGWATI OLD DG , TN30009 , South , Zomba , GRID , PREPAID  ," 1,000 ",, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
- KATEMA , TN34014  , South , Mangochi , GRID , PREPAID  ," 1,000 ", 139 , 561 , 514 , 514 ," 19,857 "," 19,896 ", 39 , 13 ,, -   , -   , -   
- NKOPOLA BACKUP DG , TN34039 , South , Mangochi , GRID , PREPAID  ," 1,000 ", 520 , -   , 520 , 520 ," 28,622 "," 28,622 ", -   ,#DIV/0!,, -   , -   , -   
+ KAWINGA , TN33020 , South , Machinga , OFF GRID  , PREPAID  ,1000,600,907,770,770,4809,5200,391,2,, -   , -   , -   
+ GOSHEN CITY , TN34055 , South , Mangochi , OFF GRID  , PREPAID  ,1000,792,1239,1000,1000,3212,3461,249,4,, -   , -   , -   
+ NTCHEU SHOP , TNMShop , South , Ntcheu , GRID , PREPAID  ,1000,, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
+ MANGOCHI SHOP , TNMShop , South , Mangochi , GRID , PREPAID  ,1000,, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
+ LIKUNGWATI OLD DG , TN30009 , South , Zomba , GRID , PREPAID  ,1000,, -   ,,,,, -   ,#DIV/0!,, -   , -   , -   
+ KATEMA , TN34014  , South , Mangochi , GRID , PREPAID  ,1000,139,561,514,514,19857,19896,39,13,, -   , -   , -   
+ NKOPOLA BACKUP DG , TN34039 , South , Mangochi , GRID , PREPAID  ,1000,520, -   ,520,520,28622,28622, -   ,#DIV/0!,, -   , -   , -   

@@ -12,7 +12,7 @@ Chilobwe,TN40022,Blantyre,Blantyre,Grid,Prepaid,600,600, -   ,460,140,11065,1111
 Chilomoni Police,TN40023,Blantyre,Blantyre,Grid,Prepaid,1000,220, -   ,180,40,8565,8591,26,1.5, -   , -   , -   , -   
 Chilomoni Fargo,TN40024,Blantyre,Blantyre,Off Grid,Prepaid,1000,1000,1885,1000,1885,6912,7529,617,3.1, -   , -   , -   , -   
 CHIMALIRO,TN40026,Blantyre,Blantyre,Grid,Prepaid,500,500, -   ,480,20,32441,32451,10,2, -   , -   , -   , -   
-Chiradzulu Hosp,TN42003,Blantyre,Chiradzulo,Grid,Prepaid,600,450,243,490,203,17259,17403,144,1.4, -   , -   , -   , -   
+Chiradzulu Hosp,TN42003,Blantyre,Chiradzulu,Grid,Prepaid,600,450,243,490,203,17259,17403,144,1.4, -   , -   , -   , -   
 Chisitu,TN44003,Blantyre,Mulanje,Grid,Prepaid,1000,1000, -   ,995,5,2853,2855,2,2.5, -   , -   , -   , -   
 Chigumula extension,TN40016,Blantyre,Blantyre,Off Grid,Prepaid,1000,670,737,990,417,4697,4778,81,5.1, -   , -   , -   , -   
 Faiti,TN47015,Blantyre,Mwanza,Prime,Prepaid,500,500, -   ,460,40,15954,15985,31,1.3, -   , -   , -   , -   
@@ -35,7 +35,7 @@ Mbame,TN41074,Blantyre,Blantyre,Grid,Prepaid,600,565, -   ,450,115,19790,19841,5
 Mbayani,TN40075,Blantyre,Blantyre,Grid,Prepaid,1000,400, -   ,396,4,16698,16700,2,2, -   , -   , -   , -   
 CEO residence,tnmres,Blantyre,Blantyre,Grid,Prepaid,600,600, -   ,600, -   ,14808,14808, -   ,#DIV/0!, -   , -   , -   , -   
 QECH,TN40151,Blantyre,Blantyre,Grid,Prepaid,600,190, -   ,260,-70,15502,15502, -   ,#DIV/0!, -   , -   , -   , -   
-Milepa,TN42005,Blantyre,Chiradzulo,Grid,Prepaid,1000,250,750,950,50,4874,4887,13,3.8, -   , -   , -   , -   
+Milepa,TN42005,Blantyre,Chiradzulu,Grid,Prepaid,1000,250,750,950,50,4874,4887,13,3.8, -   , -   , -   , -   
 Mimosa,TN44008,Blantyre,Mulanje,Grid,Prepaid,500,700, -   ,620,80,13831,13869,38,2.1, -   , -   , -   , -   
 Misesa,TN40078,Blantyre,Blantyre,Grid,Prepaid,1000,1000, -   ,600,400,6245,6433,188,2.1, -   , -   , -   , -   
 Mpemba Hill,TN41149,Blantyre,Blantyre,Off Grid,Prepaid,1000,517,1031,690,858,3289,3560,271,3.2, -   , -   , -   , -   
@@ -74,7 +74,7 @@ SunnySide,TN40121,Blantyre,Blantyre,Grid,Prepaid,1000,1000, -   ,870,130,6666,67
 Pakeni,TN40158,Blantyre,Blantyre,Off Grid,Prepaid,1000,650,922,880,692,3345,3648,303,2.3, -   , -   , -   , -   
 Tengani,TN47011,Blantyre,Nsanje,Grid,Prepaid,1000,350,1704,480,1574,3474,4127,653,2.4, -   , -   , -   , -   
 Thambani,TN48005,Blantyre,Nsanje,Prime,Prepaid,1000,500, -   ,190,310,19092,19182,90,3.4, -   , -   , -   , -   
-Mbulumbuzi,TN41013,Blantyre,Chiradzulo,Off Grid,Prepaid,1000,1000,758,1000,758,3203,3539,336,2.3, -   , -   , -   , -   
+Mbulumbuzi,TN41013,Blantyre,Chiradzulu,Off Grid,Prepaid,1000,1000,758,1000,758,3203,3539,336,2.3, -   , -   , -   , -   
 Thekerani,TN43016,Blantyre,Thyolo,Grid,Prepaid,600,530, -   ,515,15,23615,23625,10,1.5, -   , -   , -   , -   
 Thyolo Number One,TN43023,Blantyre,Thyolo,Grid,Prepaid,600,380,268,590,58,12225,12246,21,2.8, -   , -   , -   , -   
 Chileka Ex/ 10 miles,TN40018,Blantyre,Blantyre,Prime,Prepaid,800,200,764,800,164,21259,21346,87,1.9, -   , -   , -   , -   
@@ -104,7 +104,7 @@ Manyowe,TN40070,Blantyre,Blantyre,Grid,Prepaid,600,300, -   ,295,5,14139,14141,2
 Luchenza,TN43006,Blantyre,Thyolo,Grid,Prepaid,600,560,128,590,98,25789,25847,58,1.7, -   , -   , -   , -   
 Bereu,TN46002,Blantyre,Chikwawa,Grid,Prepaid,600,588, -   ,474,114,26525,26599,74,1.5, -   , -   , -   , -   
 Zalewa Extension,TN49009,Blantyre,Mwanza,Grid,Prepaid,600,606, -   ,588,18,26701,26721,20,0.9, -   , -   , -   , -   
-PIM,TN41014,Blantyre,Chiradzulo,Off Grid,Prepaid,1000,1000, -   ,700,300,480,544,64,4.7, -   , -   , -   , -   
+PIM,TN41014,Blantyre,Chiradzulu,Off Grid,Prepaid,1000,1000, -   ,700,300,480,544,64,4.7, -   , -   , -   , -   
 Mulanje Mission,TN44012,Blantyre,Mulanje,Grid,Prepaid,1000,900, -   ,860,40,16942,16962,20,2, -   , -   , -   , -   
 Mulanje MTL,TN44010,Blantyre,Mulanje,Grid,Prepaid,600,600, -   ,595,5,10275,10278,3,1.7, -   , -   , -   , -   
 Mangunda,TN43010,Blantyre,Mulanje,Grid,Prepaid,600,400, -   ,250,150,23518,23588,70,2.1, -   , -   , -   , -   
@@ -145,9 +145,9 @@ Mathambi,TN44007,Blantyre,Thyolo,Grid,Prepaid,600,380, -   ,370,10,13482,13488,6
 Makande,TNM00,Blantyre,Thyolo,Grid,Prepaid,600,, -   ,, -   ,,, -   ,#DIV/0!, -   , -   , -   , -   
 Ntambanyama,TN43017,Blantyre,Thyolo,Grid,Prepaid,600,500, -   ,460,40,2100,2125,25,1.6, -   , -   , -   , -   
 Kakoma,TN46008,Blantyre,Chikwawa,Grid,Prepaid,1000,520, -   ,515,5,3843,3845,2,2.5, -   , -   , -   , -   
-Catholic University ,TN42001,Blantyre,Chiradzulo,Grid,Prepaid,600,600,350,570,380,43981,44144,163,2.3, -   , -   , -   , -   
+Catholic University ,TN42001,Blantyre,Chiradzulu,Grid,Prepaid,600,600,350,570,380,43981,44144,163,2.3, -   , -   , -   , -   
 Chididi,TN47002,Blantyre,Nsanje,Grid,Prepaid,1000,500,925,900,525,5270,5359,89,5.9, -   , -   , -   , -   
-Ndunde,TN42008,Blantyre,Chiradzulo,Prime,Prepaid,500,80,397,350,127,16489,16578,89,1.4, -   , -   , -   , -   
+Ndunde,TN42008,Blantyre,Chiradzulu,Prime,Prepaid,500,80,397,350,127,16489,16578,89,1.4, -   , -   , -   , -   
 DAPP Chilangoma,TN41019,Blantyre,Mulanje,Grid,Prepaid,1000,710,530,900,340,9552,9639,87,3.9, -   , -   , -   , -   
 Chitakale,TN44021,Blantyre,Thyolo,Off Grid,Prepaid,1000,790, -   ,788,2,2910,2911,1,2, -   , -   , -   , -   
 Zinziri,TN40150,Blantyre,Blantyre,Off Grid,Prepaid,1000,950, -   ,950, -   ,3048,3048, -   ,#DIV/0!, -   , -   , -   , -   

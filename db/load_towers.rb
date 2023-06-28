@@ -37,12 +37,12 @@ CSV.read(filename).each_with_index do |t, i|
         frefill = Refill.new 
         frefill.refill_type = "FUEL"
         frefill.tower_id = tower.id 
-        frefill.reading_before_refill = t[headers.index("Opening Litres")].strip
-        frefill.refill_amount = t[headers.index("Litres Dispensed")].strip  rescue 0
-        frefill.reading_after_refill = t[headers.index("Closing Litres")].strip rescue 0    
-        frefill.usage = t[headers.index("Usage in Litres")].strip rescue 0
-        frefill.genset_reading = t[headers.index("Closing Hours")].strip rescue 0
-        frefill.genset_run_time = t[headers.index("Hours Run")].strip rescue 0
+        frefill.reading_before_refill = t[headers.index("Opening Litres")].strip.gsub(",", "")
+        frefill.refill_amount = t[headers.index("Litres Dispensed")].strip.gsub(",", "") rescue 0
+        frefill.reading_after_refill = t[headers.index("Closing Litres")].strip.gsub(",", "")rescue 0    
+        frefill.usage = t[headers.index("Usage in Litres")].strip.gsub(",", "") rescue 0
+        frefill.genset_reading = t[headers.index("Closing Hours")].strip.gsub(",", "") rescue 0
+        frefill.genset_run_time = t[headers.index("Hours Run")].strip.gsub(",", "") rescue 0
         frefill.creator = creator
         frefill.refill_date = "31-May-2023".to_date
         frefill.save!
@@ -52,17 +52,17 @@ CSV.read(filename).each_with_index do |t, i|
         erefill = Refill.new 
         erefill.refill_type = "ESCOM"
         erefill.tower_id = tower.id 
-        erefill.reading_before_refill = t[headers.index("Opening Readings")].strip rescue 0
-        erefill.refill_amount = t[headers.index("Units Bought")].strip rescue 0
+        erefill.reading_before_refill = t[headers.index("Opening Readings")].strip.gsub(",", "") rescue 0
+        erefill.refill_amount = t[headers.index("Units Bought")].strip.gsub(",", "").gsub(",", "") rescue 0
 
         if (t[headers.index("Closing Readings")].strip.present? rescue false)
-            erefill.reading_after_refill = t[headers.index("Closing Readings")].strip rescue 0
+            erefill.reading_after_refill = t[headers.index("Closing Readings")].strip.gsub(",", "") rescue 0
         else 
             c = (t[headers.index("Opening Readings")].strip.to_i + t[headers.index("Units Bought")].strip.to_i) rescue 0
             erefill.reading_after_refill = c
         end 
 
-        erefill.usage = t[headers.index("Power Usage")].strip rescue 0
+        erefill.usage = t[headers.index("Power Usage")].strip.gsub(",", "") rescue 0
         erefill.creator = creator
         erefill.refill_date = "31-May-2023".to_date
         erefill.save!

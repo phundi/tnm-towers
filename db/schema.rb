@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "tower", primary_key: "tower_id", force: :cascade do |t|
     t.string   "name"
+    t.string   "code",                    limit: 255
     t.integer  "district_id",         limit: 4,   default: 0,     null: false
     t.integer  "tower_type_id",  null: false
     t.string  "grid_type", null: false, default: "On Grid Site"

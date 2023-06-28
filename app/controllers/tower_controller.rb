@@ -247,7 +247,7 @@ class TowerController < ApplicationController
                 (fuel_refills_mtd || 0),
                 (fuel_refill.reading_after_refill rescue rescue_value),
                 (p.usage_mtd || 0),
-                (fuel_refill_last_month.reading_after_refill rescue fuel_refill.hours_before),
+                (fuel_refill_last_month.reading_after_refill rescue (fuel_refill.hours_before rescue 0)),
                 (fuel_refill.genset_reading rescue rescue_value),
                 (p.run_hours_mtd || 0),
                 rate,

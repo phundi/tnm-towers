@@ -52,17 +52,17 @@ CSV.read(filename).each_with_index do |t, i|
         erefill = Refill.new 
         erefill.refill_type = "ESCOM"
         erefill.tower_id = tower.id 
-        erefill.reading_before_refill = t[headers.index("Opening Readings")].strip
-        erefill.refill_amount = t[headers.index("Units Bought")].strip
+        erefill.reading_before_refill = t[headers.index("Opening Readings")].strip rescue 0
+        erefill.refill_amount = t[headers.index("Units Bought")].strip rescue 0
 
-        if t[headers.index("Closing Readings")].strip.present? 
-            erefill.reading_after_refill = t[headers.index("Closing Readings")].strip
+        if (t[headers.index("Closing Readings")].strip.present? rescue false)
+            erefill.reading_after_refill = t[headers.index("Closing Readings")].strip rescue 0
         else 
-            c = t[headers.index("Opening Readings")].strip.to_i + t[headers.index("Units Bought")].strip.to_i
+            c = (t[headers.index("Opening Readings")].strip.to_i + t[headers.index("Units Bought")].strip.to_i) rescue 0
             erefill.reading_after_refill = c
         end 
 
-        erefill.usage = t[headers.index("Power Usage")].strip
+        erefill.usage = t[headers.index("Power Usage")].strip rescue 0
         erefill.creator = creator
         erefill.refill_date = "31-May-2023".to_date
         erefill.save!

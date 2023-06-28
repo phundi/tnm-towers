@@ -15,6 +15,7 @@ class TowerController < ApplicationController
       @refill.refill_amount  = params[:refill_amount]
       @refill.usage = params[:refill_usage]
       @refill.genset_reading = params[:genset_reading]
+      @refill.hours_before = (params[:genset_reading] - params[:refill_run_hours])
       @refill.genset_run_time = params[:refill_run_hours]
       @refill.refill_type  = params[:type].upcase
       @refill.tower_id  = @tower.id 
@@ -236,7 +237,7 @@ class TowerController < ApplicationController
       if rate == "?" || rate > 3
           rate = "<span style='color:red'>#{rate}</span>"
       end 
-      gen_last_month = (fuel_refill.genset_reading - fuel_refill.genset_run_time) rescue rescue_value
+      gen_last_month = h(fuel_refill.genset_reading - fuel_refill.genset_run_time) rescue rescue_value
 
       row = [rdate,
                 p.name, 
@@ -246,7 +247,7 @@ class TowerController < ApplicationController
                 (fuel_refills_mtd || 0),
                 (fuel_refill.reading_after_refill rescue rescue_value),
                 (p.usage_mtd || 0),
-                (fuel_refill_last_month.genset_reading rescue gen_last_month),
+                (fuel_refill_last_month.reading_after_refill rescue fuel_refill.hours_before),
                 (fuel_refill.genset_reading rescue rescue_value),
                 (p.run_hours_mtd || 0),
                 rate,

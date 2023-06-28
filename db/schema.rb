@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer  "refill_amount",  null: false
     t.integer  "reading_after_refill",  null: false
     t.integer  "usage",  null: false, default: 0
+    t.integer  "hours_before"
     t.integer  "genset_reading"
     t.integer  "genset_run_time"
     t.datetime "refill_date",      null: false

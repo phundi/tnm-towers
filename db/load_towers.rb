@@ -41,6 +41,7 @@ CSV.read(filename).each_with_index do |t, i|
         frefill.refill_amount = t[headers.index("Litres Dispensed")].strip.gsub(",", "") rescue 0
         frefill.reading_after_refill = t[headers.index("Closing Litres")].strip.gsub(",", "")rescue 0    
         frefill.usage = t[headers.index("Usage in Litres")].strip.gsub(",", "") rescue 0
+        frefill.hours_before = t[headers.index("Opening Hours")].strip.gsub(",", "") rescue 0
         frefill.genset_reading = t[headers.index("Closing Hours")].strip.gsub(",", "") rescue 0
         frefill.genset_run_time = t[headers.index("Hours Run")].strip.gsub(",", "") rescue 0
         frefill.creator = creator

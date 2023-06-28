@@ -15,7 +15,7 @@ class TowerController < ApplicationController
       @refill.refill_amount  = params[:refill_amount]
       @refill.usage = params[:refill_usage]
       @refill.genset_reading = params[:genset_reading]
-      @refill.hours_before = (params[:genset_reading] - params[:refill_run_hours])
+      @refill.hours_before = (params[:genset_reading].to_i - params[:refill_run_hours].to_i)
       @refill.genset_run_time = params[:refill_run_hours]
       @refill.refill_type  = params[:type].upcase
       @refill.tower_id  = @tower.id 

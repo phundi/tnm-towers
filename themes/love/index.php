@@ -56,7 +56,7 @@
 				<?php }} ?>
 				<div>
 					<?php if ($config->user_registration == 1) { ?>
-						<a href="<?php echo $site_url;?>/register" class="btn-large waves-effect waves-light btn_primary lighten-1 bold btn_round main-hdr-bttn"><?php echo __( 'Get Started' );?></a>
+						<a href="<?php echo $site_url;?>/register" class="btn-large waves-effect waves-light btn_primary lighten-1 bold btn_round main-hdr-bttn"><?php echo __( 'Register Now' );?></a>
 					<?php } ?>
 					<a href="<?php echo $site_url;?>/about" data-ajax="/about" class="main-know-bttn"><?php echo __( 'Know More' );?></a>
 				</div>
@@ -304,7 +304,7 @@
 				<p><?php echo __( 'Anytime & Anywhere' );?></p>
 				<h4><?php echo str_replace('{0}', ucfirst( $config->site_name ) , __( 'Connect with your perfect Soulmate here, on {0}.' ) );?></h4>
 				<?php if ($config->user_registration == 1) { ?>
-					<a href="<?php echo $site_url;?>/register" class="waves-effect waves-light bold btn_glossy"><?php echo __( 'Get Started' );?></a>
+					<a href="<?php echo $site_url;?>/register" class="waves-effect waves-light bold btn_glossy"><?php echo __( 'Register Now' );?></a>
 				<?php } ?>
 			</div>
 		</div>

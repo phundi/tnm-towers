@@ -8,7 +8,7 @@
 						<h5 class="header col s12 light"><?php echo __( 'Join' );?> <?php echo ucfirst( $config->site_name );?>, <?php echo __( 'where you could meet anyone, anywhere!' );?></h5>
 					</div>
 					<div class="row center">
-						<a href="<?php echo $site_url;?>/register" class="btn-large waves-effect waves-light btn_primary lighten-1 bold btn_round"><?php echo __( 'Get Started' );?></a>&nbsp;&nbsp;&nbsp;
+						<a href="<?php echo $site_url;?>/register" class="btn-large waves-effect waves-light btn_primary lighten-1 bold btn_round"><?php echo __( 'Register Now' );?></a>&nbsp;&nbsp;&nbsp;
 						<a href="#how_it_work" class="smooth btn-large btn-flat bold"><?php echo __( 'Know More' );?></a>
 					</div>
 				</div>
@@ -223,7 +223,7 @@
 					<div class="row">
 						<div class="col s12 center-align dt_get_start">
 							<h4 class="white-text light"><?php echo str_replace('{0}', ucfirst( $config->site_name ) , __( 'Connect with your perfect Soulmate here, on {0}.' ) );?></h4>
-							<a href="<?php echo $site_url;?>/register" class="waves-effect waves-light btn-flat btn-large bold btn_glossy"><?php echo __( 'Get Started' );?></a>
+							<a href="<?php echo $site_url;?>/register" class="waves-effect waves-light btn-flat btn-large bold btn_glossy"><?php echo __( 'Register Now' );?></a>
 						</div>
 					</div>
 				</div>

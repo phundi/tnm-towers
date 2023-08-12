@@ -1,0 +1,158 @@
+<?php 
+if (empty($_GET['id'])) {
+	header("Location: " . Wo_LoadAdminLinkSettings('index.php?link1=welcome'));
+    exit();
+}
+if (!is_numeric($_GET['id'])) {
+	header("Location: " . Wo_LoadAdminLinkSettings('index.php?link1=welcome'));
+    exit();
+}
+$user_data = Wo_UserData($_GET['id']);
+if (empty($user_data)) {
+	header("Location: " . Wo_LoadAdminLinkSettings('index.php?link1=welcome'));
+    exit();
+}
+$page           = (!empty($_GET['page-id']) && is_numeric($_GET['page-id'])) ? Secure($_GET['page-id']) : 1;
+$filter_keyword = (!empty($_GET['query'])) ? Secure($_GET['query']) : '';
+$db->pageLimit  = 50;
+$link = '&id='.$user_data['id'];
+
+if (!empty($filter_keyword)) {
+  $link .= '&query='.$filter_keyword;
+  $sql   = "(
+    `username`     LIKE '%$filter_keyword%' OR 
+    `email`        LIKE '%$filter_keyword%' OR 
+    `first_name`   LIKE '%$filter_keyword%' OR 
+    `ip_address`   LIKE '%$filter_keyword%' OR 
+    `phone_number` LIKE '%$filter_keyword%' OR 
+    `last_name`    LIKE '%$filter_keyword%'
+  )";
+
+  $db->where($sql);
+} 
+$sort_link = $link;
+$sort_array = array('DESC_i' => array('id' , 'DESC'),
+                    'ASC_i'  => array('id' , 'ASC'),
+                    'DESC_u' => array('username' , 'DESC'),
+                    'ASC_u'  => array('username' , 'ASC'),
+                    'DESC_e' => array('email' , 'DESC'),
+                    'ASC_e'  => array('email' , 'ASC'),
+                    'DESC_s' => array('active' , 'DESC'),
+                    'ASC_s'  => array('active' , 'ASC'));
+if (!empty($_GET['sort']) && in_array($_GET['sort'], array_keys($sort_array))) {
+    $db->orderBy($sort_array[$_GET['sort']][0],$sort_array[$_GET['sort']][1]);
+    $link .= "&sort=".Secure($_GET['sort']);
+    $rang_link .= "&sort=".Secure($_GET['sort']);
+}
+else{
+    $_GET['sort'] = 'DESC_i';
+    $db->orderBy('id', 'DESC');
+} 
+
+$users = $db->where('referrer',Secure($_GET['id']))->objectbuilder()->paginate('users', $page);
+
+if (($page > $db->totalPages) && !empty($_GET['page-id'])) {
+  header("Location: " . Wo_LoadAdminLinkSettings('referrals-list'));
+  exit();
+}
+?>
+<div class="container-fluid">
+    <div>
+        <h3>Payment Requests</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Users</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Affiliates System</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Payment Requests</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Referrals</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">Referrals From The User: <?php echo $user_data['username']?></h6>
+                  <div class="row">
+                      <div class="col-md-4" style="margin-bottom:0;">
+                        <form method="get" action="<?php echo Wo_LoadAdminLinkSettings('referrals-list'); ?>">
+                          <div class="row">
+                            <div class="col-md-11">
+                              <div class="form-group form-float">
+                                  <div class="form-line">
+                                    <label class="form-label search-form">
+                                        Search for Username, E-mail,First Name, Last Name
+                                      </label>
+                                      <input type="text" name="query" id="query" class="form-control" value="<?php echo($filter_keyword); ?>">
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="col-md-1">
+                              <label>&nbsp;</label>
+                               <button class="btn btn-info">Search</button>
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                          <input type="hidden" name="id" value="<?php echo($user_data['id']) ?>">
+                        </form>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                      <th>ID 
+                                  <?php if (!empty($_GET['sort']) && $_GET['sort'] == 'DESC_i') { ?>
+                                      <svg onclick="location.href = '<?php echo(Wo_LoadAdminLinkSettings('referrals-list?page-id=1').$sort_link."&sort=ASC_i") ?>'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up cursor-p"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                                  <?php }else{ ?>
+                                      <svg onclick="location.href = '<?php echo(Wo_LoadAdminLinkSettings('referrals-list?page-id=1').$sort_link."&sort=DESC_i") ?>'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down cursor-p"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                                  <?php } ?></th>
+					                  <th>Username 
+                                  <?php if (!empty($_GET['sort']) && $_GET['sort'] == 'DESC_u') { ?>
+                                      <svg onclick="location.href = '<?php echo(Wo_LoadAdminLinkSettings('referrals-list?page-id=1').$sort_link."&sort=ASC_u") ?>'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up cursor-p"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                                  <?php }else{ ?>
+                                      <svg onclick="location.href = '<?php echo(Wo_LoadAdminLinkSettings('referrals-list?page-id=1').$sort_link."&sort=DESC_u") ?>'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down cursor-p"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                                  <?php } ?></th>
+					                  <th>Source</th>
+					                  <th>E-mail 
+                                  <?php if (!empty($_GET['sort']) && $_GET['sort'] == 'DESC_e') { ?>
+                                      <svg onclick="location.href = '<?php echo(Wo_LoadAdminLinkSettings('referrals-list?page-id=1').$sort_link."&sort=ASC_e") ?>'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up cursor-p"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                                  <?php }else{ ?>
+                                      <svg onclick="location.href = '<?php echo(Wo_LoadAdminLinkSettings('referrals-list?page-id=1').$sort_link."&sort=DESC_e") ?>'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down cursor-p"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                                  <?php } ?></th>
+					                  <th>IP Address</th>
+					                  <th>Status 
+                                  <?php if (!empty($_GET['sort']) && $_GET['sort'] == 'DESC_s') { ?>
+                                      <svg onclick="location.href = '<?php echo(Wo_LoadAdminLinkSettings('referrals-list?page-id=1').$sort_link."&sort=ASC_s") ?>'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up cursor-p"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                                  <?php }else{ ?>
+                                      <svg onclick="location.href = '<?php echo(Wo_LoadAdminLinkSettings('referrals-list?page-id=1').$sort_link."&sort=DESC_s") ?>'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down cursor-p"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                                  <?php } ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <?php 
+                              foreach ($users as $value) {
+                                $wo['userlist'] = Wo_UserData($value->id);
+                                  echo Wo_LoadAdminPage('referrals-list/list');
+                              }
+                              ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <!-- #END# Vertical Layout -->

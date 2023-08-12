@@ -1,0 +1,215 @@
+<?php
+$social_media_links_on = ($wo['config']['social_media_links'] == 'on') ? 'checked' : '';
+$social_media_links_off = ($wo['config']['social_media_links'] == 'off') ? 'checked' : '';
+?>
+<div class="container-fluid">
+    <div>
+        <h3>Site Settings</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Settings</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Site Settings</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6 float-left">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Website Settings</h6>
+                    <div class="site-settings-alert"></div>
+                    <form class="site-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Website Title</label>
+                                <input type="text" id="default_title" name="default_title" class="form-control" value="<?php echo $wo['config']['default_title']; ?>">
+								<small class="admin-info">Your website general title, it will appear on Google and on your browser tab.</small>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Website Name</label>
+                                <input type="text" id="site_name" name="site_name" class="form-control" value="<?php echo $wo['config']['site_name']; ?>">
+								<small class="admin-info">Your website name, it will on website's footer and E-mails.</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Website Keywords</label>
+                                <input type="text" id="meta_keywords" name="meta_keywords" class="form-control" value="<?php echo $wo['config']['meta_keywords']; ?>">
+								<small class="admin-info">Your website's keyword, used mostly for SEO and search engines.</small>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Website Description</label>
+                                <textarea name="meta_description" id="meta_description" class="form-control" cols="30" rows="5"><?php echo $wo['config']['meta_description']; ?></textarea>
+								<small class="admin-info">Your website's description, used mostly for SEO and search engines, Max of 100 characters is recommended</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Website Server Key</label>
+                                <input type="text" id="skey" name="skey" class="form-control" value="<?php global $serverkey; echo $serverkey; ?>">
+								<small class="admin-info">Used for API connection, mostly for android/IOS apps.</small>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <div class="float-left">
+                                <label for="social_media_links" class="main-label">Show Social Media Links</label>
+                                <br><small class="admin-info">Show social media links in footer</small>
+                            </div>
+                            <div class="form-group float-right switcher">
+                                <input type="hidden" name="social_media_links" value="off">
+                                <input type="checkbox" name="social_media_links" id="social_media_links-enabled" value="on" <?php echo $social_media_links_on; ?>>
+                                <label for="social_media_links-enabled" class="check-trail"><span class="check-handler"></span></label>
+                            </div>
+                            <div class="clearfix"></div>
+                            <hr>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Facebook</label>
+                                <input type="text" id="facebook_url" name="facebook_url" class="form-control" value="<?php echo $wo['config']['facebook_url']; ?>">
+								<small class="admin-info">Use your Facebook page link, shown in footer.</small>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Twitter</label>
+                                <input type="text" id="twitter_url" name="twitter_url" class="form-control" value="<?php echo $wo['config']['twitter_url']; ?>">
+								<small class="admin-info">Use your Twitter page link, shown in footer.</small>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Google</label>
+                                <input type="text" id="google_url" name="google_url" class="form-control" value="<?php echo $wo['config']['google_url']; ?>">
+								<small class="admin-info">Use your Google page link, shown in footer.</small>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr>
+                         <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Google Tag / Analytics Code</label>
+                                <textarea name="google_tag_code" id="google_tag_code" class="form-control" cols="30" rows="5"><?php echo openssl_decrypt($wo['config']['google_tag_code'], "AES-128-ECB", 'mysecretkey1234'); ?></textarea>
+                            </div>
+                            <small>Paste your full Google Analytics Code here to track traffic.</small>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Android & IOS Apps</h6>
+                    <div class="api-settings-alert"></div>
+                    <form class="api-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="mt-n1"><path fill="#4caf50" d="M16.61 15.15C16.15 15.15 15.77 14.78 15.77 14.32S16.15 13.5 16.61 13.5H16.61C17.07 13.5 17.45 13.86 17.45 14.32C17.45 14.78 17.07 15.15 16.61 15.15M7.41 15.15C6.95 15.15 6.57 14.78 6.57 14.32C6.57 13.86 6.95 13.5 7.41 13.5H7.41C7.87 13.5 8.24 13.86 8.24 14.32C8.24 14.78 7.87 15.15 7.41 15.15M16.91 10.14L18.58 7.26C18.67 7.09 18.61 6.88 18.45 6.79C18.28 6.69 18.07 6.75 18 6.92L16.29 9.83C14.95 9.22 13.5 8.9 12 8.91C10.47 8.91 9 9.24 7.73 9.82L6.04 6.91C5.95 6.74 5.74 6.68 5.57 6.78C5.4 6.87 5.35 7.08 5.44 7.25L7.1 10.13C4.25 11.69 2.29 14.58 2 18H22C21.72 14.59 19.77 11.7 16.91 10.14H16.91Z"></path></svg> Native Android</label>
+                                <input type="text" id="native_android_url" name="native_android_url" class="form-control" value="<?php echo $wo['config']['native_android_url']?>">
+                                <small class="admin-info">Your Native Android Link.</small>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="mt-n1"><path fill="#607d8b" d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"></path></svg> Native iOS</label>
+                                <input type="text" id="native_ios_url" name="native_ios_url" class="form-control" value="<?php echo $wo['config']['native_ios_url']?>">
+                                <small class="admin-info">Your Native iOS Link.</small>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <!-- <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+    $(function() {
+    $('.switcher input[type=checkbox]').click(function () {
+        var configName = $(this).attr('name');
+        var hash_id = $('input[name=hash_id]').val();
+        var objData = {};
+        if ($(this).is(":checked") === true) {
+            objData[configName] = $(this).val();
+        }
+        else{
+            if ($('input[name='+configName+']')[0]) {
+                objData[configName] = $($('input[name='+configName+']')[0]).val();
+            }
+        }
+        objData['hash_id'] = hash_id;
+        $.post(Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting', objData);
+    });
+
+    var setTimeOutColor = setTimeout(function (){});
+    $('select').on('change', function() {
+         clearTimeout(setTimeOutColor);
+        var thisElement = $(this);
+        var configName = thisElement.attr('name');
+        var hash_id = $('input[name=hash_id]').val();
+        var objData = {};
+        objData[configName] = this.value;
+        objData['hash_id'] = hash_id;
+        thisElement.addClass('warning');
+        $.post(Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting', objData, function (data) {
+            if (data.status == 200) {
+                thisElement.removeClass('warning');
+                thisElement.addClass('success');
+            } else {
+                thisElement.addClass('error');
+            }
+            var setTimeOutColor = setTimeout(function () {
+                thisElement.removeClass('success');
+                thisElement.removeClass('warning');
+                thisElement.removeClass('error');
+            }, 2000);
+        });
+    });
+    $('input[type=text], input[type=number], textarea').on('input', delay(function() {
+            clearTimeout(setTimeOutColor);
+            var thisElement = $(this);
+            var configName = thisElement.attr('name');
+            var hash_id = $('input[name=hash_id]').val();
+            var objData = {};
+            objData[configName] = this.value;
+            objData['hash_id'] = hash_id;
+            thisElement.addClass('warning');
+            if (configName == 'google_tag_code') {
+               objData[configName] = btoa(this.value);
+            }
+            $.post(Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting', objData, function (data) {
+                if (data.status == 200) {
+                    thisElement.removeClass('warning');
+                    thisElement.addClass('success');
+                } else {
+                    thisElement.addClass('error');
+                }
+                var setTimeOutColor = setTimeout(function () {
+                    thisElement.removeClass('success');
+                    thisElement.removeClass('warning');
+                    thisElement.removeClass('error');
+                }, 2000);
+                //thisElement.focus();
+            });
+    }, 500));
+});
+</script>

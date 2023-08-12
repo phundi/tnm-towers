@@ -1,0 +1,9 @@
+# Turn on URL rewriting
+RewriteEngine On
+# Installation directory
+# RewriteBase /
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+# Rewrite all other URLs to index.php/URL
+RewriteRule ^(.*)$ index.php?path=$1 [NC,L,QSA]

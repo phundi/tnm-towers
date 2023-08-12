@@ -1,0 +1,342 @@
+<?php 
+$page                = (!empty($_GET['page-id'])) ? $_GET['page-id'] : 1;
+$db->pageLimit       = 20;
+$link = "";
+$sort_link = $link;
+$sort_array = array('DESC_i' => array('id' , 'DESC'),
+                    'ASC_i'  => array('id' , 'ASC'));
+if (!empty($_GET['sort']) && in_array($_GET['sort'], array_keys($sort_array))) {
+    $db->orderBy($sort_array[$_GET['sort']][0],$sort_array[$_GET['sort']][1]);
+    $link .= "&sort=".Secure($_GET['sort']);
+}
+else{
+    $_GET['sort'] = 'DESC_i';
+    $db->orderBy('id', 'DESC');
+}
+$verif_requests      = $db->arrayBuilder()->paginate('affiliates_requests',$page);
+
+if (($page > $db->totalPages) && !empty($_GET['page-id'])) {
+    header("Location: " . Wo_LoadAdminLinkSettings('payment-requests'));
+    exit();
+}
+$db->where('recipient_id',0)->where('admin',1)->where('seen',0)->where('type','with')->update('notifications',array('seen' => time()));
+?>
+<div class="container-fluid">
+    <div>
+        <h3>Payment Requests</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Users</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Affiliates System</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Payment Requests</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+          <div class="card">
+              <div class="card-body">
+                  <h6 class="card-title">TOTAL REQUESTS</h6>
+                  <div class="d-flex align-items-center mb-3">
+                      <div>
+                          <div class="avatar">
+                              <span class="avatar-title bg-info-bright text-info rounded-pill">
+                                  <i class="material-icons">storage</i>
+                              </span>
+                          </div>
+                      </div>
+                      <div class="font-weight-bold ml-1 font-size-30 ml-3"><?php echo Wo_CountPaymentHistory(0); ?></div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+              <div class="card-body">
+                  <h6 class="card-title">PAID REQUESTS</h6>
+                  <div class="d-flex align-items-center mb-3">
+                      <div>
+                          <div class="avatar">
+                              <span class="avatar-title bg-primary-bright text-primary rounded-pill">
+                                  <i class="material-icons">check</i>
+                              </span>
+                          </div>
+                      </div>
+                      <div class="font-weight-bold ml-1 font-size-30 ml-3"><?php echo Wo_CountPaymentHistory(1); ?></div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+              <div class="card-body">
+                  <h6 class="card-title">DECLINED REQUESTS</h6>
+                  <div class="d-flex align-items-center mb-3">
+                      <div>
+                          <div class="avatar">
+                              <span class="avatar-title bg-main-bright text-main rounded-pill">
+                                  <i class="material-icons">av_timer</i>
+                              </span>
+                          </div>
+                      </div>
+                      <div class="font-weight-bold ml-1 font-size-30 ml-3"><?php echo Wo_CountPaymentHistory(2); ?></div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+              <div class="card-body">
+                  <h6 class="card-title">PENDING REQUESTS</h6>
+                  <div class="d-flex align-items-center mb-3">
+                      <div>
+                          <div class="avatar">
+                              <span class="avatar-title bg-warning-bright text-warning rounded-pill">
+                                  <i class="material-icons">mail_outline</i>
+                              </span>
+                          </div>
+                      </div>
+                      <div class="font-weight-bold ml-1 font-size-30 ml-3"><?php echo Wo_CountPaymentHistory(0); ?></div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Manage Payment Requests</h6>
+					<div class="alert alert-info">Payments are made from your paypal account, after the payment is made, mark the request as paid.</div>
+                    <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th><input type="checkbox" id="check-all" class="filled-in check-all" ><label for="check-all"></label></th>
+                                <th>ID 
+                                        <?php if (!empty($_GET['sort']) && $_GET['sort'] == 'DESC_i') { ?>
+                                            <svg onclick="location.href = '<?php echo(Wo_LoadAdminLinkSettings('payment-requests?page-id=1').$sort_link."&sort=ASC_i") ?>'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up cursor-p"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                                        <?php }else{ ?>
+                                            <svg onclick="location.href = '<?php echo(Wo_LoadAdminLinkSettings('payment-requests?page-id=1').$sort_link."&sort=DESC_i") ?>'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down cursor-p"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                                        <?php } ?></th>
+                                <th>Username</th>
+                                <th>PayPal E-mail</th>
+                                <th>Amount</th>
+                                <th>Referrals</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            foreach ($verif_requests as $value) {
+                                $wo['userlist'] = Wo_GetPaymentHistory($value['id']);
+                                if (!empty($wo['userlist']['user']) && !empty($wo['userlist']['user']->id)) {
+                                    echo Wo_LoadAdminPage('payment-requests/list');
+                                }
+                            }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="wo-admincp-feturepager">
+                      <div class="pull-left">
+                        <span>
+                          <?php echo "Showing $page out of " . $db->totalPages; ?>
+                        </span>
+                      </div>
+                      <div class="pull-right">
+                        <nav>
+                          <ul class="pagination">
+                            <li>
+                              <a href="<?php echo Wo_LoadAdminLinkSettings('payment-requests?page-id=1').$link; ?>" class="waves-effect" title='First Page'>
+                                  <i class="material-icons">first_page</i>
+                              </a>
+                            </li>
+                            <?php if ($page > 1) {  ?>
+                              <li>
+                                  <a href="<?php echo Wo_LoadAdminLinkSettings('payment-requests?page-id=' . ($page - 1)).$link; ?>" class="waves-effect" title='Previous Page'>
+                                      <i class="material-icons">chevron_left</i>
+                                  </a>
+                              </li>
+                            <?php  } ?>
+
+                            <?php 
+                              $nums       = 0;
+                              $nums_pages = ($page > 4) ? ($page - 4) : $page;
+
+                              for ($i=$nums_pages; $i <= $db->totalPages; $i++) { 
+                                if ($nums < 20) {
+                            ?>
+                              <li class="<?php echo ($page == $i) ? 'active' : ''; ?>">
+                                <a href="<?php echo Wo_LoadAdminLinkSettings('payment-requests?page-id=' . ($i)).$link; ?>" class="waves-effect">
+                                  <?php echo $i ?>   
+                                </a>
+                              </li>
+
+                            <?php } $nums++; }?>
+
+                            <?php if ($db->totalPages > $page) { ?>
+                              <li>
+                                  <a href="<?php echo Wo_LoadAdminLinkSettings('payment-requests?page-id=' . ($page + 1)).$link; ?>" class="waves-effect" title="Next Page">
+                                      <i class="material-icons">chevron_right</i>
+                                  </a>
+                              </li>
+                            <?php } ?>
+                            <li>
+                              <a href="<?php echo Wo_LoadAdminLinkSettings('payment-requests?page-id=' . ($db->totalPages)).$link; ?>" class="waves-effect" title='Last Page'>
+                                  <i class="material-icons">last_page</i>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
+                      <div class="clearfix"></div>
+                      <div class="row">
+                          <div class="col-lg-2 col-md-2">
+                              <span>Action</span>
+                              <select class="form-control show-tick" id="action_type">
+                                  <option value="paid">Paid</option>
+                                  <option value="decline">Decline</option>
+                              </select>
+                          </div>
+                          <div class="col-lg-3 col-md-3">
+                              <span>&nbsp;</span>
+                              <button type="button" class="btn btn-primary waves-effect delete-selected d-block" disabled>Submit<span></span></button>
+                          </div>
+                      </div>
+                    </div>
+                    <input type="hidden" id="hash_id" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- #END# Vertical Layout -->
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModal1Label">Decline request?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to decline this request?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Decline</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="DeleteModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModal1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModal1Label">Paid request?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to mark the request as paid ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Paid</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="SelectedDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModal1Label">Delete request?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure that you want to remove the selected request?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="DeleteSelected()" data-dismiss="modal">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.check-all').on('click', function(event) {
+      $('input:checkbox').not(this).prop('checked', this.checked);
+  });
+  $('.delete-checkbox, .check-all').change(function(event) {
+      $('.delete-selected').attr('disabled', false);
+      $('.delete-selected').find('span').text(' (' + $('.delete-checkbox:checked').length + ')');
+  });
+
+  $('.delete-selected').on('click', function(event) {
+      event.preventDefault();
+      action_type = $('#action_type').val();
+      $('#SelectedDeleteModal').find('.modal-body').html('Are you sure that you want to '+action_type+' the selected request(s)?');
+      $('#SelectedDeleteModal').find('#exampleModal1Label').html(action_type+' request(s)');
+      $('#SelectedDeleteModal').modal('show');
+  });
+  function DeleteSelected() {
+      action_type = $('#action_type').val();
+      data = new Array();
+      $('td input:checked').parents('tr').each(function () {
+          data.push($(this).attr('data_selected'));
+      });
+      $('.delete-selected').attr('disabled', true);
+      $('.delete-selected').text('Please wait..');
+      $.post(Wo_Ajax_Requests_File()+"?f=admin_setting&s=remove_multi_request", {ids: data,type: action_type}, function () {
+          $.each( data, function( index, value ){
+              $("#UserID_"+value+"").remove();
+          });
+          $('.delete-selected').text('Submit');
+      });
+  }
+    function Wo_DeclinePayment(id,type = 'show') {
+        if (type == 'hide') {
+            $('#DeleteModal').find('.btn-primary').attr('onclick', "Wo_DeclinePayment('"+id+"')");
+            $('#DeleteModal').modal('show');
+            return false;
+          }
+        hash_id = $('#hash_id').val();
+        $.get(Wo_Ajax_Requests_File(),{f:'admin_setting', s:'decline_payment', id: id, hash_id: hash_id});
+        setTimeout(function(){
+            window.location.reload(true);
+        },1000);
+    }
+    function Wo_MarkPaid(id,type = 'show') {
+        if (type == 'hide') {
+            $('#DeleteModal2').find('.btn-primary').attr('onclick', "Wo_MarkPaid('"+id+"')");
+            $('#DeleteModal2').modal('show');
+            return false;
+          }
+        hash_id = $('#hash_id').val();
+        $.get(Wo_Ajax_Requests_File(),{f:'admin_setting', s:'mark_as_paid', id: id, hash_id: hash_id});
+        setTimeout(function(){
+            window.location.reload(true);
+        },1000);
+    }
+    function Wo_ToggleVerfRequest(id,self){
+      if (!id || !self) {
+        return false;
+      }
+      $(self).find('i').toggleClass('rotate-90d');
+      $("#review-verif-request-info-"+id).slideToggle();
+
+    }
+</script>

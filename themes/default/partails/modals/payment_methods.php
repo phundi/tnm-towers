@@ -1,0 +1,88 @@
+<div class="pay_u_btns valign-wrapper">
+	<div class="payments_alert"></div>
+	<?php if ($config->paypal_payment == '1') { ?>
+	<button id="paypal" onclick="clickAndDisable(this);" class="btn paypal valign-wrapper">
+		<span><?php echo __( 'PayPal' );?></span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8.32,21.97C8.21,21.92 8.08,21.76 8.06,21.65C8.03,21.5 8,21.76 8.66,17.56C9.26,13.76 9.25,13.82 9.33,13.71C9.46,13.54 9.44,13.54 10.94,13.53C12.26,13.5 12.54,13.5 13.13,13.41C16.38,12.96 18.39,11.05 19.09,7.75C19.13,7.53 19.17,7.34 19.18,7.34C19.18,7.33 19.25,7.38 19.33,7.44C20.36,8.22 20.71,9.66 20.32,11.58C19.86,13.87 18.64,15.39 16.74,16.04C15.93,16.32 15.25,16.43 14.05,16.46C13.25,16.5 13.23,16.5 13,16.65C12.83,16.82 12.84,16.79 12.45,19.2C12.18,20.9 12.08,21.45 12.04,21.55C11.97,21.71 11.83,21.85 11.67,21.93L11.56,22H10C8.71,22 8.38,22 8.32,21.97V21.97M3.82,19.74C3.63,19.64 3.5,19.47 3.5,19.27C3.5,19 6.11,2.68 6.18,2.5C6.27,2.32 6.5,2.13 6.68,2.06L6.83,2H10.36C14.27,2 14.12,2 15,2.2C17.62,2.75 18.82,4.5 18.37,7.13C17.87,10.06 16.39,11.8 13.87,12.43C13,12.64 12.39,12.7 10.73,12.7C9.42,12.7 9.32,12.71 9.06,12.85C8.8,13 8.59,13.27 8.5,13.6C8.46,13.67 8.23,15.07 7.97,16.7C7.71,18.33 7.5,19.69 7.5,19.72L7.47,19.78H5.69C4.11,19.78 3.89,19.78 3.82,19.74V19.74Z" /></svg>
+		<svg class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="spinner__path" fill="none" stroke-width="7" stroke-linecap="round" cx="33" cy="33" r="29"></circle></svg>
+	</button>
+	<?php } ?>
+	<?php if ($config->stripe_payment == '1') { ?>
+	<button id="stripe_credit" class="btn stripe valign-wrapper"><?php echo __( 'Card' );?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg></button>
+	<?php } ?>
+<!--									<button id="stripe_credit_btn" class="hide"></button>-->
+    <?php if($config->bank_payment == '1'){?>
+        <button id="bank_transfer" class="btn valign-wrapper bank"><?php echo __( 'Bank Transfer' );?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15,14V11H18V9L22,12.5L18,16V14H15M14,7.7V9H2V7.7L8,4L14,7.7M7,10H9V15H7V10M3,10H5V15H3V10M13,10V12.5L11,14.3V10H13M9.1,16L8.5,16.5L10.2,18H2V16H9.1M17,15V18H14V20L10,16.5L14,13V15H17Z"></path></svg></button>
+    <?php } ?>
+    <?php if($config->paysera_payment == '1'){?>
+    <button id="sms_payment" onclick="PayViaSms();" class="btn valign-wrapper sms"><?php echo __( 'SMS' );?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,19V5H7V19H17M17,1A2,2 0 0,1 19,3V21A2,2 0 0,1 17,23H7C5.89,23 5,22.1 5,21V3C5,1.89 5.89,1 7,1H17M9,7H15V9H9V7M9,11H13V13H9V11Z"></path></svg></button>
+    <?php } ?>
+
+    <?php if( $config->cashfree_payment === 'yes' && !empty($config->cashfree_client_key) && !empty($config->cashfree_secret_key)){?>
+        <button id="cashfree_payment" onclick="PayViaCashfree();" class="btn valign-wrapper cashfree"><?php echo __( 'cashfree' );?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg></button>
+    <?php } ?>
+    <?php if ($config->iyzipay_payment == "yes" && !empty($config->iyzipay_key) && !empty($config->iyzipay_secret_key)) { ?>
+        <button id="iyzipay-button1" class="valign-wrapper btn btn-iyzipay-payment iyzipay" onclick="PayViaIyzipay();">
+            <?php echo __( 'Iyzipay');?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg>
+        </button>
+    <?php } ?>
+    <?php if ($config->paystack_payment == "yes" && !empty($config->paystack_secret_key)) { ?>
+        <button id="paystack-button1" class="valign-wrapper btn btn-paystack-payment paystack" onclick="PayPaystack();">
+            <?php echo __( 'PayStack');?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg>
+        </button>
+    <?php } ?>
+    <?php if ($config->authorize_payment == "yes") { ?>
+        <button id="authorize-button1" class="valign-wrapper btn btn-authorize-payment authorize" onclick="PayAuthorize();">
+            <?php echo __( 'Authorize.net');?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg>
+        </button>
+    <?php } ?>
+    <?php if ($config->securionpay_payment == "yes") { ?>
+        <button id="securionpay-button1" class="valign-wrapper btn btn-securionpay-payment securionpay" onclick="PaySecurionpay();">
+			<?php echo __( 'Securionpay');?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg>
+        </button>
+    <?php } ?>
+    <?php if ($config->checkout_payment == 'yes') { ?>
+        <button id="2co_credit" class="btn 2co valign-wrapper twoco"  onclick="PayVia2Co();">
+            <?php echo __( '2Checkout' );?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9,7V9H13V11H11A2,2 0 0,0 9,13V17H11L15,17V15H11V13H13A2,2 0 0,0 15,11V9A2,2 0 0,0 13,7H9M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2Z" /></svg>
+        </button>
+    <?php } ?>
+    <?php if ($config->coinbase_payment == '1') { ?>
+		<button class="btn-coinbase btn valign-wrapper coinbase" onclick="pay_using_coinbase();">
+			<?php echo __( 'coinbase' );?> <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zm-141.651-35.33c4.937-32.999-20.191-50.739-54.55-62.573l11.146-44.702-27.213-6.781-10.851 43.524c-7.154-1.783-14.502-3.464-21.803-5.13l10.929-43.81-27.198-6.781-11.153 44.686c-5.922-1.349-11.735-2.682-17.377-4.084l.031-.14-37.53-9.37-7.239 29.062s20.191 4.627 19.765 4.913c11.022 2.751 13.014 10.044 12.68 15.825l-12.696 50.925c.76.194 1.744.473 2.829.907-.907-.225-1.876-.473-2.876-.713l-17.796 71.338c-1.349 3.348-4.767 8.37-12.471 6.464.271.395-19.78-4.937-19.78-4.937l-13.51 31.147 35.414 8.827c6.588 1.651 13.045 3.379 19.4 5.006l-11.262 45.213 27.182 6.781 11.153-44.733a1038.209 1038.209 0 0 0 21.687 5.627l-11.115 44.523 27.213 6.781 11.262-45.128c46.404 8.781 81.299 5.239 95.986-36.727 11.836-33.79-.589-53.281-25.004-65.991 17.78-4.098 31.174-15.792 34.747-39.949zm-62.177 87.179c-8.41 33.79-65.308 15.523-83.755 10.943l14.944-59.899c18.446 4.603 77.6 13.717 68.811 48.956zm8.417-87.667c-7.673 30.736-55.031 15.12-70.393 11.292l13.548-54.327c15.363 3.828 64.836 10.973 56.845 43.035z"/></svg>
+		</button>
+	<?php } ?>
+    <?php if ($config->yoomoney_payment == '1') { ?>
+		<button class="btn-yoomoney btn valign-wrapper yoomoney" onclick="pay_using_yoomoney();">
+			<?php echo __( 'yoomoney' );?> <svg width="57" height="40" viewBox="0 0 57 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.33 0c-11.14 0-20 8.987-20 20 0 11.14 8.987 20 20 20 11.012 0 20-8.987 20-20s-8.988-20-20-20zm0 27.342c-4.051 0-7.47-3.418-7.47-7.469 0-4.05 3.419-7.468 7.47-7.468 4.05 0 7.468 3.418 7.468 7.468-.127 4.178-3.418 7.469-7.469 7.469zM16.203 5.696V34.81h-7.09L0 5.696h16.203z" fill="currentColor"/></svg>
+		</button>
+	<?php } ?>
+	<?php if ($config->razorpay_payment == '1') { ?>
+		<button class="btn-razorpay btn valign-wrapper razorpay" onclick="pay_using_razorpay();">
+			<?php echo __( 'razorpay' );?> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 284 324" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g> <polygon id="Fill-17" fill="currentColor" points="122.6338 105.6902 106.8778 163.6732 197.0338 105.3642 138.0748 325.3482 197.9478 325.4032 285.0458 0.4822"/> <path d="M25.5947,232.9246 L0.8077,325.4026 L123.5337,325.4026 C123.5337,325.4026 173.7317,137.3196 173.7457,137.2656 C173.6987,137.2956 25.5947,232.9246 25.5947,232.9246" fill="currentColor"/> </g> </g> </svg>
+		</button>
+	<?php } ?>
+	<?php if ($config->fortumo_payment == '1') { ?>
+		<button class="btn-fortumo btn valign-wrapper fortumo" onclick="pay_using_fortumo();">
+			<?php echo __( 'fortumo' );?> <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="300.000000pt" height="300.000000pt" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1518 2850 c-210 -38 -411 -160 -524 -318 -92 -127 -119 -269 -71 -363 30 -59 286 -340 302 -331 6 4 110 83 231 177 271 210 339 277 396 391 39 78 42 94 46 178 5 111 -14 167 -71 210 -65 50 -205 75 -309 56z"/> <path d="M2210 2306 c-132 -28 -263 -84 -359 -154 -100 -73 -511 -407 -509 -413 2 -4 52 -60 112 -126 285 -309 336 -352 480 -400 75 -25 93 -27 246 -27 151 0 173 3 255 28 565 172 752 736 333 1006 -101 66 -199 92 -358 96 -88 2 -158 -1 -200 -10z"/> <path d="M545 2120 c-224 -48 -439 -243 -516 -470 -30 -89 -31 -208 -3 -270 77 -167 300 -200 517 -78 31 18 170 125 308 237 l250 204 -24 26 c-13 14 -78 90 -145 167 -102 118 -130 145 -172 163 -57 25 -155 34 -215 21z"/> <path d="M947 1421 c-294 -241 -349 -298 -416 -435 -100 -202 -108 -405 -22 -575 95 -187 305 -293 518 -261 290 44 529 270 604 569 17 69 21 105 17 190 -6 120 -28 195 -82 276 -31 47 -362 435 -371 435 -2 0 -114 -90 -248 -199z"/> </g> </svg>
+		</button>
+	<?php } ?>
+	<?php if ($config->coinpayments == '1') { ?>
+		<button class="btn-coinpayments btn valign-wrapper coinpayments" onclick="pay_using_coinpayments();">
+			<?php echo __( 'coinpayments' );?> <svg xmlns="http://www.w3.org/2000/svg" width="196" height="46" viewBox="0 0 38 45" fill="none"> <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M0.161987 18.9846L1.44177 14.0873L10.4551 8.86938V15.407L0.161987 21.8952V18.9846Z" fill="currentColor"/> <path opacity="0.7" fill-rule="evenodd" clip-rule="evenodd" d="M4.42798 19.1574L14.5777 12.8464V18.0292C14.5777 18.0292 14.4234 19.7398 13.6814 20.0584C13.1328 20.2823 4.43068 25.4312 4.43068 25.4312L4.42798 19.1574Z" fill="currentColor"/> <path opacity="0.9" fill-rule="evenodd" clip-rule="evenodd" d="M9.95569 22.2194L18.9784 16.9021V22.0842C18.9784 22.0842 18.9784 23.5168 18.0822 24.0207C17.5038 24.3299 9.95772 28.7219 9.95772 28.7219L9.95569 22.2194Z" fill="currentColor"/> <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M13.6947 7.01864L18.6555 3.82056V10.3547L13.6994 13.3878L13.6947 7.01864Z" fill="currentColor"/> <path opacity="0.7" fill-rule="evenodd" clip-rule="evenodd" d="M17.7343 10.9115L22.7195 7.96704V14.7312L17.7322 17.6277L17.7343 10.9115Z" fill="currentColor"/> <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M21.5567 2.07729L24.9517 0V4.50631C24.9517 4.50631 24.9517 6.76082 24.0554 7.212C23.8829 7.30331 21.575 8.64668 21.575 8.64668L21.5567 2.07729Z" fill="currentColor"/> <path opacity="0.9" fill-rule="evenodd" clip-rule="evenodd" d="M21.6464 15.2719L25.0285 13.2427L24.9507 18.4207C24.9507 18.4207 25.0285 19.7864 24.0545 20.4499C23.8299 20.6495 21.5267 21.771 21.5673 21.7933C21.6079 21.8156 21.6329 15.0886 21.6464 15.2719Z" fill="currentColor"/> <path opacity="0.7" fill-rule="evenodd" clip-rule="evenodd" d="M25.6279 6.30849L28.3336 4.51733C28.3336 4.51733 28.3607 7.20407 28.3336 9.02432C28.3137 9.57723 28.1847 10.1207 27.9541 10.6236C27.7234 11.1264 27.3956 11.5788 26.9896 11.9546C26.9896 11.9546 25.5901 12.8258 25.6327 12.8502C25.6753 12.8745 25.6279 6.30849 25.6279 6.30849Z" fill="currentColor"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M10.455 8.86499C10.4131 8.95292 2.18034 13.0385 0.932341 14.44C1.56885 13.903 0.391204 14.9704 0.25592 16.5782L0.647567 31.6888C0.647567 31.6888 0.0184966 34.3038 3.11109 36.0814C5.31622 37.349 18.0708 44.5901 19.6367 45.3267C21.2026 46.0634 21.6065 44.8992 21.6065 44.8992V30.2324C21.5726 30.1925 22.0739 27.915 19.3898 26.1976C18.8744 25.7498 2.34741 18.2219 1.64529 15.8517C0.891079 13.3064 10.455 9.52315 10.455 8.86499Z" fill="currentColor"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M20.8377 30.1024L21.6426 29.52V45.1453C21.6426 45.1453 21.2543 45.9266 20.8377 46.001C20.7883 45.9753 20.8377 30.1024 20.8377 30.1024Z" fill="currentColor"/> <path d="M1.07855 16.3644C1.1929 16.546 1.32403 16.7165 1.47019 16.8737C1.30482 16.6911 1.16592 16.4862 1.05758 16.2649C0.0835329 13.7527 7.14537 10.928 10.0878 9.04077C10.0878 9.04077 2.94547 12.5872 1.52972 13.8244C0.278342 14.9175 0.188378 15.5784 0.188378 15.5784L0.0375366 16.5017C0.0686516 16.0539 0.0787979 15.6541 0.188378 15.5784C0.17485 15.6562 1.06705 16.2474 1.07855 16.3644Z" fill="currentColor"/> <path d="M18.6372 26.8178C18.0568 26.3274 10.65 22.9405 5.5282 19.8777C5.83259 20.0698 6.10383 20.2382 6.31691 20.3789L18.4492 44.776C18.7049 44.9113 18.8976 45.0202 19.0451 45.0892L20.8376 45.9848V30.3128C20.8153 30.2952 21.0162 28.1314 18.6372 26.8178Z" fill="currentColor"/> <path opacity="0.3" d="M0.5538 33.7224C0.276449 33.1509 0.0897757 32.5398 0.000488281 31.9109C0.0277243 32.5519 0.218175 33.1755 0.5538 33.7224Z" fill="currentColor"/> <path d="M5.52811 19.8778C3.7153 18.805 2.21365 17.7484 1.46959 16.8751C1.32361 16.7177 1.19272 16.547 1.07861 16.3651C1.06509 16.2481 0.19927 15.5744 0.222268 15.4939C0.112688 15.5703 0.0430172 16.0445 0.0119019 16.495L0.0355766 31.9059C0.123511 33.047 0.211446 33.091 0.514482 33.7207C0.957536 34.4073 1.1767 34.6677 1.96675 35.3725C3.8215 36.5055 15.3058 43.0742 18.4653 44.7748L6.31681 20.3722L5.52811 19.8778Z" fill="currentColor"/> <path opacity="0.2" d="M5.50781 19.8692C3.69501 18.7964 2.19335 17.7399 1.44929 16.8666C1.30979 16.7085 1.18568 16.5375 1.07861 16.3559C1.06509 16.2396 0.195888 15.5658 0.222268 15.4854C0.168155 15.5374 0.0673683 16.1408 0.036253 16.5906L0.0119019 31.9535C0.0558692 32.9133 0.243237 33.1792 0.519217 33.7514C0.914245 34.4096 1.42224 34.9013 1.99516 35.364C3.85058 36.497 15.2861 43.0657 18.4457 44.7662L6.29652 20.3637L5.50781 19.8692Z" fill="currentColor"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.225 33.1678L15.7039 31.612C15.2562 31.3522 14.8246 31.52 15.0458 31.9793V36.1656C15.1533 36.3205 15.3705 36.8218 15.2697 37.0747C14.9085 37.0572 16.7037 38.5629 17.7183 39.1304C18.0139 39.2961 18.5652 39.3651 18.5226 38.6826V33.7096C18.5239 33.6012 18.4968 33.4944 18.4441 33.3998C18.3921 33.3049 18.3167 33.225 18.225 33.1678Z" fill="currentColor"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.1177 33.4176C17.7254 32.9292 16.4145 32.1791 15.525 31.5372C15.3011 31.3735 14.9114 31.4898 14.9162 31.7611C14.9723 34.9287 14.9838 36.3864 15.1671 37.0067C15.3024 37.4802 16.7872 38.4752 17.6313 39.0359C17.8823 39.2057 18.2212 39.2463 18.232 38.9392C18.2794 37.6073 18.232 34.5175 18.232 33.7274C18.2282 33.6138 18.1873 33.5045 18.1157 33.4163L18.1177 33.4176Z" fill="currentColor"/> </svg>
+		</button>
+	<?php } ?>
+	<?php if ($config->ngenius_payment == '1') { ?>
+		<button class="btn-ngenius_payment btn valign-wrapper ngenius_payment" onclick="pay_using_ngenius();">
+			<?php echo __( 'ngenius' );?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+		</button>
+	<?php } ?>
+	<?php if ($config->aamarpay_payment == '1') { ?>
+		<button class="btn-aamarpay_payment btn valign-wrapper aamarpay_payment" onclick="pay_using_aamarpay();">
+			<?php echo __( 'aamarpay' );?> <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="64.000000pt" height="73.000000pt" viewBox="0 0 64.000000 73.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,73.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M342 533 l3 -108 120 -5 c66 -3 122 -5 123 -4 2 2 -34 27 -80 56 -62 41 -93 69 -122 111 -22 31 -41 57 -43 57 -2 0 -2 -48 -1 -107z"/> <path d="M67 432 c8 -20 23 -53 33 -72 14 -28 17 -51 13 -110 l-5 -75 53 59 c102 112 103 94 -11 169 l-99 66 16 -37z"/> </g> </svg>
+		</button>
+	<?php } ?>
+	<?php if ($config->fluttewave_payment == '1') { ?>
+		<button class="btn-fluttewave_payment btn valign-wrapper fluttewave_payment" onclick="open_fluttewave();">
+			<?php echo __( 'fluttewave' );?> <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="64.000000pt" height="73.000000pt" viewBox="0 0 64.000000 73.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,73.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M342 533 l3 -108 120 -5 c66 -3 122 -5 123 -4 2 2 -34 27 -80 56 -62 41 -93 69 -122 111 -22 31 -41 57 -43 57 -2 0 -2 -48 -1 -107z"/> <path d="M67 432 c8 -20 23 -53 33 -72 14 -28 17 -51 13 -110 l-5 -75 53 59 c102 112 103 94 -11 169 l-99 66 16 -37z"/> </g> </svg>
+		</button>
+	<?php } ?>
+</div>

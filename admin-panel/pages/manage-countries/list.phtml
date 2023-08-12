@@ -1,0 +1,10 @@
+<tr id="<?php echo $wo['gender']['id'];?>" data_selected="<?php echo $wo['gender']['id'] ?>">
+	<td><input type="checkbox" id="check-data-<?php echo $wo['gender']['id'] ?>" class="delete-checkbox filled-in"><label for="check-data-<?php echo $wo['gender']['id'] ?>"></label></td>
+   <td><?php echo $wo['gender_id'];?></td>
+    <td id="edit_<?php echo $wo['gender_key'];?>"><?php echo $wo['gender']['isd'];?></td>
+   <td id="edit_<?php echo $wo['gender_key'];?>"><?php echo $wo['gender']['name'];?></td>
+   <td>
+      <button type="button" class="btn bg-success admn_table_btn btn-lang" data-id="<?php echo $wo['gender']['id'];?>" data-key="<?php echo $wo['gender_key'];?>" data-toggle="modal" data-target="#defaultModal">Edit</button>
+      <button onclick="Wo_DeleteContry('<?php echo $wo['gender']['id'];?>','hide');" type="button" class="btn bg-danger admn_table_btn">Delete</button>
+   </td>
+</tr>

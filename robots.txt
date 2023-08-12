@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /assets
+Disallow: /controllers
+Disallow: /endpoint
+Disallow: /lib
+Disallow: /install
+Disallow: /requests
+Disallow: /admin-panel
+Disallow: /page_loading.php
+Disallow: /admin_load.php

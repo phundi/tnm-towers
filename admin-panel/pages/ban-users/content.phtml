@@ -1,0 +1,154 @@
+<?php
+$error = '';
+$succuss = '';
+if (isset($_POST['ip'])) {
+	if (!empty($_POST['ip'])) {
+     	  $add_ip = Wo_BanNewIp($_POST['ip']);
+     	  if ($add_ip === true) {
+     	  	$succuss = '<i class="fa fa-fw fa-check"></i> User was added to the blacklist';
+     	  } else {
+     	  	$error = '<i class="fa fa-fw fa-exclamation-triangle"></i> Error found while adding the user to the blacklist';
+     	  }
+    } else {
+       $error = '<i class="fa fa-fw fa-exclamation-triangle"></i> Please fill the input';
+    }
+}
+if (!empty($_GET['delete_ip'])) {
+	if (Wo_DeleteBanned($_GET['delete_ip']) === true) {
+		$succuss = '<i class="fa fa-fw fa-check"></i> IP address successfully deleted';
+	}
+}
+?>
+<div class="container-fluid">
+    <div>
+        <h3>Blacklist Users</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Tools</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Blacklist Users</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+    	<div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">Ban IP, email or username</h6>
+				  <div class="alert alert-info">Add any email, username or ip to prevent users from creating accounts within the blacklist.</div>
+                     <?php if (!empty($error)) { ?>
+				      <div class="alert alert-danger">
+				      	<?php echo $error;?>
+				      </div>
+				      <?php } ?>
+				      <?php if (!empty($succuss)) { ?>
+				      <div class="alert alert-success">
+				      	<?php echo $succuss;?>
+				      </div>
+				      <?php } ?>
+                    <form class="ban-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                              <label class="form-label">IP Address, Email Address, E-mail range  or Username</label>
+                                <input type="text" id="ip" name="ip" class="form-control">
+                                
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Ban</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">Manage Banned IPs</h6>
+                   <input type="hidden" id="hash_id" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                   <div class="clearfix"></div>
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                  <th><input type="checkbox" id="check-all" class="filled-in check-all" ><label for="check-all"></label></th>
+                                      <th>ID</th>
+					                  <th>Banned</th>
+					                  <th>Value</th>
+					                  <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php 
+				               foreach (Wo_GetBanned() as $wo['ip']) {
+				                  echo Wo_LoadAdminPage('ban-users/list');
+				                }
+				               ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3">
+                            <span>&nbsp;</span>
+                            <button type="button" class="btn btn-primary waves-effect delete-selected d-block" disabled>Delete Selected<span></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<div class="modal fade" id="SelectedDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModal1Label">Delete IP?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure that you want to remove the selected IP?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="DeleteSelected()" data-dismiss="modal">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$('.check-all').on('click', function(event) {
+  $('input:checkbox').not(this).prop('checked', this.checked);
+});
+$('.delete-checkbox, .check-all').change(function(event) {
+  $('.delete-selected').attr('disabled', false);
+  $('.delete-selected').find('span').text(' (' + $('.delete-checkbox:checked').length + ')');
+});
+
+$('.delete-selected').on('click', function(event) {
+  event.preventDefault();
+  $('#SelectedDeleteModal').modal('show');
+});
+function DeleteSelected() {
+  data = new Array();
+  $('td input:checked').parents('tr').each(function () {
+      data.push($(this).attr('data_selected'));
+  });
+  $('.delete-selected').attr('disabled', true);
+  $('.delete-selected').text('Please wait..');
+  $.each( data, function( index, value ){
+          $("#IPID_"+value).remove();
+      });
+  $.post(Wo_Ajax_Requests_File()+"?f=admin_setting&s=remove_multi_ban", {ids: data}, function () {
+      
+      $('.delete-selected').text('Delete Selected');
+  });
+}
+</script>

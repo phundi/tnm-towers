@@ -1,0 +1,9 @@
+<tr class="user-list" id="UserID_<?php echo $wo['userlist']['id']?>" data-user-id="<?php echo $wo['userlist']['id']?>" data_selected="<?php echo $wo['userlist']['id']?>">
+  <td><input type="checkbox" id="check-data-<?php echo $wo['userlist']['id']?>" class="delete-checkbox filled-in"><label for="check-data-<?php echo $wo['userlist']['id']?>"></label></td>
+   <td><?php echo $wo['userlist']['id']?></td>
+   <td><?php echo $wo['userlist']['email']?></td>
+   <td><?php echo date("Y-m-d H:i:s",$wo['userlist']['time']);?></td>
+    <td>
+		<button onclick="DeleteEmail(<?php echo $wo['userlist']['id']?>,'hide');" type="button" class="btn bg-danger admn_table_btn">Delete</button>
+    </td>
+</tr>

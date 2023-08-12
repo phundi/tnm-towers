@@ -1,0 +1,28 @@
+<?php if($wo['mediafilelist']->user){?>
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 user-list" id="PhotoID_<?php echo $wo['mediafilelist']->id?>" data-photo-id="<?php echo $wo['mediafilelist']->id?>">
+    <div class="card">
+		<div class="card-body">
+        <a href="<?php echo $wo['site_url'] . '/@' . $wo['mediafilelist']->user->username; ?>" target="_blank" class="d-flex align-items-center">
+            <img src="<?php echo $wo['mediafilelist']->user->avater;?>" class="setting-avatar rounded-circle mr-2" alt="<?php echo $wo['mediafilelist']->user->username;?> Profile Picture">
+            <span><?php echo $wo['mediafilelist']->user->username; ?><span style="display: block;color:#607D8B;font-size: 11px;font-weight: 500;" class=" ajax-time" title="<?php echo date('c', strtotime($wo['mediafilelist']->created_at)); ?>"><?php echo Time_Elapsed_String(strtotime($wo['mediafilelist']->created_at));?></span></span>
+        </a>
+        <hr>
+        <a class="image-popup" href="<?php echo GetMedia($wo['mediafilelist']->file); ?>">
+            <img src="<?php echo GetMedia($wo['mediafilelist']->file); ?>" class="rounded" style="width: 100%;object-fit: cover;height: 250px;">
+        </a>
+        <div class="clearfix"></div><br>
+        <div class="text-center">
+        <button onclick="Wo_DeletePhoto(<?php echo $wo['mediafilelist']->id?>,'<?php echo $wo['mediafilelist']->file?>','hide');" type="button" class="btn bg-danger admn_table_btn">Delete</button>
+
+        <?php if ($wo['config']['review_media_files'] == 1 && $wo['mediafilelist']->is_approved == 0 ) {?>
+            &nbsp;
+            <button onclick="Wo_ApprovePhoto(<?php echo $wo['mediafilelist']->id?>,'<?php echo $wo['mediafilelist']->file?>');" id="mediafile_<?php echo $wo['mediafilelist']->id?>" type="button" class="btn bg-success admn_table_btn">Approve</button>
+        <?php } else if ($wo['config']['review_media_files'] == 1 && $wo['mediafilelist']->is_approved == 1 ) { ?>
+            &nbsp;
+            <button onclick="Wo_DisApprovePhoto(<?php echo $wo['mediafilelist']->id?>,'<?php echo $wo['mediafilelist']->file?>');" id="mediafile_<?php echo $wo['mediafilelist']->id?>" type="button" class="btn bg-danger admn_table_btn">Disapprove</button>
+        <?php } ?>
+        </div>
+		</div>
+    </div>
+</div>
+<?php } ?>

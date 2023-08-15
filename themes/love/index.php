@@ -58,7 +58,7 @@
 					<?php if ($config->user_registration == 1) { ?>
 						<a href="<?php echo $site_url;?>/register" class="btn-large waves-effect waves-light btn_primary lighten-1 bold btn_round main-hdr-bttn"><?php echo __( 'Register Now' );?></a>
 					<?php } ?>
-					<a href="<?php echo $site_url;?>/about" data-ajax="/about" class="main-know-bttn"><?php echo __( 'Know More' );?></a>
+					<a href="<?php echo $site_url;?>/about" data-ajax="/about" class="main-know-bttn"><?php echo __( 'Learn More' );?></a>
 				</div>
 				
 				<div class="section dt_hdr_filters">
@@ -157,8 +157,9 @@
 			</div>
 			<div class="col l6">
 				<div class="dt_header_short_desc_innr">
-					<h2><?php echo __( 'Best dating website for any age' );?></h2>
-					<p><?php echo __( 'Join Quickdate, where you could meet anyone, anywhere! It\'s a complete fun to find a perfect match for you and continue to hook up.' );?></p>
+					<h2><?php echo __( 'Best dating website in Malawi' );?></h2>
+					<p><?php echo __( 'Join Malovings. Where you could meet Malawians, anywhere!! Its complete fun to find a 
+perfect match for you' );?></p>
 				</div>
 			</div>
 		</div>
@@ -170,7 +171,7 @@
 			<div class="col l6">
 				<div class="dt_header_how_works_innr">
 					<p><?php echo __( 'How it works' );?></p>
-					<h2><?php echo __( 'We have made it easy for you to have fun while you use our Quickdate platform.' );?></h2>
+					<h2><?php echo __( 'Nzapaeasy!!' );?></h2>
 				</div>
 			</div>
 			<div class="col l6">
@@ -289,8 +290,8 @@
 			</div>
 			<div class="col l6">
 				<div class="dt_header_how_works_innr flip">
-					<h2><?php echo __( 'Why Quickdate is the best platform?' );?></h2>
-					<p><?php echo __( 'Quickdate, where you could meet anyone digitally! It\'s a complete fun to find a perfect match for you and continue to hook up. Real time messaging & lot of features that keeps you connected with your love 24x365 days.' );?></p>
+					<h2><?php echo __( 'Why Malovings is the best dating platform in Malawi?' );?></h2>
+					<p><?php echo __( 'Malovings, where you could meet new people Online! Its an efficient Platform to find a perfect match for you. It has alot of features including Real time messaging, Voice/Video Calls & more that keeps you connected with your love 24x365 days.' );?></p>
 				</div>
 			</div>
 		</div>
@@ -328,13 +329,11 @@
 							</div>
 							<div class="col s6">
 								<div><a href="<?php echo $site_url;?>/faqs" data-ajax="/faqs"><?php echo __( 'Frequently Asked Questions' );?></a></div>
-								<div><a href="<?php echo $site_url;?>/refund" data-ajax="/refund"><?php echo __( 'refund' );?></a></div>
-								<div><a href="<?php echo $site_url;?>/blog" data-ajax="/blog"><?php echo __( 'Blog' );?></a></div>
+
 							</div>
 						</div>
 					</div>
 					<div class="col m5">
-						<h6><?php echo __( 'Always up to date with our latest offers and discounts!' );?></h6>
 						<div class="subscribe_alert"></div>
 						<form class="subscribe">
 							<div>
@@ -357,57 +356,22 @@
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg>
 							</a>&nbsp;&nbsp;
 						<?php }?>
-						<?php if(!empty($config->google_url)){ ?>
-							<a href="<?php echo $config->google_url;?>" target="_blank" class="social_btn">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" /></svg>
-							</a>
-						<?php }?>
+					
 					</div>
 					<?php }?>
 				</div>
 			</div>
 			<div class="bottom">
 				<div class="row">
+				
 					<div class="col m8">
-						<div class="row">
-							<div class="col s3">
-								<div class="dt_foot_langs">
-									<a class="modal-trigger" href="#modal_langs_main">
-										<svg xmlns="http://www.w3.org/2000/svg" width="16.66" height="16.66" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> <?php echo __( 'Language' );?>
-									</a>
-								</div>
-							</div>
-							<div class="col s3">
-								<?php if ($config->developers_page == '1') { ?>
-									<a href="<?php echo $site_url;?>/developers" data-ajax="/developers"><?php echo __( 'Developers' );?></a>
-								<?php } ?>
-							</div>
-						</div>
-					</div>
-					<div class="col m4">
-						<p class="copyright"><?php echo __( 'Copyright' );?> © <?php echo date( "Y" ) . " " . ucfirst( $config->site_name );?>. <?php echo __( 'All rights reserved' );?>.</p>
+						<p class="copyright"><?php echo __( 'Copyright' );?> © <?php echo date( "Y" ) . " " . ucfirst( $config->site_name );?>. <?php echo __( 'All rights reserved. Developed by Luptech Malawi' );?>.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- End Footer  -->
-</div>
-
-<div id="modal_langs_main" class="modal modal-sm" tabindex="0">
-	<div class="modal-content">
-		<h6 class="bold"><?php echo __( 'Language' );?></h6>
-		<ul class="browser-default dt_lang_modal">
-			<?php
-			$language = Dataset::load('language');
-			if (isset($language) && !empty($language)) {
-				foreach ($language as $key => $val) {
-					if ($config->{$key} == 1) {
-					?>
-				<li <?php if( GetActiveLang() == $key ){ echo 'class="active"';}?>><a href="?language=<?php echo $key;?>"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" /></svg> <?php echo $val;?></a></li>
-			<?php } } } ?>
-		</ul>
-	</div>
 </div>
 
 <script>

@@ -9,7 +9,7 @@
 					</div>
 					<div class="row center">
 						<a href="<?php echo $site_url;?>/register" class="btn-large waves-effect waves-light btn_primary lighten-1 bold btn_round"><?php echo __( 'Register Now' );?></a>&nbsp;&nbsp;&nbsp;
-						<a href="#how_it_work" class="smooth btn-large btn-flat bold"><?php echo __( 'Know More' );?></a>
+						<a href="#how_it_work" class="smooth btn-large btn-flat bold"><?php echo __( 'Learn More' );?></a>
 					</div>
 				</div>
 			</div>

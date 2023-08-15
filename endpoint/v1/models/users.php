@@ -404,37 +404,8 @@ class Users {
             ), 400);
             exit();
         }
-        if (empty($data['email'])) {
-            json(array(
-                'message' => __('Email cannot be empty'),
-                'code' => 400,
-                'errors'         => array(
-                    'error_id'   => '10',
-                    'error_text' => __('Email cannot be empty')
-                )
-            ), 400);
-        }
-        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            json(array(
-                'message' => __('This e-mail is invalid.'),
-                'code' => 400,
-                'errors'         => array(
-                    'error_id'   => '11',
-                    'error_text' => __('This e-mail is invalid.')
-                )
-            ), 400);
-        }
-        if ($this->isEmailExists($data['email'])) {
-            json(array(
-                'message' => __('Email Already Exists'),
-                'code' => 400,
-                'errors'         => array(
-                    'error_id'   => '15',
-                    'error_text' => __('Email Already Exists')
-                )
-            ), 400);
-            exit();
-        }
+        
+   
         if (empty($data['password'])) {
             json(array(
                 'message' => __('Password cannot be empty'),
@@ -445,7 +416,7 @@ class Users {
                 )
             ), 400);
         }
-        if (strlen($data['password']) < 6) {
+        if (strlen($data['password']) < 5) {
             json(array(
                 'message' => __('Password is too short.'),
                 'code' => 400,
@@ -459,6 +430,7 @@ class Users {
         $user                         = array();
         $user['username']             = Secure($data['username']);
         $user['email']                = Secure($data['email']);
+        $user['district']             = (ISSET($data['district']) ? Secure($data['district']) : '');
         $user['password']             = $password;
         $user['first_name']           = (ISSET($data['first_name']) ? Secure($data['first_name']) : '');
         $user['last_name']            = (ISSET($data['last_name']) ? Secure($data['last_name']) : '');

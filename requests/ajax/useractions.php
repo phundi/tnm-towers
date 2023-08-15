@@ -19,7 +19,10 @@ Class UserActions extends Aj {
                 $last_name  = Secure($_POST[ 'last_name' ]);
                 $username   = Secure($_POST[ 'username' ]);
                 $email      = Secure($_POST[ 'email' ]);
+                $phone_number      = Secure($_POST[ 'phone_number' ]);
                 $password   = $_POST[ 'password' ];
+
+
                 if (isset($_POST[ 'username' ]) && empty($_POST[ 'username' ])) {
                     $error .= '<p>• ' . __('Missing username.') . '</p>';
                 }
@@ -29,22 +32,35 @@ Class UserActions extends Aj {
                 if (isset($_POST[ 'password' ]) && empty($_POST[ 'password' ])) {
                     $error .= '<p>• ' . __('Missing password.') . '</p>';
                 }
-                if (!filter_var($_POST[ 'email' ], FILTER_VALIDATE_EMAIL)) {
-                    $error .= '<p>• ' . __('This E-mail is invalid.') . '</p>';
+               // if (!empty($email) && !filter_var($_POST[ 'email' ], FILTER_VALIDATE_EMAIL)) {
+               //     $error .= '<p>• ' . __('This E-mail is invalid.') . '</p>';
+               // }
+
+
+                if (substr($phone_number, 0, 4) !== '+265') {
+                    $error = '<p>• ' . __('Please provide Airtel or TNM phone number') . '</p>';
                 }
+                if (strlen($phone_number) != 13) {
+                    $error = '<p>• ' . __('Please enter valid number.') . '</p>';
+                }
+                if (!is_numeric(substr($phone_number, 1))) {
+                    $error = '<p>• ' . __('Invalid phone number characters.') . '</p>';
+                }
+
+
                 if ($users->isUsernameExists($username)) {
                     $error .= '<p>• ' . __('This User name is Already exist.') . '</p>';
                 }
-                if ($users->isEmailExists($email)) {
-                    $error .= '<p>• ' . __('This E-mail is Already exist.') . '</p>';
+                if ($users->isPhoneExists($phone_number)) {
+                    $error .= '<p>• ' . __('This Phone Number Already exist.') . '</p>';
                 }
-                if (strlen($username) < 5 OR strlen($username) > 32) {
-                    $error .= '<p>• ' . __('Username must be between 5/32.') . '</p>';
+                if (strlen($username) < 4 OR strlen($username) > 32) {
+                    $error .= '<p>• ' . __('Username must be between 4 to 32 characters') . '</p>';
                 }
                 if (!preg_match('/^[\w]+$/', $username)) {
                     $error .= '<p>• ' . __('Invalid username characters.') . '</p>';
                 }
-                if (strlen($password) < 6) {
+                if (strlen($password) < 5) {
                     $error .= '<p>• ' . __('Password is too short.') . '</p>';
                 }
                 if (Wo_IsBanned($username)) {
@@ -96,7 +112,13 @@ Class UserActions extends Aj {
                             }
                         }
                     }
+
+                    dd($re_data);
+
                     $regestered_user = $users->register($re_data);
+
+                    
+
                     if ($regestered_user[ 'code' ] == 200) {
                         if (!empty($_POST['invite']) && !empty($regestered_user['userId'])) {
                             $invite = Secure($_POST['invite']);

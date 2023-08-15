@@ -29,6 +29,16 @@
 								<p><span class="bold"><?php echo __( 'Get started,' );?></span> <?php echo __( 'please signup to continue your account.' );?></p>
 								<div class="alert alert-success" role="alert" style="display:none;"></div>
 								<div class="alert alert-danger" role="alert" style="display:none;"></div>
+							
+								<div class="row">
+									<div class="input-field col m6 s12">
+										<input name="username" id="username" type="text" class="validate" value="" required>
+										<label for="username"><?php echo __( 'Username' );?></label>
+									</div>
+
+										
+								</div>
+
 								<div class="row">
 									<div class="input-field col m6 s12">
 										<input name="first_name" id="first_name" type="text" class="validate" value="" autofocus>
@@ -39,16 +49,40 @@
 										<label for="last_name"><?php echo __( 'Last Name' );?></label>
 									</div>
 								</div>
+							
 								<div class="row">
 									<div class="input-field col m6 s12">
-										<input name="username" id="username" type="text" class="validate" value="" required>
-										<label for="username"><?php echo __( 'Username' );?></label>
+										<select id="gender" name="gender" data-errmsg="<?php echo __( 'Choose your Gender');?>" required>
+										<?php echo DatasetGetSelect( null, "gender", __("Choose your Gender") );?>
+										</select>
 									</div>
+
 									<div class="input-field col m6 s12">
-										<input name="email" id="email" type="email" class="validate" value="" required>
-										<label for="email"><?php echo __( 'Email' );?></label>
+										<input name="birthdate" id="birthdate" data-errmsg="<?php echo __( 'Select your Birth date.');?>" type="text" class="datepicker user_bday" required>
+										<label for="birthdate"><?php echo __( 'Birthdate' );?></label>
 									</div>
 								</div>
+
+								<div class="row">
+									<div class="input-field col m6 s12">
+										<input name = "phone_number" id="mobile" type="text" data-errmsg="<?php echo __( 'Your phone number is required.');?>" class="validate" title="Field must be a number." placeholder="<?php echo __('e.g +265999222333');?>" <?php if($config->sms_or_email == 'sms'){?> data-validation-type="sms" required<?php }else{?> data-validation-type="mail" <?php } ?> data-p-verified="yes">
+										<label for="mobile"><?php echo __( 'Mobile Number' );?></label>
+									</div>
+
+									<div class="input-field col m6 s12">
+										<select name = "district" id="district">
+											<option value="" selected>Select District (Optional)</option>
+											<?php
+												foreach( ["Balaka", "Blantyre", "Chikwawa", "Chiradzulo", "Chitipa", "Dedza", "Dowa", "Karonga", "Kasungu", "Likoma", "Lilongwe", "Machinga", "Mangochi", "Mchinji", "Mulanje", "Mwanza", "Mzimba", "Neno", "Nkhatabay", "Nkhotakota", "Nsanje", "Ntcheu", "Ntchisi", "Phalombe", "Rumphi", "Salima", "Thyolo", "Zomba", "Mzuzu"] as $key ){
+													echo '<option value="'. $key .'" data-code="'. $key .'">'. $key .'</option>';
+												}
+												?>
+										</select>
+                       		 		</div>
+								</div>
+
+							
+								
 								<div class="row">
 									<div class="input-field col m6 s12">
 										<input name="password" id="password" type="password" class="validate" value="" required>

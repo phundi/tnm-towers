@@ -17,7 +17,7 @@
 				<?php } ?>
 				<div class="dt_p_head">
 					<h2><?php echo __( 'Amazing' );?> <?php echo ucfirst( $config->site_name );?> <?php echo __( 'features you can’t live without' );?>.</h2>
-					<p><?php echo __( 'Activating Premium will help you meet more people, faster.' );?></p>
+					<p><?php echo __( 'Unlock Premium to Expand Your Social Circle and Connect Faster' );?></p>
 				</div>
 			</div>
 			

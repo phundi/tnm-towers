@@ -45,9 +45,8 @@
 							<?php } ?>
 								
 								<div class="how_credtss">
-									<span><?php echo __( 'Credit' );?></span>&nbsp;&nbsp;
-                                    <span style="color: red;">MK</span>
-                                    <span id="credit_amount"><?php
+									<span><?php echo __( 'Credit:' );?></span>&nbsp;&nbsp;
+                                    <span id="credit_amount" style="color: red; font-weight: bold;" ><?php
 													if( isGenderFree($profile->gender) === true ){
 														echo __('Free');
 													}else{

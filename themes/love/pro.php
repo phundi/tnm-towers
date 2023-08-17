@@ -16,7 +16,7 @@
 					<?php require( $theme_path . 'third-party-payment.php' );?>
 				<?php } ?>
 				<div class="dt_p_head">
-					<h2><?php echo __( 'Amazing' );?> <?php echo ucfirst( $config->site_name );?> <?php echo __( 'features you can’t live without' );?>.</h2>
+					<h2><?php echo __( 'Discover the incredible features of' );?> <?php echo ucfirst( $config->site_name );?> <?php echo __( "that you don't want to miss out on" );?>.</h2>
 					<p><?php echo __( 'Unlock Premium to Expand Your Social Circle and Connect Faster' );?></p>
 				</div>
 			</div>

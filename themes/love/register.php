@@ -64,7 +64,7 @@
 
 								<div class="row">
 									<div class="input-field col m6 s12">
-										<input name = "phone_number" id="mobile" type="text" data-errmsg="<?php echo __( 'Your phone number is required.');?>" class="validate" required title="Field must be a number." placeholder="<?php echo __('e.g +265999222333');?>" <?php if($config->sms_or_email == 'sms'){?> data-validation-type="sms" required<?php }else{?> data-validation-type="mail" <?php } ?> data-p-verified="yes">
+										<input name = "phone_number" id="mobile" type="text" data-errmsg="<?php echo __( 'Your phone number is required.');?>" class="validate" required title="Field must be a number." placeholder="<?php echo __('+265');?>" <?php if($config->sms_or_email == 'sms'){?> data-validation-type="sms" required<?php }else{?> data-validation-type="mail" <?php } ?> data-p-verified="yes">
 										<label for="mobile"><?php echo __( 'Mobile Number' );?></label>
 									</div>
 
@@ -72,7 +72,7 @@
 										<select name = "district" id="district" required>
 											<option value="" selected>Select District (Optional)</option>
 											<?php
-												foreach( ["Balaka", "Blantyre", "Chikwawa", "Chiradzulo", "Chitipa", "Dedza", "Dowa", "Karonga", "Kasungu", "Likoma", "Lilongwe", "Machinga", "Mangochi", "Mchinji", "Mulanje", "Mwanza", "Mzimba", "Neno", "Nkhatabay", "Nkhotakota", "Nsanje", "Ntcheu", "Ntchisi", "Phalombe", "Rumphi", "Salima", "Thyolo", "Zomba", "Mzuzu"] as $key ){
+												foreach( ["Balaka", "Blantyre", "Chikwawa", "Chiradzulo", "Chitipa", "Dedza", "Dowa", "Karonga", "Kasungu", "Likoma", "Lilongwe", "Machinga", "Mangochi", "Mchinji", "Mulanje", "Mwanza", "Mzimba", "Neno", "Nkhatabay", "Nkhotakota", "Nsanje", "Ntcheu", "Ntchisi", "Phalombe", "Rumphi", "Salima", "Thyolo", "Zomba"] as $key ){
 													echo '<option value="'. $key .'" data-code="'. $key .'">'. $key .'</option>';
 												}
 												?>

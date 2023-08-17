@@ -293,9 +293,10 @@
                         
                      </script>
                      <?php } ?>
-                     <div class="step_footer">
+                     <div class="step_footer" >
                         <p><?php //echo __( '1 of 3 steps to complete to access PRO upgrade, features' );?></p>
-                        <button class="waves-effect waves-light btn btn_primary bold first next" id="btn-upload-images" data-pending-verification="<?php echo $config->pending_verification;?>" data-image-verification="<?php echo $config->image_verification;?>" <?php if($profile->src == 'Facebook' ) { } else { echo 'disabled'; }?> data-src="<?php echo $profile->src;?>" data-selected="<?php if($profile->src == 'Facebook' ) { echo str_replace( $config->uri . '/' , '', $profile->avater->full); } ?>" data-defaultText="<?php echo __( 'Next' );?>">
+                        <button style="margin-top: 60px;"
+                         class="waves-effect waves-light btn btn_primary bold first next" id="btn-upload-images" data-pending-verification="<?php echo $config->pending_verification;?>" data-image-verification="<?php echo $config->image_verification;?>" <?php if($profile->src == 'Facebook' ) { } else { echo 'disabled'; }?> data-src="<?php echo $profile->src;?>" data-selected="<?php if($profile->src == 'Facebook' ) { echo str_replace( $config->uri . '/' , '', $profile->avater->full); } ?>" data-defaultText="<?php echo __( 'Next' );?>">
                            <span id="nexttext"><?php echo __( 'Next' );?></span> 
                            <svg viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
                               <path fill="currentColor" d="M18.6 6.9v-.5l-6-6c-.3-.3-.9-.3-1.2 0-.3.3-.3.9 0 1.2l5 5H1c-.5 0-.9.4-.9.9s.4.8.9.8h14.4l-4 4.1c-.3.3-.3.9 0 1.2.2.2.4.2.6.2.2 0 .4-.1.6-.2l5.2-5.2h.2c.5 0 .8-.4.8-.8 0-.3 0-.5-.2-.7z"></path>

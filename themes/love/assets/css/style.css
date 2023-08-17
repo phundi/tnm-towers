@@ -1669,7 +1669,7 @@ body .dt_signup_steps h5.empty_state {
 .steps_header_steps li {display: inline-block;flex: 1 1 auto;}
 .steps_header_steps li div {
     text-align: center;
-    padding: 20px 15px;
+    padding: 30px 25px;
     position: relative;
     font: normal normal normal 16px/19px Montserrat;
     color: #FCCBF7;

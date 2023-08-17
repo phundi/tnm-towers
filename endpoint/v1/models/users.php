@@ -429,7 +429,7 @@ class Users {
         $password                     = password_hash($data['password'], PASSWORD_DEFAULT, array('cost' => 11));
         $user                         = array();
         $user['username']             = Secure($data['username']);
-        $user['email']                = Secure($data['email']);
+        $user['district']             = (ISSET($data['email']) ? Secure($data['email']) : '');
         $user['district']             = (ISSET($data['district']) ? Secure($data['district']) : '');
         $user['password']             = $password;
         $user['first_name']           = (ISSET($data['first_name']) ? Secure($data['first_name']) : '');
@@ -438,7 +438,7 @@ class Users {
         $user['about']                = (ISSET($data['about']) ? Secure($data['about']) : '');
         $user['gender']               = (ISSET($data['gender']) ? Secure($data['gender']) : '0');
         $user['birthday']             = (ISSET($data['birthday']) ? Secure($data['birthday']) : '0000-00-00');
-        $user['country']              = (ISSET($data['country_id']) ? Secure($data['country_id']) : '');
+        $user['country']              = (ISSET($data['country_id']) ? Secure($data['country_id']) : 'MW');
         $user['facebook']             = (ISSET($data['facebook']) ? Secure($data['facebook']) : '');
         $user['google']               = (ISSET($data['google']) ? Secure($data['google']) : '');
         $user['twitter']              = (ISSET($data['twitter']) ? Secure($data['twitter']) : '');

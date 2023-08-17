@@ -7,7 +7,6 @@
 			<div class="footer-copyright">
 				<div class="valign-wrapper">
 					<div>
-						<?php require( $theme_path . 'main' . $_DS . 'language.php' );?>
 						
 						<?php if($config->social_media_links == 'on'){ ?>
 						&nbsp;&nbsp;<span class="docial">
@@ -21,11 +20,7 @@
 								<svg height="512" viewBox="0 0 152 152" width="512" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><g><path d="m76 0a76 76 0 1 0 76 76 76 76 0 0 0 -76-76zm37.85 53a32.09 32.09 0 0 1 -6.51 7.15 2.78 2.78 0 0 0 -1 2.17v.25a45.58 45.58 0 0 1 -2.94 15.86 46.45 46.45 0 0 1 -8.65 14.5 42.73 42.73 0 0 1 -18.75 12.39 46.9 46.9 0 0 1 -14.74 2.29 45 45 0 0 1 -22.6-6.09 1.3 1.3 0 0 1 -.62-1.44 1.25 1.25 0 0 1 1.22-.94h1.9a30.31 30.31 0 0 0 16.94-5.14 16.45 16.45 0 0 1 -13-11.17.86.86 0 0 1 1-1.11 15.08 15.08 0 0 0 2.76.26h.35a16.42 16.42 0 0 1 -9.57-15.11.86.86 0 0 1 1.27-.75 14.44 14.44 0 0 0 3.74 1.45 16.42 16.42 0 0 1 -2.65-19.91.86.86 0 0 1 1.41-.11 43 43 0 0 0 29.51 15.77h.08a.62.62 0 0 0 .6-.67 17.39 17.39 0 0 1 .38-6 15.91 15.91 0 0 1 10.7-11.44 17.59 17.59 0 0 1 5.19-.8 16.36 16.36 0 0 1 10.84 4.09 2.12 2.12 0 0 0 1.41.54 2.15 2.15 0 0 0 .5-.07 30.3 30.3 0 0 0 8-3.3.85.85 0 0 1 1.25 1 16.23 16.23 0 0 1 -4.31 6.87 29.38 29.38 0 0 0 5.24-1.77.86.86 0 0 1 1.05 1.23z"></path></g></g></svg>
 							</a>
 						<?php }?>
-						<?php if(!empty($config->google_url)){ ?>
-							&nbsp;&nbsp;<a href="<?php echo $config->google_url;?>" target="_blank">
-								<svg height="512" viewBox="0 0 152 152" width="512" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><g><circle cx="76" cy="76" r="12.01"></circle><path d="m91.36 45.65h-30.72a15 15 0 0 0 -15 15v30.71a15 15 0 0 0 15 15h30.72a15 15 0 0 0 15-15v-30.72a15 15 0 0 0 -15-14.99zm-15.36 50.01a19.66 19.66 0 1 1 19.65-19.66 19.68 19.68 0 0 1 -19.65 19.66zm19.77-34.46a4.86 4.86 0 1 1 4.85-4.85 4.86 4.86 0 0 1 -4.85 4.85z"></path><path d="m76 0a76 76 0 1 0 76 76 76 76 0 0 0 -76-76zm38 91.36a22.66 22.66 0 0 1 -22.64 22.64h-30.72a22.67 22.67 0 0 1 -22.64-22.64v-30.72a22.67 22.67 0 0 1 22.64-22.64h30.72a22.67 22.67 0 0 1 22.64 22.64z"></path></g></g></svg>
-							</a>
-						<?php }?>
+					
 						</span>
 						<?php } ?>
 					</div>
@@ -37,11 +32,7 @@
 						&nbsp;-&nbsp;<li><a href="<?php echo $site_url;?>/terms" data-ajax="/terms"><?php echo __( 'Terms' );?></a></li>
 						&nbsp;-&nbsp;<li><a href="<?php echo $site_url;?>/privacy" data-ajax="/privacy"><?php echo __( 'Privacy Policy' );?></a></li>
 						&nbsp;-&nbsp;<li><a href="<?php echo $site_url;?>/contact" data-ajax="/contact"><?php echo __( 'Contact' );?></a></li>
-						&nbsp;-&nbsp;<li><a href="<?php echo $site_url;?>/faqs" data-ajax="/faqs"><?php echo __( 'faqs' );?></a></li>
-						&nbsp;-&nbsp;<li><a href="<?php echo $site_url;?>/refund" data-ajax="/refund"><?php echo __( 'refund' );?></a></li>
-						<?php if ($config->developers_page == '1') { ?>
-						&nbsp;-&nbsp;<li><a href="<?php echo $site_url;?>/developers" data-ajax="/developers"><?php echo __( 'Developers' );?></a></li>
-						<?php } ?>
+					
 					</ul>
 					<?php require( $theme_path . 'main' . $_DS . 'custom-page.php' );?>
 					

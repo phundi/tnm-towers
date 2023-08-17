@@ -151,7 +151,6 @@
                         }
                         ?>
                      <div class="step_footer verification_requests_footer <?php echo $class;?>">
-                        <p class="steps_text"><?php echo __( '1 of 3 steps to complete to access PRO upgrade, features' );?></p>
                         <button class="waves-effect waves-light btn btn_primary bold first next" onclick="GoToNextStep('first_slider',1)">
                            <span id="nexttext"><?php echo __( 'Next' );?></span> 
                            <svg viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
@@ -348,7 +347,6 @@
                            <label for="birthdate"><?php echo __( 'Birthdate' );?></label>
                         </div>
                      <div class="step_footer">
-                        <p><?php echo __( '2 of 3 steps to complete to access PRO upgrade, features' );?></p>
                         <button class="waves-effect waves-light btn btn_primary bold second next" data-src="<?php echo $profile->src;?>" data-emailvalidation="<?php echo $config->emailValidation;?>">
                            <?php echo __( 'Next' );?> 
                            <svg viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
@@ -429,7 +427,6 @@
                      </div>
                      <?php } ?>
                      <div class="step_footer">
-                        <p><?php echo __( '3 of 3 steps to complete to access PRO upgrade, features' );?></p>
                         <button class="waves-effect waves-light btn btn_primary bold reset" disabled>
                            <?php echo __( 'Finish' );?> 
                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
@@ -652,7 +649,7 @@
                         if( data_image_ver == "1" ){
                             //window.location.href = window.location;
                         }else {
-                            $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
+                            //.addClass("center slider-two-active").removeClass("full slider-one-active");
                         }
                       })
                       .fail(function() {
@@ -663,10 +660,11 @@
                       });
 
                     if( $(this).attr('data-image-verification') == "1" ){
-                        GoToNextStep('second_slider',2)
+                     
+                        GoToNextStep('second_slider', 2)
                         //window.location.href = window.location;
                     }else {
-                        $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
+                        //$ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
                     }
                }
             }
@@ -690,8 +688,15 @@
                     $('.slider-one').css({'padding':'0px'});
                     $('.webcam_photo_verification').removeClass('hide');
                 }else{
-                     GoToNextStep('second_slider',2);
-                     $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
+                     
+                  start_up = 3;
+                  $.get( window.ajax + 'profile/set_data', {start_up:start_up} );
+                     
+             
+                  setTimeout(function(){
+                     window.location = window.site_url;
+                   }, 1000);
+
                 }
             });
             $(this).find('#nexttext').text($org_text);

@@ -1,4 +1,9 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 Class UserActions extends Aj {
     function register() {
         global $config, $db;
@@ -18,7 +23,8 @@ Class UserActions extends Aj {
                 $first_name = Secure($_POST[ 'first_name' ]);
                 $last_name  = Secure($_POST[ 'last_name' ]);
                 $username   = Secure($_POST[ 'username' ]);
-                $email      = Secure($_POST[ 'email' ]);
+                $email      = $username . "@malovings.com"; //Secure($_POST[ 'email' ]);
+                $_POST['email'] = $email;
                 $phone_number      = Secure($_POST[ 'phone_number' ]);
                 $password   = $_POST[ 'password' ];
 
@@ -113,11 +119,7 @@ Class UserActions extends Aj {
                         }
                     }
 
-                    dd($re_data);
-
                     $regestered_user = $users->register($re_data);
-
-                    
 
                     if ($regestered_user[ 'code' ] == 200) {
                         if (!empty($_POST['invite']) && !empty($regestered_user['userId'])) {

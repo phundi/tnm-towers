@@ -390,7 +390,16 @@ if($matched_count[0]['cnt'] == 2){
 											</div>
 										</div>
 									<?php } ?>
-						
+
+									<?php if( $profile->district !== '' ){?>
+										<div class="col s6">
+											<div>
+												<p class="info_title"><?php echo __( 'District' );?></p>
+												<span><?php echo $profile->district;?></span>
+											</div>
+										</div>
+									<?php } ?>
+
 									<?php if( $profile->country !== '' ){?>
 										<div class="col s6">
 											<div>
@@ -399,6 +408,9 @@ if($matched_count[0]['cnt'] == 2){
 											</div>
 										</div>
 									<?php } ?>
+
+								
+
 								</div>
 							</div>
 							<?php if( isset( $_COOKIE[ 'JWT' ] ) && !empty( $_COOKIE[ 'JWT' ] ) ){ ?>

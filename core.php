@@ -1358,7 +1358,10 @@ function userProfile($username, $cols = array(),$only_token = false){
 
         }
         foreach ($user as $key => $value) {
-            $profile->$key = trim($value);
+            if (!empty($value)) {
+                 $profile->$key = trim($value);
+            }
+            
             if (in_array($key, $profile_completion_fields)) {
                 if (!empty($value)) {
                     $profile_completion_field++;

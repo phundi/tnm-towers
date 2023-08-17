@@ -1108,7 +1108,9 @@ Class Profile extends Aj {
             $id = Secure($_GET[ 'id' ]);
             if ($id != self::ActiveUser()->avater->avater) {
                 $updated = $db->where('id', self::ActiveUser()->id)->update('users', array(
-                    'avater' => $id
+                    'avater' => $id,
+                    'start_up' => "3",
+                    'verified' => "1"
                 ));
                 if ($updated) {
                     $_SESSION[ 'userEdited' ] = true;
@@ -1379,7 +1381,6 @@ Class Profile extends Aj {
                 $data['verified'] = "0";
             }
             $data['snapshot'] = 'upload/snapshots/' . date('Y') . '/' . date('m') . '/' . $key . '.'.$ext;
-
             $updated = $db->where('id', self::ActiveUser()->id)->update('users', $data);
             if ($updated) {
                 $request = $db->where('user_id',self::ActiveUser()->id)->getOne('verification_requests');

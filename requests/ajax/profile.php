@@ -1108,9 +1108,7 @@ Class Profile extends Aj {
             $id = Secure($_GET[ 'id' ]);
             if ($id != self::ActiveUser()->avater->avater) {
                 $updated = $db->where('id', self::ActiveUser()->id)->update('users', array(
-                    'avater' => $id,
-                    'start_up' => "3",
-                    'verified' => "1"
+                    'avater' => $id
                 ));
                 if ($updated) {
                     $_SESSION[ 'userEdited' ] = true;

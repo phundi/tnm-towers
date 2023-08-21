@@ -774,7 +774,7 @@ Class UserActions extends Aj {
         if ($data[ 'lat' ] == 0 && $data[ 'lng' ] == 0) {
             $info = 'show';
         }
-        if ($data[ 'lat' ] != 0 && $data[ 'lng' ] != 0 && (self::ActiveUser()->lat == 0 || self::ActiveUser()->lng == 0)) {
+        if (!empty($data[ 'lat' ]) && $data[ 'lat' ] != 0 && $data[ 'lng' ] != 0 && (self::ActiveUser()->lat == 0 || self::ActiveUser()->lng == 0)) {
             $info = 'hide';
         }
         $data[ 'last_location_update' ] = time();

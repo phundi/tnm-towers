@@ -2271,6 +2271,8 @@ function SendEmail($to, $subject, $message, $db = false) {
 }
 use Twilio\Rest\Client;
 use Twilio\Exceptions\RestException;
+use AfricasTalking\SDK\AfricasTalking;
+
 function SendSMS($to, $message) {
     global $config,$_LIBS;
 
@@ -2280,6 +2282,28 @@ function SendSMS($to, $message) {
     if (empty($message)) {
         return false;
     }
+
+    require_once($_LIBS . "africastalking/vendor/autoload.php");
+
+    $username = 'malovings'; 
+
+    //Sandboxkey = b00f6210fad68efecc11fe4a32ffe3b87cac7ab463b5d57670c24c7b584bcc21
+    //Livekey = 7b187d52b893b3762034235134b1872c76fd326c4d76f9f03dc2a5ab3def046c
+    
+    $apiKey   = '7b187d52b893b3762034235134b1872c76fd326c4d76f9f03dc2a5ab3def046c'; // use your sandbox app API key for development in the test environment
+    $AT       = new AfricasTalking($username, $apiKey);
+
+    // Get one of the services
+    $sms      = $AT->sms();
+
+    // Use the service
+    $result   = $sms->send([
+        'to'      => $to,
+        'message' => $message
+    ]);
+
+    return true;
+
     if ($config->twilio_provider == 1) {
 
         $account_sid = $config->sms_twilio_username;
@@ -2954,7 +2978,7 @@ function CanSendEmails() {
     // }
     $can_send_time = time() - 180;
     $u = auth();
-    if ($u->last_email_sent > $can_send_time) {
+    if (!empty($u->last_email_sent) && $u->last_email_sent > $can_send_time) {
         return false;
     }
     return true;

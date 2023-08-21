@@ -1,9 +1,10 @@
-headers = ["Sites Name", "Code", "Region", "District", "Site Status", 
+headers = ["Site Name", "Site ID", "Region", "District", "Site Status", 
             "ESCOM", "Tank Size", "Opening Litres", "Litres Dispensed", 
             "Closing Litres", "Usage in Litres", "Opening Hours", "Closing Hours",
              "Hours Run", "Average Usage Per Hour", 
             "Opening Readings", "Units Bought", "Closing Readings", "Power Usage"]
-filename = "db/data/#{ARGV[0]}.csv"
+filename = ARGV[0]
+date = ARGV[1]
 creator = User.first.id
 CSV.read(filename).each_with_index do |t, i|
     if i == 0 
@@ -13,25 +14,19 @@ CSV.read(filename).each_with_index do |t, i|
 
     t.each_with_index {|v, i| t[i] = (v.strip.gsub(/\s+/, " ") rescue v)}
 
-    next if t[headers.index("Sites Name")].blank? 
-    tower = Tower.new 
-    tower.name = t[headers.index("Sites Name")].strip
-    tower.district_id = Location.find_by_name(t[headers.index("District")].strip).id rescue (raise t.inspect)
-    tower.description = ARGV[1]
-    tower.tower_type_id = TowerType.first.id
-    tower.creator = creator
-
     code = t[1].strip rescue nil
-    tower.code = code 
 
-    status = t[headers.index("Site Status")]
-    if status.downcase.strip == "grid"
-        tower.grid_type = "On Grid Site"
-    else
-        tower.grid_type = "Off Grid Site"
+    towers = Tower.where(code: code)
+    if towers.count > 1
+        towers = Tower.where(code: code, name: t[headers.index("Site Name")])
     end 
 
-    tower.save!
+    if towers.count == 0
+        towers = Tower.where(name: t[headers.index("Site Name")]) #missing code
+    end 
+
+    raise "#{towers.count} DUPLICATES FOUND FOR CODE: #{code}" if towers.count > 1
+    tower = towers.first 
 
     if t[headers.index("Opening Litres")].present?
         frefill = Refill.new 
@@ -45,7 +40,7 @@ CSV.read(filename).each_with_index do |t, i|
         frefill.genset_reading = t[headers.index("Closing Hours")].strip.gsub(",", "") rescue 0
         frefill.genset_run_time = t[headers.index("Hours Run")].strip.gsub(",", "") rescue 0
         frefill.creator = creator
-        frefill.refill_date = "31-May-2023".to_date
+        frefill.refill_date = date.to_date
         frefill.save!
     end
 
@@ -65,12 +60,9 @@ CSV.read(filename).each_with_index do |t, i|
 
         erefill.usage = t[headers.index("Power Usage")].strip.gsub(",", "") rescue 0
         erefill.creator = creator
-        erefill.refill_date = "31-May-2023".to_date
+        erefill.refill_date = date.to_date
         erefill.save!
     end 
-
-
-
 
     puts "#{i} # #{tower.name} # #{code}"
 end

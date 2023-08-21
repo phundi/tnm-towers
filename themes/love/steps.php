@@ -695,13 +695,14 @@
                      
                   <?php if ($config->verification_on_signup == 1) { ?>
                      $('.dt_signup_steps').html(`<h5 class="empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15,3H12V6H8V3H5A2,2 0 0,0 3,5V21A2,2 0 0,0 5,23H15A2,2 0 0,0 17,21V5A2,2 0 0,0 15,3M10,8A2,2 0 0,1 12,10A2,2 0 0,1 10,12A2,2 0 0,1 8,10A2,2 0 0,1 10,8M14,16H6V15C6,13.67 8.67,13 10,13C11.33,13 14,13.67 14,15V16M11,5H9V1H11V5M14,19H6V18H14V19M10,21H6V20H10V21M19,12V7H21V12H19M19,16V14H21V16H19Z" /></svg><?php echo __('Your account wait admin photo verification. Please try again later.');?></h5>`);
-                     GoToNextStep('second_slider',3);
+                     
+                     GoToNextStep('second_slider',2);
                   <?php } ?>
 
 
-                 // setTimeout(function(){
-                  //   window.location = window.site_url;
-                   //}, 1000);
+                 setTimeout(function(){
+                   window.location = window.site_url;
+                  }, 1000);
 
                 }
             });

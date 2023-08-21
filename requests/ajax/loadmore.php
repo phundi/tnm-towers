@@ -196,7 +196,7 @@ Class Loadmore extends Aj {
         }
 
         if ($error == '') {
-            $sql = 'SELECT `id`,`online`,`lastseen`,`username`,`avater`,`country`,`first_name`,`last_name`,`location`,`birthday`,`language`,`relationship`,`height`,`body`,`smoke`,`ethnicity`,`pets`,`gender` FROM `users` ';
+            $sql = 'SELECT `id`,`online`,`lastseen`,`username`,`avater`,`country`,`first_name`,`last_name`,`location`,`birthday`,`language`,`relationship`,`height`,`body`,`smoke`,`ethnicity`,`pets`,`gender`,`district` FROM `users` ';
             $sql .= ' WHERE  ';
             $sql .= ' `id` <> "'.self::ActiveUser()->id.'" AND `active` = "1" AND `verified` = "1" AND `privacy_show_profile_random_users` = "1" ';
 

@@ -5,7 +5,6 @@
 <?php
 $_SESSION['_lat'] = $profile->lat;
 $_SESSION['_lng'] = $profile->lng;
-
 $_age_from = !empty($data['find_match_data']) && !empty($data['find_match_data']['age_from']) ? $data['find_match_data']['age_from'] : 18;
 $_age_to = !empty($data['find_match_data']) && !empty($data['find_match_data']['age_to']) ? $data['find_match_data']['age_to'] : 98;
 $_located = !empty($data['find_match_data']) && !empty($data['find_match_data']['located']) ? $data['find_match_data']['located'] : 125;

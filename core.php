@@ -1318,7 +1318,8 @@ function userProfile($username, $cols = array(),$only_token = false){
         'book',
         'movie',
         'colour',
-        'tv'
+        'tv',
+        'district'
     );
     $profile_completion_fields_count = count($profile_completion_fields);
     $profile_completion_field        = 0;
@@ -1339,7 +1340,9 @@ function userProfile($username, $cols = array(),$only_token = false){
         $db->Where('username', $username);
         $db->orWhere('email', $username);
     }
+    
     $user = $db->objectBuilder()->getOne('users',$columns);
+
     if ($db->count > 0) {
         $icon = '';
         if (!empty($user) && !empty($user->is_pro) && $user->is_pro == 1) {
@@ -3936,11 +3939,13 @@ function udetails($user){
     $return = '';
     $age = getAge($user->birthday);
     $country = '';
+
     if (empty($user->country)) {
 
         $countries = Dataset::load('countries');
         if (!empty($countries) && !empty(array_keys($countries))) {
-            $user->country = array_keys($countries)[0];
+            //$user->country = array_keys($countries)[0];
+            $user->country = "MW";
             $db->where('id',$user->id)->update('users',['country' => $user->country]);
         }
         
@@ -3951,12 +3956,26 @@ function udetails($user){
     if($age > 0){
         $return = $age ;
     }
+
+    if(!empty($user->district)){
+        if($return !== ''){
+            $return .= ',';
+        }
+        $return .= '&nbsp;'.$user->district;    
+    }
+
+  /*
+
     if($country !== ''){
         if($return !== ''){
             $return .= ',';
         }
         $return .= '&nbsp;'.$country;
     }
+
+    */
+
+    
     if($return == ''){
         $return = '&nbsp;';
     }

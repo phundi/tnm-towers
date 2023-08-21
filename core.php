@@ -2299,7 +2299,6 @@ function SendSMS($to, $message) {
     // Use the service
     $result   = $sms->send([
         'to'      => $to,
-        'from'    => 'MALOVINGS',
         'message' => $message
     ]);
 

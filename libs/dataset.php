@@ -133,7 +133,8 @@ $app['context']['travel']               = array(
 );
 $app['context']['drink']                = array(
     '1' => __('Never'),
-    '2' => __('I drink sometimes')
+    '2' => __('I drink sometimes'),
+    '3' => __('Drunkard')
 );
 $app['context']['smoke']                = array(
     '1' => __('Never'),
@@ -141,16 +142,11 @@ $app['context']['smoke']                = array(
     '3' => __('Chain Smoker')
 );
 $app['context']['religion']             = array(
-    '1' => __('muslim'),
-    '2' => __('Atheist'),
-    '3' => __('Buddhist'),
-    '4' => __('Catholic'),
-    '5' => __('Christian'),
-    '6' => __('Hindu'),
-    '7' => __('Jewish'),
-    '8' => __('Agnostic'),
-    '9' => __('Sikh'),
-    '10' => __('Other')
+    '1' => __('Christian'),
+    '2' => __('Catholic'),
+    '3' => __('Muslim'),
+    '4' => __('Atheist'),
+    '5' => __('Other')
 );
 $app['context']['car']                  = array(
     '1' => __('None'),
@@ -227,18 +223,18 @@ $app['context']['body']                 = array(
     '7' => __('Other')
 );
 $app['context']['ethnicity']            = array(
-    '1' => __('White'),
-    '2' => __('Black'),
-    '3' => __('Middle Eastern'),
-    '4' => __('North African'),
-    '5' => __('Latin American'),
-    '6' => __('Mixed'),
-    '7' => __('Asian'),
+    '1' => __('Chewa'),
+    '2' => __('Tumbuka'),
+    '3' => __('Yao'),
+    '4' => __('Lomwe'),
+    '5' => __('Sena'),
+    '6' => __('Ngoni'),
+    '7' => __('Tonga'),
     '8' => __('Other')
 );
 $app['context']['education']            = array(
-    '1' => __('Secondary school'),
-    '2' => __('ITI'),
+    '1' => __('Primary School'),
+    '2' => __('Secondary School'),
     '3' => __('College'),
     '4' => __('University'),
     '5' => __('Advanced degree'),
@@ -734,7 +730,8 @@ class Dataset{
     public static function drink(){
         return array(
             '1' => __('Never'),
-            '2' => __('I drink sometimes')
+            '2' => __('I drink sometimes'),
+            '3' => __('Drunkard')
         );
     }
     public static function smoke(){
@@ -746,16 +743,11 @@ class Dataset{
     }
     public static function religion(){
         return array(
-            '1' => __('muslim'),
-            '2' => __('Atheist'),
-            '3' => __('Buddhist'),
-            '4' => __('Catholic'),
-            '5' => __('Christian'),
-            '6' => __('Hindu'),
-            '7' => __('Jewish'),
-            '8' => __('Agnostic'),
-            '9' => __('Sikh'),
-            '10' => __('Other')
+            '1' => __('Christian'),
+            '2' => __('Catholic'),
+            '3' => __('Muslim'),
+            '4' => __('Atheist'),
+            '5' => __('Other')
         );
     }
     public static function car(){
@@ -848,20 +840,20 @@ class Dataset{
     }
     public static function ethnicity(){
         return array(
-            '1' => __('White'),
-            '2' => __('Black'),
-            '3' => __('Middle Eastern'),
-            '4' => __('North African'),
-            '5' => __('Latin American'),
-            '6' => __('Mixed'),
-            '7' => __('Asian'),
+            '1' => __('Chewa'),
+            '2' => __('Tumbuka'),
+            '3' => __('Yao'),
+            '4' => __('Lomwe'),
+            '5' => __('Sena'),
+            '6' => __('Ngoni'),
+            '7' => __('Tonga'),
             '8' => __('Other')
         );
     }
     public static function education(){
         return array(
-            '1' => __('Secondary school'),
-            '2' => __('ITI'),
+            '1' => __('Primary School'),
+            '2' => __('Secondary School'),
             '3' => __('College'),
             '4' => __('University'),
             '5' => __('Advanced degree'),

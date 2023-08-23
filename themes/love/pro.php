@@ -22,7 +22,45 @@
 			</div>
 			
 			<div class="row">
-				<div class="col l3 m6 s12">
+				
+				<div class="col l4 m6 s12" onclick="pay_using_airtelmoney();">
+					<label class="dt_go_pro_plan">
+						<input class="with-gap" name="pro_plan" type="radio" value="<?php echo __( 'Daily' );?>" data-price="<?php echo (float)$config->weekly_pro_plan;?>"/>
+						<div class="plan">
+							<div class="valign-wrapper head">
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" width="69.484" height="69.469" viewBox="0 0 69.484 69.469"> <path d="M79.562,61.122V55.516a1.331,1.331,0,1,1,2.663,0v5.606a1.331,1.331,0,0,1-2.663,0ZM74,62.162a1.331,1.331,0,0,0,1.849-1.916L71.83,56.362a1.331,1.331,0,0,0-1.849,1.916Zm12.855.373a1.327,1.327,0,0,0,.925-.373l4.024-3.884a1.331,1.331,0,1,0-1.849-1.916l-4.024,3.884a1.331,1.331,0,0,0,.925,2.289Zm20.615,14.629L99.008,87.2a1.331,1.331,0,1,1-2.035-1.717l6.619-7.849H93.382l-8.444,22.12,8.47-10.043a1.331,1.331,0,1,1,2.036,1.717L81.912,107.476a1.332,1.332,0,0,1-2.036,0L54.313,77.164a1.331,1.331,0,0,1-.024-1.688L57.5,71.441A1.331,1.331,0,0,1,59.587,73.1l-1.493,1.874H68.545l4.524-8.033H64.493l-1.459,1.832a1.331,1.331,0,0,1-2.083-1.659l1.859-2.334a1.331,1.331,0,0,1,1.041-.5H97.936a1.331,1.331,0,0,1,1.041.5l8.521,10.7A1.331,1.331,0,0,1,107.475,77.164ZM97.294,66.942H88.719l4.524,8.033h10.451ZM71.6,74.975H90.187l-4.524-8.033H76.125ZM58.2,77.637,76.85,99.758l-8.444-22.12Zm32.336,0H71.257l9.637,25.247Z" transform="translate(-69.831 -11.958) rotate(-21)" fill="#0ebe7e"/> </svg>
+									<div>
+										<h5><?php echo __( 'Daily' );?></h5>
+										<p><?php echo __( 'Package' );?></p>
+									</div>
+								</div>
+								<div class="price">
+									<?php echo $config->currency_symbol . (float)(1000);?>
+								</div>
+							</div>
+							<div class="mid">
+								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'See more stickers on chat' );?></p>
+								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Show in Premium bar' );?></p>
+								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'See likes notifications' );?></p>
+								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Get discount when buy boost me' );?></p>
+								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Display first in find matches' );?></p>
+								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Display on top in random users' );?></p>
+								<?php if($config->video_chat == 1 && $config->audio_chat == 1){ ?>
+									<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Video and Audio calls to all users' );?></p>
+								<?php } ?>
+								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches by ditrict' );?></p>
+							</div>
+							<div class="foot" >
+								<button type="button"  ><?php echo __( 'Make Payment' );?>
+							</button>
+							</div>
+						</div>
+					</label>
+				</div>
+				
+
+				<div class="col l4 m6 s12">
 					<label class="dt_go_pro_plan">
 						<input class="with-gap" name="pro_plan" type="radio" value="<?php echo __( 'Weekly' );?>" data-price="<?php echo (float)$config->weekly_pro_plan;?>"/>
 						<div class="plan">
@@ -48,15 +86,15 @@
 								<?php if($config->video_chat == 1 && $config->audio_chat == 1){ ?>
 									<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Video and Audio calls to all users' );?></p>
 								<?php } ?>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches by country' );?></p>
+								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches by district' );?></p>
 							</div>
 							<div class="foot">
-								<button type="button"><?php echo __( 'Choose Plan' );?></button>
+								<button type="button" onclick="pay_using_airtelmoney();"><?php echo __( 'Make Payment' );?></button>
 							</div>
 						</div>
 					</label>
 				</div>
-				<div class="col l3 m6 s12">
+				<div class="col l4 m6 s12">
 					<label class="dt_go_pro_plan special">
 						<input class="with-gap" name="pro_plan" type="radio" value="<?php echo __( 'Monthly' );?>" data-price="<?php echo (float)$config->monthly_pro_plan;?>" checked />
 						<div class="plan">
@@ -83,85 +121,18 @@
 								<?php if($config->video_chat == 1 && $config->audio_chat == 1){ ?>
 									<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Video and Audio calls to all users' );?></p>
 								<?php } ?>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches by country' );?></p>
+								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches district' );?></p>
 							</div>
 							<div class="foot">
-								<button type="button"><?php echo __( 'Choose Plan' );?></button>
+								<button type="button" onclick="pay_using_airtelmoney();"><?php echo __( 'Make Payment' );?></button>
 							</div>
 						</div>
 					</label>
 				</div>
-				<div class="col l3 m6 s12">
-					<label class="dt_go_pro_plan">
-						<input class="with-gap" name="pro_plan" type="radio" value="<?php echo __( 'Yearly' );?>" data-price="<?php echo (float)$config->yearly_pro_plan;?>"/>
-						<div class="plan">
-							<div class="valign-wrapper head">
-								<div>
-									<svg xmlns="http://www.w3.org/2000/svg" width="69.484" height="69.469" viewBox="0 0 69.484 69.469"> <path d="M79.562,61.122V55.516a1.331,1.331,0,1,1,2.663,0v5.606a1.331,1.331,0,0,1-2.663,0ZM74,62.162a1.331,1.331,0,0,0,1.849-1.916L71.83,56.362a1.331,1.331,0,0,0-1.849,1.916Zm12.855.373a1.327,1.327,0,0,0,.925-.373l4.024-3.884a1.331,1.331,0,1,0-1.849-1.916l-4.024,3.884a1.331,1.331,0,0,0,.925,2.289Zm20.615,14.629L99.008,87.2a1.331,1.331,0,1,1-2.035-1.717l6.619-7.849H93.382l-8.444,22.12,8.47-10.043a1.331,1.331,0,1,1,2.036,1.717L81.912,107.476a1.332,1.332,0,0,1-2.036,0L54.313,77.164a1.331,1.331,0,0,1-.024-1.688L57.5,71.441A1.331,1.331,0,0,1,59.587,73.1l-1.493,1.874H68.545l4.524-8.033H64.493l-1.459,1.832a1.331,1.331,0,0,1-2.083-1.659l1.859-2.334a1.331,1.331,0,0,1,1.041-.5H97.936a1.331,1.331,0,0,1,1.041.5l8.521,10.7A1.331,1.331,0,0,1,107.475,77.164ZM97.294,66.942H88.719l4.524,8.033h10.451ZM71.6,74.975H90.187l-4.524-8.033H76.125ZM58.2,77.637,76.85,99.758l-8.444-22.12Zm32.336,0H71.257l9.637,25.247Z" transform="translate(-69.831 -11.958) rotate(-21)" fill="#3e38f7"/> </svg>
-									<div>
-										<h5><?php echo __( 'Yearly' );?></h5>
-										<p><?php echo __( 'Package' );?></p>
-									</div>
-								</div>
-								<div class="price">
-									<?php echo $config->currency_symbol . (float)$config->yearly_pro_plan;?>
-								</div>
-							</div>
-							<div class="mid">
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'See more stickers on chat' );?></p>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Show in Premium bar' );?></p>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'See likes notifications' );?></p>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Get discount when buy boost me' );?></p>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Display first in find matches' );?></p>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Display on top in random users' );?></p>
-								<?php if($config->video_chat == 1 && $config->audio_chat == 1){ ?>
-									<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Video and Audio calls to all users' );?></p>
-								<?php } ?>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches by country' );?></p>
-							</div>
-							<div class="foot">
-								<button type="button"><?php echo __( 'Choose Plan' );?></button>
-							</div>
-						</div>
-					</label>
-				</div>
-				<div class="col l3 m6 s12">
-					<label class="dt_go_pro_plan">
-						<input class="with-gap" name="pro_plan" type="radio" value="<?php echo __( 'Lifetime' );?>" data-price="<?php echo (float)$config->lifetime_pro_plan;?>"/>
-						<div class="plan">
-							<div class="valign-wrapper head">
-								<div>
-									<svg xmlns="http://www.w3.org/2000/svg" width="69.484" height="69.469" viewBox="0 0 69.484 69.469"> <path d="M79.562,61.122V55.516a1.331,1.331,0,1,1,2.663,0v5.606a1.331,1.331,0,0,1-2.663,0ZM74,62.162a1.331,1.331,0,0,0,1.849-1.916L71.83,56.362a1.331,1.331,0,0,0-1.849,1.916Zm12.855.373a1.327,1.327,0,0,0,.925-.373l4.024-3.884a1.331,1.331,0,1,0-1.849-1.916l-4.024,3.884a1.331,1.331,0,0,0,.925,2.289Zm20.615,14.629L99.008,87.2a1.331,1.331,0,1,1-2.035-1.717l6.619-7.849H93.382l-8.444,22.12,8.47-10.043a1.331,1.331,0,1,1,2.036,1.717L81.912,107.476a1.332,1.332,0,0,1-2.036,0L54.313,77.164a1.331,1.331,0,0,1-.024-1.688L57.5,71.441A1.331,1.331,0,0,1,59.587,73.1l-1.493,1.874H68.545l4.524-8.033H64.493l-1.459,1.832a1.331,1.331,0,0,1-2.083-1.659l1.859-2.334a1.331,1.331,0,0,1,1.041-.5H97.936a1.331,1.331,0,0,1,1.041.5l8.521,10.7A1.331,1.331,0,0,1,107.475,77.164ZM97.294,66.942H88.719l4.524,8.033h10.451ZM71.6,74.975H90.187l-4.524-8.033H76.125ZM58.2,77.637,76.85,99.758l-8.444-22.12Zm32.336,0H71.257l9.637,25.247Z" transform="translate(-69.831 -11.958) rotate(-21)" fill="#eb23dd"/> </svg>
-									<div>
-										<h5><?php echo __( 'Lifetime' );?></h5>
-										<p><?php echo __( 'Package' );?></p>
-									</div>
-								</div>
-								<div class="price">
-									<?php echo $config->currency_symbol . (float)$config->lifetime_pro_plan;?>
-								</div>
-							</div>
-							<div class="mid">
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'See more stickers on chat' );?></p>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Show in Premium bar' );?></p>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'See likes notifications' );?></p>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Get discount when buy boost me' );?></p>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Display first in find matches' );?></p>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Display on top in random users' );?></p>
-								<?php if($config->video_chat == 1 && $config->audio_chat == 1){ ?>
-									<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Video and Audio calls to all users' );?></p>
-								<?php } ?>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches by country' );?></p>
-							</div>
-							<div class="foot">
-								<button type="button"><?php echo __( 'Choose Plan' );?></button>
-							</div>
-						</div>
-					</label>
-				</div>
+				
 			</div>
 			
-			<div class="dt_premium">
+			<div class="dt_premium" style="display: none;">
 				<div class="dt_choose_pro">
 					<div class="pay_using center">
 						<p class="bold"><?php echo __( 'Pay Using' );?></p>
@@ -644,5 +615,9 @@
             $('#2checkout_modal').modal('open');
         }
     <?php } ?>
+
+	function pay_using_airtelmoney(){
+           alert("Coming soon")
+	}
 
 </script>

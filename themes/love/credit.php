@@ -129,8 +129,12 @@
 
 <a href="javascript:void(0);" id="btnProSuccess" style="visibility: hidden;display: none;"></a>
 
-
 <script>
+
+function pay_using_airtel_money() {
+	$('#2checkout_modal').modal('open');
+}
+
 <?php if ($config->fluttewave_payment == 1) { ?>
 	function open_fluttewave() {
 		$('#fluttewave_modal').modal('open');

@@ -48,7 +48,7 @@ $_gender_text = '';
 						<svg xmlns="http://www.w3.org/2000/svg" width="66" height="17" viewBox="0 0 66 17"> <g id="Group_8834" data-name="Group 8834" transform="translate(-266.936 -201.15)"> <rect id="Rectangle_3373" data-name="Rectangle 3373" width="17" height="16" transform="translate(266.936 201.15)" fill="currentColor"/> <circle id="Ellipse_331" data-name="Ellipse 331" cx="8.5" cy="8.5" r="8.5" transform="translate(289.936 201.15)" fill="currentColor"/> <path id="Polygon_5" data-name="Polygon 5" d="M10,0,20,17H0Z" transform="translate(312.936 201.15)" fill="currentColor"/> </g> </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo __('Basic');?>
 					</a>
 				</li>
-				<li class="tab">
+				<li class="tab" style="display: none;">
 					<a href="#looks">
 						<svg xmlns="http://www.w3.org/2000/svg" width="29.585" height="27.208" viewBox="0 0 29.585 27.208"> <g id="Group_8837" data-name="Group 8837" transform="translate(-580.386 -196.85)"> <circle id="Ellipse_332" data-name="Ellipse 332" cx="11" cy="11" r="11" transform="translate(584 201)" fill="currentColor" opacity="0.5"/> <path id="Path_215764" data-name="Path 215764" d="M580.386,224.058h8.733s-2.744-17.216,6.238-18.214a76.247,76.247,0,0,1,0-8.982s-11.214-.739-13.748,9.482C580.561,210.974,580.386,224.058,580.386,224.058Z" fill="currentColor"/> <path id="Path_215765" data-name="Path 215765" d="M595.356,224.058h-8.733s2.744-17.216-6.238-18.214a76.247,76.247,0,0,0,0-8.982s11.214-.739,13.748,9.482C595.182,210.974,595.356,224.058,595.356,224.058Z" transform="translate(14.614)" fill="currentColor"/> </g> </svg>&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="26.014" height="27.384" viewBox="0 0 26.014 27.384"> <g id="Group_8836" data-name="Group 8836" transform="translate(-619.841 -196.85)"> <circle id="Ellipse_333" data-name="Ellipse 333" cx="11" cy="11" r="11" transform="translate(622 202.234)" fill="currentColor" opacity="0.5"/> <path id="Path_215766" data-name="Path 215766" d="M619.612,212s-5.182-15.272,11.324-17.384c1.919,7.869,1.919,9.213,1.919,9.213l-8.637,1.344-1.152,7.869Z" transform="translate(1 2.234)" fill="currentColor"/> <path id="Path_215767" data-name="Path 215767" d="M632.084,212s5.182-15.272-11.324-17.384c-1.919,7.869-1.919,9.213-1.919,9.213l8.637,1.344,1.152,7.869Z" transform="translate(13 2.234)" fill="currentColor"/> </g> </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo __('Looks');?>
 					</a>
@@ -290,7 +290,7 @@ $_gender_text = '';
 							</div>
 						</div>
 						<div class="col s12 m4">
-							<h5><?php echo __('Ethnicity');?></h5>
+							<h5><?php echo __('Tribe');?></h5>
 							<?php
 								$ethnicity = Dataset::load('ethnicity');
 								if (isset($ethnicity) && !empty($ethnicity)) {
@@ -412,7 +412,7 @@ $_gender_text = '';
 								}
 							?>
 						</div>
-						<div class="col s12 m3">
+						<div class="col s12 m3" style="display: none;">
 							<h5><?php echo __('Pets');?></h5>
 							<?php
 								$pets = Dataset::load('pets');

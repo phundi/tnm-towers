@@ -85,4 +85,5 @@
 			<?php echo __( 'fluttewave' );?> <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="64.000000pt" height="73.000000pt" viewBox="0 0 64.000000 73.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,73.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M342 533 l3 -108 120 -5 c66 -3 122 -5 123 -4 2 2 -34 27 -80 56 -62 41 -93 69 -122 111 -22 31 -41 57 -43 57 -2 0 -2 -48 -1 -107z"/> <path d="M67 432 c8 -20 23 -53 33 -72 14 -28 17 -51 13 -110 l-5 -75 53 59 c102 112 103 94 -11 169 l-99 66 16 -37z"/> </g> </svg>
 		</button>
 	<?php } ?>
+
 </div>

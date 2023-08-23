@@ -113,9 +113,23 @@ if($matched_count[0]['cnt'] == 2){
 							</a>
 						<?php } ?>
 						<?php if( $profile->src !== 'Fake' ){?>
-						<a href="javascript:void(0);" class="yellow_bg tooltipped" id="btn_open_private_conversation" data-ajax-post="/chat/open_private_conversation" data-ajax-params="from=<?php echo $profile->id;?>&web_device_id=<?php echo $profile->web_device_id;?>" data-ajax-callback="open_private_conversation" data-position="bottom" data-tooltip="<?php echo __( 'Message' );?>">
+
+						<a class="yellow_bg tooltipped" id="btn_open_private_conversation"
+							data-position="bottom" data-tooltip="<?php echo __( 'Message' );?>"
+							
+							<?php
+							if( auth()->is_pro == "1"){ ?>
+								href="javascript:void(0);"  data-ajax-post="/chat/open_private_conversation" data-ajax-params="from=<?php echo $profile->id;?>&web_device_id=<?php echo $profile->web_device_id;?>" data-ajax-callback="open_private_conversation" 
+
+							<?php } else { ?>
+								onclick="window.location='/pro'"
+							<?php } ?>
+		
+						>
+
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 22.5L11.2 19H6a1 1 0 0 1-1-1V7.103a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1h-5.2L14 22.5zm1.839-5.5H21V8.103H7V17H12.161L14 19.298 15.839 17zM2 2h17v2H3v11H1V3a1 1 0 0 1 1-1z"/></svg>
 						</a>
+
 						<?php }?>
 						<?php //if(isGenderFree($user->gender) === true ){?>
 							<a href="javascript:void(0);" class="blue_bg tooltipped" data-ajax-post="/profile/open_gift_model" data-ajax-params="" data-ajax-callback="callback_open_gift_model" data-position="bottom" data-tooltip="<?php echo __( 'Send a gift' );?>">

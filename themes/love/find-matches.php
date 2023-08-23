@@ -27,17 +27,8 @@ $_gender_text = '';
 <ul class="collapsible dt_new_home_filter" id="home_filters">
 	<div class="container">
 		<div class="dt_home_filters_head">
-			<p><span id="gender"><?php echo $_gender_text;?></span> <?php echo __('who ages');?> <span id="age_from"><?php echo $_age_from;?></span>-<span id="age_to"><?php echo $_age_to;?></span> <p class="located_at"> &nbsp;
-                        	<?php if (!empty($data['find_match_data']) && !empty($data['find_match_data']['located'])) { ?>
-                        		<?php echo __('located within');?> <span id="located"><?php echo $_located;?></span> <?php echo $config->default_unit;?>
-                        	<?php }elseif (!empty($data['find_match_data']) && !empty($data['find_match_data']['country']) && !empty(Dataset::load('countries'))) {
-                        		if ($data['find_match_data']['country'] == 'all') { ?>
-                        			<?php echo __('located_at');?> <span id="located"><?php echo __('all_countries');?></span>
-                        	<?php 	}elseif (in_array($data['find_match_data']['country'], array_keys(Dataset::load('countries')))) { ?>
-                        		<?php echo __('located_at');?> <span id="located"><?php echo Dataset::load('countries')[$data['find_match_data']['country']]['name'];?></span>
-                        	<?php } } ?>
-                        	</p></p>
-			<button id="home_filters_close" class="btn main_fltr_close">
+			
+			<button id="home_filters_close" class="btn main_fltr_close pull right">
 				<?php echo __('Close');?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
 			</button>
 		</div>
@@ -136,6 +127,9 @@ $_gender_text = '';
 							<?php } ?>
 						</div>
 						<?php } ?>
+
+					
+						
 						<div class="col s12 m3">
 							<h5><?php echo __('Ages');?></h5>
 							<div class="row r_margin">
@@ -175,7 +169,25 @@ $_gender_text = '';
 								<b class="range"><span>0km</span><span>250km</span></b>
 							</p>
 						</div>
+
+						
 					</div>
+						<div class="dt_home_filters_head" 
+						style="float: right; margin-top: opx; padding-top: 0px !important; margin-right: 0px !important; padding-right: 0px !important;" >
+							<p  
+							><span id="gender"><?php echo $_gender_text;?></span> <?php echo __('who ages');?> <span id="age_from"><?php echo $_age_from;?></span>-<span id="age_to"><?php echo $_age_to;?></span> <p class="located_at"> &nbsp;
+											<?php if (!empty($data['find_match_data']) && !empty($data['find_match_data']['located'])) { ?>
+												<?php echo __('located within');?> <span id="located"><?php echo $_located;?></span> <?php echo $config->default_unit;?>
+											<?php }elseif (!empty($data['find_match_data']) && !empty($data['find_match_data']['country']) && !empty(Dataset::load('countries'))) {
+												if ($data['find_match_data']['country'] == 'all') { ?>
+													<?php echo __('located_at');?> <span id="located"><?php echo __('all_countries');?></span>
+											<?php 	}elseif (in_array($data['find_match_data']['country'], array_keys(Dataset::load('countries')))) { ?>
+												<?php echo __('located_at');?> <span id="located"><?php echo Dataset::load('countries')[$data['find_match_data']['country']]['name'];?></span>
+											<?php } } ?>
+											</p></p>
+						
+						</div>
+						
 					<input type="hidden" id="_lat" value="<?php echo $profile->lat;?>">
 					<input type="hidden" id="_lng" value="<?php echo $profile->lng;?>">
 					<div class="btn_wrapper">

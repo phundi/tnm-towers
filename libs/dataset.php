@@ -142,11 +142,9 @@ $app['context']['smoke']                = array(
     '3' => __('Chain Smoker')
 );
 $app['context']['religion']             = array(
-    '1' => __('Christian'),
-    '2' => __('Catholic'),
-    '3' => __('Muslim'),
-    '4' => __('Atheist'),
-    '5' => __('Other')
+    '1' => __('Muslim'),
+    '2' => __('Christian'),
+    '3' => __('Atheist')
 );
 $app['context']['car']                  = array(
     '1' => __('None'),
@@ -233,12 +231,12 @@ $app['context']['ethnicity']            = array(
     '8' => __('Other')
 );
 $app['context']['education']            = array(
-    '1' => __('Primary School'),
-    '2' => __('Secondary School'),
-    '3' => __('College'),
-    '4' => __('University'),
-    '5' => __('Advanced degree'),
-    '6' => __('Other')
+    '1' => __('MSCE'),
+    '2' => __('Diploma'),
+    '3' => __('Advanced Diploma'),
+    '4' => __('Bachelors Degree'),
+    '5' => __('Masters'),
+    '6' => __('PhD')
 );
 $app['context']['work_status']          = array(
     '1' => __('I\'m studying'),
@@ -250,7 +248,9 @@ $app['context']['work_status']          = array(
 );
 $app['context']['relationship']         = array(
     '1' => __('Single'),
-    '2' => __('Married')
+    '2' => __('Married'),
+    '3' => __('Widowed'),
+    '4' => __('Divorced')
 );
 $app['context']['language']             = LangsNamesFromDB();
 
@@ -743,11 +743,9 @@ class Dataset{
     }
     public static function religion(){
         return array(
-            '1' => __('Christian'),
-            '2' => __('Catholic'),
-            '3' => __('Muslim'),
-            '4' => __('Atheist'),
-            '5' => __('Other')
+            '1' => __('Muslim'),
+            '2' => __('Christian'),
+            '3' => __('Atheist')
         );
     }
     public static function car(){
@@ -852,12 +850,12 @@ class Dataset{
     }
     public static function education(){
         return array(
-            '1' => __('Primary School'),
-            '2' => __('Secondary School'),
-            '3' => __('College'),
-            '4' => __('University'),
-            '5' => __('Advanced degree'),
-            '6' => __('Other')
+            '1' => __('MSCE'),
+            '2' => __('Diploma'),
+            '3' => __('Advanced Diploma'),
+            '4' => __('Bachelors Degree'),
+            '5' => __('Masters'),
+            '6' => __('PhD')
         );
     }
     public static function work_status(){
@@ -873,7 +871,9 @@ class Dataset{
     public static function relationship(){
         return array(
             '1' => __('Single'),
-            '2' => __('Married')
+            '2' => __('Married'),
+            '3' => __('Widowed'),
+            '4' => __('Divorced')
         );
     }
     public static function language(){

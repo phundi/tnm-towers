@@ -254,7 +254,7 @@ $_gender_text = '';
 			<div id="background" class="col s12 search_filters" style="display: none;">
 				<form onsubmit="return false;" onkeypress="return event.keyCode != 13;">
 					<div class="row">
-						<div class="col s12 m4">
+						<div class="col s12 m4" style="display: none;">
 							<h5><?php echo __('Language');?></h5>
 							<div class="input-field col s12">
 								<select class="_language">

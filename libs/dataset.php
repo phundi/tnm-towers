@@ -227,8 +227,7 @@ $app['context']['ethnicity']            = array(
     '4' => __('Lomwe'),
     '5' => __('Sena'),
     '6' => __('Ngoni'),
-    '7' => __('Tonga'),
-    '8' => __('Other')
+    '7' => __('Tonga')
 );
 $app['context']['education']            = array(
     '1' => __('MSCE'),

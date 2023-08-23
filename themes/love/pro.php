@@ -36,7 +36,7 @@
 									</div>
 								</div>
 								<div class="price">
-									<?php echo $config->currency_symbol . (float)(1000);?>
+									<?php echo $config->currency_symbol . (float)(1500);?>
 								</div>
 							</div>
 							<div class="mid">

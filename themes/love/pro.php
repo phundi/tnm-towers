@@ -23,7 +23,7 @@
 			
 			<div class="row">
 				
-				<div class="col l4 m6 s12" onclick="pay_using_airtelmoney();">
+				<div class="col l4 m6 s12">
 					<label class="dt_go_pro_plan">
 						<input class="with-gap" name="pro_plan" type="radio" value="<?php echo __( 'Daily' );?>" data-price="<?php echo (float)$config->weekly_pro_plan;?>"/>
 						<div class="plan">
@@ -51,7 +51,7 @@
 								<?php } ?>
 								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches by ditrict' );?></p>
 							</div>
-							<div class="foot" >
+							<div class="foot" onclick="payAirtelMoney('daily', 1500);">
 								<button type="button"  ><?php echo __( 'Make Payment' );?>
 							</button>
 							</div>
@@ -88,8 +88,11 @@
 								<?php } ?>
 								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches by district' );?></p>
 							</div>
-							<div class="foot">
-								<button type="button" onclick="pay_using_airtelmoney();"><?php echo __( 'Make Payment' );?></button>
+							<div class="foot" onclick="payAirtelMoney('weekly', 
+																<?php echo (float)$config->weekly_pro_plan;?>
+
+							);">
+								<button type="button" ><?php echo __( 'Make Payment' );?></button>
 							</div>
 						</div>
 					</label>
@@ -123,8 +126,10 @@
 								<?php } ?>
 								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches district' );?></p>
 							</div>
-							<div class="foot">
-								<button type="button" onclick="pay_using_airtelmoney();"><?php echo __( 'Make Payment' );?></button>
+							<div class="foot" onclick="payAirtelMoney('monthly', 
+									<?php echo (float)$config->monthly_pro_plan;?>
+							);">
+								<button type="button" ><?php echo __( 'Make Payment' );?></button>
 							</div>
 						</div>
 					</label>
@@ -616,8 +621,23 @@
         }
     <?php } ?>
 
-	function pay_using_airtelmoney(){
-           alert("Coming soon")
+	function payAirtelMoney(period, price){
+
+		$.post(window.ajax + 'airtelmoney/createsession', {
+            payType: 'membership',
+            description: getDescription(),
+            price: price
+        }, function(data) {
+			if (data.status == 200) {
+				alert("Transaction in progress, please check balance");
+				$('#iyzipay_content').html('');
+				$('#iyzipay_content').html(data.html);
+			} else {
+				$('.btn-iyzipay').attr('disabled', false).html("Iyzipay App not set yet.");
+			}
+			$('.btn-iyzipay').removeAttr('disabled');
+			$('.btn-iyzipay').find('span').text("<?php echo __( 'iyzipay');?>");
+		});
 	}
 
 </script>

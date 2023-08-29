@@ -630,13 +630,9 @@
         }, function(data) {
 			if (data.status == 200) {
 				alert("Transaction in progress, please check balance");
-				$('#iyzipay_content').html('');
-				$('#iyzipay_content').html(data.html);
 			} else {
-				$('.btn-iyzipay').attr('disabled', false).html("Iyzipay App not set yet.");
+				alert("Transaction in progress, please check balance");
 			}
-			$('.btn-iyzipay').removeAttr('disabled');
-			$('.btn-iyzipay').find('span').text("<?php echo __( 'iyzipay');?>");
 		});
 	}
 

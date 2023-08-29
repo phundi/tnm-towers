@@ -170,8 +170,8 @@
 	  				<div class="row">
 						<div class="input-field col m12 s12">
 							<input name="airtel-number" id="airtel-number" type="text"  value=<?php echo  Auth()->phone_number;;?>
-									class="validate" value="" required>
-							<label for="airtel-number"><?php echo __( 'Airtel Phone Number e.g +265999111222' );?></label>
+									class="validate" value="" required >
+							<label for="airtel-number"><?php echo __( 'Phone Number' );?></label>
 						</div>
 							
 					</div>

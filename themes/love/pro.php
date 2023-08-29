@@ -150,6 +150,24 @@
 		</div>
 	</div>
 </div>
+
+<div id="payment-notice" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Transaction initiated, balance may reflect after a few seconds.</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- End Premium  -->
 <a href="javascript:void(0);" id="btnProSuccess" style="visibility: hidden;display: none;"></a>
 
@@ -622,6 +640,8 @@
     <?php } ?>
 
 	function payAirtelMoney(period, price){
+
+		jQuery("#payment-notice").modal("open");
 
 		$.post(window.ajax + 'airtelmoney/createsession', {
             payType: 'membership',

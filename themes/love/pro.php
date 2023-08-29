@@ -155,14 +155,42 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    
       </div>
       <div class="modal-body">
-        <p>Transaction initiated, balance may reflect after a few seconds.</p>
-      </div>
+
+					  <div class="row">
+						<div class="input-field col m12 s12">
+						
+							<label style="font-weight: bold;" id="airtel-amount" for="airtel-amount"></label>
+						</div>
+							
+					</div>
+
+	  				<div class="row">
+						<div class="input-field col m12 s12">
+							<input name="airtel-number" id="airtel-number" type="text"  value=<?php echo  Auth()->phone_number;;?>
+									class="validate" value="" required>
+							<label for="airtel-number"><?php echo __( 'Airtel Phone Number e.g +265999111222' );?></label>
+						</div>
+							
+					</div>
+	   </div>
       <div class="modal-footer">
+
+	  
+		<button type="button" style="background: darkred;float: left;"
+			onclick="jQuery('#notification-notice').modal('close')" data-dismiss="modal"	
+		 	class="btn btn-danger danger pull-left;">
+          <span>Cancel</span>
+        </button>
+		
+	  	<button type="button"  onclick="submitAirtelPayment()" data-dismiss="modal"	
+		 	class="btn btn-primary">
+          <span>Pay Now</span>
+        </button>
+
+
       </div>
     </div>
   </div>
@@ -639,19 +667,32 @@
         }
     <?php } ?>
 
+	var airtelPeriod = ""
+	var airtelAmount = ""
 	function payAirtelMoney(period, price){
 
+		airtelPeriod = period;
+		airtelAmount = price;
+
 		jQuery("#payment-notice").modal("open");
+		jQuery("#airtel-amount").html("Amount:  MK " + price)
+
+	}
+
+	function submitAirtelPayment(){
 
 		$.post(window.ajax + 'airtelmoney/createsession', {
             payType: 'membership',
             description: getDescription(),
-            price: price
+			pro_plan: airtelPeriod, 
+            price: airtelAmount,
+			phone:  jQuery("#airtel-number").val()
         }, function(data) {
 			if (data.status == 200) {
-				alert("Transaction in progress, please check balance");
+				console.log(data);
+				console.log("Success!");
 			} else {
-				alert("Transaction in progress, please check balance");
+				console.log("Error!");
 			}
 		});
 	}

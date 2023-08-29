@@ -29,9 +29,12 @@ Class AirtelMoney extends Aj {
             );
         }
 
-        $phone = $db->objectBuilder()->where('id', 
-                self::ActiveUser()->id)->getValue('users', 'phone_number');
-
+        $phone = Secure($_POST[ 'phone' ]);
+        if(empty($phone)){
+            $phone = $db->objectBuilder()->where('id', 
+                self::ActiveUser()->id)->getValue('users', 'phone_number');     
+        }
+        
         if (empty($phone)){
             return array(
                 'status' => 400,
@@ -99,19 +102,35 @@ Class AirtelMoney extends Aj {
             ]
         ]);
 
-        echo $res->getStatusCode();
+        
         if ($res->getStatusCode() == 200){
 
-            //echo $res->getStatusCode();
-            //echo $res->getHeader('content-type')[0];
-            //echo $res->getBody();
+            $ussd_data = (array) json_decode(json_decode($res->getBody()->getContents(), true), true)['data'];
+            //$response_code = $ussd_data->status->response_code;
+            //$result_code = $ussd_data->status->result_code;
+            //$trans_id = $ussd_data->data->transaction->id;
+
+            $db->insert('payment_requests', array(
+                'user_id' => self::ActiveUser()->id,
+                'transaction_id' => "", //$trans_id,
+                'phone_number' => $phone,
+                'amount' => $amount,
+                'status' => '0',  //0=PENDING, 1=SUCCESS, 2=CONFLICT
+                'type' => 'PRO',
+                'pro_plan' => $membershipType,
+                'via' => 'airtelmoney'
+            ));
 
             return array(
                 'status' => 200,
-                'message' => __('Request Successfull')
+                'message' => __('Request Successfull'),
+                'data' => $ussd_data
             );
         }else{
-            
+            return array(
+                'status' => 501,
+                'message' => __('Bad Request')
+            );
         }
         
         $hash = base64_encode(serialize($payload));

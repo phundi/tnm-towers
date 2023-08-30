@@ -3368,6 +3368,7 @@ function DeleteSpamWarning() {
 }
 function DeleteExpiredProMemebership() {
     global $conn,$db;
+    $day_duration = 86400;
     $week_duration   = 604800;
     $month_duration    = 2629743;
     $year_duration = 31556926;
@@ -3399,6 +3400,11 @@ function DeleteExpiredProMemebership() {
                     if ($fetched_data['pro_time'] < (time() - $life_duration)) {
                         $update_data = true;
                     }
+                }
+                break;
+            case '5':
+                if ($fetched_data['pro_time'] < (time() - $day_duration)) {
+                    $update_data = true;
                 }
                 break;
         }

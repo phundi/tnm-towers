@@ -42,10 +42,9 @@ Class AirtelMoney extends Aj {
             );
         }
 
-        $response    = array();
-        $product     = Secure($_POST[ 'description' ]);
         $realprice   = (int)Secure($_POST[ 'price' ]);
         $price       = (int)Secure($_POST[ 'price' ]);
+        $pro_plan       = Secure($_POST[ 'pro_plan' ]);
         $amount      = 0;
         $membershipType      = 0;
         $payType     = Secure($_POST[ 'payType' ]);
@@ -61,15 +60,18 @@ Class AirtelMoney extends Aj {
                 $amount = self::Config()->chest_of_credits_amount;
             }
         } else if ($payType == 'membership') {
-            if ($realprice == self::Config()->weekly_pro_plan) {
+            if ($pro_plan == 'weekly') {
                 $membershipType = 1;
-            } else if ($realprice == self::Config()->monthly_pro_plan) {
+            } else if ($pro_plan == 'monthly') {
                 $membershipType = 2;
-            } else if ($realprice == self::Config()->yearly_pro_plan) {
+            } else if ($pro_plan == 'yearly') {
                 $membershipType = 3;
-            } else if ($realprice == self::Config()->lifetime_pro_plan) {
+            } else if ($pro_plan == 'lifetime') {
                 $membershipType = 4;
+            }else if ($pro_plan == 'daily'){
+                $membershipType = 5;
             }
+
             $amount = $price;
         } else if ($payType == 'unlock_private_photo') {
             if ((int)$realprice == (int)self::Config()->lock_private_photo_fee) {
@@ -79,17 +81,7 @@ Class AirtelMoney extends Aj {
             $amount = (int)self::Config()->lock_pro_video_fee;
         }
      
-        $payload = [
-            'userid'            => self::ActiveUser()->id,
-            'description'       => $product,
-            'realprice'         => $realprice,
-            'price'             => $price,
-            'amount'            => $amount,
-            'payType'           => $payType,
-            'membershipType'    => $membershipType,
-            'currency'          => "MK"
-        ];
-        
+    
         require_once($_LIBS . 'africastalking/vendor/autoload.php');
         $client = new GuzzleHttp\Client();
         

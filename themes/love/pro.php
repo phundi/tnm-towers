@@ -742,6 +742,12 @@
 
 						jQuery("#airtel-status-header").html(statusData.message);
 
+						setTimeout(
+							function(){
+								window.location = "/find-matches"
+							}, 
+							2000)
+
 					});
 				}, 10000)
 			} else {

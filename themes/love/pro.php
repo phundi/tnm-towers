@@ -155,17 +155,27 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-    
+	  	<label style="font-weight: bold;font-size: 1em;color: red;text-align: center;padding-left: 5%;" 
+				id="airtel-status-header"> </label>
       </div>
       <div class="modal-body">
-
-					  <div class="row">
-						<div class="input-field col m12 s12">
-						
-							<label style="font-weight: bold;" id="airtel-amount" for="airtel-amount"></label>
-						</div>
-							
+		<form id='airtel-form'>
+				<div class="row">
+					
+					<div class="input-field col m12 s12" style="padding: 0% !important;">
+						<select id="payment-method" name="payment-method" data-errmsg="<?php echo __( 'Payment Method');?>" required>
+						<?php echo DatasetGetSelect( null, "payment-method", __("Choose Payment Method") );?>
+						<option>Airtel Money</option>
+						<option>TNM Mpamba</option>
+						</select>
 					</div>
+							
+				</div>
+
+				<div class="row" style="padding: 0% !important; ">
+					  <label style="font-size: 1em !important;padding-left: 5%; font-weight: bold;" id="airtel-amount"
+									 for="airtel-amount"></label>
+				</div>
 
 	  				<div class="row">
 						<div class="input-field col m12 s12">
@@ -176,6 +186,8 @@
 							
 					</div>
 	   </div>
+
+		</form>
       <div class="modal-footer">
 
 	  
@@ -681,16 +693,57 @@
 
 	function submitAirtelPayment(){
 
+		var method = $("#payment-method").val();
+		var phone = $("#airtel-number").val();
+
+		if (method == "" || method == null){
+			jQuery("#airtel-status-header").html("Specify payment method"); 
+			return;
+		}
+		
+		if(phone.length != 13){
+			jQuery("#airtel-status-header").html("Invalid  phone number length"); 
+			return;
+		}
+		
+		if (method == "Airtel Money" && !phone.startsWith("+2659")){
+			jQuery("#airtel-status-header").html("Invalid Airtel number"); 
+			return;
+		}
+		
+		if (method == "TNM Mpamba" && !phone.startsWith("+2658")){
+			jQuery("#airtel-status-header").html("Invalid TNM number");
+			return;
+		}
+
+		jQuery("#airtel-status-header").html("Please enter pin on your phone and wait ... ");
+
 		$.post(window.ajax + 'airtelmoney/createsession', {
             payType: 'membership',
             description: getDescription(),
 			pro_plan: airtelPeriod, 
             price: airtelAmount,
-			phone:  jQuery("#airtel-number").val()
+			phone:  jQuery("#airtel-number").val().trim()
         }, function(data) {
 			if (data.status == 200) {
-				console.log(data);
-				console.log("Success!");
+				console.log(data.data); //TransID
+
+				//Ajax check success balance
+				setTimeout( function(){
+					$.post(window.ajax + 'airtelmoney/success', {
+						payType: 'membership',
+						transID: data.data
+					}, function(statusData) {
+						if (statusData.status == 200) {
+							jQuery("#airtel-status-header").css('color', 'green');
+						}else {
+							jQuery("#airtel-status-header").css('color', 'green');
+						}
+
+						jQuery("#airtel-status-header").html(statusData.message);
+
+					});
+				}, 10000)
 			} else {
 				console.log("Error!");
 			}

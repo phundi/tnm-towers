@@ -105,14 +105,17 @@ Class AirtelMoney extends Aj {
         
         if ($res->getStatusCode() == 200){
 
-            $ussd_data = (array) json_decode(json_decode($res->getBody()->getContents(), true), true)['data'];
-            //$response_code = $ussd_data->status->response_code;
-            //$result_code = $ussd_data->status->result_code;
-            //$trans_id = $ussd_data->data->transaction->id;
+            $ussd_data = json_decode($res->getBody()->getContents(), true)['data'];
+            
+            //ob_start();
+            //var_dump($ussd_data['transaction']["id"]);
+            //error_log(ob_get_clean());
+
+            $trans_id = $ussd_data['transaction']["id"];
 
             $db->insert('payment_requests', array(
                 'user_id' => self::ActiveUser()->id,
-                'transaction_id' => "", //$trans_id,
+                'transaction_id' => $trans_id,
                 'phone_number' => $phone,
                 'amount' => $amount,
                 'status' => '0',  //0=PENDING, 1=SUCCESS, 2=CONFLICT
@@ -124,7 +127,7 @@ Class AirtelMoney extends Aj {
             return array(
                 'status' => 200,
                 'message' => __('Request Successfull'),
-                'data' => $ussd_data
+                'data' => $trans_id
             );
         }else{
             return array(
@@ -132,49 +135,56 @@ Class AirtelMoney extends Aj {
                 'message' => __('Bad Request')
             );
         }
-        
-        $hash = base64_encode(serialize($payload));
-        $callback_url = SeoUri('aj/airtelmoney/success?hash='.$hash);
     }
 
     public function success(){
         global $db,$config,$_LIBS;
-        $iyzipay_payment = $config->iyzipay_payment;
-
-        if ($iyzipay_payment !== 'yes' || self::ActiveUser() == NULL) {
+     
+        if (self::ActiveUser() == NULL) {
             return array(
                 'status' => 403,
                 'message' => __('Forbidden')
             );
         }
-        if (empty($_GET[ 'hash' ]) || ( empty($_POST['token']) && empty(self::ActiveUser()->conversation_id) ) ) {
+
+        $payType = Secure($_POST['payType']);
+        $transID = Secure($_POST['transID']);
+
+        require_once($_LIBS . 'africastalking/vendor/autoload.php');
+        $url = "https://api-gateway.ctechpay.com/airtel/access/status/?trans_id=".$transID;
+
+        $client = new GuzzleHttp\Client();
+        $res = $client->request('GET', $url);
+
+        if ($res->getStatusCode() != 200){
             return array(
-                'status' => 400,
-                'message' => __('No hash')
-            );
+                'status' => 401,
+                'message' => __('Bad Request'),
+            );     
         }
-        require_once($_LIBS . "iyzipay/samples/config.php");
 
-        $data           = unserialize(base64_decode(Secure($_GET[ 'hash' ])));
-        $description    = $data['description'];
-        $realprice      = $data['realprice'];
-        $price          = $data['price'];
-        $amount         = $data['amount'];
-        $payType        = $data['payType'];
-        $membershipType = $data['membershipType'];
-        $currency       = $data['currency'];
-        $user           = $db->objectBuilder()->where('id', self::ActiveUser()->id)->getOne('users', array('balance'));
+        $data = json_decode($res->getBody()->getContents(), true);
+        
+        //ob_start();
+        //var_dump($url);
+        //var_dump("Status: ".$data['transaction_status']);
+        //error_log(ob_get_clean());
 
-        # create request class
-		$_request = new \Iyzipay\Request\RetrieveCheckoutFormRequest();
-		$_request->setLocale(\Iyzipay\Model\Locale::TR);
-		$_request->setConversationId(self::ActiveUser()->conversation_id);
-		$_request->setToken(Secure($_POST['token']));
+        if ($data['transaction_status'] == 'TIP'){
+            return array(
+                'status' => 200,
+                'message' => __('Transaction in progress'),
+            );     
+        }
 
-		# make request
-		$checkoutForm = \Iyzipay\Model\CheckoutForm::retrieve($_request, IyzipayConfig::options());
+        if ($data['transaction_status'] == 'TF'){
+            return array(
+                'status' => 501,
+                'message' => __('Transaction failed!!'),
+            );     
+        }
 
-        if ($checkoutForm->getPaymentStatus() == 'SUCCESS') {
+        if ($data['transaction_status'] == 'TS') {
 
             if ($payType == 'credits') {
                 //done
@@ -202,31 +212,46 @@ Class AirtelMoney extends Aj {
                     exit(__('Error While update balance after charging'));
                 }
             } else if ($payType == 'membership') {
-                //done
+
+                $paymentRequest = $db->objectBuilder()->where('transaction_id', $transID)->getOne("payment_requests");
+
+                $membershipType = $paymentRequest->pro_plan;                    
+                $amount = $paymentRequest->amount;
+                
                 $protime                = time();
                 $is_pro                 = "1";
-                $pro_type               = $membershipType;
                 $updated                = $db->where('id', self::ActiveUser()->id)->update('users', array(
                     'pro_time' => $protime,
                     'is_pro' => $is_pro,
-                    'pro_type' => $pro_type
+                    'pro_type' => $membershipType
                 ));
+
                 if ($updated) {
-                    RegisterAffRevenue(self::ActiveUser()->id,$price / 100);
+                    //RegisterAffRevenue(self::ActiveUser()->id,$price / 100);
+                    
                     $db->insert('payments', array(
                         'user_id' => self::ActiveUser()->id,
-                        'amount' => $price / 100,
+                        'amount' => $amount,
                         'type' => 'PRO',
                         'pro_plan' => $membershipType,
                         'credit_amount' => '0',
-                        'via' => 'iyzipay'
+                        'via' => 'airtelmoney'
                     ));
+                    
+                    $db->where('transaction_id', $_POST['transID'])->update('payment_requests', array(
+                        'status' => "1",
+                        'verified_at' => date('Y-m-d H:i:s')
+                    ));
+                    
                     $_SESSION[ 'userEdited' ] = true;
                     SuperCache::cache('pro_users')->destroy();
-                } else {
-                    exit(__('Error While make you pro'));
+
+                    return array(
+                        'status' => 200,
+                        'message' => __('Transaction Successful!!'),
+                    ); 
                 }
-                header('Location: ' . self::Config()->uri . '/ProSuccess?paymode=pro');
+
             } else if ($payType == 'unlock_private_photo') {
                 //done
                 $updated    = $db->where('id', self::ActiveUser()->id)->update('users', array('lock_private_photo' => 0));
@@ -266,8 +291,11 @@ Class AirtelMoney extends Aj {
             }
 
         } else {
-            header('Location: ' . SeoUri(''));
+            return array(
+                'status' => 501,
+                'message' => __('Transaction failed!!'),
+            );     
+        
         }
-        exit();
     }
 }

@@ -717,7 +717,6 @@
 		}
 
 		jQuery("#airtel-status-header").html("Please enter pin on your phone and wait ... ");
-
 		$.post(window.ajax + 'airtelmoney/createsession', {
             payType: 'membership',
             description: getDescription(),
@@ -746,7 +745,7 @@
 							function(){
 								window.location = "/find-matches"
 							}, 
-							2000)
+							3000)
 
 					});
 				}, 10000)

@@ -82,7 +82,7 @@
 				<h4 class="bold"><?php echo __( 'Buy Credits' );?></h4>
 				<div class="credit_pln">
 					<div class="dt_plans">
-						<p>
+						<p onclick="payAirtelMoney('bag_of_credits', <?php echo (int)$config->bag_of_credits_price;?>)">
 							<input type="radio" name="plans" id="plan_1" value="<?php echo __( 'Bag of Credits' ) . " " . (int)$config->bag_of_credits_amount;?>" data-price="<?php echo (int)$config->bag_of_credits_price;?>">
 							<label for="plan_1" class="plan_1">
 								<span class="title"><?php echo __( 'Bag of Credits' );?></span>
@@ -91,7 +91,7 @@
 								<span class="amount"><?php echo __( 'Price' );?> : <?php echo $config->currency_symbol . (int)$config->bag_of_credits_price;?></span>
 							</label>
 						</p>
-						<p>
+						<p onclick="payAirtelMoney('box_of_credits', <?php echo (int)$config->box_of_credits_price;?>)">
 							<input type="radio" name="plans" id="plan_2" value="<?php echo __( 'Box of Credits' ) . " " .(int)$config->box_of_credits_amount;?>" data-price="<?php echo (int)$config->box_of_credits_price;?>">
 							<label for="plan_2" class="plan_2">
 								<span class="title"><?php echo __( 'Box of Credits' );?></span>
@@ -100,7 +100,7 @@
 								<span class="amount"><?php echo __( 'Price' );?> : <?php echo $config->currency_symbol . (int)$config->box_of_credits_price;?></span>
 							</label>
 						</p>
-						<p>
+						<p onclick="payAirtelMoney('chest_of_credits', <?php echo (int)$config->chest_of_credits_price;?>)">
 							<input type="radio" name="plans" id="plan_3" value="<?php echo __( 'Chest of Credits' ) . " " .(int)$config->chest_of_credits_amount;?>" data-price="<?php echo (int)$config->chest_of_credits_price;?>">
 							<label for="plan_3" class="plan_3">
 								<span class="title"><?php echo __( 'Chest of Credits' );?></span>
@@ -126,6 +126,65 @@
 	</div>
 </div>
 <!-- End Credits  -->
+
+<div id="payment-notice" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+	  	<label style="font-weight: bold;font-size: 1em;color: red;text-align: center;padding-left: 5%;" 
+				id="airtel-status-header"> </label>
+      </div>
+      <div class="modal-body">
+		<form id='airtel-form'>
+				<div class="row">
+					
+					<div class="input-field col m12 s12" style="padding: 0% !important;">
+						<select id="payment-method" name="payment-method" data-errmsg="<?php echo __( 'Payment Method');?>" required>
+						<?php echo DatasetGetSelect( null, "payment-method", __("Choose Payment Method") );?>
+						<option>Airtel Money</option>
+						<option>TNM Mpamba</option>
+						</select>
+					</div>
+							
+				</div>
+
+				<div class="row" style="padding: 0% !important; ">
+					  <label style="font-size: 1em !important;padding-left: 5%; font-weight: bold;" id="airtel-amount"
+									 for="airtel-amount"></label>
+				</div>
+
+	  				<div class="row">
+						<div class="input-field col m12 s12">
+							<input name="airtel-number" id="airtel-number" type="text"  value=<?php echo  Auth()->phone_number;;?>
+									class="validate" value="" required >
+							<label for="airtel-number"><?php echo __( 'Phone Number' );?></label>
+						</div>
+							
+					</div>
+	   </div>
+
+		</form>
+      <div class="modal-footer">
+
+	  
+		<button type="button" style="background: darkred;float: left;"
+			onclick="jQuery('#notification-notice').modal('close')" data-dismiss="modal"	
+		 	class="btn btn-danger danger pull-left;">
+          <span>Cancel</span>
+        </button>
+		
+	  	<button type="button"  onclick="submitAirtelPayment()" data-dismiss="modal"	
+		 	class="btn btn-primary">
+          <span>Pay Now</span>
+        </button>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
 
 <a href="javascript:void(0);" id="btnProSuccess" style="visibility: hidden;display: none;"></a>
 
@@ -662,4 +721,83 @@ document.getElementById('stripe_credit').addEventListener('click', function(e) {
     });
 });
 <?php } ?>
+
+
+var airtelPeriod = ""
+var airtelAmount = ""
+function payAirtelMoney(plan, price){
+	//alert(plan)
+	airtelPlan = plan;
+	airtelAmount = price;
+
+	jQuery("#payment-notice").modal("open");
+	jQuery("#airtel-amount").html("Amount:  MK " + price)
+
+}
+
+function submitAirtelPayment(){
+
+	var method = $("#payment-method").val();
+	var phone = $("#airtel-number").val();
+
+	if (method == "" || method == null){
+		jQuery("#airtel-status-header").html("Specify payment method"); 
+		return;
+	}
+
+	if(phone.length != 13){
+		jQuery("#airtel-status-header").html("Invalid  phone number length"); 
+		return;
+	}
+
+	if (method == "Airtel Money" && !phone.startsWith("+2659")){
+		jQuery("#airtel-status-header").html("Invalid Airtel number"); 
+		return;
+	}
+
+	if (method == "TNM Mpamba" && !phone.startsWith("+2658")){
+		jQuery("#airtel-status-header").html("Invalid TNM number");
+		return;
+	}
+
+	jQuery("#airtel-status-header").html("Please enter pin on your phone and wait ... ");
+	$.post(window.ajax + 'airtelmoney/createsession', {
+		payType: 'credits',
+		description: getDescription(),
+		pro_plan: airtelPeriod, 
+		price: airtelAmount,
+		phone:  jQuery("#airtel-number").val().trim()
+	}, function(data) {
+		if (data.status == 200) {
+			console.log(data.data); //TransID
+
+			//Ajax check success balance
+			setTimeout( function(){
+				$.post(window.ajax + 'airtelmoney/success', {
+					payType: 'credits',
+					transID: data.data
+				}, function(statusData) {
+					if (statusData.status == 200) {
+						jQuery("#airtel-status-header").css('color', 'green');
+					}else {
+						jQuery("#airtel-status-header").css('color', 'green');
+					}
+
+					jQuery("#airtel-status-header").html(statusData.message);
+
+					setTimeout(
+						function(){
+							window.location = "/find-matches"
+						}, 
+						3000)
+
+				});
+			}, 10000)
+		} else {
+			console.log("Error!");
+		}
+	});
+}
+
+
 </script>

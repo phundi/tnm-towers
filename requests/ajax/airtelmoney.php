@@ -50,6 +50,7 @@ Class AirtelMoney extends Aj {
         $payType     = Secure($_POST[ 'payType' ]);
         $url         = "https://api-gateway.ctechpay.com/airtel/access/";
         $token       = "fclcC3IDZtzdTKUG6PniPIbNiKIX3ItWiDseRL1pGWyRWfinlt3n8n8BjsKGCZN5";
+        $type        = '';
 
         if ($payType == 'credits') {
             if ($realprice == self::Config()->bag_of_credits_price) {
@@ -59,6 +60,8 @@ Class AirtelMoney extends Aj {
             } else if ($realprice == self::Config()->chest_of_credits_price) {
                 $amount = self::Config()->chest_of_credits_amount;
             }
+
+            $type = "CREDITS";
         } else if ($payType == 'membership') {
             if ($pro_plan == 'weekly') {
                 $membershipType = 1;
@@ -73,6 +76,7 @@ Class AirtelMoney extends Aj {
             }
 
             $amount = $price;
+            $type = 'PRO';
         } else if ($payType == 'unlock_private_photo') {
             if ((int)$realprice == (int)self::Config()->lock_private_photo_fee) {
                 $amount = (int)self::Config()->lock_private_photo_fee;
@@ -98,10 +102,6 @@ Class AirtelMoney extends Aj {
         if ($res->getStatusCode() == 200){
 
             $ussd_data = json_decode($res->getBody()->getContents(), true)['data'];
-            
-            //ob_start();
-            //var_dump($ussd_data['transaction']["id"]);
-            //error_log(ob_get_clean());
 
             $trans_id = $ussd_data['transaction']["id"];
 
@@ -111,7 +111,7 @@ Class AirtelMoney extends Aj {
                 'phone_number' => $phone,
                 'amount' => $amount,
                 'status' => '0',  //0=PENDING, 1=SUCCESS, 2=CONFLICT
-                'type' => 'PRO',
+                'type' => $type,
                 'pro_plan' => $membershipType,
                 'via' => 'airtelmoney'
             ));
@@ -177,37 +177,54 @@ Class AirtelMoney extends Aj {
         }
 
         if ($data['transaction_status'] == 'TS') {
-
+            
+            $user           = $db->objectBuilder()->where('id', self::ActiveUser()->id)->getOne('users', array('balance'));
             if ($payType == 'credits') {
                 //done
+                $paymentRequest = $db->objectBuilder()->where('transaction_id', $transID)->getOne("payment_requests");
+                $amount = $paymentRequest->amount;
                 $newbalance = $user->balance + $amount;
-                $updated    = $db->where('id', self::ActiveUser()->id)->update('users', array('balance' => $newbalance));
+
+                $updated    = $db->where('id', self::ActiveUser()->id)->update('users',
+                                     array('balance' => $newbalance));
                 if ($updated) {
-                    RegisterAffRevenue(self::ActiveUser()->id,$price / 100);
+                    //RegisterAffRevenue(self::ActiveUser()->id,$price / 100);
                     $db->insert('payments', array(
                         'user_id' => self::ActiveUser()->id,
-                        'amount' => $price / 100,
+                        'amount' => $amount,
                         'type' => 'CREDITS',
                         'pro_plan' => '0',
                         'credit_amount' => $amount,
-                        'via' => 'iyzipay'
+                        'via' => 'airtelmoney'
                     ));
+
+                    $db->where('transaction_id', $_POST['transID'])->update('payment_requests', array(
+                        'status' => "1",
+                        'verified_at' => date('Y-m-d H:i:s')
+                    ));
+                    
                     $_SESSION[ 'userEdited' ] = true;
-                    $response[ 'credit_amount' ]  = (int) $newbalance;
-                    $url = $config->uri . '/ProSuccess';
-                    if (!empty($_COOKIE['redirect_page'])) {
-                        $redirect_page = preg_replace('/on[^<>=]+=[^<>]*/m', '', $_COOKIE['redirect_page']);
-                        $url = preg_replace('/\((.*?)\)/m', '', $redirect_page);
-                    }
-                    header('Location: ' . $url);
+
+                    return array(
+                        'status' => 200,
+                        'message' => __('Transaction Successful!!'),
+                    ); 
+                    
                 } else {
-                    exit(__('Error While update balance after charging'));
+                    return array(
+                        'status' => 501,
+                        'message' => __('Transaction failed!!'),
+                    );
                 }
             } else if ($payType == 'membership') {
 
                 $paymentRequest = $db->objectBuilder()->where('transaction_id', $transID)->getOne("payment_requests");
+                $membershipType = $paymentRequest->pro_plan;   
 
-                $membershipType = $paymentRequest->pro_plan;                    
+               // ob_start();
+                //var_dump($paymentRequest);
+                //error_log(ob_get_clean());
+        
                 $amount = $paymentRequest->amount;
                 
                 $protime                = time();
@@ -241,6 +258,11 @@ Class AirtelMoney extends Aj {
                     return array(
                         'status' => 200,
                         'message' => __('Transaction Successful!!'),
+                    ); 
+                }else{
+                    return array(
+                        'status' => 501,
+                        'message' => __('Transaction failed!!'),
                     ); 
                 }
 

@@ -46,7 +46,7 @@
 								
 								<div class="how_credtss">
 									<span><?php echo __( 'Credit:' );?></span>&nbsp;&nbsp;
-                                    <span id="credit_amount" style="color: red; font-weight: bold;" ><?php
+                                    <span style="font-weight: bold;color: #FF6600;" id="credit_amount"> MK <?php
 													if( isGenderFree($profile->gender) === true ){
 														echo __('Free');
 													}else{
@@ -86,6 +86,11 @@
                                 </div>
                             </ul>
                         </li>
+
+                        <li class="header_notifications">
+                            
+                        </li>
+
                         <li class="header_user">
 							<div class="boost-div">
 								<?php
@@ -102,7 +107,8 @@
 										<span class="global_boosted_time" data-show="no" data-boosted-time="<?php echo $boost_duration;?>"></span>
 										<button title='<?php echo __('Your boost will expire in');?> <?php echo __('minutes');?>' class='btn boost-running'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 493.944 493.944"><path fill="currentColor" d="M367.468,175.996c-3.368-5.469-9.317-8.807-15.734-8.807h-84.958l45.919-143.098  c1.797-5.614,0.816-11.76-2.662-16.521c-3.464-4.748-9.014-7.57-14.9-7.57h-84.446c-8.02,0-15.125,5.18-17.563,12.814  l-68.487,213.465c-1.797,5.613-0.817,11.756,2.663,16.52c3.464,4.748,9.013,7.57,14.899,7.57h14.868h68.183l-22.006,235.037  c-0.352,3.736,2.004,7.185,5.614,8.227c3.593,1.045,7.427-0.608,9.126-3.961L368.19,194.01  C371.093,188.281,370.82,181.467,367.468,175.996z" /></svg></button>
 									</div>
-								<?php }else if( $profile->is_boosted == '0' || ( $profile->is_boosted == '1' && $boost_duration > $config->boost_expire_time ) ){ ?>
+                                    
+								<?php }else { ?>
 									<button title='<?php echo __('Boost me!');?>' id='boost_btn' class='btn boost-me'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 493.944 493.944"><path fill="currentColor" d="M367.468,175.996c-3.368-5.469-9.317-8.807-15.734-8.807h-84.958l45.919-143.098  c1.797-5.614,0.816-11.76-2.662-16.521c-3.464-4.748-9.014-7.57-14.9-7.57h-84.446c-8.02,0-15.125,5.18-17.563,12.814  l-68.487,213.465c-1.797,5.613-0.817,11.756,2.663,16.52c3.464,4.748,9.013,7.57,14.899,7.57h14.868h68.183l-22.006,235.037  c-0.352,3.736,2.004,7.185,5.614,8.227c3.593,1.045,7.427-0.608,9.126-3.961L368.19,194.01  C371.093,188.281,370.82,181.467,367.468,175.996z" /></svg></button>
 								<?php } ?>
 							</div>
@@ -116,7 +122,7 @@
 								<?php }else{ ?>
 								<li class="hide header_credits_small_mobi">
 									<a href="<?php echo $site_url;?>/credit" data-ajax="/credit" class="waves-effect">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.5-6H14a.5.5 0 1 0 0-1h-4a2.5 2.5 0 1 1 0-5h1V6h2v2h2.5v2H10a.5.5 0 1 0 0 1h4a2.5 2.5 0 1 1 0 5h-1v2h-2v-2H8.5v-2z" /></svg> <?php echo __( 'Credit' );?>
+                                         <?php echo "MK ".__( 'Credit' );?>
 									</a>
 								</li>
 								<?php } ?>
@@ -132,16 +138,6 @@
 									</li>
 									<li class="divider" tabindex="-1"></li>
 								<?php } ?>
-
-                                
-                                <?php if ($config->agora_live_video == 1) { ?>
-                                    <li>
-                                        <a href="<?php echo $site_url;?>/live-users" data-ajax="/live-users" class="<?php if($data['name'] == 'live-users'){ echo 'active';}?>">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17 9.2l5.213-3.65a.5.5 0 0 1 .787.41v12.08a.5.5 0 0 1-.787.41L17 14.8V19a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4.2zm0 3.159l4 2.8V8.84l-4 2.8v.718zM3 6v12h12V6H3zm2 2h2v2H5V8z"></path></svg> <?php echo __( 'Live Videos' );?>
-                                        </a>
-                                    </li>
-                                <?php } ?>
-                                
 								<li>
                                     <a href="<?php echo $site_url;?>/@<?php echo $profile->username;?>" data-ajax="/@<?php echo $profile->username;?>" class="waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M4 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z" /></svg> <?php echo __( 'Profile' );?></a>
                                 </li>
@@ -178,7 +174,7 @@
                                 <li>
                                     <a href="<?php echo $site_url;?>/transactions" data-ajax="/transactions" class="waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19.375 15.103A8.001 8.001 0 0 0 8.03 5.053l-.992-1.737A9.996 9.996 0 0 1 17 3.34c4.49 2.592 6.21 8.142 4.117 12.77l1.342.774-4.165 2.214-.165-4.714 1.246.719zM4.625 8.897a8.001 8.001 0 0 0 11.345 10.05l.992 1.737A9.996 9.996 0 0 1 7 20.66C2.51 18.068.79 12.518 2.883 7.89L1.54 7.117l4.165-2.214.165 4.714-1.246-.719zM8.5 14H14a.5.5 0 1 0 0-1h-4a2.5 2.5 0 1 1 0-5h1V7h2v1h2.5v2H10a.5.5 0 1 0 0 1h4a2.5 2.5 0 1 1 0 5h-1v1h-2v-1H8.5v-2z" /></svg> <?php echo __( 'Transactions' );?></a>
                                 </li>
-                                <?php if( $profile->admin == 1){ ?>
+                                <?php if( $profile->admin == 1 || $profile->permission !== '' ){ ?>
 								<li class="divider" tabindex="-1"></li>
                                 <li>
                                     <a href="<?php echo $site_url;?>/admin-cp" class="waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6.75 2.5A4.25 4.25 0 0 1 11 6.75V11H6.75a4.25 4.25 0 1 1 0-8.5zM9 9V6.75A2.25 2.25 0 1 0 6.75 9H9zm-2.25 4H11v4.25A4.25 4.25 0 1 1 6.75 13zm0 2A2.25 2.25 0 1 0 9 17.25V15H6.75zm10.5-12.5a4.25 4.25 0 1 1 0 8.5H13V6.75a4.25 4.25 0 0 1 4.25-4.25zm0 6.5A2.25 2.25 0 1 0 15 6.75V9h2.25zM13 13h4.25A4.25 4.25 0 1 1 13 17.25V13zm2 2v2.25A2.25 2.25 0 1 0 17.25 15H15z" /></svg> <?php echo __( 'Admin Panel' );?></a>

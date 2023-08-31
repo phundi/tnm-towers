@@ -192,7 +192,7 @@
 
 	  
 		<button type="button" style="background: darkred;float: left;"
-			onclick="jQuery('#notification-notice').modal('close')" data-dismiss="modal"	
+			onclick="jQuery('#payment-notice').modal('close');" 	
 		 	class="btn btn-danger danger pull-left;">
           <span>Cancel</span>
         </button>

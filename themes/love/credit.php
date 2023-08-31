@@ -167,11 +167,11 @@
       <div class="modal-footer">
 
 	  
-		<button type="button" style="background: darkred;float: left;"
-			onclick="jQuery('#notification-notice').modal('close')" data-dismiss="modal"	
+	  <button type="button" style="background: darkred;float: left;"
+			onclick="jQuery('#payment-notice').modal('close');" 	
 		 	class="btn btn-danger danger pull-left;">
           <span>Cancel</span>
-        </button>
+      </button>
 		
 	  	<button type="button"  onclick="submitAirtelPayment()" data-dismiss="modal"	
 		 	class="btn btn-primary">

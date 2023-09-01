@@ -173,6 +173,8 @@ Class UserActions extends Aj {
         global $app, $config, $db;
         $error = '';
         $users = LoadEndPointResource('users');
+
+
         if ($users) {
             if (isset($_POST) && !empty($_POST)) {
                 if (isset($_POST[ 'username' ]) && empty($_POST[ 'username' ])) {
@@ -193,14 +195,20 @@ Class UserActions extends Aj {
 
                     $username        = secure($_POST['username']);
                     $password        = secure($_POST['password']);
-                    $getUser = $db->where("(username = ? or email = ?)", array(
+
+                    if (strlen($username) == 12 && (str_starts_with($username, '2659') || str_starts_with($username, '2658'))) {
+                        $username = "+" . $username;
+                    }
+
+                    
+                    $getUser = $db->where("(username = ? or phone_number = ?)", array(
                         $username,
                         $username
                     ))->getOne('users', ["password", "id", "active","admin","username"]);
 
                     
+                    $user = $users->login($username, $password);
 
-                    $user = $users->login($_POST[ 'username' ], $_POST[ 'password' ]);
                     if ($user[ 'code' ] == 200) {
                         if (TwoFactor($getUser['id']) === false) {
                             session_start();

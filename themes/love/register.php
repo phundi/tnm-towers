@@ -33,7 +33,7 @@
 								<div class="row">
 									<div class="input-field col m6 s12">
 										<input name="username" id="username" type="text" class="validate" value="" required>
-										<label for="username"><?php echo __( 'Username' );?></label>
+										<label for="username"><?php echo __( 'Display Name' );?></label>
 									</div>
 										
 								</div>

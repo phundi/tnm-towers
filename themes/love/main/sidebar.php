@@ -26,10 +26,15 @@
 				<b><?php echo($q['likes_count']) ?></b>
 				<p><?php echo __( 'Likes' );?></p>
 			</div>
-			<div>
-				<b><?php echo($q['following_count']) ?></b>
-				<p><?php echo __( 'Friends' );?></p>
-			</div>
+
+			<?php if( $config->connectivitySystem == '1' ){?>
+				<div>
+					<b><?php echo($q['following_count']) ?></b>
+					<p><?php echo __( 'Friends' );?></p>
+				</div>
+			<?php } ?>
+			
+			
 		</div>
 	</div>
 	<ul class="menu">
@@ -91,7 +96,7 @@
 			</a>
         </li>
 
-		<?php if ($config->agora_live_video == 1) { ?>
+		<?php if ( false && $config->agora_live_video == 1) { ?>
 			<li>
 				<a href="<?php echo $site_url;?>/live-users" data-ajax="/live-users" class="<?php if($data['name'] == 'live-users'){ echo 'active';}?>">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17 9.2l5.213-3.65a.5.5 0 0 1 .787.41v12.08a.5.5 0 0 1-.787.41L17 14.8V19a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4.2zm0 3.159l4 2.8V8.84l-4 2.8v.718zM3 6v12h12V6H3zm2 2h2v2H5V8z"></path></svg> <?php echo __( 'Live Videos' );?>

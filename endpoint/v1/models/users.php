@@ -249,6 +249,8 @@ class Users {
     /*API*/
     public function login($username = '', $password = '') {
         global $db;
+
+
         if (isEndPointRequest()) {
             if( !isset($_POST['username']) || empty($_POST['username']) ){
                 return json(array(
@@ -273,8 +275,13 @@ class Users {
             $username = Secure($_POST['username']);
             $password = Secure($_POST['password']);
         }
+
+
         if ($this->isPasswordVerifyed($username, $password)) {
-            $user = $db->where('username', $username)->orWhere('email', $username)->getOne('users');
+            $user = $db->where('username', $username)->orWhere('phone_number', $username)->getOne('users');
+           
+
+
             if ($user) {
 
                 if( isset($_POST['mobile_device_id']) ){
@@ -1242,7 +1249,7 @@ class Users {
                 'code' => 400
             ), 400);
         }
-        $user = $db->objectBuilder()->where('username', Secure($username))->orWhere('email', Secure($username))->getOne('users');
+        $user = $db->objectBuilder()->where('username', Secure($username))->orWhere('phone_number', Secure($username))->getOne('users');
         if (!empty($user->password)) {
             $password_result = password_verify($password, $user->password);
         }

@@ -32,7 +32,7 @@
 								<div class="row">
 									<div class="input-field">
 										<input name="username" id="username" type="text" class="validate" required >
-										<label for="username"><?php echo __( 'Username' );?></label>
+										<label for="username"><?php echo __( 'Phone Number' );?></label>
 									</div>
 								</div>
 								<div class="row">

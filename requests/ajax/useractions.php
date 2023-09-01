@@ -177,9 +177,20 @@ Class UserActions extends Aj {
 
         if ($users) {
             if (isset($_POST) && !empty($_POST)) {
+              
+               
+                
                 if (isset($_POST[ 'username' ]) && empty($_POST[ 'username' ])) {
-                    $error .= '<p>• ' . __('Missing username.') . '</p>';
+                    $error .= '<p>• ' . __('Missing phone number.') . '</p>';
                 }
+
+                if (!((strlen($_POST[ 'username' ]) == 13 && (str_starts_with($_POST[ 'username' ], '2659') || str_starts_with($_POST[ 'username' ], '2658')))
+                        || 
+                    (strlen($_POST[ 'username' ]) == 12 && (str_starts_with($_POST[ 'username' ], '2659') || str_starts_with($_POST[ 'username' ], '2658'))))) {
+                    $error .= '<p>• ' . __('Invalid phone number.') . '</p>';
+                }
+
+                
                 if (isset($_POST[ 'password' ]) && empty($_POST[ 'password' ])) {
                     $error .= '<p>• ' . __('Missing password.') . '</p>';
                 }

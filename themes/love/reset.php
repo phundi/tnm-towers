@@ -1,9 +1,18 @@
 <?php
-$email = '';
+$phone = '';
+$code = '';
+
 if( route(2) !== '' ){
-    $email = strrev( base64_decode( route(2) ) );
+    $phone = strrev( base64_decode( route(2) ) );
 }
-if( $email == '' ){
+
+if( route(3) !== '' ){
+    $code = strrev( base64_decode( route(3) ) );
+}else if( isset( $_COOKIE['phone_code']) ){
+	$code = Secure($_COOKIE['phone_code']);
+}
+
+if( $phone == '' ){
     echo "<script>window.location = window.site_url + '/forgot';</script>";
 }
 ?>
@@ -35,8 +44,8 @@ if( $email == '' ){
 					<div class="dt_login_con">
 						<div class="row dt_login login">
 							<form method="POST" action="Useractions/resetpassword" class="login">
-								<input type="hidden" name="email" value="<?php echo $email;?>">
-								<input type="hidden" name="email_code" value="<?php if( isset( $_COOKIE['email_code'] ) ) { echo Secure($_COOKIE['email_code']); }?>">
+								<input type="hidden" name="phone_number" value="<?php echo $phone;?>">
+								<input type="hidden" name="phone_code" value="<?php echo $code;?>">
 								<p><span class="bold"><?php echo __( 'Password change,' );?></span> <?php echo __( 'please enter your new password to proceed.' );?></p>
 								<div class="alert alert-success" role="alert" style="display:none;"></div>
 								<div class="alert alert-danger" role="alert" style="display:none;"></div>

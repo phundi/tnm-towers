@@ -275,63 +275,59 @@ Class UserActions extends Aj {
     function forget_password() {
         global $db;
         $error = '';
-        $email = '';
-        $users = LoadEndPointResource('users');
-        if ($users) {
-            if (isset($_POST) && !empty($_POST)) {
-                if (isset($_POST[ 'email' ]) && empty($_POST[ 'email' ])) {
-                    $error .= '<p>• ' . __('Missing E-mail.') . '</p>';
-                }
-                if (!filter_var($_POST[ 'email' ], FILTER_VALIDATE_EMAIL)) {
-                    $error .= '<p>• ' . __('This E-mail is invalid.') . '</p>';
-                }
-                if (!$users->isEmailExists($_POST[ 'email' ])) {
-                    $error .= '<p>• ' . __('This E-mail') . ' "' . $_POST[ 'email' ] . '" ' . __('is not registered.') . '</p>';
-                }
-                $email = Secure($_POST[ 'email' ]);
-                if ($error == '') {
-                    $user = $db->where('email', $email)->getOne('users');
-                    if ($user) {
-                        $_email_code = Secure(rand(1111, 9999));
-                        $db->where('id', $user['id'])->update('users',array('email_code'=>$_email_code));
-                        $message_body = Emails::parse('auth/forget', array(
-                            'first_name' => ($user[ 'first_name' ] !== '' ? $user[ 'first_name' ] : $user[ 'username' ]),
-                            'email_code' => $_email_code
-                        ));
-                        $send         = SendEmail($email, self::Config()->site_name . ' ' . __('password reset.'), $message_body);
-                        if ($send) {
-                            $_SESSION[ 'verify_email' ] = $email;
-                            return array(
-                                'status' => 200,
-                                'message' => __('Reset password email sent successfully.'),
-                                'ajaxRedirect' => '/mail-otp/' . base64_encode(strrev($email)),
-                                'cookies' => array(
-                                    'verify_email' => $email
-                                )
-                            );
-                        } else {
-                            $error .= '<p>• ' . __('Server can\'t send email to') . ' " ' . $email . '" ' . __('right now, please try again later.') . '</p>';
-                        }
-                    }
-                }
-            } else {
-                return array(
-                    'status' => 400,
-                    'message' => '<p>• ' . __('An error occurred while processing the form.') . '</p>'
-                );
+        
+        if (isset($_POST) && !empty($_POST)) {
+
+    
+            if (empty($_POST[ 'phone_number' ])) {
+                $error .= '<p>• ' . __('Missing Phone Number.') . '</p>';
             }
+
+            if ( strlen($_POST[ 'phone_number' ]) != 13) {
+                $error .= '<p>• ' . __('Invalid phone number.') . '</p>';
+            }
+
             if ($error !== '') {
                 return array(
                     'status' => 400,
                     'message' => $error
                 );
             }
+
+            $phone = $_POST[ 'phone_number' ];
+            $user = $db->where('phone_number', $phone)->getOne('users');
+            
+            if (empty($user)){
+                return array(
+                    'status' => 401,
+                    'message' => '<p>• ' . __('Not a registered phone number') . '</p>'
+                );
+            }
+
+            if ($user) {
+                $phone_code = Secure(rand(1111, 9999));
+                $db->where('id', $user['id'])->update('users',array('smscode'=>$phone_code));
+                
+                $message = __('Account Reset Code:') . ' '.$phone_code;
+                $send    = SendSMS($phone, $message);
+                if ($send) {
+                    return array(
+                        'status' => 200,
+                        'message' => __("Verification sms sent successfully.")
+                    );
+                } else {
+                    $error = '<p>• ' . __('Can\'t send verification email, please try again later.') . '</p>';
+                }
+            }
+            
         } else {
             return array(
-                'status' => 401,
-                'message' => '<p>• ' . __('Resource endpoint class file not found.') . '</p>'
+                'status' => 400,
+                'message' => '<p>• ' . __('An error occurred while processing the form.') . '</p>'
             );
         }
+        
+       
     }
     function mailotp() {
         global $db;
@@ -391,32 +387,28 @@ Class UserActions extends Aj {
     function resetpassword() {
         global $db, $config;
         $error        = '';
-        $email        = '';
-        $email_code   = '';
+        $phone        = '';
+        $phone_code   = '';
         $password     = '';
         $new_password = '';
         $users        = LoadEndPointResource('users');
         if ($users) {
             if (isset($_POST) && !empty($_POST)) {
-                if ((isset($_POST[ 'email' ]) && empty($_POST[ 'email' ])) && (isset($_POST[ 'email' ]) && empty($_POST[ 'email' ]))) {
+                if ((isset($_POST[ 'phone_number' ]) && empty($_POST[ 'phone_number' ])) && (isset($_POST[ 'phone_number' ]) && empty($_POST[ 'phone_number' ]))) {
                     $error .= '<p>• ' . __('You are not allowed to open this page directly.') . '</p>';
                 } else {
-                    if (isset($_POST[ 'email' ]) && empty($_POST[ 'email' ])) {
-                        $error .= '<p>• ' . __('Missing E-mail.') . '</p>';
+                    if (isset($_POST[ 'phone_number' ]) && empty($_POST[ 'phone_number' ])) {
+                        $error .= '<p>• ' . __('Missing phone number.') . '</p>';
                     } else {
-                        if (!filter_var($_POST[ 'email' ], FILTER_VALIDATE_EMAIL)) {
-                            $error .= '<p>• ' . __('This E-mail is invalid.') . '</p>';
-                        } else {
-                            if (!$users->isEmailExists($_POST[ 'email' ])) {
-                                $error .= '<p>• ' . __('This E-mail') . ' "' . $_POST[ 'email' ] . '" ' . __('is not registered.') . '</p>';
-                            }
+                        if (strlen($_POST[ 'phone_number' ]) != 13) {
+                            $error .= '<p>• ' . __('This phone number is invalid.') . '</p>';
                         }
                     }
-                    if (isset($_POST[ 'email_code' ]) && empty($_POST[ 'email_code' ])) {
-                        $error .= '<p>• ' . __('Missing email code.') . '</p>';
+                    if (isset($_POST[ 'phone_code' ]) && empty($_POST[ 'phone_code' ])) {
+                        $error .= '<p>• ' . __('Missing phone code.') . '</p>';
                     } else {
-                        if (!is_numeric($_POST[ 'email_code' ])) {
-                            $error .= '<p>• ' . __('This Email code is invalid.') . '</p>';
+                        if (!is_numeric($_POST[ 'phone_code' ])) {
+                            $error .= '<p>• ' . __('This phone code is invalid.') . '</p>';
                         }
                     }
                     if (isset($_POST[ 'password' ]) && empty($_POST[ 'password' ])) {
@@ -448,11 +440,12 @@ Class UserActions extends Aj {
                     unset($_POST['g-recaptcha-response']);
                 }
                 if ($error == '') {
-                    $email      = Secure($_POST[ 'email' ]);
-                    $email_code = Secure($_POST[ 'email_code' ]);
-                    $user       = $db->where('email', $email)->where('email_code', $email_code)->getOne('users');
+                    $phone      = Secure($_POST[ 'phone_number' ]);
+                    $phone_code = Secure($_POST[ 'phone_code' ]);
+                    $user       = $db->where('phone_number', $phone)->where('smscode', $phone_code)->getOne('users');
+                    
                     if ($user) {
-                        if ($user[ 'email_code' ] == $email_code) {
+                        if ($user[ 'smscode' ] == $phone_code) {
                             $new_password = password_hash(Secure($_POST[ 'password' ]), PASSWORD_DEFAULT, array(
                                 'cost' => 11
                             ));
@@ -460,7 +453,7 @@ Class UserActions extends Aj {
                                 'password' => $new_password
                             ));
                             if ($updated) {
-                                $new_user_login = $users->login($user[ 'email' ], Secure($_POST[ 'password' ]));
+                                $new_user_login = $users->login($user[ 'username' ], Secure($_POST[ 'password' ]));
                                 if ($new_user_login[ 'code' ] == 200) {
                                     SessionStart();
                                     $_SESSION[ 'JWT' ] = $new_user_login[ 'userProfile' ];
@@ -482,8 +475,8 @@ Class UserActions extends Aj {
                                         ),
                                         'remove_cookies' => array(
                                             'verify_email' => true,
-                                            'email_code' => true,
-                                            'email' => true
+                                            'phone_code' => true,
+                                            'phone_number' => true
                                         )
                                     );
                                 } else {
@@ -493,10 +486,10 @@ Class UserActions extends Aj {
                                 $error .= '<p>• ' . __('Error While save new password.') . '</p>';
                             }
                         } else {
-                            $error .= '<p>• ' . __('Wrong email verification code.') . '</p>';
+                            $error .= '<p>• ' . __('Wrong phone verification code.') . '</p>';
                         }
                     } else {
-                        $error .= '<p>• ' . __('No user found with this email or code.') . '</p>';
+                        $error .= '<p>• ' . __('No user found with this phone number or code.') . '</p>';
                     }
                 }
             }
@@ -576,6 +569,33 @@ Class UserActions extends Aj {
             );
         }
     }
+    
+    function get_fp_sms_verification_code() {
+        global $db;
+
+        $phone = Secure($_GET[ 'phone_number' ]);
+        $user = $db->where('phone_number', $phone)->getOne('users');
+        
+        if (!empty($user) && $user['smscode'] !== '') {
+            
+            return array(
+                'status' => 200,
+                'code' => $user['smscode'],
+                'reset_link' => '/reset/' . base64_encode(strrev($phone)) . '/' .  base64_encode(strrev($user['smscode'])),
+                'cookies' => array(
+                    'phone_code' => $user['smscode']
+                )
+            );
+           
+        } else {
+            return array(
+                'status' => 204
+            );
+        }
+        
+    }
+   
+
     function send_verefication_sms() {
         $data = array(
             'status' => 200

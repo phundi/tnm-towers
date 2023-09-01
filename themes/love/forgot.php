@@ -25,18 +25,33 @@
 				<div class="">
 					<div class="dt_login_con">
 						<div class="row dt_login login">
-							<form method="POST" action="/Useractions/forget_password" class="login">
-								<p><span class="bold"><?php echo __( 'Password recovery,' );?></span> <?php echo __( 'please enter your registered email to proceed.' );?></p>
+							<form id="passwordForm" method="POST" action="/Useractions/forget_password" class="login">
+								<p><span class="bold"><?php echo __( 'Password recovery,' );?></span> 
+									<?php echo __( 'Please Enter Registered Phone Number' );?></p>
 								<div class="alert alert-success" role="alert" style="display:none;"></div>
 								<div class="alert alert-danger" role="alert" style="display:none;"></div>
 								<div class="row">
 									<div class="input-field">
-										<input id="email" name="email" type="email" class="validate" required autofocus>
-										<label for="email"><?php echo __( 'Email' );?></label>
+										<input id="phone_number" name="phone_number" type="text" class="validate" required autofocus>
+										<label for="phone_number"><?php echo __( 'Phone' );?></label>
 									</div>
 								</div>
+
+								<div class="enter_otp">
+									<p style="color: white;"><?php echo __( 'Please enter the verification code sent to your Phone' );?></p>
+									<div id="otp_outer">
+									<div id="otp_inner">
+										<input id="otp_check_phone" type="text" maxlength="4" value="" pattern="\d*" title="Field must be a number." 
+											onkeyup="if (/\D/g.test(this.value)){ this.value = this.value.replace(/\D/g,'') } if($(this).val().length == 4){verify_sms_code(this);}" 
+											 />
+									</div>
+									</div>
+								</div>
+
+								
 								<div class="dt_login_footer valign-wrapper">
-									<button class="btn btn-large waves-effect waves-light bold btn_primary btn_round" type="submit" name="action"><span><?php echo __( 'Proceed' );?></span></button>
+									<button onclick="submitForm()" class="btn btn-large waves-effect waves-light bold btn_primary btn_round" 
+										type="submits" name="action"><span><?php echo __( 'Proceed' );?></span></button>
 								</div>
 							</form>
 						</div>
@@ -46,3 +61,101 @@
 		</div>
 	</div>
 </div>
+
+<script>
+
+function submitForm(){
+
+	$('#passwordForm').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: '/Useractions/forget_password',
+            data: { phone_numer: $("#phone_number").val() },
+			success: function(data, status){
+				$(".enter_otp").show();
+				$('#otp_check_phone').focus();
+			}		
+        });
+        return false;
+    }); 
+}
+
+function verify_sms_code( thisx ){
+    var vl = $(thisx);
+	var url = window.ajax + 'useractions/get_fp_sms_verification_code'
+
+	jQuery.ajax( {
+		url: url , 
+		type: "GET",
+		data: {
+			phone_number: jQuery("#phone_number").val()
+		},
+		success: function(data, status){
+			
+			setTimeout(() => {
+				$('#otp_check_phone').removeAttr('disabled');
+			},1000);
+
+			if( data.status == 200 ){
+				if( vl.val() == data.code ){
+					
+					window.location = data.reset_link;
+				}else{
+					jQuery("alert-danger").html("SMS code does not match");
+					jQuery("alert-danger").show();
+				}
+			}else{
+				jQuery("alert-danger").html("SMS verification failed");
+				jQuery("alert-danger").show();
+			}
+    	}
+	}
+	);
+}
+
+$( document ).on( 'input', '#otp_check_phone', function(e){
+	if($(this).val().length == 4 && !$('#otp_check_phone').prop('disabled')) {
+		$('#otp_check_phone').attr('disabled',true);
+		verify_sms_code(this);
+	} else {}
+});
+
+$( document ).on( 'paste', '#otp_check_phone', function(e){
+	var pastedData = e.originalEvent.clipboardData.getData('text');
+	if(pastedData.length === 4) {
+		var vl = $(this);
+		vl.val(pastedData);
+		
+		var url = window.ajax + 'useractions/get_fp_sms_verification_code';
+		jQuery.ajax( {
+			url: url , 
+			type: "GET",
+			data: {
+				phone_number: jQuery("#phone_number").val()
+			},
+			success: function(data, status){
+				
+				setTimeout(() => {
+					$('#otp_check_phone').removeAttr('disabled');
+				},1000);
+
+				if( data.status == 200 ){
+					if( vl.val() == data.code ){
+						
+						window.location = data.reset_link;
+					}else{
+						jQuery("alert-danger").html("SMS code does not match");
+						jQuery("alert-danger").show();
+					}
+				}else{
+					jQuery("alert-danger").html("SMS verification failed");
+					jQuery("alert-danger").show();
+				}
+			}
+		}
+		);
+	} else {}
+	e.preventDefault();
+});
+
+</script>

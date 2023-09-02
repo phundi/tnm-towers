@@ -36,7 +36,7 @@
 									</div>
 								</div>
 								<div class="price">
-									<?php echo $config->currency_symbol . (float)(60);?>
+									<?php echo $config->currency_symbol . (float)(1500);?>
 								</div>
 							</div>
 							<div class="mid">
@@ -51,7 +51,7 @@
 								<?php } ?>
 								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches by ditrict' );?></p>
 							</div>
-							<div class="foot" onclick="payAirtelMoney('daily', 60);">
+							<div class="foot" onclick="payAirtelMoney('daily', 1500);">
 								<button type="button"  ><?php echo __( 'Make Payment' );?>
 							</button>
 							</div>

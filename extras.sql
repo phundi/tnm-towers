@@ -14,3 +14,7 @@ CREATE TABLE `payment_requests` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+ALTER TABLE users ADD COLUMN district VARCHAR(100);
+
+alter table users modify pro_type varchar(10) DEFAULT '0';
+

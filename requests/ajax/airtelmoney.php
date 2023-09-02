@@ -221,10 +221,6 @@ Class AirtelMoney extends Aj {
                 $paymentRequest = $db->objectBuilder()->where('transaction_id', $transID)->getOne("payment_requests");
                 $membershipType = $paymentRequest->pro_plan;   
 
-               // ob_start();
-                //var_dump($paymentRequest);
-                //error_log(ob_get_clean());
-        
                 $amount = $paymentRequest->amount;
                 
                 $protime                = time();
@@ -237,6 +233,11 @@ Class AirtelMoney extends Aj {
 
                 if ($updated) {
                     //RegisterAffRevenue(self::ActiveUser()->id,$price / 100);
+                    
+                    //ob_start();
+                    //var_dump($membershipType);
+                    //error_log(ob_get_clean());
+            
                     
                     $db->insert('payments', array(
                         'user_id' => self::ActiveUser()->id,

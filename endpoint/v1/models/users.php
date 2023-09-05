@@ -258,7 +258,7 @@ class Users {
                     'code' => 400,
                     'errors'         => array(
                         'error_id'   => '1',
-                        'error_text' => 'User name cannot be empty'
+                        'error_text' => 'Phone number cannot be empty'
                     )
                 ), 400);
             }
@@ -268,14 +268,13 @@ class Users {
                     'code' => 400,
                     'errors'         => array(
                         'error_id'   => '1',
-                        'error_text' => __('Password cannot be empty')
+                        'error_text' => __('Phone number cannot be empty')
                     )
                 ), 400);
             }
             $username = Secure($_POST['username']);
             $password = Secure($_POST['password']);
         }
-
 
         if ($this->isPasswordVerifyed($username, $password)) {
             $user = $db->where('username', $username)->orWhere('phone_number', $username)->getOne('users');
@@ -299,6 +298,7 @@ class Users {
                     }
                 }
 
+                
                 $data = $this->createSession($user['id'], $user);
                 if ($data) {
                     $profile =  $this->get_user_profile($user['id'],array('avater','web_token','start_up','active','web_token_created_at','verified','admin'));

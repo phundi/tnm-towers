@@ -61,71 +61,6 @@
 					<a href="<?php echo $site_url;?>/about" data-ajax="/about" class="main-know-bttn"><?php echo __( 'Learn More' );?></a>
 				</div>
 				
-				<div class="section dt_hdr_filters">
-					<div class="row">
-						<div class="input-field col">
-							<select>
-							<?php
-								$all_gender = array();
-								$gender = Dataset::load('gender');
-								$iz = 0;
-								if (isset($gender) && !empty($gender)) {
-									foreach ($gender as $key => $val) {
-										$_checked = '';
-										if($iz === 1){
-											$_checked = 'selected';
-										}
-										echo '<option value="' . $key . '" '.$_checked.'>' . $val . '</option>';
-										$iz++;
-									}
-								}							
-							?>
-							</select>
-							<label class="bold"><?php echo __( 'I am a' );?>:</label>
-						</div>
-						<div class="input-field col">
-							<select>
-							<?php
-								$all_gender = array();
-								$gender = Dataset::load('gender');
-								$ix = 0;
-								if (isset($gender) && !empty($gender)) {
-									foreach ($gender as $key => $val) {
-										$_checked = '';
-										if($ix === 0){
-											$_checked = 'selected';
-										}
-										echo '<option value="' . $key . '" '.$_checked.'>' . $val . '</option>';
-										$ix++;
-									}
-								}							
-							?>
-							</select>
-							<label class="bold"><?php echo __( 'I\'m looking for a' );?>:</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col">
-							<select>
-							<?php for($i = 18 ; $i < 51 ; $i++ ){?>
-								<option value="<?php echo $i;?>" <?php if( $i == 20){ echo 'selected';}?> ><?php echo $i;?></option>
-							<?php }?>
-							</select>
-							<label class="bold"><?php echo __( 'Between ages' );?></label>
-						</div>
-						<div class="input-field col">
-							<select>
-							<?php for($i = 51 ; $i < 99 ; $i++ ){?>
-								<option value="<?php echo $i;?>" <?php if( $i == 55){ echo 'selected';}?>><?php echo $i;?></option>
-							<?php }?>
-							</select>
-							<label class="bold"><?php echo __( 'and' );?></label>
-						</div>
-					</div>
-					<div>
-						<a href="<?php echo $site_url;?>/login" class="btn btn-large waves-effect waves-light bold btn_primary btn_round"><?php echo __( 'Let\'s Begin Finding Matches' );?></a>
-					</div>
-				</div>
 				
 			</div>
 			<svg class="header_svg_circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1454" height="1062" viewBox="0 0 1454 1062"> <defs> <clipPath id="clip-path"> <rect id="Rectangle_7" data-name="Rectangle 7" width="1454" height="1062" transform="translate(466)" fill="#fff"/> </clipPath> </defs> <g id="Mask_Group_2" data-name="Mask Group 2" transform="translate(-466)" clip-path="url(#clip-path)"> <g id="Circle_Effect_Banner" data-name="Circle Effect Banner"> <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(922 103)" fill="none" stroke="#cc42bd" stroke-width="1" opacity="0.85"> <circle cx="290" cy="290" r="290" stroke="none"/> <circle cx="290" cy="290" r="289.5" fill="none"/> </g> <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(819)" fill="none" stroke="#cc42bd" stroke-width="1" opacity="0.65"> <circle cx="393" cy="393" r="393" stroke="none"/> <circle cx="393" cy="393" r="392.5" fill="none"/> </g> <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(708 -111)" fill="none" stroke="#cc42bd" stroke-width="1" opacity="0.45"> <circle cx="504" cy="504" r="504" stroke="none"/> <circle cx="504" cy="504" r="503.5" fill="none"/> </g> <g id="Ellipse_5" data-name="Ellipse 5" transform="translate(579 -240)" fill="none" stroke="#cc42bd" stroke-width="1" opacity="0.25"> <circle cx="633" cy="633" r="633" stroke="none"/> <circle cx="633" cy="633" r="632.5" fill="none"/> </g> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(1007 188)" fill="none" stroke="#cc42bd" stroke-width="1"> <circle cx="205" cy="205" r="205" stroke="none"/> <circle cx="205" cy="205" r="204.5" fill="none"/> </g> </g> </g> </svg>
@@ -333,29 +268,16 @@ perfect match for you' );?></p>
 							</div>
 						</div>
 					</div>
-					<div class="col m5">
-						<div class="subscribe_alert"></div>
-						<form class="subscribe">
-							<div>
-								<svg xmlns="http://www.w3.org/2000/svg" width="26.183" height="23.803" viewBox="0 0 26.183 23.803"> <path d="M3607.8,1824.306a7.137,7.137,0,0,0-3.963-.238,7.144,7.144,0,0,0-5.392,5.391,7.138,7.138,0,0,0,.239,3.963h-13.5a1.179,1.179,0,0,1-1.19-1.19V1813.19a1.178,1.178,0,0,1,1.19-1.19h21.422a1.179,1.179,0,0,1,1.19,1.19Zm-11.83-1.975-7.629-6.474-1.547,1.809,9.188,7.807,9.021-7.807-1.547-1.809-7.486,6.474Zm10.64,7.522h3.571v2.38h-3.571v3.571h-2.38v-3.571h-3.57v-2.38h3.57v-3.571h2.38Z" transform="translate(-3584 -1812)" fill="currentColor"/> </svg>
-								<input class="browser-default" type="text" placeholder="Enter your email address" id="subscribe_email" />
-							</div>
-							<button type="button" class="subs_btn" onclick="NewsSubscribe()"><?php echo __( 'Sign Up' );?></button>
-						</form>
-					</div>
+					
 					<?php if($config->social_media_links == 'on'){ ?>
 					<div class="col">
 						<h6><?php echo __( 'Follow us!' );?></h6>
 						<?php if(!empty($config->facebook_url)){ ?>
-							<a href="<?php echo $config->facebook_url;?>" target="_blank" class="social_btn">
+							<a href="<?php echo 'https://web.facebook.com/profile.php?id=100057366853256' ?>" target="_blank" class="social_btn">
 								<svg xmlns="http://www.w3.org/2000/svg" width="9.436" height="17.973" viewBox="0 0 9.436 17.973"><path id="Path_6060" data-name="Path 6060" d="M3655.291,12537.334h2.247l.9-3.594h-3.145v-1.8c0-.9,0-1.8,1.8-1.8h1.348v-3.056c-.3,0-1.4-.09-2.57-.09a3.916,3.916,0,0,0-4.169,4.224v2.517H3649v3.594h2.7v7.639h3.594Z" transform="translate(-3649 -12527)" fill="currentColor"/></svg>
 							</a>&nbsp;&nbsp;
 						<?php }?>
-						<?php if(!empty($config->twitter_url)){ ?>
-							<a href="<?php echo $config->twitter_url;?>" target="_blank" class="social_btn">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg>
-							</a>&nbsp;&nbsp;
-						<?php }?>
+						
 					
 					</div>
 					<?php }?>

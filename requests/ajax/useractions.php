@@ -43,16 +43,27 @@ Class UserActions extends Aj {
                // }
 
 
-                if (substr($phone_number, 0, 4) !== '+265') {
+                if (substr($phone_number, 0, 4) !== '+265' && substr($phone_number, 0, 3) !== '265' && substr($phone_number, 0, 2) !== '09' && substr($phone_number, 0, 2) !== '08') {
                     $error = '<p>• ' . __('Please provide Airtel or TNM phone number') . '</p>';
                 }
-                if (strlen($phone_number) != 13) {
+                if (strlen($phone_number) != 13 && strlen($phone_number) != 10 && strlen($phone_number) != 12) {
                     $error = '<p>• ' . __('Please enter valid number.') . '</p>';
                 }
                 if (!is_numeric(substr($phone_number, 1))) {
                     $error = '<p>• ' . __('Invalid phone number characters.') . '</p>';
                 }
 
+                if (strlen($phone_number) == 10 && (substr($phone_number, 0, 1) == "0")) {
+                    $pattern = '/^0/';
+                    $phone_number = preg_replace($pattern, "+265", $phone_number);
+                }
+
+                if (strlen($phone_number) == 12 && (substr($phone_number, 0, 3) == "265")) {
+                    $pattern = '/^265/';
+                    $phone_number = preg_replace($pattern, "+265", $phone_number);
+                }
+
+                $_POST['phone_number'] = $phone_number;
 
                 if ($users->isUsernameExists($username)) {
                     $error .= '<p>• ' . __('This User name is Already exist.') . '</p>';
@@ -60,13 +71,13 @@ Class UserActions extends Aj {
                 if ($users->isPhoneExists($phone_number)) {
                     $error .= '<p>• ' . __('This Phone Number Already exist.') . '</p>';
                 }
-                if (strlen($username) < 4 OR strlen($username) > 32) {
-                    $error .= '<p>• ' . __('Username must be between 4 to 32 characters') . '</p>';
+                if (strlen($username) < 3 OR strlen($username) > 20) {
+                    $error .= '<p>• ' . __('Display name must be between 3 to 20 characters') . '</p>';
                 }
                 if (!preg_match('/^[\w]+$/', $username)) {
                     $error .= '<p>• ' . __('Invalid username characters.') . '</p>';
                 }
-                if (strlen($password) < 5) {
+                if (strlen($password) < 4) {
                     $error .= '<p>• ' . __('Password is too short.') . '</p>';
                 }
                 if (Wo_IsBanned($username)) {
@@ -194,6 +205,33 @@ Class UserActions extends Aj {
                 if (isset($_POST[ 'password' ]) && empty($_POST[ 'password' ])) {
                     $error .= '<p>• ' . __('Missing password.') . '</p>';
                 }
+
+
+
+                $phone_number = $_POST[ 'username' ];
+                if (substr($phone_number, 0, 4) !== '+265' && substr($phone_number, 0, 3) !== '265' && substr($phone_number, 0, 2) !== '09' && substr($phone_number, 0, 2) !== '08') {
+                    $error = '<p>• ' . __('Please provide Airtel or TNM phone number') . '</p>';
+                }
+                if (strlen($phone_number) != 13 && strlen($phone_number) != 10 && strlen($phone_number) != 12) {
+                    $error = '<p>• ' . __('Please enter valid number.') . '</p>';
+                }
+                if (!is_numeric(substr($phone_number, 1))) {
+                    $error = '<p>• ' . __('Invalid phone number characters.') . '</p>';
+                }
+
+                if (strlen($phone_number) == 10 && (substr($phone_number, 0, 1) == "0")) {
+                    $pattern = '/^0/';
+                    $phone_number = preg_replace($pattern, "+265", $phone_number);
+                }
+
+                if (strlen($phone_number) == 12 && (substr($phone_number, 0, 3) == "265")) {
+                    $pattern = '/^265/';
+                    $phone_number = preg_replace($pattern, "+265", $phone_number);
+                }
+
+                $_POST['username'] = $phone_number;
+
+
                 if (isset($_POST[ 'username' ]) && !empty($_POST[ 'username' ]) && isset($_POST[ 'password' ]) && !empty($_POST[ 'password' ])) {
                     if ($config->prevent_system == 1) {
                         if (!CanLogin()) {
@@ -302,9 +340,30 @@ Class UserActions extends Aj {
                 $error .= '<p>• ' . __('Missing Phone Number.') . '</p>';
             }
 
-            if ( strlen($_POST[ 'phone_number' ]) != 13) {
-                $error .= '<p>• ' . __('Invalid phone number.') . '</p>';
+            $phone_number = $_POST[ 'phone_number' ];
+
+            if (substr($phone_number, 0, 4) !== '+265' && substr($phone_number, 0, 3) !== '265' && substr($phone_number, 0, 2) !== '09' && substr($phone_number, 0, 2) !== '08') {
+                $error = '<p>• ' . __('Please provide Airtel or TNM phone number') . '</p>';
             }
+            if (strlen($phone_number) != 13 && strlen($phone_number) != 10 && strlen($phone_number) != 12) {
+                $error = '<p>• ' . __('Please enter valid number.') . '</p>';
+            }
+            if (!is_numeric(substr($phone_number, 1))) {
+                $error = '<p>• ' . __('Invalid phone number characters.') . '</p>';
+            }
+
+            if (strlen($phone_number) == 10 && (substr($phone_number, 0, 1) == "0")) {
+                $pattern = '/^0/';
+                $phone_number = preg_replace($pattern, "+265", $phone_number);
+            }
+
+            if (strlen($phone_number) == 12 && (substr($phone_number, 0, 3) == "265")) {
+                $pattern = '/^265/';
+                $phone_number = preg_replace($pattern, "+265", $phone_number);
+            }
+
+            $_POST['phone_number'] = $phone_number;
+
 
             if ($error !== '') {
                 return array(
@@ -314,6 +373,7 @@ Class UserActions extends Aj {
             }
 
             $phone = $_POST[ 'phone_number' ];
+
             $user = $db->where('phone_number', $phone)->getOne('users');
             
             if (empty($user)){

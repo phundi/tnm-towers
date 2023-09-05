@@ -164,11 +164,11 @@
                      <div class="choose_photo">
                         <h6 class="bold"><?php echo ( $profile->full_name !== "" ? $profile->full_name.$profile->pro_icon : $profile->username ) ;?>, <?php echo __( 'people want to see what you look like!' );?></h6>
                         <p><?php echo __( 'Upload Images to set your Profile Picture Image.' );?></p>
-                        <?php if( $profile->avater->full !== '' ){?>
-                        <span class="dt_selct_avatar" onclick="document.getElementById('avatar_img').click(); return false" style="background-image: url(<?php echo $profile->avater->full ;?>);background-repeat: no-repeat;background-size: cover;background-position: center center;">
+                        <?php if( $profile->avater->full == '' ){?>
+                        <span class="dt_selct_avatar" onclick="jQuery('#avatar_img').click(); return false" style="background-image: url(<?php echo $profile->avater->full ;?>);background-repeat: no-repeat;background-size: cover;background-position: center center;">
                         </span>
                         <?php }else{ ?>
-                        <span class="dt_selct_avatar" onclick="document.getElementById('avatar_img').click(); return false">
+                        <span class="dt_selct_avatar" onclick="jQuery('#avatar_img').click(); return false">
                            <span class="svg-empty">
                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                  <path fill="currentColor" d="M5,3A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H14.09C14.03,20.67 14,20.34 14,20C14,19.32 14.12,18.64 14.35,18H5L8.5,13.5L11,16.5L14.5,12L16.73,14.97C17.7,14.34 18.84,14 20,14C20.34,14 20.67,14.03 21,14.09V5C21,3.89 20.1,3 19,3H5M19,16V19H16V21H19V24H21V21H24V19H21V16H19Z">
@@ -176,7 +176,9 @@
                            </span>
                         </span>
                         <?php } ?>
-                        <button class="btn-image" onclick="document.getElementById('avatar_img').click(); return false"><?php echo __( 'Browse Image' );?></button>
+
+                        <button style="z-index: 1000 !important;" class="btn-image" onclick=" jQuery('#avatar_img').click(); return false"><?php echo __( 'Browse Image' );?></button>
+                        
                         <input type="file" id="avatar_img" class="hide" accept="image/x-png, image/gif, image/jpeg" name="avatar">
                         <div class="progress hide" style="width: 180px;margin: auto;margin-top: 25px;padding-top: 4px;">
                            <div class="determinate" style="width: 0%"></div >
@@ -370,7 +372,8 @@
                            <div class="col s12 m2"></div>
                            <div class="col s12 m8">
                               <div class="input-field inline">
-                                 <input id="mobile_validate" type="text" style="width: 200px;" value="<?php echo $profile->phone_number;?>">
+                                 <input id="mobile_validate" type="hidden" style="width: 200px; color: white;" value="<?php echo $profile->phone_number;?>">
+                                 <input id="mobile_validate_label" disabled type="text" style="width: 200px; color: white;" value="<?php echo $profile->phone_number;?>">
                               </div>
                               <button class="btn waves-effect waves-light" style="margin-left: -5px;" id="send_otp"><?php echo __( 'Send OTP' );?></button>
                            </div>

@@ -64,7 +64,7 @@
 
 								<div class="row">
 									<div class="input-field col m6 s12">
-										<input name = "phone_number" id="mobile" type="text" data-errmsg="<?php echo __( 'Your phone number is required.');?>" class="validate" required title="Field must be a number." placeholder="<?php echo __('+265');?>" <?php if($config->sms_or_email == 'sms'){?> data-validation-type="sms" required<?php }else{?> data-validation-type="mail" <?php } ?> data-p-verified="yes">
+										<input name = "phone_number" id="mobile" type="text" data-errmsg="<?php echo __( 'Your phone number is required.');?>" class="validate" required title="Field must be a number." placeholder="" <?php if($config->sms_or_email == 'sms'){?> data-validation-type="sms" required<?php }else{?> data-validation-type="mail" <?php } ?> data-p-verified="yes">
 										<label for="mobile"><?php echo __( 'Mobile Number' );?></label>
 									</div>
 

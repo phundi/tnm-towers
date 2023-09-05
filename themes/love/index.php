@@ -6,11 +6,11 @@
 				<div class="left header_logo">
 					<a id="logo-container" href="<?php echo $site_url;?>/" class="brand-logo"><img src="<?php echo $theme_url;?>assets/img/logo.png" /></a>
 				</div>
-				<ul class="right not_usr_nasv">
-					<li><a href="<?php echo $site_url;?>/login" data-ajax="/login" style="margin:0px;"
+				<ul class="right not_usr_nasv" style="padding: 0px !important;margin: 0px !important;">
+					<li><a href="<?php echo $site_url;?>/login" data-ajax="/login" style="margin:0px;font-size: 1.1em;"
 					 class="btn btn-flat"><?php echo __( 'Login' );?></a></li>
 					<?php if ($config->user_registration == 1) { ?>
-						<li><a href="<?php echo $site_url;?>/register" style="margin: 0px;"
+						<li><a href="<?php echo $site_url;?>/register" style="margin: 0px;font-size: 1.1em;"
 						data-ajax="/register" class="btn-flat btn white waves-effect"><?php echo __( 'Register' );?></a></li>
 					<?php } ?>
 				</ul>

@@ -6,7 +6,7 @@
 				<div class="left header_logo">
 					<a id="logo-container" href="<?php echo $site_url;?>/" class="brand-logo"><img src="<?php echo $theme_url;?>assets/img/logo.png" /></a>
 				</div>
-				<ul class="right not_usr_nasv" style="margin-top: -10px !important;">
+				<ul class="right not_usr_nasv" style="margin-top: -15px !important;">
 					<li><a href="<?php echo $site_url;?>/login" data-ajax="/login" 
 						style="margin:0px;font-size: 1em;margin-right: 5px;"
 					 class="btn btn-flat"><?php echo __( 'Login' );?></a></li>

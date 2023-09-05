@@ -168,7 +168,7 @@
                         <span class="dt_selct_avatar" onclick="jQuery('#avatar_img').click(); return false" style="background-image: url(<?php echo $profile->avater->full ;?>);background-repeat: no-repeat;background-size: cover;background-position: center center;">
                         </span>
                         <?php }else{ ?>
-                        <span class="dt_selct_avatar" onclick="jQuery('#avatar_img').click(); return false">
+                        <span class="dt_selct_avatar" onclick="document.getElementById('avatar_img').click(); return false">
                            <span class="svg-empty">
                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                  <path fill="currentColor" d="M5,3A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H14.09C14.03,20.67 14,20.34 14,20C14,19.32 14.12,18.64 14.35,18H5L8.5,13.5L11,16.5L14.5,12L16.73,14.97C17.7,14.34 18.84,14 20,14C20.34,14 20.67,14.03 21,14.09V5C21,3.89 20.1,3 19,3H5M19,16V19H16V21H19V24H21V21H24V19H21V16H19Z">
@@ -176,8 +176,8 @@
                            </span>
                         </span>
                         <?php } ?>
-
-                        <button style="z-index: 1000 !important;" class="btn-image" onclick=" jQuery('#avatar_img').click(); return false"><?php echo __( 'Browse Image' );?></button>
+                        <button style="z-index: 1000 !important;" class="btn-image dt_selct_avatar" 
+                           onclick=" document.getElementById('avatar_img').click(); return false"><?php echo __( 'Browse Image' );?></button>
                         
                         <input type="file" id="avatar_img" class="hide" accept="image/x-png, image/gif, image/jpeg" name="avatar">
                         <div class="progress hide" style="width: 180px;margin: auto;margin-top: 25px;padding-top: 4px;">

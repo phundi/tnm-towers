@@ -6,7 +6,7 @@
 				<div class="left header_logo">
 					<a id="logo-container" href="<?php echo $site_url;?>/" class="brand-logo"><img src="<?php echo $theme_url;?>assets/img/logo.png" /></a>
 				</div>
-				<ul class="right not_usr_nav">
+				<ul class="right not_usr_nasv">
 					<li><a href="<?php echo $site_url;?>/login" data-ajax="/login" class="btn btn-flat"><?php echo __( 'Login' );?></a></li>
 					<?php if ($config->user_registration == 1) { ?>
 						<li><a href="<?php echo $site_url;?>/register" data-ajax="/register" class="btn-flat btn white waves-effect"><?php echo __( 'Register' );?></a></li>

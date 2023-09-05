@@ -25,7 +25,7 @@
             <?php if( (int)$random_user->id !== (int)auth()->id && Auth()->verified == "1"){ ?>
             <div class="rand_bottom_bar">
 
-                <button  class="btn waves-effect like yellow_bg"  id="btn_open_private_conversation" 
+                <button  class="btn waves-effect yellow_bg"  id="btn_open_private_conversation" 
                     <?php 
                     if( auth()->is_pro == "1"){ ?>
                         href="javascript:void(0);"  data-ajax-post="/chat/open_private_conversation" 

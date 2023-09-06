@@ -8,7 +8,7 @@
 				</div>
 				<ul class="right not_usr_nasv" style="margin-top: -15px !important;">
 					<li><a href="<?php echo $site_url;?>/login" data-ajax="/login" 
-						style="margin:0px;font-size: 1em;margin-right: 5px;"
+						style="margin:0px;font-size: 1em;margin-right: 5px; color: white; background: #CC42BD;"
 					 class="btn btn-flat"><?php echo __( 'Login' );?></a></li>
 					<?php if ($config->user_registration == 1) { ?>
 						<li><a href="<?php echo $site_url;?>/register" 

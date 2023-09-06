@@ -16,27 +16,9 @@
 			</span>
 		</div>
 	</div>
-	<div class="home_usr_stats">
-		<div>
-			<div>
-				<b><?php echo($q['views_count']) ?></b>
-				<p><?php echo __( 'Visitors' );?></p>
-			</div>
-			<div>
-				<b><?php echo($q['likes_count']) ?></b>
-				<p><?php echo __( 'Likes' );?></p>
-			</div>
 
-			<?php if( $config->connectivitySystem == '1' ){?>
-				<div>
-					<b><?php echo($q['following_count']) ?></b>
-					<p><?php echo __( 'Friends' );?></p>
-				</div>
-			<?php } ?>
-			
-			
-		</div>
-	</div>
+
+
 	<ul class="menu">
 		<li>
 			<a href="<?php echo $site_url;?>/find-matches" data-ajax="/find-matches" class="<?php if($data['name'] == 'find-matches'){ echo 'active';}?>">
@@ -46,11 +28,14 @@
 		<li>
 			<a href="<?php echo $site_url;?>/matches" data-ajax="/matches" class="<?php if($data['name'] == 'matches'){ echo 'active';}?>">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14 14.252v2.09A6 6 0 0 0 6 22l-2-.001a8 8 0 0 1 10-7.748zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm5.793 8.914l3.535-3.535 1.415 1.414-4.95 4.95-3.536-3.536 1.415-1.414 2.12 2.121z" /></svg> <?php echo __( 'Matches' );?>
+				(<span style="color: purple;"><b><?php echo($q['matches_count']) ?></b></span>)
+
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo $site_url;?>/visits" data-ajax="/visits" class="<?php if($data['name'] == 'visits'){ echo 'active';}?>">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 11a5 5 0 0 1 5 5v6h-2v-6a3 3 0 0 0-2.824-2.995L12 13a3 3 0 0 0-2.995 2.824L9 16v6H7v-6a5 5 0 0 1 5-5zm-6.5 3c.279 0 .55.033.81.094a5.947 5.947 0 0 0-.301 1.575L6 16v.086a1.492 1.492 0 0 0-.356-.08L5.5 16a1.5 1.5 0 0 0-1.493 1.356L4 17.5V22H2v-4.5A3.5 3.5 0 0 1 5.5 14zm13 0a3.5 3.5 0 0 1 3.5 3.5V22h-2v-4.5a1.5 1.5 0 0 0-1.356-1.493L18.5 16c-.175 0-.343.03-.5.085V16c0-.666-.108-1.306-.309-1.904.259-.063.53-.096.809-.096zm-13-6a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm13 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm-13 2a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm13 0a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zM12 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" /></svg> <?php echo __( 'Visits' );?>
+				(<span style="color: purple;"><b><?php echo($q['views_count']) ?></b></span>)
 			</a>
 		</li>
 		<?php if( $config->connectivitySystem == '1' ){?>
@@ -65,16 +50,20 @@
 		<li>
 			<a href="<?php echo $site_url;?>/likes" data-ajax="/likes" class="<?php if($data['name'] == 'likes'){ echo 'active';}?>">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z" /></svg> <?php echo __( 'People Who Liked Me' );?>
+				(<span style="color: purple;"><b><?php echo($q['likes_count']) ?></b></span>)
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo $site_url;?>/liked" data-ajax="/liked" class="<?php if($data['name'] == 'liked'){ echo 'active';}?>">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17.841 15.659l.176.177.178-.177a2.25 2.25 0 0 1 3.182 3.182l-3.36 3.359-3.358-3.359a2.25 2.25 0 0 1 3.182-3.182zM12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 7.75-7.996L12 14zm0-13c3.315 0 6 2.685 6 6a5.998 5.998 0 0 1-5.775 5.996L12 13c-3.315 0-6-2.685-6-6a5.998 5.998 0 0 1 5.775-5.996L12 1zm0 2C9.79 3 8 4.79 8 7s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z" /></svg> <?php echo __( 'People i liked' );?>
+				(<span style="color: purple;"><b><?php echo($q['liked_count']) ?></b></span>)
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo $site_url;?>/disliked" data-ajax="/disliked" class="<?php if($data['name'] == 'disliked'){ echo 'active';}?>">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14 14.252v2.09A6 6 0 0 0 6 22l-2-.001a8 8 0 0 1 10-7.748zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm7 6.586l2.121-2.122 1.415 1.415L20.414 19l2.122 2.121-1.415 1.415L19 20.414l-2.121 2.122-1.415-1.415L17.586 19l-2.122-2.121 1.415-1.415L19 17.586z" /></svg> <?php echo __( 'People i disliked' );?>
+				(<span style="color: purple;"><b><?php echo($q['disliked_count']) ?></b></span>)
+
 			</a>
 		</li>
 		<?php if( $config->connectivitySystem == '1' ){?>

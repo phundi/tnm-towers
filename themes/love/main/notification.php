@@ -1,8 +1,3 @@
-<?php 
-    if((int)auth()->is_pro != 1 ){
-        $notification->url = "/pro";
-    }
-?>
 <div class="dt_notifs <?php if($notification->seen == 0 ){ echo 'noti_not_seen'; }else{ echo ''; }?>">
     <a href="javascript:void(0);" data-ajax="<?php echo $notification->url;?>" class="valign-wrapper">
         <div class="avatar">

@@ -189,7 +189,7 @@ $q['matches_count'] = 0;
 if (IS_LOGGED && !empty($active_user)) {
     $q['likes_count'] = $db->where('like_userid',$active_user->id)->getValue('likes','COUNT(*)');
     $q['following_count'] = $db->where('following_id',$active_user->id)->getValue('followers','COUNT(*)');
-    $q['matches_count'] = $db->where('recipient_id ',$user->id)->where('type ','got_new_match')->getValue('notifications ','COUNT(*)');    $q['views_count'] = $db->where('view_userid ',$active_user->id)->getValue('views ','COUNT(*)');
+    $q['matches_count'] = $db->where('recipient_id',$user->id)->where('type','got_new_match')->getValue('notifications','COUNT(*)');    $q['views_count'] = $db->where('view_userid ',$active_user->id)->getValue('views ','COUNT(*)');
     $q['liked_count'] = $db->where('user_id',$active_user->id)->where('is_like', 1)->getValue('likes','COUNT(*)');
     $q['disliked_count'] = $db->where('user_id',$active_user->id)->where('is_dislike', 1)->getValue('likes','COUNT(*)');
 }

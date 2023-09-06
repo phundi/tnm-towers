@@ -17,7 +17,7 @@
 				<?php } ?>
 				<div class="dt_p_head">
 					<h2><?php echo __( 'Discover the incredible features of' );?> <?php echo ucfirst( $config->site_name );?> <?php echo __( "that you do not want to miss out on" );?>.</h2>
-					<p><?php echo __( 'Unlock Premium to Expand Your Social Circle and Connect Faster' );?></p>
+					<p><?php echo __( 'Subscribe to Expand Your Social Circle and Connect Faster' );?></p>
 				</div>
 			</div>
 			
@@ -49,7 +49,7 @@
 								<?php if($config->video_chat == 1 && $config->audio_chat == 1){ ?>
 									<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Video and Audio calls to all users' );?></p>
 								<?php } ?>
-								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches by ditrict' );?></p>
+								<p><svg xmlns="http://www.w3.org/2000/svg" width="15.836" height="15.836" viewBox="0 0 15.836 15.836"> <path d="M3647.918,7687.836a7.918,7.918,0,1,1,7.918-7.918A7.921,7.921,0,0,1,3647.918,7687.836Zm-.792-4.751,5.6-5.6-1.116-1.125-4.481,4.481-2.241-2.241-1.116,1.124Z" transform="translate(-3640 -7672)" fill="#2ee93b"/> </svg> <?php echo __( 'Find potential matches by district' );?></p>
 							</div>
 							<div class="foot" onclick="payAirtelMoney('daily', 1500);">
 								<button type="button"  ><?php echo __( 'Make Payment' );?>

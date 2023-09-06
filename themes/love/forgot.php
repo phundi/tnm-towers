@@ -96,17 +96,20 @@ function verify_sms_code( thisx ){
 				$('#otp_check_phone').removeAttr('disabled');
 			},1000);
 
-			if( data.status == 200 ){
+			console.log(data);
+			if( data != undefined && data != null && data.status == 200 ){
 				if( vl.val() == data.code ){
 					
 					window.location = data.reset_link;
 				}else{
-					jQuery("alert-danger").html("SMS code does not match");
-					jQuery("alert-danger").show();
+					console.log("1")
+					jQuery(".alert-danger").html("SMS code does not match");
+					jQuery(".alert-danger").show();
 				}
 			}else{
-				jQuery("alert-danger").html("SMS verification failed");
-				jQuery("alert-danger").show();
+				console.log("2")
+				jQuery(".alert-danger").html("SMS verification failed");
+				jQuery(".alert-danger").show();
 			}
     	}
 	}
@@ -144,8 +147,8 @@ $( document ).on( 'paste', '#otp_check_phone', function(e){
 						
 						window.location = data.reset_link;
 					}else{
-						jQuery("alert-danger").html("SMS code does not match");
-						jQuery("alert-danger").show();
+						jQuery(".alert-danger").html("SMS code does not match");
+						jQuery(".alert-danger").show();
 					}
 				}else{
 					jQuery("alert-danger").html("SMS verification failed");

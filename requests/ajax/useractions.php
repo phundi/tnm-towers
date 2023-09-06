@@ -364,6 +364,7 @@ Class UserActions extends Aj {
 
             $_POST['phone_number'] = $phone_number;
 
+            
 
             if ($error !== '') {
                 return array(
@@ -376,6 +377,8 @@ Class UserActions extends Aj {
 
             $user = $db->where('phone_number', $phone)->getOne('users');
             
+
+
             if (empty($user)){
                 return array(
                     'status' => 401,
@@ -652,7 +655,21 @@ Class UserActions extends Aj {
     function get_fp_sms_verification_code() {
         global $db;
 
-        $phone = Secure($_GET[ 'phone_number' ]);
+        $phone_number = Secure($_GET[ 'phone_number' ]);
+
+
+        if (strlen($phone_number) == 10 && (substr($phone_number, 0, 1) == "0")) {
+            $pattern = '/^0/';
+            $phone_number = preg_replace($pattern, "+265", $phone_number);
+        }
+
+        if (strlen($phone_number) == 12 && (substr($phone_number, 0, 3) == "265")) {
+            $pattern = '/^265/';
+            $phone_number = preg_replace($pattern, "+265", $phone_number);
+        }
+
+
+        $phone = $phone_number;
         $user = $db->where('phone_number', $phone)->getOne('users');
         
         if (!empty($user) && $user['smscode'] !== '') {

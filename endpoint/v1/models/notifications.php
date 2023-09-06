@@ -126,10 +126,11 @@ class Notifications {
         if ($notification->type == 'got_new_match') {
             //$style = 'style="display:none;"';
         }
-        if((int)auth()->is_pro != 1 ){
-            $notification->url = "/pro";
-        }
-        
+
+        //if((int)auth()->is_pro != 1 ){
+        //    $notification->url = "/pro";
+       // }
+
         $html = '';
         if (file_exists($theme_path . 'main' . $_DS . 'notification.php')) {
             ob_start();

@@ -185,6 +185,7 @@ $q['likes_count'] = 0;
 $q['following_count'] = 0;
 $q['views_count'] = 0;
 $q['matches_count'] = 0;
+$q['disliked_count'] = 0;
 
 if (IS_LOGGED && !empty($active_user)) {
     $q['likes_count'] = $db->where('like_userid',$active_user->id)->where('is_like', 1)->getValue('likes','COUNT(*)');

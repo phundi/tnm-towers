@@ -127,9 +127,10 @@ class Notifications {
             //$style = 'style="display:none;"';
         }
 
-        //if((int)auth()->is_pro != 1 ){
-        //    $notification->url = "/pro";
-       // }
+		$pro = $db->where('id', $notification->recipient_id)->getValue('users', 'is_pro');
+        if((int)$pro != 1 ){
+            $notification->url = "/pro";
+        }
 
         $html = '';
         if (file_exists($theme_path . 'main' . $_DS . 'notification.php')) {

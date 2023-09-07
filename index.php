@@ -188,9 +188,18 @@ $q['matches_count'] = 0;
 $q['disliked_count'] = 0;
 
 if (IS_LOGGED && !empty($active_user)) {
+	
     $q['likes_count'] = $db->where('like_userid',$active_user->id)->where('is_like', 1)->getValue('likes','COUNT(*)');
     $q['following_count'] = $db->where('following_id',$active_user->id)->getValue('followers','COUNT(*)');
-    $q['matches_count'] = $db->where('notifier_id',$user->id)->where('type','got_new_match')->getValue('notifications','COUNT(*)');    $q['views_count'] = $db->where('view_userid ',$active_user->id)->getValue('views ','COUNT(*)');
+    
+	$notin = ' `users`.`id` NOT IN (SELECT `block_userid` FROM `blocks` WHERE `user_id` = '.$active_user->id.') AND ';
+    $q['matches_count'] = $db->objectBuilder()->rawQuery('SELECT COUNT(*) count FROM  users  INNER JOIN notifications ON (users.id = notifications.recipient_id)
+            WHERE '. $notin .'
+              notifications.notifier_id = ' . $active_user->id . ' AND
+              notifications.`type` = \'got_new_match\' AND
+              users.verified = \'1\' AND
+              notifications.recipient_id <> ' . $active_user->id)[0]->count;
+    
     $q['liked_count'] = $db->where('user_id',$active_user->id)->where('is_like', 1)->getValue('likes','COUNT(*)');
     $q['disliked_count'] = $db->where('user_id',$active_user->id)->where('is_dislike', 1)->getValue('likes','COUNT(*)');
 }

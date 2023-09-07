@@ -57,17 +57,38 @@
 							</a>
 						</li>
                         <li class="header_msg">
-                            <a href="javascript:void(0);" id="messenger_opener" class="btn-flat">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4"></path><line x1="8" y1="9" x2="16" y2="9"></line><line x1="8" y1="13" x2="14" y2="13"></line></svg>
-                                <?php
-                                    $unread_messages = 0;// Message::getUnreadMessages();
-                                    if( $unread_messages > 0 ){
-                                        echo '<span class="badge red chat_badge" href="javascript:void(0);" id="messenger_opener">' . $unread_messages . '</span></a>';
-                                    }else{
-                                        echo '<span class="badge red chat_badge hide" href="javascript:void(0);" id="messenger_opener">0</span></a>';
-                                    }
-                                ?>
-                            </a>
+							
+								
+								<?php if( ( (int)auth()->is_pro == 1 || $config->pro_system == 0 ) || isGenderFree((int)auth()->gender) === true){?>
+
+									
+									<a href="javascript:void(0);" id="messenger_opener" class="btn-flat">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4"></path><line x1="8" y1="9" x2="16" y2="9"></line><line x1="8" y1="13" x2="14" y2="13"></line></svg>
+										<?php
+											$unread_messages = 0;// Message::getUnreadMessages();
+											if( $unread_messages > 0 ){
+												echo '<span class="badge red chat_badge" href="javascript:void(0);" id="messenger_opener">' . $unread_messages . '</span></a>';
+											}else{
+												echo '<span class="badge red chat_badge hide" href="javascript:void(0);" id="messenger_opener">0</span></a>';
+											}
+										?>
+									</a>
+									
+								<?php }else{ ?>
+									
+									<a href="javascript:void(0);" id="messenger_opener2" class="btn-flat">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4"></path><line x1="8" y1="9" x2="16" y2="9"></line><line x1="8" y1="13" x2="14" y2="13"></line></svg>
+										<?php
+											$unread_messages = 0;// Message::getUnreadMessages();
+											if( $unread_messages > 0 ){
+												echo '<span class="badge red chat_badge" href="javascript:void(0);" id="messenger_opener2">' . $unread_messages . '</span></a>';
+											}else{
+												echo '<span class="badge red chat_badge hide" href="javascript:void(0);" id="messenger_opener2">0</span></a>';
+											}
+										?>
+									</a>
+								<?php }?>
+                            
                         </li>
                         <li class="header_notifications">
                             <a href="javascript:void(0);" id="notificationbtn" data-ajax-post="/useractions/shownotifications" data-ajax-params="" data-ajax-callback="callback_show_notifications" data-target="notif_dropdown" class="dropdown-trigger btn-flat">
@@ -256,3 +277,51 @@
         <!-- End Header  -->
 
         <?php require( $theme_path . 'main' . $_DS . 'chat.php' );?>
+        
+<script>
+	
+	<?php if( ( (int)auth()->is_pro == 1 || $config->pro_system == 0 ) || isGenderFree((int)auth()->gender) === true){?>
+
+        $( document ).on( 'click', '#messenger_opener', function(e){
+            $('.msg_chat').hide();
+            $('.msg_list').show();
+            $('#m_conversation').html('');
+            $('#m_conversation_search').html('');
+            $('.chat_count').hide().addClass('hide');
+            let message_box = $( '#message_box' );
+                message_box.removeClass( 'hide' );
+                message_box.addClass( 'modal' );
+                message_box.modal({
+                    // dismissible: false,
+                    onOpenEnd: function(){
+                        _get_conversation_list();
+                        if (window._get_chatConversationsInterval) {
+                            window._get_chatConversationsInterval.stop();
+                        }
+                        window._get_conversationListInterval = new Interval(function () {
+                            _get_conversation_list();
+                        }, window.worker_updateDelay);
+                        window._get_conversationListInterval.start();
+                    },
+                    onCloseEnd: function(){
+                        if (window._get_conversationListInterval) {
+                            window._get_conversationListInterval.stop();
+                        }
+                        if (window._get_chatConversationsInterval) {
+                            window._get_chatConversationsInterval.stop();
+                        }
+                        $('#message_box').removeClass('open_chat').addClass('open_list');
+                        $('body').css({'overflow':'auto'});
+                    }
+                }).modal("open");
+        });
+        
+	<?php }else{ ?>
+		
+		$( document ).on( 'click', '#messenger_opener2', function(e){
+				   window.location.href = "/pro";
+		});
+		
+	<?php }?>
+    
+</script>

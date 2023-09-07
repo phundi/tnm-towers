@@ -10,7 +10,7 @@
         <div class="n_detail">
             <p>
                 <?php 
-                if ((int)$pro != 1 ){$username = "Some One";}
+                if ((int)$pro != 1 ){$username = "";}
                 if( !in_array( $notification->type ,array('approve_receipt','disapprove_receipt','coinpayments_canceled','coinpayments_approved') ) ) {?><b <?php echo $style;?>><?php echo $username;?></b><br><?php }?>
 
                 <?php echo $text;?>

@@ -2,7 +2,7 @@
     <a href="javascript:void(0);" data-ajax="<?php echo $notification->url;?>" class="valign-wrapper">
         <div class="avatar">
             <?php if( ((int)$pro != 1 ) || in_array( $notification->type ,array('approve_receipt','disapprove_receipt','coinpayments_canceled','coinpayments_approved') ) ) {?>
-                <img src="<?php echo $theme_url;?>assets/img/icon.png" />
+                <img src="<?php echo $theme_url;?>assets/img/icon2.png" />
             <?php }else{ ?>
                 <img src="<?php echo $avater;?>" alt="<?php echo $username;?>" />
             <?php } ?>

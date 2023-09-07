@@ -282,40 +282,7 @@
 	
 	<?php if( ( (int)auth()->is_pro == 1 || $config->pro_system == 0 ) || isGenderFree((int)auth()->gender) === true){?>
 
-        $( document ).on( 'click', '#messenger_opener', function(e){
-            $('.msg_chat').hide();
-            $('.msg_list').show();
-            $('#m_conversation').html('');
-            $('#m_conversation_search').html('');
-            $('.chat_count').hide().addClass('hide');
-            let message_box = $( '#message_box' );
-                message_box.removeClass( 'hide' );
-                message_box.addClass( 'modal' );
-                message_box.modal({
-                    // dismissible: false,
-                    onOpenEnd: function(){
-                        _get_conversation_list();
-                        if (window._get_chatConversationsInterval) {
-                            window._get_chatConversationsInterval.stop();
-                        }
-                        window._get_conversationListInterval = new Interval(function () {
-                            _get_conversation_list();
-                        }, window.worker_updateDelay);
-                        window._get_conversationListInterval.start();
-                    },
-                    onCloseEnd: function(){
-                        if (window._get_conversationListInterval) {
-                            window._get_conversationListInterval.stop();
-                        }
-                        if (window._get_chatConversationsInterval) {
-                            window._get_chatConversationsInterval.stop();
-                        }
-                        $('#message_box').removeClass('open_chat').addClass('open_list');
-                        $('body').css({'overflow':'auto'});
-                    }
-                }).modal("open");
-        });
-        
+               
 	<?php }else{ ?>
 		
 		$( document ).on( 'click', '#messenger_opener2', function(e){

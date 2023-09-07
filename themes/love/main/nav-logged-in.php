@@ -122,7 +122,7 @@
 								<?php }else{ ?>
 								<li class="hide header_credits_small_mobi">
 									<a href="<?php echo $site_url;?>/credit" data-ajax="/credit" class="waves-effect">
-                                         <?php echo "<span style='font-weight: bold;color: #FF6600;'>MK ".(number_format((int)$profile->balance))."</span> ".__( 'Credit' );?>
+                                         <?php echo "<span style='font-weight: bold;color: #FF6600;'>MK ".(number_format((int)$profile->balance))."  ".__( 'Credit' )." </span>";?>
 									</a>
 								</li>
 								<?php } ?>

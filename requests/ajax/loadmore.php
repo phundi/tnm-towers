@@ -294,6 +294,7 @@ Class Loadmore extends Aj {
                 'u.username',
                 'u.avater',
                 'u.country',
+                'u.district',
                 'u.first_name',
                 'u.last_name',
                 'u.location',
@@ -392,6 +393,7 @@ Class Loadmore extends Aj {
                 'u.username',
                 'u.avater',
                 'u.country',
+                'u.district',
                 'u.first_name',
                 'u.last_name',
                 'u.location',
@@ -482,6 +484,7 @@ Class Loadmore extends Aj {
                 'u.username',
                 'u.avater',
                 'u.country',
+                'u.district',
                 'u.first_name',
                 'u.last_name',
                 'u.location',
@@ -584,6 +587,7 @@ Class Loadmore extends Aj {
                 'u.username',
                 'u.avater',
                 'u.country',
+                'u.district',
                 'u.first_name',
                 'u.last_name',
                 'u.location',
@@ -680,6 +684,7 @@ Class Loadmore extends Aj {
                 'u.username',
                 'u.avater',
                 'u.country',
+				'u.district',
                 'u.first_name',
                 'u.last_name',
                 'u.location',
@@ -1067,6 +1072,8 @@ Class Loadmore extends Aj {
                 $user->pets = (!empty($value['pets']) ? Dataset::load('pets')[$value['pets']] : $value['pets']);//$value['pets'];
                 $user->gender = __($value['gender']);
                 $user->mediafiles = array();
+                $user->district = $value['district'];
+
                 $mediafiles = $db->where('user_id', $value['id'])->where('is_private', '0')->where('is_video', '0')->orderBy('id', 'desc')->get('mediafiles', 4, array('id','file','is_private','private_file'));
                 if ($mediafiles) {
                     $mediafilesid = 0;
@@ -1376,6 +1383,7 @@ Class Loadmore extends Aj {
               users.username,
               users.avater,
               users.country,
+              users.district,
               users.first_name,
               users.last_name,
               users.location,

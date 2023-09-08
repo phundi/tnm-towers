@@ -1,9 +1,13 @@
+
+<?php echo '<script src="'. $theme_url . 'assets/js/spin.js" type="text/javascript" /></script>'; ?>
+
+
 <?php require( $theme_path . 'main' . $_DS . 'mini-sidebar.php' );?>
 
 <?php if( $profile->is_pro == 1 ){?><script>window.location = window.site_url;</script><?php } ?>
 <?php if( $config->pro_system == 0 ){?><script>window.location = window.site_url;</script><?php } ?>
 <?php if( isGenderFree($profile->gender) === true ){?><script>window.location = window.site_url;</script><?php } ?>
-  
+<!-- Premium  -->
 <div class="container container-fluid container_new page-margin find_matches_cont">
 	<div class="row r_margin">
 		<div class="col l3">
@@ -194,13 +198,13 @@
       <div class="modal-footer">
 
 	  
-		<button type="button" style="background: darkred;float: left;"
+		<button type="button" id="pay-cancel" style="background: darkred;float: left;"
 			onclick="jQuery('#payment-notice').modal('close');" 	
 		 	class="btn btn-danger danger pull-left;">
           <span>Cancel</span>
         </button>
 		
-	  	<button type="button"  onclick="submitAirtelPayment()" data-dismiss="modal"	
+	  	<button type="button"  id="pay-now" onclick="submitAirtelPayment()" data-dismiss="modal"	
 		 	class="btn btn-primary">
           <span>Pay Now</span>
         </button>
@@ -720,6 +724,9 @@
 		}
 
 		jQuery("#airtel-status-header").html("Please enter pin on your phone and wait ... ");
+		
+		showSpinner();
+		$("#pay-now, #pay-cancel").attr('disabled', true);
 		$.post(window.ajax + 'airtelmoney/createsession', {
             payType: 'membership',
             description: getDescription(),

@@ -478,6 +478,7 @@ console.log(result.class);
 
         });
         $( document ).on( 'change', '#avatar_profileimg', function(e){
+			
             var countFiles = $(this)[0].files.length;
             var imgPath = $(this)[0].value;
             var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();

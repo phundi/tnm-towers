@@ -169,7 +169,7 @@ $_gender_text = '';
 						</div>
 						<?php } ?>
 
-
+					<?php if (false) { ?>
 						<div class="col s12 m3">
 							<h5><?php echo __('Distance');?></h5>
 							<p class="range-field">
@@ -178,7 +178,6 @@ $_gender_text = '';
 							</p>
 						</div>
 
-						
 					</div>
 						<div class="dt_home_filters_head" 
 						style="float: right; margin-top: opx; padding-top: 0px !important; margin-right: 0px !important; padding-right: 0px !important;" >
@@ -195,7 +194,8 @@ $_gender_text = '';
 											</p></p>
 						
 						</div>
-						
+					<?php 	} ?>
+						<br />
 					<input type="hidden" id="_lat" value="<?php echo $profile->lat;?>">
 					<input type="hidden" id="_lng" value="<?php echo $profile->lng;?>">
 					<div class="btn_wrapper">
@@ -481,7 +481,7 @@ $_gender_text = '';
 		<div class="alert alert-warning"><?php echo __('account_not_verified_text'); ?></div>
 	<?php } ?>
 	<div class="location_alert_update">
-		<?php if(IS_LOGGED && !empty($profile) && (empty($profile->lat) || empty($profile->lng))) { ?>
+		<?php if(false && IS_LOGGED && !empty($profile) && (empty($profile->lat) || empty($profile->lng))) { ?>
 			<div class="alert alert-warning"><?php echo __('please_enable_location'); ?></div>
 		<?php } ?>
 	</div>
@@ -512,7 +512,7 @@ $_gender_text = '';
 				<div class="dt_home_filters">
 					<h5><?php echo __('Just for you');?></h5>
 					<div class="dt_home_filters_head">
-						<p><span><?php echo __('Apply Filter');?></span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14,12V19.88C14.04,20.18 13.94,20.5 13.71,20.71C13.32,21.1 12.69,21.1 12.3,20.71L10.29,18.7C10.06,18.47 9.96,18.16 10,17.87V12H9.97L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3V3H19V3C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L14.03,12H14Z" /></svg></p>
+						<p><span><?php echo __('Search');?></span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14,12V19.88C14.04,20.18 13.94,20.5 13.71,20.71C13.32,21.1 12.69,21.1 12.3,20.71L10.29,18.7C10.06,18.47 9.96,18.16 10,17.87V12H9.97L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3V3H19V3C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L14.03,12H14Z" /></svg></p>
 					</div>
 				</div>
 			</div>

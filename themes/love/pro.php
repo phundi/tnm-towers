@@ -215,6 +215,16 @@
   </div>
 </div>
 
+<style>
+	#spin {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  text-align: center;
+	  min-height: 30vh;
+	}
+</style>
+
 <!-- End Premium  -->
 <a href="javascript:void(0);" id="btnProSuccess" style="visibility: hidden;display: none;"></a>
 

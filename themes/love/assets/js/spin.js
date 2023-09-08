@@ -6,7 +6,7 @@ function showSpinner(action, clickOnClose, shieldOn) {
         var div = document.createElement("div");
         div.id = "spin";
         div.style.position = "absolute";
-		div.style.zIndex = "7000";
+		div.style.zIndex = "20000";
         div.style.top = ((window.innerHeight / 2) - 80) + "px";
         div.style.left = ((window.innerWidth / 2)) + "px";
 

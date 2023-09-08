@@ -154,7 +154,7 @@
 
 <style>
 	#spin {
-		position: absolute;
+		position: fixed;
 		top: 60% !important;
 		left: 52% !important;
 		margin-top: -50px !important;

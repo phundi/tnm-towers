@@ -109,7 +109,7 @@
 					<div class="input-field col m12 s12" style="padding: 0% !important;">
 						<select id="payment-method" name="payment-method" data-errmsg="<?php echo __( 'Payment Method');?>" required>
 						<?php echo DatasetGetSelect( null, "payment-method", __("Choose Payment Method") );?>
-						<option>Airtel Money</option>
+						<option selected >Airtel Money</option>
 						<option>TNM Mpamba</option>
 						</select>
 					</div>

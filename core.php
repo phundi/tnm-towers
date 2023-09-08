@@ -4023,15 +4023,6 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         $is_xhr = false;
     }
     
-   // ini_set('display_errors', 1);
-//	ini_set('display_startup_errors', 1);
-//	error_reporting(E_ALL);
-
-
-                    ob_start();
-                    var_dump($_POST);
-                    error_log(ob_get_clean());
-
     $user = auth();
 
     $genders = Dataset::load('gender');
@@ -4064,34 +4055,19 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
     }
 
     if( isset($_POST['_my_country']) && !empty($_POST['_my_country']) && $_POST['_my_country'] != 'undefined' && !empty($countries)){
-        if (in_array($_POST['_my_country'], array_keys($countries))) {
             $json['country'] = Secure($_POST['_my_country']);
             $json['rand_country'] = Secure($_POST['_my_country']);
             //$json['location_enabled'] = 0;
-        }
-        else if($_POST['_my_country'] == 'all'){
+	}
+	else if($_POST['_my_country'] == 'all'){
             $json['country'] = 'all';
             $json['rand_country'] = 'all';
-        }
-    }
+	}
+    
     elseif($is_xhr){
         $json['country'] = '';
     }
-    
-       if( isset($_POST['_my_district']) && !empty($_POST['_my_district']) && $_POST['_my_district'] != 'undefined'){
-        if (in_array($_POST['_my_district'], array_keys($countries))) {
-            $json['district'] = Secure($_POST['_my_district']);
-            $json['rand_district'] = Secure($_POST['_my_district']);
-            //$json['location_enabled'] = 0;
-        }
-        else if($_POST['_my_district'] == 'all'){
-            $json['district'] = 'all';
-            $json['rand_district'] = 'all';
-        }
-    }
-    elseif($is_xhr){
-        $json['district'] = '';
-    }
+
 
     if(  isset($_POST['_age_from']) && !empty($_POST['_age_from']) && isset($_POST['_age_to']) && !empty($_POST['_age_to'])){
         $json['age_from'] = Secure($_POST['_age_from']);
@@ -4293,6 +4269,11 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
             );
         }
     }
+    
+    	ob_start();
+			var_dump("Country : ".$json['country']);
+			error_log(ob_get_clean());
+			
     if ($user->is_pro == 0 && empty($json['located'])) {
         $json['lat'] = $user->lat;
         $json['lng'] = $user->lng;
@@ -4301,18 +4282,21 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         $json['city'] = '';
     }
 
-    if (!empty($_POST['_lat']) && !empty($_POST['_lng']) && !empty($_POST['_located'])) {
+			
+    if (empty($_POST['_my_country']) && !empty($_POST['_lat']) && !empty($_POST['_lng']) && !empty($_POST['_located'])) {
         $json['country'] = '';
-		$json['district'] = '';
         $json['city'] = '';
         //$json['location_enabled'] = 1;
     }
-    elseif (!empty($_POST['_my_district'])) {
+    elseif (!empty($_POST['_my_country'])) {
         $json['lat'] = '';
         $json['lng'] = '';
         $json['located'] = '';
         //$json['location_enabled'] = 0;
     }
+    
+
+			
     if (!empty($user->find_match_data)) {
         $info = json_decode($user->find_match_data,true);
         if (empty($json['rand_country']) && !empty($info['rand_country'])) {
@@ -4325,7 +4309,7 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         }
     }
     
-
+			
     if (!empty($json)) {
         $db->where('id',$user->id)->update('users',['find_match_data' => json_encode($json)]);
     }
@@ -4339,15 +4323,10 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
 
     if(!empty($json['country'])){
         if ($json['country'] != 'all') {
-            $where .= ' AND `country` = "' . $json['country'] . '" ';
+            $where .= ' AND `district` = "' . $json['country'] . '" '; //Query district custom
         }
     }
     
-     if(!empty($json['district'])){
-        if ($json['district'] != 'all') {
-            $where .= ' AND `district` = "' . $json['district'] . '" ';
-        }
-    }
 
     if(!empty($json['age_from']) && !empty($json['age_to'])){
         $where .= ' AND (DATEDIFF(CURDATE(), `birthday`)/365 >= "'. $json['age_from'] .'" AND DATEDIFF(CURDATE(), `birthday`)/365 <= "'. $json['age_to'] . '") ';
@@ -4368,12 +4347,12 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
     }
 
     if(!empty($json['height_from']) && !empty($json['height_to'])) {
-        $where .= ' AND `height` BETWEEN "'. $json['height_from'] .'" AND "'. $json['height_to'] .'"';
+ //       $where .= ' AND `height` BETWEEN "'. $json['height_from'] .'" AND "'. $json['height_to'] .'"';
     }
 
     if(!empty($json['body'])){
-        $body = implode(',', $json['body']);
-        $where .= ' AND `body` IN ('. $body .')';
+   //     $body = implode(',', $json['body']);
+     //   $where .= ' AND `body` IN ('. $body .')';
     }
 
     if(!empty($json['language'])){
@@ -4417,9 +4396,10 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
     }
 
     if(!empty($json['pets'])){
-        $pets = implode(',', $json['pets']);
-        $where .= ' AND `pets` IN ('. $pets .')';
+      //  $pets = implode(',', $json['pets']);
+       // $where .= ' AND `pets` IN ('. $pets .')';
     }
+
 
     $where .= " AND `id` NOT IN (SELECT `like_userid` FROM `likes` WHERE `user_id` = '".$user_id."') AND `id` != '".$user->id."' AND `active` = '1' AND `verified` = '1' ";
 

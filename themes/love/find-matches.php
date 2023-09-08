@@ -94,18 +94,22 @@ $_gender_text = '';
 						$active_show_me_to = $profile->show_me_to;
 						?>
 						<div class="col s12 m4">
-							<h5><?php echo __('Country');?></h5>
+							<h5><?php echo __('District');?></h5>
 							<div class="valign-wrapper dt_hm_filtr_loc">
 								<label title="<?php echo __('My location');?>">
 									<input type="checkbox" class="filled-in" <?php if(!empty($data['find_match_data']) && !empty($data['find_match_data']['located'])){ ?>checked="checked"<?php }?> id="is_my_location">
 									<b><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg></b>
 								</label>
 								<select id="my_country" name="my_country" data-country="<?php echo $profile->country;?>" <?php if(!empty($data['find_match_data']) && !empty($data['find_match_data']['located'])) {?>disabled="disabled"<?php }?> <?php if($config->filter_by_cities == 1 && !empty($config->geo_username)){ ?>onchange="ChangeCountryKey(this)"<?php } ?>>
-									<option value="all" <?php echo(!empty($data['find_match_data']) && !empty($data['find_match_data']['country']) && $data['find_match_data']['country'] == 'all') ? 'selected' : '' ?>><?php echo __('all_countries');?></option>
+									<option value="all" <?php echo(!empty($data['find_match_data']) && !empty($data['find_match_data']['country']) && $data['find_match_data']['country'] == 'all') ? 'selected' : '' ?>><?php echo 'All DIstricts';?></option>
 									<?php
 										$city_country_key = '';
-										foreach( Dataset::load('countries') as $key => $val ){
-											if ($profile->country == $key) {
+									
+										foreach( ["Balaka", "Blantyre", "Chikwawa", "Chiradzulo", "Chitipa", "Dedza", "Dowa", "Karonga", "Kasungu", "Likoma", "Lilongwe", "Machinga", "Mangochi", 
+													"Mchinji", "Mulanje", "Mwanza", "Mzimba", "Neno", "Nkhatabay", "Nkhotakota", "Nsanje", "Ntcheu", "Ntchisi", "Phalombe", "Rumphi", "Salima", "Thyolo", "Zomba"] as $key ){
+											$val = $key;
+									
+											if ($profile->district == $key) {
 												$city_country_key = $key;
 											}
 											$selected = '';
@@ -113,7 +117,8 @@ $_gender_text = '';
 												$city_country_key = $key;
 												$selected = 'selected';
 											}
-											echo '<option value="'. $key .'" data-code="'. $val['isd'] .'"  '. ($selected) . ' ' . ( (  $profile->country == $key  ) ? 'data-country="true"' : 'data-country="false"' ) .'>'. $val['name'] .'</option>';
+											echo '<option value="'. $key .'" data-code="'. $val .'"  '. ($selected) . ' ' . ( 
+												(  $profile->district == $key  ) ? 'data-country="true"' : 'data-country="false"' ) .'>'. $val .'</option>';
 										}
 									?>
 								</select>
@@ -591,6 +596,7 @@ $_gender_text = '';
 	</div>
 </div>
 <script>
+	
 $(document).ready(function(){
 	$('#my_country').on('change',() => {
 		$('.located_at').html(`&nbsp;&nbsp;<?php echo __('located_at');?> <span id="located">${$("#my_country option:selected" ).text()}</span>`);
@@ -603,6 +609,8 @@ $(document).ready(function(){
 		$('.btn-find-matches-search').removeAttr('disabled');
 	},1000);
 
+	
+	
 	$( document ).on( 'change', '#is_my_location', function(e){
         if( $('#is_my_location').prop('checked') === false) {
         	$("#my_country").val('all');

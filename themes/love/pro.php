@@ -218,10 +218,10 @@
 <style>
 	#spin {
 		position: absolute;
-		top: 70%;
-		left: 55%;
-		margin-top: -50px;
-		margin-left: -50px;
+		top: 60% !important;
+		left: 52% !important;
+		margin-top: -50px !important;
+		margin-left: -50px !important;
 		width: 100px;
 		height: 100px;
 	}

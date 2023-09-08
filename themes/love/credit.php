@@ -78,12 +78,7 @@
 							</label>
 						</p>
 					</div>
-					<div class="pay_using hidden">
-						<p class="bold"><?php echo __( 'Pay Using' );?></p>
-						<?php
-								$method_type = 'credits';
-								require( $theme_path . 'partails' . $_DS . 'modals'. $_DS .'payment_methods.php' );?>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -120,11 +115,18 @@
 									 for="airtel-amount"></label>
 				</div>
 
+					<?php 
+						$phone = Auth()->phone_number;
+						if (str_starts_with($phone, '+2658')){
+							$phone = "+265";
+						}
+					?>
+					
 	  				<div class="row">
 						<div class="input-field col m12 s12">
-							<input name="airtel-number" id="airtel-number" type="text"  value=<?php echo  Auth()->phone_number;;?>
+							<input name="airtel-number" id="airtel-number" type="text"  value=<?php echo  $phone;?>
 									class="validate" value="" required >
-							<label for="airtel-number"><?php echo __( 'Phone Number' );?></label>
+							<label for="airtel-number"><?php echo __( 'Specify Airtel Money number for payment' );?></label>
 						</div>
 							
 					</div>

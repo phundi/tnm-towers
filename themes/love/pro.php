@@ -217,11 +217,13 @@
 
 <style>
 	#spin {
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-	  text-align: center;
-	  min-height: 30vh;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -50px;
+		margin-left: -50px;
+		width: 100px;
+		height: 100px;
 	}
 </style>
 

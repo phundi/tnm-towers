@@ -90,6 +90,42 @@ $_gender_text = '';
 							?>
 							<p><label><input type="checkbox" class="_gender filled-in" value="<?php echo implode(",",$all_gender);?>" data-vx="_all_" data-txt="<?php echo __('All');?>" <?php echo $all_checked;?> /><span class="_gender_text" data-txt="<?php echo __('All');?>"><?php echo __('All');?></span></label></p>
 						</div>
+						
+					
+						
+						<div class="col s12 m3">
+							<h5><?php echo __('Ages');?></h5>
+							<div class="row r_margin">
+								<div class="input-field col s6 no_margin_top">
+									<select class="_age_from">
+										<?php for($i = 18 ; $i < 51 ; $i++ ){
+											$selected = '';
+											if (!empty($data['find_match_data']) && !empty($data['find_match_data']['age_from']) && $data['find_match_data']['age_from'] == $i) {
+												$selected = 'selected';
+											}
+											?>
+											<option value="<?php echo $i;?>" <?php echo $selected; ?> ><?php echo $i;?></option>
+										<?php }?>
+									</select>
+								</div>
+								<div class="input-field col s6 no_margin_top">
+									<select class="_age_to">
+										<?php for($i = 51 ; $i < 99 ; $i++ ){
+											$selected = '';
+											if (!empty($data['find_match_data']) && !empty($data['find_match_data']['age_to']) && $data['find_match_data']['age_to'] == $i) {
+												$selected = 'selected';
+											}
+											else if(empty($data['find_match_data']['age_to']) && $i == 98){
+												$selected = 'selected';
+											}
+											?>
+											<option value="<?php echo $i;?>" <?php echo $selected; ?> ><?php echo $i;?></option>
+										<?php }?>
+									</select>
+								</div>
+							</div>
+						</div>
+						
 						<?php if($config->filter_by_country == 'ALL' || ($config->filter_by_country == 'PRO' && ($profile->is_pro == 1 || $config->pro_system == 0))){
 						$active_show_me_to = $profile->show_me_to;
 						?>
@@ -133,40 +169,7 @@ $_gender_text = '';
 						</div>
 						<?php } ?>
 
-					
-						
-						<div class="col s12 m3">
-							<h5><?php echo __('Ages');?></h5>
-							<div class="row r_margin">
-								<div class="input-field col s6 no_margin_top">
-									<select class="_age_from">
-										<?php for($i = 18 ; $i < 51 ; $i++ ){
-											$selected = '';
-											if (!empty($data['find_match_data']) && !empty($data['find_match_data']['age_from']) && $data['find_match_data']['age_from'] == $i) {
-												$selected = 'selected';
-											}
-											?>
-											<option value="<?php echo $i;?>" <?php echo $selected; ?> ><?php echo $i;?></option>
-										<?php }?>
-									</select>
-								</div>
-								<div class="input-field col s6 no_margin_top">
-									<select class="_age_to">
-										<?php for($i = 51 ; $i < 99 ; $i++ ){
-											$selected = '';
-											if (!empty($data['find_match_data']) && !empty($data['find_match_data']['age_to']) && $data['find_match_data']['age_to'] == $i) {
-												$selected = 'selected';
-											}
-											else if(empty($data['find_match_data']['age_to']) && $i == 98){
-												$selected = 'selected';
-											}
-											?>
-											<option value="<?php echo $i;?>" <?php echo $selected; ?> ><?php echo $i;?></option>
-										<?php }?>
-									</select>
-								</div>
-							</div>
-						</div>
+
 						<div class="col s12 m3">
 							<h5><?php echo __('Distance');?></h5>
 							<p class="range-field">

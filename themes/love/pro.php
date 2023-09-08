@@ -3,7 +3,7 @@
 <?php if( $profile->is_pro == 1 ){?><script>window.location = window.site_url;</script><?php } ?>
 <?php if( $config->pro_system == 0 ){?><script>window.location = window.site_url;</script><?php } ?>
 <?php if( isGenderFree($profile->gender) === true ){?><script>window.location = window.site_url;</script><?php } ?>
-<!-- Premium  -->
+  
 <div class="container container-fluid container_new page-margin find_matches_cont">
 	<div class="row r_margin">
 		<div class="col l3">

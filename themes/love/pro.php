@@ -218,8 +218,8 @@
 <style>
 	#spin {
 		position: absolute;
-		top: 50%;
-		left: 50%;
+		top: 70%;
+		left: 55%;
 		margin-top: -50px;
 		margin-left: -50px;
 		width: 100px;

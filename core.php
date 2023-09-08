@@ -4270,10 +4270,7 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         }
     }
     
-    	ob_start();
-			var_dump("Country : ".$json['country']);
-			error_log(ob_get_clean());
-			
+    
     if ($user->is_pro == 0 && empty($json['located'])) {
         $json['lat'] = $user->lat;
         $json['lng'] = $user->lng;

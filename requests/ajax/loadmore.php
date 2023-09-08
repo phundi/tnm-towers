@@ -1062,6 +1062,7 @@ Class Loadmore extends Aj {
                 $user->first_name = $value['first_name'];
                 $user->last_name = $value['last_name'];
                 $user->birthday = $value['birthday'];
+				$user->education = (!empty($value['education']) ? Dataset::load('education')[$value['education']] : $value['education']);//$value['relationship'];
                 $user->language = $value['language'];
                 $user->relationship = (!empty($value['relationship']) ? Dataset::load('relationship')[$value['relationship']] : $value['relationship']);//$value['relationship'];
                 $user->height = $value['height'];

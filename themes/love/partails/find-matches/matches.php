@@ -104,35 +104,33 @@
                 <div class="row sidebar_usr_info">
 					<?php
 						$_age = getAge($matche->birthday);
-						$_location = $matche->country;
+						$_location = $matche->district;
 					?>
 					<div class="col s6">
-						<?php if($matche->language){?>
+						<?php if($matche->gender){?>
 							<div>
-								<p class="info_title"><?php echo __('Preferred Language');?></p>
-								<span><?php echo __($matche->language);?></span>
+								<p class="info_title"><?php echo __('Gender');?></p>
+								<span><?php echo $matche->gender;?></span>
 							</div>
 						<?php }?>
+						
+
 						<?php if($matche->relationship){?>
 							<div>
 								<p class="info_title"><?php echo __('Relationship status');?></p>
 								<span><?php echo $matche->relationship;?></span>
 							</div>
 						<?php }?>
-						<?php if($matche->height){?>
+			
+						<?php if($matche->language){?>
 							<div>
-								<p class="info_title"><?php echo __('Height');?></p>
-								<span><?php echo $matche->height;?></span>
+								<p class="info_title"><?php echo __('Preferred Language');?></p>
+								<span><?php echo __($matche->language);?></span>
 							</div>
 						<?php }?>
 					</div>
 					<div class="col s6">
-						<?php if($matche->body){?>
-							<div>
-								<p class="info_title"><?php echo __('Body Type');?></p>
-								<span><?php echo $matche->body;?></span>
-							</div>
-						<?php }?>
+					
 						<?php if( !empty($_age) ) {?>
 							<div>
 								<p class="info_title"><?php echo __('Age');?></p>
@@ -141,8 +139,14 @@
 						<?php }?>
 						<?php if( !empty($_location) ) {?>
 							<div>
-								<p class="info_title"><?php echo __('Location');?></p>
+								<p class="info_title"><?php echo __('District');?></p>
 								<span><?php echo $_location;?></span>
+							</div>
+						<?php }?>
+							<?php if($matche->education){?>
+							<div>
+								<p class="info_title"><?php echo __('Education');?></p>
+								<span><?php echo $matche->education;?></span>
 							</div>
 						<?php }?>
 					</div>

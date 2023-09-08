@@ -122,6 +122,7 @@ class Notifications {
             $text = $notification_text[$notification->type];
         }
         $text = str_replace('%d',$notification->text, $text);
+        		
         $style = '';
         if ($notification->type == 'got_new_match') {
             //$style = 'style="display:none;"';
@@ -129,7 +130,20 @@ class Notifications {
 
 		$pro = $db->where('id', $notification->recipient_id)->getValue('users', 'is_pro');
         if((int)$pro != 1 ){
-            $notification->url = "/pro";
+			if ($notification->type == 'got_new_match') {
+				$notification->url = "/matches";
+			}else if ($notification->type == 'visit'){
+				$notification->url = "/visits";
+				if ($text == 'visited you'){
+					$text = 'You have got a new visitor, Click to view'
+				}
+			}else if ($notification->type == 'likes'){
+				$notification->url = "/likes";
+					if ($text == 'liked you'){
+					$text = 'You have got a new like, Click to view'
+				}
+			}
+            //$notification->url = "/pro";
         }
 
         $html = '';

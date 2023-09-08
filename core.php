@@ -4022,6 +4022,15 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
     if (!empty($_POST['page']) && count($_POST) == 1) {
         $is_xhr = false;
     }
+    
+   // ini_set('display_errors', 1);
+//	ini_set('display_startup_errors', 1);
+//	error_reporting(E_ALL);
+
+
+                    ob_start();
+                    var_dump($_POST);
+                    error_log(ob_get_clean());
 
     $user = auth();
 
@@ -4067,6 +4076,21 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
     }
     elseif($is_xhr){
         $json['country'] = '';
+    }
+    
+       if( isset($_POST['_my_district']) && !empty($_POST['_my_district']) && $_POST['_my_district'] != 'undefined'){
+        if (in_array($_POST['_my_district'], array_keys($countries))) {
+            $json['district'] = Secure($_POST['_my_district']);
+            $json['rand_district'] = Secure($_POST['_my_district']);
+            //$json['location_enabled'] = 0;
+        }
+        else if($_POST['_my_district'] == 'all'){
+            $json['district'] = 'all';
+            $json['rand_district'] = 'all';
+        }
+    }
+    elseif($is_xhr){
+        $json['district'] = '';
     }
 
     if(  isset($_POST['_age_from']) && !empty($_POST['_age_from']) && isset($_POST['_age_to']) && !empty($_POST['_age_to'])){
@@ -4279,10 +4303,11 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
 
     if (!empty($_POST['_lat']) && !empty($_POST['_lng']) && !empty($_POST['_located'])) {
         $json['country'] = '';
+		$json['district'] = '';
         $json['city'] = '';
         //$json['location_enabled'] = 1;
     }
-    elseif (!empty($_POST['_my_country'])) {
+    elseif (!empty($_POST['_my_district'])) {
         $json['lat'] = '';
         $json['lng'] = '';
         $json['located'] = '';
@@ -4306,8 +4331,6 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
     }
 
 
-
-
     $where = "";
     if(!empty($json['gender'])){
         $gender = implode(',', $json['gender']);
@@ -4317,6 +4340,12 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
     if(!empty($json['country'])){
         if ($json['country'] != 'all') {
             $where .= ' AND `country` = "' . $json['country'] . '" ';
+        }
+    }
+    
+     if(!empty($json['district'])){
+        if ($json['district'] != 'all') {
+            $where .= ' AND `district` = "' . $json['district'] . '" ';
         }
     }
 

@@ -31,7 +31,7 @@
                         href="javascript:void(0);"  data-ajax-post="/chat/open_private_conversation" 
                         data-ajax-params="from=<?php echo $random_user->id;?>&web_device_id=<?php echo $random_user->web_device_id;?>" data-ajax-callback="open_private_conversation" 
                     <?php } else { ?>
-                        onclick="window.location='/pro'"                        
+                        onclick="$('#message_modal').modal('open');"                        
                     <?php } ?>
                     
                     style="margin-right: 10px;" 

@@ -454,6 +454,25 @@
 		</div>
 		<!-- End Boost Modal -->
 		
+		
+		<!-- Message Modal Modal -->
+		<div id="message_modal" class="modal modal-sm">
+			<div class="modal-content">
+
+				<h6 class="bold"><?php echo __('Send a Message!');?></h6>
+				<p><?php echo __('Please subscribe to send a message!!');?></p>
+					
+					<div class="modal-footer">
+					<button type="button" class="btn-flat waves-effect modal-close"><?php echo __( 'Cancel' );?></button>
+					
+					<a href="<?php echo $site_url;?>/pro" data-ajax="/pro" class="modal-close waves-effect waves-light btn-flat btn_primary white-text"><?php echo __( 'Subscribe' );?></a>
+				</div>
+			</div>
+		</div>
+		<!-- End Message Modal -->
+
+		
+		
 		<div class="sidenav_overlay" onclick="$('body').toggleClass('side_open');<?php if(!empty($_COOKIE['open_slide']) && $_COOKIE['open_slide'] == 'yes'){ ?>SlideEraseCookie('open_slide')<?php }else{ ?>SlideSetCookie('open_slide','yes',1);<?php } ?>"></div>
 	<?php } ?>
 		

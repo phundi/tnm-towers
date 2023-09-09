@@ -351,7 +351,7 @@
 										}
 									}
 									?>
-									<input type="file" id="avatar_profileimg" class="hide" accept="image/x-png, image/gif, image/jpeg" name="profile_images" multiple="multiple">
+									<input type="file" id="avatar_profileimg" class="hidse" accept="image/x-png, image/gif, image/jpeg" name="profile_images" multiple="multiple">
 								</div>
 							</figure>
 						</div>

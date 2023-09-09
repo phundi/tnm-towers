@@ -4270,34 +4270,31 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         }
     }
     
-    	ob_start();
-			var_dump("Country : ".$json['country']);
-			error_log(ob_get_clean());
-			
+    
     if ($user->is_pro == 0 && empty($json['located'])) {
         $json['lat'] = $user->lat;
         $json['lng'] = $user->lng;
         $json['located'] = 125;
-        $json['country'] = '';
+     //   $json['country'] = '';
         $json['city'] = '';
     }
 
 			
-    if (empty($_POST['_my_country']) && !empty($_POST['_lat']) && !empty($_POST['_lng']) && !empty($_POST['_located'])) {
-        $json['country'] = '';
-        $json['city'] = '';
+    //if (empty($_POST['_my_country']) && !empty($_POST['_lat']) && !empty($_POST['_lng']) && !empty($_POST['_located'])) {
+      //  $json['country'] = '';
+        //$json['city'] = '';
         //$json['location_enabled'] = 1;
-    }
-    elseif (!empty($_POST['_my_country'])) {
-        $json['lat'] = '';
-        $json['lng'] = '';
-        $json['located'] = '';
+    //}
+    //elseif (!empty($_POST['_my_country'])) {
+      //  $json['lat'] = '';
+       // $json['lng'] = '';
+        //$json['located'] = '';
         //$json['location_enabled'] = 0;
-    }
+   // }
     
 
 			
-    if (!empty($user->find_match_data)) {
+    if (false && !empty($user->find_match_data)) {
         $info = json_decode($user->find_match_data,true);
         if (empty($json['rand_country']) && !empty($info['rand_country'])) {
             $json['rand_country'] = $info['rand_country'];
@@ -4332,14 +4329,14 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         $where .= ' AND (DATEDIFF(CURDATE(), `birthday`)/365 >= "'. $json['age_from'] .'" AND DATEDIFF(CURDATE(), `birthday`)/365 <= "'. $json['age_to'] . '") ';
     }
 
-    if (!empty($json['lat']) && !empty($json['lng']) && !empty($json['located'])) {
-        $located = $json['located'];
-        $lat = $json['lat'];
-        $lng = $json['lng'];
+   // if (!empty($json['lat']) && !empty($json['lng']) && !empty($json['located'])) {
+     //   $located = $json['located'];
+       // $lat = $json['lat'];
+        //$lng = $json['lng'];
 
-        $distance = ' AND ROUND( ( 6371 * acos(cos(radians(' . $lat . ')) * cos(radians(`lat`)) * cos(radians(`lng`) - radians(' . $lng . ')) + sin(radians(' . $lat . ')) * sin(radians(`lat`)))) ,1) ';
-        $where .= $distance . ' <= ' . $located ;
-    }
+       // $distance = ' AND ROUND( ( 6371 * acos(cos(radians(' . $lat . ')) * cos(radians(`lat`)) * cos(radians(`lng`) - radians(' . $lng . ')) + sin(radians(' . $lat . ')) * sin(radians(`lat`)))) ,1) ';
+       // $where .= $distance . ' <= ' . $located ;
+    //}
 
     if (!empty($json['city']) && $config->filter_by_cities == 1 && !empty($config->geo_username)) {
         $city = $json['city'];

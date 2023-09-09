@@ -1,4 +1,10 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 Class Profile extends Aj {
     public function add_invitation_links()
     {
@@ -2551,7 +2557,8 @@ Class Profile extends Aj {
 
         $html = '';
         $theme_path = $_BASEPATH . 'themes' . $_DS . $config->theme . $_DS;
-
+			
+			
         $notifications = LoadEndPointResource('notifications');
         if ($notifications) {
             $data[ 'notifications' ] = (int) $notifications->getUnreadNotifications();

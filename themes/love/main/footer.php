@@ -497,7 +497,7 @@
     <a href="javascript:void(0);" class="btn-floating btn-large waves-effect waves-light dt_to_top bg_gradient"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"></path></svg></a>
     <!-- End Scroll to top  -->
 
-	<?php require( $theme_path . 'main' . $_DS . 'geolocation.php' );?>
+	<?php //require( $theme_path . 'main' . $_DS . 'geolocation.php' );?>
     <?php require( $theme_path . 'main' . $_DS . 'custom-footer-js.php' );?>
     <?php //write_console();?>
 	

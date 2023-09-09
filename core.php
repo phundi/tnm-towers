@@ -4023,7 +4023,6 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         $is_xhr = false;
     }
     
-    $user = auth();
 
     $genders = Dataset::load('gender');
     $countries = Dataset::load('countries');
@@ -4068,7 +4067,6 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         $json['country'] = '';
     }
 
-
     if(  isset($_POST['_age_from']) && !empty($_POST['_age_from']) && isset($_POST['_age_to']) && !empty($_POST['_age_to'])){
         $json['age_from'] = Secure($_POST['_age_from']);
         $json['age_to'] = Secure($_POST['_age_to']);
@@ -4077,7 +4075,8 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         $json['age_from'] = '';
         $json['age_to'] = '';
     }
-
+    
+/*
     if (!empty($_POST['_lat']) && !empty($_POST['_lng']) && !empty($_POST['_located'])) {
         $json['lat'] = Secure($_POST['_lat']);
         $json['lng'] = Secure($_POST['_lng']);
@@ -4087,11 +4086,15 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         $json['rand_located'] = Secure($_POST['_located']);
         //$json['location_enabled'] = 1;
     }
-    elseif($is_xhr){
+    else
+    
+    if($is_xhr){
         $json['lat'] = '';
         $json['lng'] = '';
         $json['located'] = '';
     }
+
+*/
 
     if (!empty($_POST['city']) && $config->filter_by_cities == 1 && !empty($config->geo_username)) {
         $json['city'] = Secure($_POST['city']);
@@ -4271,13 +4274,13 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
     }
     
     
-    if ($user->is_pro == 0 && empty($json['located'])) {
-        $json['lat'] = $user->lat;
-        $json['lng'] = $user->lng;
-        $json['located'] = 125;
+    //if ($user->is_pro == 0 && empty($json['located'])) {
+     //   $json['lat'] = $user->lat;
+     //   $json['lng'] = $user->lng;
+      //  $json['located'] = 125;
      //   $json['country'] = '';
-        $json['city'] = '';
-    }
+      //  $json['city'] = '';
+    //}
 
 			
     //if (empty($_POST['_my_country']) && !empty($_POST['_lat']) && !empty($_POST['_lng']) && !empty($_POST['_located'])) {
@@ -4305,8 +4308,7 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
             $json['rand_located'] = $info['rand_located'];
         }
     }
-    
-			
+    		
     if (!empty($json)) {
         $db->where('id',$user->id)->update('users',['find_match_data' => json_encode($json)]);
     }

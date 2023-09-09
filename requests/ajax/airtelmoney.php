@@ -35,6 +35,7 @@ Class AirtelMoney extends Aj {
                 self::ActiveUser()->id)->getValue('users', 'phone_number');     
         }
         
+        
         if (empty($phone)){
             return array(
                 'status' => 400,

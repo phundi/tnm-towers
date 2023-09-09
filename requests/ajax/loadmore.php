@@ -962,6 +962,7 @@ Class Loadmore extends Aj {
 
     }
     function match_users($mode='findmatches') {
+        
         global $db, $_BASEPATH, $_DS,$_excludes;
         if (self::ActiveUser() == NULL) {
             return array(
@@ -977,17 +978,7 @@ Class Loadmore extends Aj {
         $html_imgs = '';
         $template  = '';
         $listmode = 'findmatches';
-        if (!empty(auth()) && empty(auth()->lat) && empty(auth()->lng)) {
-            return array(
-                'status' => 200,
-                'page' => $page + 2,
-                'html' => $html,
-                'query' => '',
-                'html_imgs' => $html_imgs,
-                'muser' => array()
-            );
-        }
-
+    
         $execludecond = ' `id` > 0';
         $lastid = 0;
         if (isset($_GET['lastid']) && !empty($_GET['lastid'])) {
@@ -1008,6 +999,7 @@ Class Loadmore extends Aj {
                 $page = (int) Secure($_POST[ 'page' ]) - 1;
             }
         }
+
         if ($error == '') {
             $limit = $perpage;
             $offset = $page * $perpage;
@@ -1044,6 +1036,8 @@ Class Loadmore extends Aj {
                 }
                 $query = 'SELECT * FROM `users` WHERE '. $execludecond .' AND '.$gender_query.' `active` = "1" AND `verified` = "1" AND `id` NOT IN (SELECT `block_userid` FROM `blocks` WHERE `user_id` = ' . self::ActiveUser()->id . ') '. $execludes .' AND `id` NOT IN (SELECT `like_userid` FROM `likes` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND (SELECT count(*) FROM `mediafiles` WHERE `user_id` = `users`.`id` AND `mediafiles`.`is_private` = 0) > 0 AND `id` NOT IN (SELECT `hot_userid` FROM `hot` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND `id` <> "' . self::ActiveUser()->id . '"  ORDER BY `id` DESC LIMIT ' . $limit;
             }
+            
+				
             $match_users       = $db->rawQuery($query);
             //print_r($match_users);
 

@@ -136,25 +136,15 @@ $_gender_text = '';
 						<div class="col s12 m4">
 							<h5><?php echo __('District');?></h5>
 							<div class="valign-wrapper dt_hm_filtr_loc">
-								
-								<select style="z-index: 20000 !important;" id="my_country" name="my_country" data-country="<?php echo $profile->country;?>" <?php if(!empty($data['find_match_data']) && !empty($data['find_match_data']['located'])) {?><?php }?> <?php if($config->filter_by_cities == 1 && !empty($config->geo_username)){ ?>onchange="ChangeCountryKey(this)"<?php } ?>>
+								<label title="<?php echo __('My location');?>">
+									<input type="checkbox" class="filled-in" <?php if(!empty($data['find_match_data']) && !empty($data['find_match_data']['located'])){ ?>checked="checked"<?php }?> id="is_my_location">
+									<b><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg></b>
+								</label>
+								<select id="my_country" name="my_country" data-country="<?php echo $profile->country;?>" <?php if(!empty($data['find_match_data']) && !empty($data['find_match_data']['located'])) {?>disabled="disabled"<?php }?> <?php if($config->filter_by_cities == 1 && !empty($config->geo_username)){ ?>onchange="ChangeCountryKey(this)"<?php } ?>>
 									<?php
-										$city_country_key = '';
-									
-										foreach( ["All", "Balaka", "Blantyre", "Chikwawa", "Chiradzulo", "Chitipa", "Dedza", "Dowa", "Karonga", "Kasungu", "Likoma", "Lilongwe", "Machinga", "Mangochi", 
-													"Mchinji", "Mulanje", "Mwanza", "Mzimba", "Neno", "Nkhatabay", "Nkhotakota", "Nsanje", "Ntcheu", "Ntchisi", "Phalombe", "Rumphi", "Salima", "Thyolo", "Zomba"] as $key ){
-											$val = $key;
-									
-											if ($profile->district == $key) {
-												$city_country_key = $key;
-											}
-											$selected = '';
-											if (!empty($data['find_match_data']) && !empty($data['find_match_data']['country']) && $data['find_match_data']['country'] == $key) {
-												$city_country_key = $key;
-												$selected = 'selected';
-											}
-											echo '<option value="'. $key .'" data-code="'. $val .'"  '. ($selected) . ' ' . ( 
-												(  $profile->district == $key  ) ? 'data-country="true"' : 'data-country="false"' ) .'>'. $val .'</option>';
+										
+										foreach( ["All", "Balaka", "Blantyre", "Chikwawa", "Chiradzulo", "Chitipa", "Dedza", "Dowa", "Karonga", "Kasungu", "Likoma", "Lilongwe", "Machinga", "Mangochi", "Mchinji", "Mulanje", "Mwanza", "Mzimba", "Neno", "Nkhatabay", "Nkhotakota", "Nsanje", "Ntcheu", "Ntchisi", "Phalombe", "Rumphi", "Salima", "Thyolo", "Zomba"] as $key ){
+											echo '<option value="'. $key .'" data-code="'. $key .'">'. $key .'</option>';
 										}
 									?>
 								</select>
@@ -265,9 +255,11 @@ $_gender_text = '';
 							?>
 						</div>
 					</div>
+
+					
 					<div class="btn_wrapper">
-						<button class="btn waves-effect btn_glossy btn-flat btn-large waves-light btn-find-matches-search" id="btn_search_looks" type="button" disabled><?php echo __('Search your match');?></button>
-						<button class="btn waves-effect btn_glossy btn-flat btn-small waves-light" type="button" onclick="resetSearchData()"><?php echo __('reset');?></button>
+						<button style="margin: 10px !important;" class="btn waves-effect btn_glossy btn-flat btn-large waves-light btn-find-matches-search" id="btn_search_looks" type="button" disabled><?php echo __('Search your match');?></button>
+						<button style="margin: 10px !important;" class="btn waves-effect btn_glossy btn-flat btn-small waves-light" type="button" onclick="resetSearchData()"><?php echo __('reset');?></button>
 					</div>
 				</form>
 			</div>
@@ -556,7 +548,6 @@ $_gender_text = '';
                             <?php echo $data['matches_img']; ?>
                         </div>
                         <div class="mtc_usr_details" id="match_item_container">
-                            <?php echo $data['matches']; ?>
                         </div>
                     </div>
                 <?php } ?>

@@ -41,12 +41,9 @@ Class FindMatches extends Theme {
             require_once $ajax_class_file;
             $_POST['page'] = 1;
             $loadmore      = new Loadmore();
-            if (!empty(auth()) && empty(auth()->lat) && empty(auth()->lng)) {
-                $match_users   = array();
-            }
-            else{
-                $match_users   = $loadmore->match_users();
-            }
+
+            $match_users   = $loadmore->match_users();
+
             parent::$data['matches_data'] = $match_users;
         }
         return $data;

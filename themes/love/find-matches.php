@@ -101,7 +101,7 @@ $_gender_text = '';
 					
 						
 						<div class="col s12 m3">
-							<h5><?php echo __('Ages');?></h5>
+							<h5><?php echo __('Age Range');?></h5>
 							<div class="row r_margin">
 								<div class="input-field col s6 no_margin_top">
 									<select class="_age_from">

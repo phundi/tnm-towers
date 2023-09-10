@@ -175,7 +175,7 @@ class Notifications {
             ->where('recipient_id', auth()->id)
             ->where('seen', 0)
             ->where('`notifier_id` NOT IN (SELECT `block_userid` FROM `blocks` WHERE `user_id` = '.auth()->id . ')')
-            ->getValue('notifications', 'COUNT( (SELECT IF(`notifications`.`type` = \'like\', (SELECT IF((SELECT is_pro from users where users.id = `notifications`.`recipient_id`) = 1, 1, 0)), 1)) )');
+            ->getValue('notifications', 'COUNT(*)');
         return $notifications;
     }
     /*API*/

@@ -137,7 +137,7 @@ class Notifications {
 				if ($text == 'visited you'){
 					$text = 'You have got a new visitor, Click to view';
 				}
-			}else if ($notification->type == 'likes'){
+			}else if ($notification->type == 'like'){
 				$notification->url = "/likes";
 					if ($text == 'liked you'){
 					$text = 'You have got a new like, Click to view';

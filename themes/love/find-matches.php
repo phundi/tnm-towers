@@ -194,7 +194,7 @@ $_gender_text = '';
 					<input type="hidden" id="_lat" value="<?php echo $profile->lat;?>">
 					<input type="hidden" id="_lng" value="<?php echo $profile->lng;?>">
 					<div class="btn_wrapper">
-						<button class="btn waves-effect btn_glossy btn-flat btn-large waves-light btn-find-matches-search" type="button" id="btn_search_basic" disabled><?php echo __('Search your match');?></button>
+						<button  onclick="$('#nearme').html('Search Results');" class="btn waves-effect btn_glossy btn-flat btn-large waves-light btn-find-matches-search" type="button" id="btn_search_basic" disabled><?php echo __('Search your match');?></button>
 						<button class="btn waves-effect btn_glossy btn-flat btn-small waves-light" type="button" onclick="resetSearchData()"><?php echo __('reset');?></button>
 					</div>
 				</form>
@@ -507,7 +507,7 @@ $_gender_text = '';
 			<!-- Filters  -->
 			<div class="dt_home_filters_prnt">
 				<div class="dt_home_filters">
-					<h5><?php echo __('Just for you');?></h5>
+					<h5 id="nearme"><?php echo __('People Near Me');?></h5>
 					<div class="dt_home_filters_head">
 						<p><span><?php echo __('Search');?></span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14,12V19.88C14.04,20.18 13.94,20.5 13.71,20.71C13.32,21.1 12.69,21.1 12.3,20.71L10.29,18.7C10.06,18.47 9.96,18.16 10,17.87V12H9.97L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3V3H19V3C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L14.03,12H14Z" /></svg></p>
 					</div>

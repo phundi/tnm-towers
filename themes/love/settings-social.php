@@ -135,19 +135,17 @@ if( $profile->admin == '1' || CheckPermission($profile->permission, "manage-user
 					</div>
 					<div class="row">
 						<div class="input-field col s6 xs12">
-							<input id="google" type="text" class="validate" name="google" value="<?php echo $user->google;?>">
-							<label for="google"><?php echo __( 'VK' );?></label>
+							<input id="linkedin" type="text" class="validate" name="linkedin" value="<?php echo $user->linkedin;?>">
+							<label for="linkedin"><?php echo __( 'LinkedIn' );?></label>
 						</div>
+
 						<div class="input-field col s6 xs12">
 							<input id="instagram" type="text" class="validate" name="instagram" value="<?php echo $user->instagram;?>">
 							<label for="instagram"><?php echo __( 'instagram' );?></label>
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col s6 xs12">
-							<input id="linkedin" type="text" class="validate" name="linkedin" value="<?php echo $user->linkedin;?>">
-							<label for="linkedin"><?php echo __( 'LinkedIn' );?></label>
-						</div>
+						
 						<div class="input-field col s6 xs12">
 							<input id="website" type="url" class="validate" name="website" value="<?php echo $user->website;?>">
 							<label for="website"><?php echo __( 'Website' );?></label>

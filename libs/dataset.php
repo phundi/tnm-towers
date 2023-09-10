@@ -213,12 +213,10 @@ $app['context']['character']            = array(
 );
 $app['context']['body']                 = array(
     '1' => __('Slim'),
-    '2' => __('Sporty'),
+    '2' => __('Chubby'),
     '3' => __('Curvy'),
-    '4' => __('Round'),
-    '5' => __('Supermodel'),
-    '6' => __('Average'),
-    '7' => __('Other')
+    '4' => __('Average'),
+    '5' => __('Other')
 );
 $app['context']['ethnicity']            = array(
     '1' => __('Chewa'),
@@ -827,12 +825,10 @@ class Dataset{
     public static function body(){
         return array(
             '1' => __('Slim'),
-            '2' => __('Sporty'),
+            '2' => __('Chubby'),
             '3' => __('Curvy'),
-            '4' => __('Round'),
-            '5' => __('Supermodel'),
-            '6' => __('Average'),
-            '7' => __('Other')
+            '4' => __('Average'),
+            '5' => __('Other')
         );
     }
     public static function ethnicity(){

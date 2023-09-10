@@ -130,18 +130,7 @@ if($target_user !== ''){
 								<label for="about"><?php echo __( 'About Me' );?></label>
 							</div>
 						</div>
-						<div class="row">
-							<div class="input-field col s12 no_margin">
-								<div id="interest" class="chips interest_chips chips-placeholder no_margin"></div>
-								<input type="hidden" id="interest_entry_profile" name="interest" value="<?php echo $user->interest;?>">
-							</div>
-						</div>
-						<div class="row">
-							<div class="input-field col s12 no_placeholder">
-								<input id="ulocation" name="location" type="text" class="validate" value="<?php echo $user->location;?>">
-								<label for="ulocation"><?php echo __( 'Location' );?></label>
-							</div>
-						</div>
+
 						<div class="row">
 							<div class="input-field col s6 xs12">
 								<select id="relationship" name="relationship">
@@ -208,32 +197,20 @@ if($target_user !== ''){
 								<label for="body"><?php echo __( 'Body Type' );?></label>
 							</div>
 						</div>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<select id="height" name="height">
-									<?php echo DatasetGetSelect( $user->height, "height", __("Height") );?>
-								</select>
-								<label for="height"><?php echo __( 'Height' );?></label>
-							</div>
-							<div class="input-field col s6 xs12">
-								<select id="hair_color" name="hair_color">
-									<?php echo DatasetGetSelect( $user->hair_color, "hair_color", __("Choose your Hair Color") );?>
-								</select>
-								<label for="hair_color"><?php echo __( 'Hair Color' );?></label>
-							</div>
-						</div>
+					
 					</div>
 					<br>
 					<div class="dt_settings_bg_wrap sett_prof_cont">
 						<!--Personality-->
 						<h5><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M1.5,4V5.5C1.5,9.65 3.71,13.28 7,15.3V20H22V18C22,15.34 16.67,14 14,14C14,14 13.83,14 13.75,14C9,14 5,10 5,5.5V4M14,4A4,4 0 0,0 10,8A4,4 0 0,0 14,12A4,4 0 0,0 18,8A4,4 0 0,0 14,4Z"></path></svg> <?php echo __('Personality');?></h5>
 						<div class="row">
-							<div class="input-field col s6 xs12">
-								<select id="character" name="character">
-									<?php echo DatasetGetSelect( $user->character, "character", __("Character") );?>
+						<div class="input-field col s6 xs12">
+								<select id="friends" name="friends">
+									<?php echo DatasetGetSelect( $user->friends, "friends", __("Friends") );?>
 								</select>
-								<label for="character"><?php echo __( 'Character' );?></label>
+								<label for="friends"><?php echo __( 'Friends' );?></label>
 							</div>
+
 							<div class="input-field col s6 xs12">
 								<select id="children" name="children">
 									<?php echo DatasetGetSelect( $user->children, "children", __("Children") );?>
@@ -241,20 +218,8 @@ if($target_user !== ''){
 								<label for="children"><?php echo __( 'Children' );?></label>
 							</div>
 						</div>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<select id="friends" name="friends">
-									<?php echo DatasetGetSelect( $user->friends, "friends", __("Friends") );?>
-								</select>
-								<label for="friends"><?php echo __( 'Friends' );?></label>
-							</div>
-							<div class="input-field col s6 xs12">
-								<select id="pets" name="pets">
-									<?php echo DatasetGetSelect( $user->pets, "pets", __("Pets") );?>
-								</select>
-								<label for="pets"><?php echo __( 'Pets' );?></label>
-							</div>
-						</div>
+					
+
 					</div>
 					<br>
 					<div class="dt_settings_bg_wrap sett_prof_cont">
@@ -295,12 +260,7 @@ if($target_user !== ''){
 								</select>
 								<label for="drink"><?php echo __( 'Drink' );?></label>
 							</div>
-							<div class="input-field col s6 xs12">
-								<select id="travel" name="travel">
-									<?php echo DatasetGetSelect( $user->travel, "travel", __("Travel") );?>
-								</select>
-								<label for="travel"><?php echo __( 'Travel' );?></label>
-							</div>
+							
 						</div>
 					</div>
 					<br>

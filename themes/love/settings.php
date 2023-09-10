@@ -73,13 +73,7 @@ if($target_user !== ''){
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path fill="currentColor" d="M19 7h5v2h-5V7zm-2 5h7v2h-7v-2zm3 5h4v2h-4v-2zM2 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H2zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"/></svg> <span><?php echo __( 'My Info' );?></span>
 							</a>
 						</li>
-						<?php if( $config->affiliate_system == '1' ){ ?>
-							<li>
-								<a href="<?php echo $site_url;?>/settings-affiliate/<?php echo $profile->username;?>" data-ajax="/settings-affiliate/<?php echo $profile->username;?>" target="_self">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path fill="currentColor" d="M1 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H1zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM21.548.784A13.942 13.942 0 0 1 23 7c0 2.233-.523 4.344-1.452 6.216l-1.645-1.196A11.955 11.955 0 0 0 21 7c0-1.792-.393-3.493-1.097-5.02L21.548.784zm-3.302 2.4A9.97 9.97 0 0 1 19 7a9.97 9.97 0 0 1-.754 3.816l-1.677-1.22A7.99 7.99 0 0 0 17 7a7.99 7.99 0 0 0-.43-2.596l1.676-1.22z"/></svg> <span><?php echo __( 'Affiliates' );?></span>
-								</a>
-							</li>
-						<?php } ?>
+					
 						<?php if( $config->invite_links_system == '1' ){ ?>
 							<li>
 								<a href="<?php echo $site_url;?>/settings-links/<?php echo $profile->username;?>" data-ajax="/settings-links/<?php echo $profile->username;?>" target="_self">
@@ -141,7 +135,7 @@ if($target_user !== ''){
 					<div class="row">
 						<div class="input-field col s6 xs12">
 							<select id="country" name="country" <?php if($config->filter_by_cities == 1 && !empty($config->geo_username)){ ?>onchange="ChangeCountryKey(this)"<?php } ?>>
-								<option value="" disabled selected><?php echo __( 'Choose your country' );?></option>
+								<option value="" disabled selected><?php echo __( 'Choose your nationality' );?></option>
 								<?php
 									$city_country_key = '';
 									foreach( Dataset::load('countries') as $key => $val ){
@@ -152,7 +146,7 @@ if($target_user !== ''){
 									}
 								?>
 							</select>
-							<label for="country"><?php echo __( 'Country' );?></label>
+							<label for="country"><?php echo __( 'Nationality' );?></label>
 						</div>
 						<div class="input-field col s6 xs12">
 		                    <input type="hidden" class="city_country_key" name="city_country_key" value="<?php echo($city_country_key); ?>">

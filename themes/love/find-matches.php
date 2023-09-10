@@ -23,9 +23,12 @@ $_gender_text = '';
 		$_gender_text = __('All');
 	}
 ?>
+
+
+
 <select>
 	.dropdown-content{
-		margin-top: 20% !important;
+		
 	}
 </select>
 <ul class="collapsible dt_new_home_filter" id="home_filters">
@@ -136,20 +139,22 @@ $_gender_text = '';
 						<div class="col s12 m4">
 							<h5><?php echo __('District');?></h5>
 							<div class="valign-wrapper dt_hm_filtr_loc">
-								<label style="display:none;" title="<?php echo __('My location');?>">
-									<input type="checkbox" class="filled-in" <?php if(!empty($data['find_match_data']) && !empty($data['find_match_data']['located'])){ ?>checked="checked"<?php }?> id="is_my_location">
+								<label style="display: none;" title="<?php echo __('My location');?>">
+									<input type="checkbox" class="filled-in" id="is_my_location">
 									<b><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg></b>
 								</label>
+								
 								<select id="my_country" name="my_country" data-country="<?php echo $profile->country;?>" <?php if(!empty($data['find_match_data']) && !empty($data['find_match_data']['located'])) {?>disabled="disabled"<?php }?> <?php if($config->filter_by_cities == 1 && !empty($config->geo_username)){ ?>onchange="ChangeCountryKey(this)"<?php } ?>>
+									<option value="all" data-code="all">All</option>;
 									<?php
 										
-										foreach( ["All", "Balaka", "Blantyre", "Chikwawa", "Chiradzulo", "Chitipa", "Dedza", "Dowa", "Karonga", "Kasungu", "Likoma", "Lilongwe", "Machinga", "Mangochi", "Mchinji", "Mulanje", "Mwanza", "Mzimba", "Neno", "Nkhatabay", "Nkhotakota", "Nsanje", "Ntcheu", "Ntchisi", "Phalombe", "Rumphi", "Salima", "Thyolo", "Zomba"] as $key ){
+										foreach( ["Balaka", "Blantyre", "Chikwawa", "Chiradzulo", "Chitipa", "Dedza", "Dowa", "Karonga", "Kasungu", "Likoma", "Lilongwe", "Machinga", "Mangochi", "Mchinji", "Mulanje", "Mwanza", "Mzimba", "Neno", "Nkhatabay", "Nkhotakota", "Nsanje", "Ntcheu", "Ntchisi", "Phalombe", "Rumphi", "Salima", "Thyolo", "Zomba"] as $key ){
 											echo '<option value="'. $key .'" data-code="'. $key .'">'. $key .'</option>';
 										}
 									?>
 								</select>
 							</div>
-							<?php if ($config->filter_by_cities == 1 && !empty($config->geo_username)) { ?>
+							<?php if (false && $config->filter_by_cities == 1 && !empty($config->geo_username)) { ?>
 							<div style="position: relative;margin-top: 10px;">
 								<input type="hidden" class="city_country_key" name="city_country_key" value="<?php echo($city_country_key); ?>">
 								<input type="text" name="city" placeholder="<?php echo __( 'City' );?>" <?php if($config->filter_by_cities == 1 && !empty($config->geo_username)){ ?>onkeyup="SearchForCity(this)"<?php } ?> class="selected_city" value="<?php echo(!empty($data['find_match_data']) && !empty($data['find_match_data']['city']) ? $data['find_match_data']['city'] : '') ?>">
@@ -594,21 +599,35 @@ $_gender_text = '';
 <script>
 
 $(document).ready(function(){
+	
 	$('#my_country').on('change',() => {
 		$('.located_at').html(`&nbsp;&nbsp;<?php echo __('located_at');?> <span id="located">${$("#my_country option:selected" ).text()}</span>`);
 	});
+	
 	$( document ).on( 'change', '#_located', function(e){
         var valueSelected = this.value;
         $('.located_at').html(`&nbsp;&nbsp;<?php echo __('located within');?> <span id="located">${valueSelected}</span> <?php echo $config->default_unit;?>`);
     });
+
 	setTimeout(function () {
 		$('.btn-find-matches-search').removeAttr('disabled');
 	},1000);
+	
+		$("#my_country").val('all');
+		$('.located_at').html(`&nbsp;&nbsp;<?php echo __('located_at');?> <span id="located">${$("#my_country option:selected" ).text()}</span>`);
 
-	
-	
+		$('#_located').prop("disabled", true);
+		$('#_located').val( window.located );
+
+
+		$('#my_country').removeAttr( 'disabled' );
+		$('#my_country').prop("disabled", false);
+		$('#my_country').formSelect();
+		//$.get( window.ajax + 'profile/set_data', {'show_me_to': $('#my_country').attr('data-country')} );
+		
 	$( document ).on( 'change', '#is_my_location', function(e){
-        if( $('#is_my_location').prop('checked') === false) {
+		
+		if( $('#is_my_location').prop('checked') === false) {
         	$("#my_country").val('all');
         	$('.located_at').html(`&nbsp;&nbsp;<?php echo __('located_at');?> <span id="located">${$("#my_country option:selected" ).text()}</span>`);
 
@@ -653,4 +672,8 @@ function Wo_ViewAnnouncement(id) {
             }
         });
 }
+
+
+
+	
 </script>

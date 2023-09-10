@@ -126,7 +126,7 @@
 						<div class="input-field col m12 s12">
 							<input name="airtel-number" id="airtel-number" type="text"  value=<?php echo  $phone;?>
 									class="validate" value="" required >
-							<label for="airtel-number"><?php echo __( 'Specify Airtel Money number for payment' );?></label>
+							<label for="airtel-number"><?php echo __( 'Enter Airtel number to pay' );?></label>
 						</div>
 							
 					</div>

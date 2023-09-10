@@ -469,7 +469,19 @@
 				</div>
 			</div>
 		</div>
-		<!-- End Message Modal -->
+        
+
+		<div id="age_modal" class="modal modal-sm">
+			<div class="modal-content">
+
+				<h6 class="bold"><?php echo __('Age Range Problem');?></h6>
+				<p><?php echo __('Please make sure minimum age does not exceed maximum age');?></p>
+					
+					<div class="modal-footer">
+					<button type="button" class="btn-flat waves-effect modal-close"><?php echo __( 'Cancel' );?></button>
+                </div>
+			</div>
+		</div>
 
 				
 		<!-- Message Modal Modal -->

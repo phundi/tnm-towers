@@ -104,8 +104,8 @@ $_gender_text = '';
 							<h5><?php echo __('Age Range');?></h5>
 							<div class="row r_margin">
 								<div class="input-field col s6 no_margin_top">
-									<select class="_age_from">
-										<?php for($i = 18 ; $i < 51 ; $i++ ){
+									<select id="_age_from" class="_age_from" onchange="validateAge();">
+										<?php for($i = 18 ; $i <= 90 ; $i++ ){
 											$selected = '';
 											if (!empty($data['find_match_data']) && !empty($data['find_match_data']['age_from']) && $data['find_match_data']['age_from'] == $i) {
 												$selected = 'selected';
@@ -116,13 +116,13 @@ $_gender_text = '';
 									</select>
 								</div>
 								<div class="input-field col s6 no_margin_top">
-									<select class="_age_to">
-										<?php for($i = 51 ; $i < 99 ; $i++ ){
+									<select id="_age_to" class="_age_to" onchange="validateAge();">
+										<?php for($i = 90 ; $i >= 18 ; $i-- ){
 											$selected = '';
 											if (!empty($data['find_match_data']) && !empty($data['find_match_data']['age_to']) && $data['find_match_data']['age_to'] == $i) {
 												$selected = 'selected';
 											}
-											else if(empty($data['find_match_data']['age_to']) && $i == 98){
+											else if(empty($data['find_match_data']['age_to']) && $i == 90){
 												$selected = 'selected';
 											}
 											?>
@@ -611,6 +611,8 @@ $(document).ready(function(){
 
 	setTimeout(function () {
 		$('.btn-find-matches-search').removeAttr('disabled');
+		$("#_age_to").val(90);
+
 	},1000);
 
 	$('.located_at').html(`&nbsp;&nbsp;<?php echo __('located_at');?> <span id="located">${$("#my_country option:selected" ).text()}</span>`);
@@ -622,6 +624,7 @@ $(document).ready(function(){
 	$('#my_country').removeAttr( 'disabled' );
 	$('#my_country').prop("disabled", false);
 	$('#my_country').formSelect();
+
 	//$.get( window.ajax + 'profile/set_data', {'show_me_to': $('#my_country').attr('data-country')} );
 		
 	
@@ -677,5 +680,12 @@ function Wo_ViewAnnouncement(id) {
 
 
 
-	
+function validateAge(){
+	var min = parseInt($("#_age_from").val());
+	var max = parseInt($("#_age_to").val());
+
+	if (min > max){
+		$("#age_modal").modal("open");
+	}
+}
 </script>

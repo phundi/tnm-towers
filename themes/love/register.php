@@ -70,7 +70,7 @@
 
 									<div class="input-field col m6 s12">
 										<select name = "district" id="district" required>
-											<option value="" selected>Select District (Optional)</option>
+											<option value="" selected>Select District</option>
 											<?php
 												foreach( ["Balaka", "Blantyre", "Chikwawa", "Chiradzulo", "Chitipa", "Dedza", "Dowa", "Karonga", "Kasungu", "Likoma", "Lilongwe", "Machinga", "Mangochi", "Mchinji", "Mulanje", "Mwanza", "Mzimba", "Neno", "Nkhatabay", "Nkhotakota", "Nsanje", "Ntcheu", "Ntchisi", "Phalombe", "Rumphi", "Salima", "Thyolo", "Zomba"] as $key ){
 													echo '<option value="'. $key .'" data-code="'. $key .'">'. $key .'</option>';

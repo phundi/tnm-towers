@@ -1028,10 +1028,10 @@ Class UserActions extends Aj {
                     $Notification->createNotification($web_device_id, $user['id'], self::ActiveUser()->id, 'got_new_match', '', '/@' . $username);
                 }
                 if(self::Config()->pro_system === "1") {
-                    if ($user['is_pro'] === "1") {
+                   // if ($user['is_pro'] === "1") {
                         $db->where('notifier_id', self::ActiveUser()->id)->where('recipient_id', $user['id'])->where('type', 'like')->delete('notifications');
                         $Notification->createNotification($web_device_id, self::ActiveUser()->id, $user['id'], 'like', '', '/@' . self::ActiveUser()->username);
-                    }
+                    //}
                 }else{
                     $db->where('notifier_id', self::ActiveUser()->id)->where('recipient_id', $user['id'])->where('type', 'like')->delete('notifications');
                     $Notification->createNotification($web_device_id, self::ActiveUser()->id, $user['id'], 'like', '', '/@' . self::ActiveUser()->username);

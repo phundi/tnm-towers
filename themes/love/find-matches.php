@@ -612,20 +612,17 @@ $(document).ready(function(){
 	setTimeout(function () {
 		$('.btn-find-matches-search').removeAttr('disabled');
 	},1000);
-	
-	setInterval(function(){
-		$('.located_at').html(`&nbsp;&nbsp;<?php echo __('located_at');?> <span id="located">${$("#my_country option:selected" ).text()}</span>`);
 
-		$('#_located').prop("disabled", true);
-		$('#_located').val( window.located );
+	$('.located_at').html(`&nbsp;&nbsp;<?php echo __('located_at');?> <span id="located">${$("#my_country option:selected" ).text()}</span>`);
+
+	$('#_located').prop("disabled", true);
+	$('#_located').val( window.located );
 
 
-		$('#my_country').removeAttr( 'disabled' );
-		$('#my_country').prop("disabled", false);
-		$('#my_country').formSelect();
-	}, 2000)
-		
-		//$.get( window.ajax + 'profile/set_data', {'show_me_to': $('#my_country').attr('data-country')} );
+	$('#my_country').removeAttr( 'disabled' );
+	$('#my_country').prop("disabled", false);
+	$('#my_country').formSelect();
+	//$.get( window.ajax + 'profile/set_data', {'show_me_to': $('#my_country').attr('data-country')} );
 		
 	
 	/*	$( document ).on( 'change', '#is_my_location', function(e){

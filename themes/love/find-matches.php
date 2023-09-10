@@ -145,7 +145,7 @@ $_gender_text = '';
 								</label>
 								
 								<select id="my_country" name="my_country" data-country="<?php echo $profile->country;?>" <?php if(!empty($data['find_match_data']) && !empty($data['find_match_data']['located'])) {?>disabled="disabled"<?php }?> <?php if($config->filter_by_cities == 1 && !empty($config->geo_username)){ ?>onchange="ChangeCountryKey(this)"<?php } ?>>
-									<option value="all" data-code="all">All</option>;
+									<option value="all" data-code="all">All Districts</option>;
 									<?php
 										
 										foreach( ["Balaka", "Blantyre", "Chikwawa", "Chiradzulo", "Chitipa", "Dedza", "Dowa", "Karonga", "Kasungu", "Likoma", "Lilongwe", "Machinga", "Mangochi", "Mchinji", "Mulanje", "Mwanza", "Mzimba", "Neno", "Nkhatabay", "Nkhotakota", "Nsanje", "Ntcheu", "Ntchisi", "Phalombe", "Rumphi", "Salima", "Thyolo", "Zomba"] as $key ){
@@ -613,7 +613,6 @@ $(document).ready(function(){
 		$('.btn-find-matches-search').removeAttr('disabled');
 	},1000);
 	
-		$("#my_country").val('all');
 		$('.located_at').html(`&nbsp;&nbsp;<?php echo __('located_at');?> <span id="located">${$("#my_country option:selected" ).text()}</span>`);
 
 		$('#_located').prop("disabled", true);
@@ -625,7 +624,8 @@ $(document).ready(function(){
 		$('#my_country').formSelect();
 		//$.get( window.ajax + 'profile/set_data', {'show_me_to': $('#my_country').attr('data-country')} );
 		
-	$( document ).on( 'change', '#is_my_location', function(e){
+	
+	/*	$( document ).on( 'change', '#is_my_location', function(e){
 		
 		if( $('#is_my_location').prop('checked') === false) {
         	$("#my_country").val('all');
@@ -654,6 +654,8 @@ $(document).ready(function(){
         }
         e.preventDefault();
     });
+*/
+
 });
 function resetSearchData() {
 	$.get(window.ajax + 'profile/resetSearch', function (data) {

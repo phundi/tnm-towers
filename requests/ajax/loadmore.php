@@ -1034,18 +1034,9 @@ Class Loadmore extends Aj {
                 }else{
                     $gender_query = '`gender` IN ('. $genders .') AND ';
                 }
-                
-                
-                $district_query = '';
-                if (isset($_POST['_my_country'])){
-                    $district_query = ' `district` =  "' . self::ActiveUser()->id . '" AND ';
-                }
-                    ob_start();
-                    var_dump($district_query);
-                    error_log(ob_get_clean());
-            
+                    
 
-                $query = 'SELECT * FROM `users` WHERE '. $execludecond .' AND '.$gender_query. ' AND' . $district_query. ' `active` = "1" AND `verified` = "1" AND `id` NOT IN (SELECT `block_userid` FROM `blocks` WHERE `user_id` = ' . self::ActiveUser()->id . ') '. $execludes .' AND `id` NOT IN (SELECT `like_userid` FROM `likes` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND (SELECT count(*) FROM `mediafiles` WHERE `user_id` = `users`.`id` AND `mediafiles`.`is_private` = 0) > 0 AND `id` NOT IN (SELECT `hot_userid` FROM `hot` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND `id` <> "' . self::ActiveUser()->id . '"  ORDER BY `id` DESC LIMIT ' . $limit;
+                $query = 'SELECT * FROM `users` WHERE '. $execludecond .' AND '.$gender_query. ' AND' . ' `active` = "1" AND `verified` = "1" AND `id` NOT IN (SELECT `block_userid` FROM `blocks` WHERE `user_id` = ' . self::ActiveUser()->id . ') '. $execludes .' AND `id` NOT IN (SELECT `like_userid` FROM `likes` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND (SELECT count(*) FROM `mediafiles` WHERE `user_id` = `users`.`id` AND `mediafiles`.`is_private` = 0) > 0 AND `id` NOT IN (SELECT `hot_userid` FROM `hot` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND `id` <> "' . self::ActiveUser()->id . '"  ORDER BY `id` DESC LIMIT ' . $limit;
             }
             
 				

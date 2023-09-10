@@ -24,13 +24,6 @@ $_gender_text = '';
 	}
 ?>
 
-
-
-<select>
-	.dropdown-content{
-		
-	}
-</select>
 <ul class="collapsible dt_new_home_filter" id="home_filters">
 	<div class="container">
 		<div class="dt_home_filters_head">

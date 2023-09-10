@@ -13,14 +13,14 @@ $servername = "localhost";
 // MySQL Database User
 $dbusername = "root";
 // MySQL Database Password
-$dbpassword = "malovings";
+$dbpassword = "MZ#ma1awi2023";
 // MySQL Database Name
 $dbname = "malovings";
 
 $auto_redirect = true;
 
 // Site URL
-$site_url = "http://localhost"; // e.g (http://example.com)
+$site_url = "https://staging.malovings.com"; // e.g (http://example.com)
 
 $app = "QuickDating";
 $endpoint_v = "v1";

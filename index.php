@@ -202,6 +202,7 @@ if (IS_LOGGED && !empty($active_user)) {
     
     $q['liked_count'] = $db->where('user_id',$active_user->id)->where('is_like', 1)->getValue('likes','COUNT(*)');
     $q['disliked_count'] = $db->where('user_id',$active_user->id)->where('is_dislike', 1)->getValue('likes','COUNT(*)');
+    $q['views_count'] = $db->where('view_userid ',$active_user->id)->getValue('views ','COUNT(*)');
 }
 
 $contoller_file       = $_CONTROLLERS . strtolower($url_action) . '.php';

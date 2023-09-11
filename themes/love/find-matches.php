@@ -742,12 +742,21 @@ $(document).ready(function(){
                 timeout: 60000,
                 dataType: false,
                 success: function(result) {
-                    //$('#search_users_container').empty();
+					if (result.html_all_matches.length == 0){
 
-                    $("#random_users_label").html("All searched users")
-                    //$("#random_users_container").empty();
-                    $("#random_users_container").html(result.html_all_matches);
-                    
+						$("#random_users_label").hide();
+						$('#btn_load_more_random_users').hide();
+						$("#random_users_container").html('');
+					}else{
+                    //$('#search_users_container').empty();
+						$("#random_users_label").show();
+						$('btn_load_more_random_users').show();
+						$("#random_users_label").html("All searched users")
+						$('btn_load_more_random_users').html('');
+
+						//$("#random_users_container").empty();
+						$("#random_users_container").html(result.html_all_matches);
+					}
                     callback_load_more_search_users( result );
                 }
             });

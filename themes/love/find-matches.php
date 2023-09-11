@@ -618,6 +618,141 @@ $(document).ready(function(){
 	$('#my_country').prop("disabled", false);
 	$('#my_country').formSelect();
 
+
+
+
+	$( document ).on( 'click', '.btn-find-matches-search', function(e) {
+            e.preventDefault();
+            var formData = new FormData();
+
+            // search_basic
+            var gender = [];
+            $("._gender:checked").each ( function() {
+                gender.push($(this).val());
+            });
+            if(gender.length > 0) {
+                formData.append('_gender', gender);
+            }
+            formData.append( '_age_from', $('._age_from').find(":selected").val() );
+            formData.append( '_age_to', $('._age_to').find(":selected").val() );
+            if( $('#is_my_location').prop('checked') !== false) {
+                formData.append( '_located', $('#_located').val() );
+                formData.append( '_lat', $('#_lat').val() );
+                formData.append( '_lng', $('#_lng').val() );
+            }
+            else{
+                formData.append( '_my_country', $('#my_country').find(":selected").val() );
+            }
+            formData.append('_location', '');
+
+            // search_looks
+            var body = [];
+            $("._body:checked").each ( function() {
+                body.push($(this).val());
+            });
+            if(body.length > 0) {
+                formData.append('_body', body);
+            }
+            formData.append( '_height_from', $('.height_from').find(":selected").val() );
+            formData.append( '_height_to', $('.height_to').find(":selected").val() );
+
+
+            // search_background
+            var ethnicity = [];
+            $("._ethnicity:checked").each ( function() {
+                ethnicity.push($(this).val());
+            });
+            var religion = [];
+            $("._religion:checked").each ( function() {
+                religion.push($(this).val());
+            });
+            if(ethnicity.length > 0) {
+                formData.append('_ethnicity', ethnicity);
+            }
+            if(religion.length > 0) {
+                formData.append('_religion', religion);
+            }
+            if (!$('._language').find(":selected").val().includes(",")) {
+                formData.append( '_language', $('._language').find(":selected").val() );
+            }
+            
+
+
+            // search_lifestyle
+            var relationship = [];
+            $("._relationship:checked").each ( function() {
+                relationship.push($(this).val());
+            });
+            var smoke = [];
+            $("._smoke:checked").each ( function() {
+                smoke.push($(this).val());
+            });
+            var drink = [];
+            $("._drink:checked").each ( function() {
+                drink.push($(this).val());
+            });
+            if(relationship.length > 0){
+                formData.append( '_relationship', relationship );
+            }
+            if(smoke.length > 0){
+                formData.append( '_smoke', smoke );
+            }
+            if(drink.length > 0){
+                formData.append( '_drink', drink );
+            }
+
+
+            // search_more
+            var education = [];
+            $("._education:checked").each ( function() {
+                education.push($(this).val());
+            });
+            var pets = [];
+            $("._pets:checked").each ( function() {
+                pets.push($(this).val());
+            });
+            if(education.length > 0){
+                formData.append( '_education', education );
+            }
+            if(pets.length > 0){
+                formData.append( '_pets', pets );
+            }
+            formData.append( '_interest', $('#interest').val() );
+            $(".profile_custom_data_field").each ( function() {
+                formData.append( $(this).attr('data-name'), $(this).val() );
+            });
+            if( $(".profile_custom_data_field").length > 0 ){
+                formData.append( 'custom_profile_data', 'true' );
+            }
+            if( $(".selected_city").length > 0 ){
+                formData.append( 'city', $(".selected_city").val() );
+            }
+
+
+            formData.append( 'page', '1' );
+            var url = window.ajax + '/loadmore/match_users?with_profiles=true';
+            $.ajax({
+                url: url,
+                type: "POST",
+                async: false,
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                timeout: 60000,
+                dataType: false,
+                success: function(result) {
+                    //$('#search_users_container').empty();
+
+                    $("#random_users_label").html("All searched users")
+                    //$("#random_users_container").empty();
+                    $("#random_users_container").html(result.html_all_matches);
+                    
+                    callback_load_more_search_users( result );
+                }
+            });
+        });
+
 	//$.get( window.ajax + 'profile/set_data', {'show_me_to': $('#my_country').attr('data-country')} );
 		
 	

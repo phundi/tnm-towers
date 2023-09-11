@@ -572,7 +572,7 @@ $_gender_text = '';
 									data-ajax-post="/loadmore/match_users?profiles=true" 
 									data-ajax-params="page=2" 
 									data-ajax-callback="callback_load_more_search_users" 
-									class="btn waves-effect load_more"><?php echo __('Load more...!');?></a>
+									class="btn waves-effect load_more2"><?php echo __('Load more...!');?></a>
 
 					<?php } ?>
                 </div>

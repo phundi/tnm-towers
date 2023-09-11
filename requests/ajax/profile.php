@@ -1224,11 +1224,9 @@ Class Profile extends Aj {
             );
         }
 
-        //$json = array(
-         //   'lat' => self::ActiveUser()->lat,
-           // 'lng' => self::ActiveUser()->lng,
-         //   'located' => 125,
-       // );
+        $json = array(
+            
+        );
 
         $db->where('id',self::ActiveUser()->id)->update('users',['find_match_data' => json_encode($json)]);
 

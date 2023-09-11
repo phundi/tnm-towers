@@ -1076,11 +1076,12 @@ console.log(result.class);
                 dataType: false,
                 success: function(result) {
                     //$('#search_users_container').empty();
-                    callback_load_more_search_users( result );
 
                     $("#random_users_label").html("All searched users")
-                    $("#random_users_container").empty();
+                    //$("#random_users_container").empty();
                     $("#random_users_container").html(result.html_all_matches);
+                    
+                    callback_load_more_search_users( result );
                 }
             });
         });

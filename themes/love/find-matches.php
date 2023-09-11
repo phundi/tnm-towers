@@ -187,7 +187,7 @@ $_gender_text = '';
 					<input type="hidden" id="_lat" value="<?php echo $profile->lat;?>">
 					<input type="hidden" id="_lng" value="<?php echo $profile->lng;?>">
 					<div class="btn_wrapper">
-						<button class="btn waves-effect btn_glossy btn-flat btn-large waves-light btn-find-matches-search2" type="button" id="btn_search_basic2" disabled><?php echo __('Search your match');?></button>
+						<button onclick="page=1" class="btn waves-effect btn_glossy btn-flat btn-large waves-light btn-find-matches-search2" type="button" id="btn_search_basic2" disabled><?php echo __('Search your match');?></button>
 						<button class="btn waves-effect btn_glossy btn-flat btn-small waves-light" type="button" onclick="resetSearchData()"><?php echo __('reset');?></button>
 					</div>
 				</form>

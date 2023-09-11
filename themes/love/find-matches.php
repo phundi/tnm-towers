@@ -561,7 +561,7 @@ $_gender_text = '';
 			<hr class="dt_home_rand_user_hr">
 			<div class="dt_ltst_users" id="dt_ltst_users">
 				<div class="dt_home_rand_user">
-					<h4 class="bold"><?php echo __( 'Other users & profiles' );?></h4>
+					<h4 class="bold" id="random_users_label"><?php echo __( 'Other users & profiles' );?></h4>
 					<div class="row" id="random_users_container">
                         <?php echo $data['random_users']; ?>
 					</div>

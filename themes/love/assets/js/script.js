@@ -1063,7 +1063,7 @@ console.log(result.class);
 
 
             formData.append( 'page', '1' );
-            var url = window.ajax + '/loadmore/match_users';
+            var url = window.ajax + '/loadmore/match_users?with_profiles=true';
             $.ajax({
                 url: url,
                 type: "POST",
@@ -1077,6 +1077,10 @@ console.log(result.class);
                 success: function(result) {
                     //$('#search_users_container').empty();
                     callback_load_more_search_users( result );
+
+                    $("#random_users_label").html("All searched users")
+                    $("#random_users_container").empty();
+                    $("#random_users_container").html(result.html_all_matches);
                 }
             });
         });

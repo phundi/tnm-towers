@@ -977,6 +977,7 @@ Class Loadmore extends Aj {
         $html      = '';
         $html_imgs = '';
         $template  = '';
+        $html_all_matches = '';
         $listmode = 'findmatches';
     
         $execludecond = ' `id` > 0';
@@ -1101,6 +1102,7 @@ Class Loadmore extends Aj {
             $theme_path = $_BASEPATH . 'themes' . $_DS . self::Config()->theme . $_DS;
             $template   = $theme_path . 'partails' . $_DS . 'find-matches' . $_DS . 'matches.php';
             $template1  = $theme_path . 'partails' . $_DS . 'find-matches' . $_DS . 'matches_imgs.php';
+            $template2  = $theme_path . 'partails' . $_DS . 'find-matches' . $_DS . 'random_users.php';
             if (file_exists($template)) {
                 $matche_first     = false;
                 $matche_img_first = false;
@@ -1127,6 +1129,12 @@ Class Loadmore extends Aj {
                     $matche_img_first = false;
                     $html_imgs .= ob_get_contents();
                     ob_end_clean();
+                    ob_start();
+                    $all_genders = Dataset::load('gender');
+                    $random_user = $matche;
+                    include $template2;
+                    $html_all_matches .= ob_get_contents();
+                    ob_end_clean();
                 }
             }
             return array(
@@ -1135,6 +1143,7 @@ Class Loadmore extends Aj {
                 'html' => $html,
                 'query' => $query,
                 'html_imgs' => $html_imgs,
+                'html_all_matches' => $html_all_matches,
                 'muser' => $match_users_array
             );
         } else {

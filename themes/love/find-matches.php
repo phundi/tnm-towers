@@ -187,7 +187,7 @@ $_gender_text = '';
 					<input type="hidden" id="_lat" value="<?php echo $profile->lat;?>">
 					<input type="hidden" id="_lng" value="<?php echo $profile->lng;?>">
 					<div class="btn_wrapper">
-						<button  onclick="$('#nearme').html('Search Results');" class="btn waves-effect btn_glossy btn-flat btn-large waves-light btn-find-matches-search" type="button" id="btn_search_basic" disabled><?php echo __('Search your match');?></button>
+						<button class="btn waves-effect btn_glossy btn-flat btn-large waves-light btn-find-matches-search2" type="button" id="btn_search_basic2" disabled><?php echo __('Search your match');?></button>
 						<button class="btn waves-effect btn_glossy btn-flat btn-small waves-light" type="button" onclick="resetSearchData()"><?php echo __('reset');?></button>
 					</div>
 				</form>
@@ -553,7 +553,6 @@ $_gender_text = '';
                 <?php } ?>
             </div>
 
-			<a href="javascript:void(0);" style="display: none;" id="btn_load_more_match_users" data-lang-loadmore="<?php echo __('Load more...');?>" data-lang-nomore="<?php echo __('No more users to show.');?>" data-ajax-post="/loadmore/match_users" data-ajax-params="page=2" data-ajax-callback="callback_load_more_match_users" class="btn waves-effect load_more"><?php echo __('Load more...');?></a>
 			<!-- End Match Users  -->
 
 			<!-- Random Users  -->
@@ -567,7 +566,15 @@ $_gender_text = '';
 					</div>
                     <?php if(!empty($data['random_users'])){ ?>
 					<a href="javascript:void(0);" id="btn_load_more_random_users" data-lang-nomore="<?php echo __('No more users to show.');?>" data-ajax-post="/loadmore/random_users" data-ajax-params="page=2" data-ajax-callback="callback_load_more_random_users" class="btn waves-effect load_more"><?php echo __('Load more...');?></a>
-                    <?php } ?>
+					<a href="javascript:void(0);" onclick="nextPage();" style='display: none;' id="btn_load_more_match_users2" 
+									data-lang-loadmore="<?php echo __('Load more...');?>" 
+									data-lang-nomore="<?php echo __('No more users to show.');?>" 
+									data-ajax-post="/loadmore/match_users?profiles=true" 
+									data-ajax-params="page=2" 
+									data-ajax-callback="callback_load_more_search_users" 
+									class="btn waves-effect load_more"><?php echo __('Load more...!');?></a>
+
+					<?php } ?>
                 </div>
 			</div>
             <?php } ?>
@@ -590,6 +597,15 @@ $_gender_text = '';
 	</div>
 </div>
 <script>
+var page = 1;
+
+function nextPage(){
+	page += 1;
+	$("#btn_load_more_match_users2").attr('data-ajax-post', ('/loadmore/match_users?page=' + page));
+	$("#btn_load_more_match_users2").attr('data-ajax-params', ('page=' + page));
+	$("#btn_load_more_match_users2").attr('data-ajax-callback', "");
+
+}
 
 $(document).ready(function(){
 	
@@ -603,7 +619,7 @@ $(document).ready(function(){
     });
 
 	setTimeout(function () {
-		$('.btn-find-matches-search').removeAttr('disabled');
+		$('.btn-find-matches-search2').removeAttr('disabled');
 		$("#_age_to").val(90);
 
 	},1000);
@@ -619,11 +635,10 @@ $(document).ready(function(){
 	$('#my_country').formSelect();
 
 
-
-
-	$( document ).on( 'click', '.btn-find-matches-search', function(e) {
+	$( document ).on( 'click', '.btn-find-matches-search2, #btn_load_more_match_users2', function(e) {
             e.preventDefault();
             var formData = new FormData();
+			//page = 1;
 
             // search_basic
             var gender = [];
@@ -729,8 +744,8 @@ $(document).ready(function(){
             }
 
 
-            formData.append( 'page', '1' );
-            var url = window.ajax + '/loadmore/match_users?with_profiles=true';
+            formData.append( 'page', page );
+            var url = window.ajax + '/loadmore/match_users?page=' + page;
             $.ajax({
                 url: url,
                 type: "POST",
@@ -742,27 +757,87 @@ $(document).ready(function(){
                 timeout: 60000,
                 dataType: false,
                 success: function(result) {
-					if (result.html_all_matches.length == 0){
 
-						$("#random_users_label").hide();
-						$('#btn_load_more_random_users').hide();
-						$("#random_users_container").html('');
-					}else{
-                    //$('#search_users_container').empty();
-						$("#random_users_label").show();
-						$('btn_load_more_random_users').show();
-						$("#random_users_label").html("All searched users")
-						$('btn_load_more_random_users').html('');
-
-						//$("#random_users_container").empty();
-						$("#random_users_container").html(result.html_all_matches);
-					}
+					$('#nearme').html('Search Results');
+					
                     callback_load_more_search_users( result );
                 }
             });
         });
 
-	//$.get( window.ajax + 'profile/set_data', {'show_me_to': $('#my_country').attr('data-country')} );
+
+		
+function callback_load_more_search_users( result ) {
+
+    window.ajaxsend = true;
+    var btn_text = $('#btn_load_more_search_users').html();
+    $('#btn_load_more_search_users').removeAttr('data-ajax-params');
+    //$('#btn_load_more_search_users').css( {'display':'block'} ).show();
+    $('#_load_more').remove();
+    if (result.status == 200) {
+        //$('#dt_ltst_users').remove();
+        //$('.dt_home_match_user').remove();
+		console.log(result.html_all_matches);
+		if (result.html_all_matches.length == 0){
+
+			$("#random_users_label").hide();
+			$('#btn_load_more_random_users').hide();
+			$('#btn_load_more_match_users2').hide();
+			$("#random_users_container").html('');
+			}else{
+			//$('#search_users_container').empty();
+			$("#random_users_label").show();
+			$('#btn_load_more_random_users').hide();
+			$('#btn_load_more_match_users2').show();
+
+			$("#random_users_label").html("All searched users")
+			$('#btn_load_more_random_users').html('');
+
+			//$("#random_users_container").empty();
+			//console.log(result.html_all_matches);
+			$("#random_users_container").html(result.html_all_matches);
+		}
+
+        $('#latest_user').removeClass('hide');
+        $('#home_filters_close').trigger('click');
+        let button = $('#btn_load_more_search_users');
+        let container = $('#search_users_container');
+        let dtemplateHtml = '';
+        let listHtml = '';
+
+        //button.removeClass('hide');
+        let params = button.attr('data-ajax-params' );
+        let search = result.page ;
+        let replacement = "_where=" + encodeURI(result.post) +"&page=" + search;
+        button.attr('data-ajax-params', replacement);
+        if (result.html.length == 0) {
+            $('#section_match_users').html(`<div class="dt_sections" style="margin: 14px 0 0;"><h5 id="_load_more" class="empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9,4A4,4 0 0,1 13,8A4,4 0 0,1 9,12A4,4 0 0,1 5,8A4,4 0 0,1 9,4M9,6A2,2 0 0,0 7,8A2,2 0 0,0 9,10A2,2 0 0,0 11,8A2,2 0 0,0 9,6M9,13C11.67,13 17,14.34 17,17V20H1V17C1,14.34 6.33,13 9,13M9,14.9C6.03,14.9 2.9,16.36 2.9,17V18.1H15.1V17C15.1,16.36 11.97,14.9 9,14.9M15,4A4,4 0 0,1 19,8A4,4 0 0,1 15,12C14.53,12 14.08,11.92 13.67,11.77C14.5,10.74 15,9.43 15,8C15,6.57 14.5,5.26 13.67,4.23C14.08,4.08 14.53,4 15,4M23,17V20H19V16.5C19,15.25 18.24,14.1 16.97,13.18C19.68,13.62 23,14.9 23,17Z"></path></svg>${$('#btn_load_more_search_users').attr('data-lang-nomore')}</h5></div>`);
+        } else {
+            if($('#avaters_item_container').length == 0){
+                $('#section_match_users').html(`<div class="dt_home_match_user">
+                <div class="valign-wrapper mtc_usr_avtr" id="avaters_item_container">
+                        ${result.html_imgs}
+                    </div>
+                    <div class="mtc_usr_details" id="match_item_container">
+                        ${result.html}
+                    </div>
+                </div>`);
+            }
+            else{
+                $('#avaters_item_container').html(result.html_imgs);
+                $('#match_item_container').html(result.html);
+            }
+        }
+    } else{
+        if(typeof data.message !== undefined) {
+            M.toast({html: data.message});
+        }
+    }
+}
+
+
+
+		//$.get( window.ajax + 'profile/set_data', {'show_me_to': $('#my_country').attr('data-country')} );
 		
 	
 	/*	$( document ).on( 'change', '#is_my_location', function(e){

@@ -22,22 +22,13 @@ Class UserActions extends Aj {
                 UNSET($_POST[ 'c_password' ]);
                 $first_name = Secure($_POST[ 'first_name' ]);
                 $last_name  = Secure($_POST[ 'last_name' ]);
-                $username   = Secure($_POST[ 'username' ]);
                 $email      = $username . "@malovings.com"; //Secure($_POST[ 'email' ]);
                 $_POST['email'] = $email;
                 $phone_number      = Secure($_POST[ 'phone_number' ]);
                 $password   = $_POST[ 'password' ];
 
 
-                if (isset($_POST[ 'username' ]) && empty($_POST[ 'username' ])) {
-                    $error .= '<p>• ' . __('Missing username.') . '</p>';
-                }
-                if ($config->reserved_usernames_system == 1 && in_array($_POST['username'],$config->reserved_usernames_array)) {
-                    $error .= '<p>• ' . __('disallowed_username') . '</p>';
-                }
-                if (isset($_POST[ 'password' ]) && empty($_POST[ 'password' ])) {
-                    $error .= '<p>• ' . __('Missing password.') . '</p>';
-                }
+                
                // if (!empty($email) && !filter_var($_POST[ 'email' ], FILTER_VALIDATE_EMAIL)) {
                //     $error .= '<p>• ' . __('This E-mail is invalid.') . '</p>';
                // }
@@ -63,29 +54,27 @@ Class UserActions extends Aj {
                     $phone_number = preg_replace($pattern, "+265", $phone_number);
                 }
 
-                $_POST['phone_number'] = $phone_number;
 
-                if ($users->isUsernameExists($username)) {
-                    $error .= '<p>• ' . __('This User name is Already exist.') . '</p>';
+                $_POST['phone_number'] = $phone_number;
+                $_POST['username'] = hash('md5', $phone_number);
+                $username   = Secure($_POST[ 'username' ]);
+
+
+                if (isset($_POST[ 'username' ]) && empty($_POST[ 'username' ])) {
+                    $error .= '<p>• ' . __('Missing username.') . '</p>';
                 }
-                if ($users->isPhoneExists($phone_number)) {
-                    $error .= '<p>• ' . __('This Phone Number Already exist.') . '</p>';
+                if ($config->reserved_usernames_system == 1 && in_array($_POST['username'],$config->reserved_usernames_array)) {
+                    $error .= '<p>• ' . __('disallowed_username') . '</p>';
                 }
-                if (strlen($username) < 3 OR strlen($username) > 20) {
-                    $error .= '<p>• ' . __('Display name must be between 3 to 20 characters') . '</p>';
-                }
-              
-                if (preg_match('/\s/', $username)) {
-                    $error .= '<p>• ' . __('No spaces allowed on username') . '</p>';
-                }else if (!preg_match('/^[\w]+$/', $username)) {
-                    $error .= '<p>• ' . __('Invalid username characters.') . '</p>';
+                if (isset($_POST[ 'password' ]) && empty($_POST[ 'password' ])) {
+                    $error .= '<p>• ' . __('Missing password.') . '</p>';
                 }
 
                 if (strlen($password) < 4) {
                     $error .= '<p>• ' . __('Password is too short.') . '</p>';
                 }
                 if (Wo_IsBanned($username)) {
-                    $error .= '<p>• ' . __('The username is blacklisted and not allowed, please choose another username.') . '</p>';
+                    $error .= '<p>• ' . __('The number is blacklisted and not allowed, please choose another username.') . '</p>';
                 }
                 if (Wo_IsBanned($email)) {
                     $error .= '<p>• ' . __('The email address is blacklisted and not allowed, please choose another email.') . '</p>';

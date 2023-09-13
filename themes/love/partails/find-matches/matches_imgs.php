@@ -3,5 +3,5 @@
         id="user<?php echo $matche->id;?>">
     <img alt="<?php echo $matche->username;?>" 
     src="<?php echo GetMedia('',false); ?><?php echo $matche->avater;?>">
-	<p><?php echo $matche->username;?></p>
+	<p><?php echo $matche->first_name;?></p>
 </div>

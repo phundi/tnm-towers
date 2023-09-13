@@ -32,15 +32,6 @@
 							
 								<div class="row">
 									<div class="input-field col m6 s12">
-										<input name="username" id="username" type="text" class="validate" 
-										value="" required>
-										<label for="username"><?php echo __( 'Display Name' );?></label>
-									</div>
-										
-								</div>
-
-								<div class="row">
-									<div class="input-field col m6 s12">
 										<input name="first_name" id="first_name" type="text" class="validate" value="" autofocus>
 										<label for="first_name"><?php echo __( 'First Name' );?></label>
 									</div>

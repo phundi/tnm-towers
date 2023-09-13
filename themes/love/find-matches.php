@@ -782,17 +782,20 @@ function callback_load_more_search_users( result ) {
 
 			$("#random_users_label").hide();
 			$('#btn_load_more_random_users').hide();
-			$('#btn_load_more_match_users2').hide();
-			$("#random_users_container").html('');
-			}else{
+			$('#btn_load_more_match_users2').html("No more search users found");
+			$('#section_match_users').hide();
+			//$("#random_users_container").html('');
+			
+		}else{
 			//$('#search_users_container').empty();
+			$('#section_match_users').show();
 			$("#random_users_label").show();
 			$('#btn_load_more_random_users').hide();
 			$('#btn_load_more_match_users2').show();
+			$('#btn_load_more_match_users2').html("Load more ..!");
 
 			$("#random_users_label").html("All searched users")
 			$('#btn_load_more_random_users').html('');
-
 			//$("#random_users_container").empty();
 			//console.log(result.html_all_matches);
 			$("#random_users_container").html(result.html_all_matches);

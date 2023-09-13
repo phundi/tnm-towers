@@ -87,7 +87,7 @@
 						<?php require( $theme_path . 'third-party-payment.php' );?>
 					<?php } ?>
 					<div class="dt_p_head">
-						<h2><?php echo __( 'Use Your Credits To :' );?> </h2>
+						<h2><?php echo __( 'Use Your Credits To:' );?> </h2>
 						<p><?php echo __( 'Boost Yourself and  Increase Your Popularity' );?></p>
 					</div>
 				</div>

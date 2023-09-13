@@ -429,7 +429,7 @@
 				<p><?php echo __('Get seen more by people around you in find match.');?></p>
 				<p><?php
                     if ( isGenderFree($profile->gender) === true ) {
-                        echo __('Boost your profile for free for') . ' ' . $config->boost_expire_time . ' ' . __('miuntes') . '.';
+                        echo __('Boost your profile for free for') . ' ' . $config->boost_expire_time . ' ' . __('minutes') . '.';
                     }else {
                         echo __('This service costs you') . ' ' . $_cost . ' ' . __('credits and will last for') . ' ' . $config->boost_expire_time . ' ' . __('miuntes') . '.';
                     }

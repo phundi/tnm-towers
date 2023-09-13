@@ -4039,15 +4039,36 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
 
     $json = array();
 
+    $user = $db->where('id',$user_id)->getOne('users');
+
     if( isset($_POST['_gender']) && !empty($_POST['_gender']) && !empty($genders)){
         $new_gender = explode(',', $_POST['_gender']);
         $adding_gender = array();
+
         foreach ($new_gender as $key => $value) {
             if (in_array($value, array_keys($genders))) {
-                $adding_gender[] = Secure($value);
+
+                    $adding_gender[] = Secure($value);
+
+            
             }
         }
+        
         $json['gender'] = $adding_gender;
+    }elseif(empty($_POST['_my_country'])){
+     
+        
+        if((int)$config->opposite_gender == 1){
+            $gndr = array();
+            if((int)$user['gender'] == 4526){
+                $gndr[] = 4525;
+            }else{
+                $gndr[] = 4526;
+            }
+
+            $json['gender'] = $gndr;
+
+        }
     }
     elseif($is_xhr){
         $json['gender'] = '';
@@ -4320,6 +4341,8 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         $where .= ' AND `gender` IN (' . $gender . ') ';
     }
 
+
+   
     if(!empty($json['country'])){
         if ($json['country'] != 'all') {
             $where .= ' AND `district` = "' . $json['country'] . '" '; //Query district custom
@@ -4433,6 +4456,12 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
 
     $query = 'SELECT * FROM `users` WHERE `id` > 0 ' .$where . $orderBy . ' LIMIT '.$limit.' OFFSET '.$offset.';';
     //print_r($query);
+
+     ob_start();
+
+    var_dump("WHERE :  ".$query);
+    error_log(ob_get_clean());
+
     return $query;
 
     

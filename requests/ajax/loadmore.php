@@ -962,7 +962,7 @@ Class Loadmore extends Aj {
 
     }
     function match_users($mode='findmatches') {
-        
+
         global $db, $_BASEPATH, $_DS,$_excludes;
         if (self::ActiveUser() == NULL) {
             return array(
@@ -1039,8 +1039,8 @@ Class Loadmore extends Aj {
 
                 $query = 'SELECT * FROM `users` WHERE '. $execludecond .' AND '.$gender_query. ' AND' . ' `active` = "1" AND `verified` = "1" AND `id` NOT IN (SELECT `block_userid` FROM `blocks` WHERE `user_id` = ' . self::ActiveUser()->id . ') '. $execludes .' AND `id` NOT IN (SELECT `like_userid` FROM `likes` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND (SELECT count(*) FROM `mediafiles` WHERE `user_id` = `users`.`id` AND `mediafiles`.`is_private` = 0) > 0 AND `id` NOT IN (SELECT `hot_userid` FROM `hot` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND `id` <> "' . self::ActiveUser()->id . '"  ORDER BY `id` DESC LIMIT ' . $limit;
             }
+          
             
-				
             $match_users       = $db->rawQuery($query);
             //print_r($match_users);
 

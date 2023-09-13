@@ -41,6 +41,7 @@
 			
 			<div class="dt_credits transparent buy_credit">
 				<h4 class="bold"><?php echo __( 'Buy Credits' );?></h4>
+
 				<div class="credit_pln">
 					<div class="dt_plans">
 						<p onclick="payAirtelMoney('bag_of_credits', <?php echo (int)$config->bag_of_credits_price;?>)">
@@ -80,6 +81,17 @@
 					</div>
 					
 				</div>
+
+				<div class="dt_sections dt_go_pro">
+					<?php if (file_exists($theme_path . 'third-party-payment.php')) { ?>
+						<?php require( $theme_path . 'third-party-payment.php' );?>
+					<?php } ?>
+					<div class="dt_p_head">
+						<h2><?php echo __( 'Use Your Credits To :' );?> </h2>
+						<p><?php echo __( 'Boost Yourself and  Increase Your Popularity' );?></p>
+					</div>
+				</div>
+
 			</div>
 		</div>
 		

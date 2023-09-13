@@ -4450,9 +4450,9 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         $orderBy .= ',`xvisits_created_at` DESC';
         $orderBy .= ',`xmatches_created_at` DESC';
         $orderBy .= ',`is_pro` DESC,`hot_count` DESC,`gender` DESC';
+        $orderBy .= ', RAND()';
     }
 
-    
 
     $query = 'SELECT * FROM `users` WHERE `id` > 0 ' .$where . $orderBy . ' LIMIT '.$limit.' OFFSET '.$offset.';';
     //print_r($query);

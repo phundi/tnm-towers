@@ -74,9 +74,13 @@ Class UserActions extends Aj {
                 if (strlen($username) < 3 OR strlen($username) > 20) {
                     $error .= '<p>• ' . __('Display name must be between 3 to 20 characters') . '</p>';
                 }
-                if (!preg_match('/^[\w]+$/', $username)) {
+              
+                if (preg_match('/\s/', $username)) {
+                    $error .= '<p>• ' . __('No spaces allowed on username') . '</p>';
+                }else if (!preg_match('/^[\w]+$/', $username)) {
                     $error .= '<p>• ' . __('Invalid username characters.') . '</p>';
                 }
+
                 if (strlen($password) < 4) {
                     $error .= '<p>• ' . __('Password is too short.') . '</p>';
                 }

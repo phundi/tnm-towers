@@ -22,8 +22,6 @@ Class UserActions extends Aj {
                 UNSET($_POST[ 'c_password' ]);
                 $first_name = Secure($_POST[ 'first_name' ]);
                 $last_name  = Secure($_POST[ 'last_name' ]);
-                $email      = $username . "@malovings.com"; //Secure($_POST[ 'email' ]);
-                $_POST['email'] = $email;
                 $phone_number      = Secure($_POST[ 'phone_number' ]);
                 $password   = $_POST[ 'password' ];
 
@@ -58,6 +56,8 @@ Class UserActions extends Aj {
                 $_POST['phone_number'] = $phone_number;
                 $_POST['username'] = hash('md5', $phone_number);
                 $username   = Secure($_POST[ 'username' ]);
+                $email      = $username . "@malovings.com"; //Secure($_POST[ 'email' ]);
+                $_POST['email'] = $email;
 
 
                 if (isset($_POST[ 'username' ]) && empty($_POST[ 'username' ])) {

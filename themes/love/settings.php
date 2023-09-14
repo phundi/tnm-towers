@@ -123,10 +123,7 @@ if($target_user !== ''){
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col s6 xs12">
-							<input id="username" name="username" type="text" class="validate" value="<?php echo $profile->username;?>">
-							<label for="username"><?php echo __( 'Username' );?></label>
-						</div>
+					
 						<div class="input-field col s6 xs12">
 							<input id="email" name="email" type="text" class="validate" value="<?php echo $profile->email;?>" >
 							<label for="email"><?php echo __( 'Email' );?></label>

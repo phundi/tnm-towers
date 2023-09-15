@@ -459,8 +459,8 @@
 		<div id="message_modal" class="modal modal-sm">
 			<div class="modal-content">
 
-				<h6 class="bold"><?php echo __('Send a Message!');?></h6>
-				<p><?php echo __('Please subscribe to send a message!!');?></p>
+				<h6 class="bold"><?php echo __('Chat!');?></h6>
+				<p><?php echo __('Please subscribe to access chat features!!');?></p>
 					
 					<div class="modal-footer">
 					<button type="button" class="btn-flat waves-effect modal-close"><?php echo __( 'Cancel' );?></button>
@@ -471,6 +471,27 @@
 		</div>
         
 
+		<div id="call_modal" class="modal modal-sm">
+			<div class="modal-content">
+
+				
+				<p>
+					<a onclick="audioCall();" class="modal-close waves-effect waves-light btn-flat btn_primary white-text"><?php echo __( 'Audio Call' );?></a>
+				</p>
+				
+				<p>
+					<a onclick="videoCall();" class="modal-close waves-effect waves-light btn-flat btn_primary white-text"><?php echo __( 'Video Call' );?></a>
+				</p>
+
+					
+					<div class="modal-footer">
+					<button type="button" class="btn-flat waves-effect modal-close"><?php echo __( 'Cancel' );?></button>
+					
+				</div>
+			</div>
+		</div>
+        
+        
 		<div id="age_modal" class="modal modal-sm">
 			<div class="modal-content">
 
@@ -787,8 +808,30 @@
                     $('#paystack_btn').removeAttr('disabled');
                 });
             }
+            
+           
         </script>
     <?php } ?>
 <?php } ?>
 </body>
+
+<script>
+	 function audioCall(){
+		$("#btn_open_private_conversation").click();
+		
+		setTimeout(function(){
+			$("#audio_call").click();
+
+		}, 2000);
+	}
+	
+	function videoCall(){
+		$("#btn_open_private_conversation").click();
+
+		setTimeout(function(){
+			$("#video_call").click();
+		}, 2000);
+	}
+	
+</script>
 </html>

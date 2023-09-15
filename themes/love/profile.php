@@ -73,23 +73,7 @@ if($matched_count[0]['cnt'] == 2){
 					<?php } ?>
 				</div>
 				<div class="dt_othr_ur_info">
-					<h2>
-						<?php echo $profile->full_name.$profile->pro_icon;?><?php echo ( $profile->age  > 0 ) ? ", ". $profile->age : "";?>
-						<?php if( verifiedUser($profile) ){ ?>
-							<span tooltip="<?php echo __( 'This profile is Verified' );?>" flow="down">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#2196F3" d="M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" /></svg>
-							</span>
-						<?php }else{ ?>
-							<?php if($config->emailValidation == "0"){?>
-								<span tooltip="<?php echo __( 'This profile is Verified' );?>" flow="down">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#2196F3" d="M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" /></svg>
-								</span>
-							<?php }else{ ?>
-								<span tooltip="<?php echo __( 'This profile is Not verified' );?>" flow="down">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#e18805" d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12L17,15.59Z" /></svg>
-								</span>
-							<?php } ?>
-						<?php } ?>
+				
 					</h2>
 					<p><?php echo __( 'Popularity' );?>: <b><?php echo GetUserPopularity($profile->id);?></b></p>
 				</div>
@@ -137,7 +121,17 @@ if($matched_count[0]['cnt'] == 2){
 						</a>
 
 						<?php }?>
-						<a href="javascript:void(0);" onclick="$('#call_modal').modal('open');"
+						<a href="javascript:void(0);" 
+							<?php
+								if( auth()->is_pro == "1"){ ?>
+									onclick="$('#call_modal').modal('open');"
+
+							<?php } else { ?>
+								onclick="$('#calldeny_modal').modal('open');"
+							<?php } ?>
+							
+							
+							onclick="$('#call_modal').modal('open');"
 							style="background: transparent;" class="tooltipped"  data-tooltip="<?php echo __( 'Make a call' );?>">
 							<img src='<?php echo $theme_url;?>assets/img/vcall.png' width="24" height="24"></img>
 						</a>

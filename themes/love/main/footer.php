@@ -471,6 +471,22 @@
 		</div>
         
 
+		<div id="calldeny_modal" class="modal modal-sm">
+			<div class="modal-content">
+
+				<h6 class="bold"><?php echo __('Chat!');?></h6>
+				<p><?php echo __('You can only make calls if subscribed and you are matches');?></p>
+					
+					<div class="modal-footer">
+					<button type="button" class="btn-flat waves-effect modal-close"><?php echo __( 'Cancel' );?></button>
+					
+					<a href="<?php echo $site_url;?>/pro" data-ajax="/pro" class="modal-close waves-effect waves-light btn-flat btn_primary white-text"><?php echo __( 'Subscribe' );?></a>
+				</div>
+			</div>
+		</div>
+        
+
+
 		<div id="call_modal" class="modal modal-sm">
 			<div class="modal-content">
 

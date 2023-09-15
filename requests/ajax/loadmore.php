@@ -22,34 +22,6 @@ Class Loadmore extends Aj {
             }
         }
 
-
-//        $genders = GetGenders(self::ActiveUser());
-//
-//
-//
-//
-//
-//        $where_and = '';
-//        if (isset($_SESSION[ '_gender' ]) && $_SESSION[ '_gender' ] !== '') {
-//            if( !empty($_SESSION[ '_gender' ]) ) {
-//                $_genders = @explode( ',' , $_SESSION[ '_gender' ] );
-//                if($config->opposite_gender == "1"){
-//                    foreach($_genders as $key => $value ){
-//                        if($value == self::ActiveUser()->gender){
-//                            unset($_genders[$key]);
-//                        }
-//                    }
-//                }
-//                $_genders = @implode( ',' , $_genders );
-//                $where_and = '`gender` IN (' . $_genders . ')';
-//            }else{
-//                $where_and = '`gender` IN ('.$genders.')';
-//            }
-//        }else{
-//            $where_and = '`gender` IN ('.$genders.')';
-//        }
-
-
         $genders = null;
 
         if( self::Config()->opposite_gender == "1" ) {
@@ -148,41 +120,6 @@ Class Loadmore extends Aj {
         }
 
 
-        // $mycountry = self::ActiveUser()->show_me_to;
-        // if(empty(self::ActiveUser()->show_me_to)){
-        //     $mycountry = self::ActiveUser()->country;
-        // }
-
-        // if ($mycountry == self::ActiveUser()->country) {
-        //     //var_dump('activate distance filter');
-        //     $located = 7;
-        //     $lat = 0;
-        //     $lng = 0;
-        //     if( isset( $_SESSION['_lat'] ) && !empty($_SESSION['_lat']) ) $lat = Secure($_SESSION['_lat']);
-        //     if( isset( $_POST['_lat'] ) && !empty($_POST['_lat']) ) $lat = Secure($_POST['_lat']);
-
-        //     if( isset( $_SESSION['_lng'] )  && !empty($_SESSION['_lng'])) $lng = Secure($_SESSION['_lng']);
-        //     if( isset( $_POST['_lng'] ) && !empty($_POST['_lng']) ) $lng = Secure($_POST['_lng']);
-
-        //     if( isset( $_SESSION['_located'] ) && !empty($_SESSION['_located']) ) $located = Secure($_SESSION['_located']);
-        //     if( isset( $_POST['_located'] ) && !empty($_POST['_located']) ) $located = Secure($_POST['_located']);
-        //     if (empty($lat) && !empty(self::ActiveUser()->lat)) {
-        //         $lat = self::ActiveUser()->lat;
-        //     }
-        //     if (empty($lng) && !empty(self::ActiveUser()->lng)) {
-        //         $lng = self::ActiveUser()->lng;
-        //     }
-        //     //var_dump('distance : ' . $located);
-        //     //var_dump('lat : ' . $lat . ', lng :' . $lng);
-
-        //     $distance = ' AND ROUND( ( 6371 * acos(cos(radians(' . $lat . ')) * cos(radians(`lat`)) * cos(radians(`lng`) - radians(' . $lng . ')) + sin(radians(' . $lat . ')) * sin(radians(`lat`)))) ,1) ';
-        //     $dist_query = $distance . ' <= ' . $located . ' AND `country` = "' . $mycountry . '"';
-
-        // } else {
-        //     //var_dump('activate country filter');
-        //     $dist_query = ' AND `country` = "' . $mycountry . '"';
-        // }
-
         $age_query = '';
         // check age from post or from session
         if( isset($_POST['_age_from']) && !empty($_POST['_age_from']) && isset($_POST['_age_to']) && !empty($_POST['_age_to']) ){
@@ -212,7 +149,7 @@ Class Loadmore extends Aj {
             // }
 
 
-            $sql .= ' ORDER BY `boosted_time` DESC, `xlikes_created_at` DESC,`xvisits_created_at` DESC,`user_buy_xvisits` DESC,`is_pro` DESC,`hot_count` DESC,`id` DESC LIMIT '.$perpage.' OFFSET '.$page * $perpage.';';
+            $sql .= ' ORDER BY `boosted_time` DESC, `xlikes_created_at` DESC,`xvisits_created_at` DESC,`user_buy_xvisits` DESC,`is_pro` DESC,`hot_count` DESC, RAND() LIMIT '.$perpage.' OFFSET '.$page * $perpage.';';
             //print_r($sql);
             //exit($sql);
             $random_users        = $db->objectBuilder()->rawQuery($sql);

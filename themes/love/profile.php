@@ -32,6 +32,7 @@ if(!empty($user) ) {
 if($matched_count[0]['cnt'] == 2){
 	$matched = true;
 }
+
 ?>
 <!-- Profile  -->
 
@@ -123,7 +124,8 @@ if($matched_count[0]['cnt'] == 2){
 						<?php }?>
 						<a href="javascript:void(0);" 
 							<?php
-								if( auth()->is_pro == "1"){ ?>
+								
+								if( auth()->is_pro == "1" && $matched){ ?>
 									onclick="$('#call_modal').modal('open');"
 
 							<?php } else { ?>

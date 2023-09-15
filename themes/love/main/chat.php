@@ -8,7 +8,10 @@
 <input type="hidden" id="vxd" name="vx" value="">
 <input type="hidden" id="dfgetevxd" name="vbnrx" value="">
 <!-- Messages  -->
-<div id="message_box" class="hide dt_msg_box open_list">
+<div id="message_box" class="hide dt_msg_box open_list"
+
+
+>
     <div class="modal-content">
         <div class="msg_list"> <!-- Message List  -->
             <div class="msg_header valign-wrapper">

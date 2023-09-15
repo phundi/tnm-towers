@@ -831,21 +831,30 @@
 <?php } ?>
 </body>
 
+	var message_popup = true;
+
 <script>
 	 function audioCall(){
-		$("#btn_open_private_conversation").click();
 		
+		message_popup = false;
+		$("#btn_open_private_conversation").click();
+
 		setTimeout(function(){
 			$("#audio_call").click();
+			message_popup = true;
 
 		}, 2000);
 	}
 	
 	function videoCall(){
+		
+		message_popup = false;
 		$("#btn_open_private_conversation").click();
-
+				
 		setTimeout(function(){
 			$("#video_call").click();
+			message_popup = true;
+
 		}, 2000);
 	}
 	

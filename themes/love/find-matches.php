@@ -772,33 +772,37 @@ function callback_load_more_search_users( result ) {
     window.ajaxsend = true;
     var btn_text = $('#btn_load_more_search_users').html();
     $('#btn_load_more_search_users').removeAttr('data-ajax-params');
-    //$('#btn_load_more_search_users').css( {'display':'block'} ).show();
     $('#_load_more').remove();
+    console.log("Page", result.page);
     if (result.status == 200) {
-        //$('#dt_ltst_users').remove();
-        //$('.dt_home_match_user').remove();
-		console.log(result.html_all_matches);
+      
 		if (result.html_all_matches.length == 0){
 
-			//$("#random_users_label").hide();
 			$('#btn_load_more_random_users').hide();
 			$('#btn_load_more_match_users2').html("No more search users found");
-			//$('#section_match_users').hide();
-			//$("#random_users_container").html('');
+			
 			
 		}else{
-			//$('#search_users_container').empty();
-			//$('#section_match_users').show();
+		
 			$("#random_users_label").show();
 			$('#btn_load_more_random_users').hide();
 			$('#btn_load_more_match_users2').show();
 			$('#btn_load_more_match_users2').html("Load more ..!");
 
-			$("#random_users_label").html("All searched users")
+			$("#random_users_label").html("All searched users");
 			$('#btn_load_more_random_users').html('');
-			//$("#random_users_container").empty();
-			//console.log(result.html_all_matches);
-			$("#random_users_container").html(result.html_all_matches);
+		
+		
+			//var html = $("#random_users_container").html + result.html_all_matches;
+			//if (parseInt(page) > 1){
+			//		html += result.html_all_matches;
+			//}
+			
+			if (parseInt(result.page) > 2){
+				$("#random_users_container").append(result.html_all_matches);
+			}else{
+				$("#random_users_container").html(result.html_all_matches);
+			}
 		}
 
         $('#latest_user').removeClass('hide');

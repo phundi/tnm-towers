@@ -76,6 +76,12 @@ Class AirtelMoney extends Aj {
                 $membershipType = 5;
             }
 
+                   
+        ob_start();
+        var_dump($url);
+        var_dump("Plan: ".$pro_plan);
+        error_log(ob_get_clean());
+
             $amount = $price;
             $type = 'PRO';
         } else if ($payType == 'unlock_private_photo') {

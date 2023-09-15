@@ -798,11 +798,9 @@ function callback_load_more_search_users( result ) {
 			//		html += result.html_all_matches;
 			//}
 			
-			if (parseInt(result.page) > 2){
-				$("#random_users_container").append(result.html_all_matches);
-			}else{
-				$("#random_users_container").html(result.html_all_matches);
-			}
+			
+			$("#random_users_container").html(result.html_all_matches);
+
 		}
 
         $('#latest_user').removeClass('hide');

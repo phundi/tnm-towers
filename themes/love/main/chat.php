@@ -116,6 +116,15 @@
                             <?php
                                 $video_link = false;
                                 $audio_link = false;
+                                
+								global $db;
+                                $matched = false;
+                                $matched_count = array(['cnt' => 0]);
+								$matched_count = $db->rawQuery('SELECT count(id) as cnt FROM `likes` WHERE ( (`like_userid` = ' . auth()->id . ' AND `user_id` = ' . $profile->id . ') OR (`like_userid` = ' . $profile->id . ' AND `user_id` = ' . auth()->id . ') )');
+								if($matched_count[0]['cnt'] == 2){
+									$matched = true;
+								}
+
 
                                 //$config->pro_system            ( 0,1 ) -> check if Pro system enabled
                                 //$config->avcall_pro            ( 0,1 ) -> check if Video & Audio Call for pro users only
@@ -127,7 +136,6 @@
                                         // pro system enabled
                                         if ((int)$config->avcall_pro == 1) {
                                             // Video & Audio Call for pro users only enabled
-                                            if( $profile->is_pro == 1 ) {
                                                 // if user is pro
                                                 if ((int)$config->video_chat == 1) {
                                                     //Video Call enabled
@@ -137,7 +145,6 @@
                                                     //Audio Call enabled
                                                     $audio_link = true;
                                                 }
-                                            }
                                         }else{
                                             // Video & Audio Call for pro users only disabled
                                             if ((int)$config->video_chat == 1) {
@@ -165,10 +172,31 @@
                             ?>
 
                             <?php if ($video_link == true) { ?>
-                                <li><a href="javascript:void(0);" id="video_call" onclick="Wo_GenerateVideoCall(<?php echo auth()->id;?>)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"></path></svg> <?php echo __('Video call');?></a></li>
+                                <li><a href="javascript:void(0);" id="video_call" 
+                                      <?php
+								if( auth()->is_pro == "1"){ ?>
+									onclick="Wo_GenerateVideoCall(<?php echo auth()->id;?>)"
+
+								<?php } else { ?>
+									onclick="$('#calldeny_modal').modal('open');"
+								<?php } ?>
+								
+                                        
+                                ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"></path></svg> <?php echo __('Video call');?></a></li>
                             <?php } ?>
                             <?php if ($audio_link == true) { ?>
-                                <li><a href="javascript:void(0);" id="audio_call" onclick="Wo_GenerateVoiceCall(<?php echo auth()->id;?>)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"></path></svg> <?php echo __('Audio call');?></a></li>
+								
+								
+                                <li><a href="javascript:void(0);" id="audio_call"
+                                      <?php
+								
+								if( auth()->is_pro == "1"){ ?>
+									onclick="Wo_GenerateVoiceCall(<?php echo auth()->id;?>)"
+								<?php } else { ?>
+									onclick="$('#calldeny_modal').modal('open');"
+								<?php } ?>
+								
+                                 ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"></path></svg> <?php echo __('Audio call');?></a></li>
                             <?php } ?>
 
 						</ul>

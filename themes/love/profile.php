@@ -6,6 +6,7 @@
             window.location = window.site_url + '/find-matches';
         </script>
         <?php
+        
     }
 ?>
 <?php if($data['name'] == 'profile' && $profile->privacy_show_profile_on_google == '1'){ ?>
@@ -32,7 +33,6 @@ if(!empty($user) ) {
 if($matched_count[0]['cnt'] == 2){
 	$matched = true;
 }
-
 ?>
 <!-- Profile  -->
 

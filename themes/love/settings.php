@@ -128,29 +128,32 @@ if($target_user !== ''){
 							<input id="email" name="email" type="text" class="validate" value="<?php echo $profile->email;?>" >
 							<label for="email"><?php echo __( 'Email' );?></label>
 						</div>
+				
+						<div class="input-field col s6 xs12">
+							<input id="birthday" name="birthday" type="text" value="<?php echo $profile->birthday;?>" class="datepicker user_bday">
+							<label for="birthday"><?php echo __( 'Birth date' );?></label>
+						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s6 xs12">
-							<select id="country" name="country" <?php if($config->filter_by_cities == 1 && !empty($config->geo_username)){ ?>onchange="ChangeCountryKey(this)"<?php } ?>>
-								<option value="" disabled selected><?php echo __( 'Choose your nationality' );?></option>
+							<select id="district" name="district" onchange="ChangeCountryKey(this)">
+								<option value="" disabled selected><?php echo __( 'Choose your district' );?></option>
 								<?php
 									$city_country_key = '';
-									foreach( Dataset::load('countries') as $key => $val ){
-										if ($profile->country == $key) {
-		                                    $city_country_key = $key;
+									$district_key = '';
+
+									foreach( ["Balaka", "Blantyre", "Chikwawa", "Chiradzulo", "Chitipa", "Dedza", "Dowa", "Karonga", "Kasungu", "Likoma", "Lilongwe", "Machinga", "Mangochi", "Mchinji", "Mulanje", "Mwanza", "Mzimba", "Neno", "Nkhatabay", "Nkhotakota", "Nsanje", "Ntcheu", "Ntchisi", "Phalombe", "Rumphi", "Salima", "Thyolo", "Zomba"] as $key ){
+										$val = $key;
+										if ($profile->district == $key) {
+		                                    $district_key = $key;
 		                                }
-										echo '<option value="'. $key .'" data-code="'. $val['isd'] .'"  '. ( ( $profile->country == $key ) ? 'selected' : '' ) .'>'. $val['name'] .'</option>';
+										echo '<option value="'. $key .'" data-code="'. $val .'"  '. ( ( $profile->district == $key ) ? 'selected' : '' ) .'>'. $val .'</option>';
 									}
 								?>
 							</select>
-							<label for="country"><?php echo __( 'Nationality' );?></label>
+							<label for="country"><?php echo __( 'District' );?></label>
 						</div>
-						<div class="input-field col s6 xs12">
-		                    <input type="hidden" class="city_country_key" name="city_country_key" value="<?php echo($city_country_key); ?>">
-		                    <input id="city" type="text" class="validate selected_city" name="city" value="<?php echo $profile->city;?>" <?php if($config->filter_by_cities == 1 && !empty($config->geo_username)){ ?> onkeyup="SearchForCity(this)"<?php } ?>>
-		                    <div class="city_search_result"></div>
-		                    <label for="city"><?php echo __( 'City' );?></label>
-		                </div>
+
 						<?php if( $config->disable_phone_field == 'on' ){ ?>
 						<div class="input-field col s6 xs12">
 							<input id="mobile" type="tel" class="validate" name="phone_number" value="<?php echo $profile->phone_number;?>" title="Field must be a number."  >
@@ -167,10 +170,7 @@ if($target_user !== ''){
 							<label for="gender"><?php echo __( 'Gender' );?></label>
 						</div>
 						<?php } ?>
-						<div class="input-field col s6 xs12">
-							<input id="birthday" name="birthday" type="text" value="<?php echo $profile->birthday;?>" class="datepicker user_bday">
-							<label for="birthday"><?php echo __( 'Birth date' );?></label>
-						</div>
+
 					</div>
 
 					<?php

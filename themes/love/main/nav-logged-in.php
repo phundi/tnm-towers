@@ -141,7 +141,7 @@
 								
 								<?php if( $profile->is_pro == 1 ) { ?>
 									<li class="header_credits_mobi">
-										<a href=""  style="color: green; cursor: none;" class="waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M2 19h20v2H2v-2zM2 5l5 3.5L12 2l5 6.5L22 5v12H2V5zm2 3.841V15h16V8.841l-3.42 2.394L12 5.28l-4.58 5.955L4 8.84z" /></svg> <?php echo __( 'Subscribed' );?></a>
+										<a href=""  style="color: green; pointer-events: none; cursor: default;" class="waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M2 19h20v2H2v-2zM2 5l5 3.5L12 2l5 6.5L22 5v12H2V5zm2 3.841V15h16V8.841l-3.42 2.394L12 5.28l-4.58 5.955L4 8.84z" /></svg> <?php echo __( 'Subscribed' );?></a>
 									</li>
 									<li class="divider header_credits_mobi" tabindex="-1"></li>
 								<?php } ?>

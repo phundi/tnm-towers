@@ -1522,7 +1522,9 @@ Class Profile extends Aj {
                         'terms',
                         'reset',
                         'profile',
-                        'ajax'
+                        'ajax',
+						'district'
+
                     );
                     if (in_array(Secure($_POST[ 'username' ]), $user_name_list)) {
                         $error .= '<p>• ' . __('This User name is reserved word. please choose anther username.') . '</p>';
@@ -1639,6 +1641,9 @@ Class Profile extends Aj {
                 }
                 if (isset($_POST[ 'country' ])) {
                     $user[ 'country' ] = Secure($_POST[ 'country' ]);
+                }
+			   if (isset($_POST[ 'district' ])) {
+                    $user[ 'district' ] = Secure($_POST[ 'district' ]);
                 }
                 if (isset($_POST[ 'city' ])) {
                     $user[ 'city' ] = Secure($_POST[ 'city' ]);

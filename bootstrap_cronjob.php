@@ -48,39 +48,3 @@ if( isset($_GET['language']) && $_GET['language'] !== '' && in_array($_GET['lang
 }
 
 $config->filesVersion = '1.7';
-
-if (!empty($auto_redirect)) {
-    $checkHTTPS = checkHTTPS();
-    $isURLSSL = strpos($site_url, 'https');
-    if ($isURLSSL !== false) {
-        if (empty($checkHTTPS)) {
-            header("Location: https://" . full_url($_SERVER));
-            exit();
-        }
-    } else if ($checkHTTPS) {
-        header("Location: http://" . full_url($_SERVER));
-        exit();
-    }
-    if (strpos($site_url, 'www') !== false) {
-        if (!preg_match('/www/', $_SERVER['HTTP_HOST'])) {
-            $protocol = ($isURLSSL !== false) ? "https://" : "http://";
-            header("Location: $protocol" . full_url($_SERVER));
-            exit();
-        }
-    }
-    if (preg_match('/www/', $_SERVER['HTTP_HOST'])) {
-        if (strpos($site_url, 'www') === false) {
-            $protocol = ($isURLSSL !== false) ? "https://" : "http://";
-            header("Location: $protocol" . str_replace("www.", "", full_url($_SERVER)));
-            exit();
-        }
-    }
-}
-//if( $config->spam_warning == '1' ) {
-//    require_once $_LIBS . 'opinion.php';
-//    $op = new Opinion();
-//    $op->addToIndex($_LIBS . '/opinion/rt-polarity.neg', 'neg');
-//    $op->addToIndex($_LIBS . '/opinion/rt-polarity.pos', 'pos');
-//}
-//var_dump(IsUserSpammer(1));
-//exit();

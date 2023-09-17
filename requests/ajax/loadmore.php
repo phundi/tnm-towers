@@ -568,6 +568,11 @@ Class Loadmore extends Aj {
                     global $config;
                     foreach ($disliked_users as $row) {
                         ob_start();
+                        
+                        if(!file_exists($_BASEPATH . $row->avater)){
+							$row->avater = $config->userDefaultAvatar;
+						}
+												
                         if(!is_avatar_approved($row->id, $row->avater)) {
                             $row->avater = $config->userDefaultAvatar;
                         }

@@ -577,7 +577,30 @@ $_gender_text = '';
 					<?php } ?>
                 </div>
 			</div>
-            <?php } ?>
+            
+			<?php } else{ ?>
+						
+				<hr class="dt_home_rand_user_hr">
+					<div class="dt_ltst_users" id="dt_ltst_users">
+						<div class="dt_home_rand_user">
+							<h4 class="bold" id="random_users_label"><?php echo __( 'No random users found' );?></h4>
+							<div class="row" id="random_users_container">
+							</div>
+							<a href="javascript:void(0);" 
+								style="display: none;" id="btn_load_more_random_users" data-lang-nomore="<?php echo __('No more users to show.');?>" data-ajax-post="/loadmore/random_users" data-ajax-params="page=2" data-ajax-callback="callback_load_more_random_users" class="btn waves-effect load_more"><?php echo __('Load more...');?></a>
+							<a href="javascript:void(0);" onclick="nextPage();" style='display: none;' id="btn_load_more_match_users2" 
+											data-lang-loadmore="<?php echo __('Load more...');?>" 
+											data-lang-nomore="<?php echo __('No more users to show.');?>" 
+											data-ajax-post="/loadmore/match_users?profiles=true" 
+											data-ajax-params="page=2" 
+											data-ajax-callback="callback_load_more_search_users" 
+											class="btn waves-effect load_more"><?php echo __('Load more...!');?></a>
+
+						</div>
+					</div>				
+
+				
+			<?php } ?>
 			<!-- End Random Users  -->
 
 			<!-- Search Users  -->
@@ -768,6 +791,7 @@ $(document).ready(function(){
 
 		
 function callback_load_more_search_users2( result ) {
+		console.log("Result", result);
 
     window.ajaxsend = true;
     var btn_text = $('#btn_load_more_search_users').html();
@@ -783,7 +807,6 @@ function callback_load_more_search_users2( result ) {
 			
 			
 		}else{
-		
 			$("#random_users_label").show();
 			$('#btn_load_more_random_users').hide();
 			$('#btn_load_more_match_users2').show();
@@ -798,7 +821,7 @@ function callback_load_more_search_users2( result ) {
 			//		html += result.html_all_matches;
 			//}
 			
-			
+			$("#random_users_container").show();
 			$("#random_users_container").html(result.html_all_matches);
 
 		}

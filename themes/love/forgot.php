@@ -41,7 +41,7 @@
 								</div>
 
 								<div class="enter_otp">
-									<p style="color: white;"><?php echo __( 'Please enter the verification code sent to your Phone' );?></p>
+									<p style="color: white;"><?php echo __( 'Please enter the verification code sent to your Phone or contact us on' )."<a href='https://wa.me/+265995555626' > Whatsapp </a>";?></p>
 									<div id="otp_outer">
 									<div id="otp_inner">
 										<input id="otp_check_phone" type="text" maxlength="4" value="" pattern="\d*" title="Field must be a number." 

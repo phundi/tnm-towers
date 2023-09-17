@@ -161,7 +161,7 @@ Class Loadmore extends Aj {
                 foreach ($random_users as $random_user) {
                     ob_start();
                     
-                   if(file_exists($_BASEPATH . $random_user->avater)){
+                   if(!file_exists($_BASEPATH . $random_user->avater)){
 						$random_user->avater = $config->userDefaultAvatar;
 					}
 

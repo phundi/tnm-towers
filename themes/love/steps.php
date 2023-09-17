@@ -381,7 +381,7 @@
                         </div>
                      </div>
                      <div class="enter_otp">
-                        <p><?php echo __( 'Please enter the verification code sent to your Phone' );?></p>
+                        <p><?php echo __( 'Please enter the verification code sent to your Phone or contact us on' )."<a href='https://wa.me/+265995555626' > Whatsapp </a>";?></p>
                         <div id="otp_outer">
                            <div id="otp_inner">
                               <input id="otp_check_phone" type="text" maxlength="4" value="" pattern="\d*" title="Field must be a number." onkeyup="if (/\D/g.test(this.value)){ this.value = this.value.replace(/\D/g,'') } if($(this).val().length == 4){verify_sms_code(this);}" required />

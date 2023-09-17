@@ -760,14 +760,14 @@ $(document).ready(function(){
 
 					$('#nearme').html('Search Results');
 					
-                    callback_load_more_search_users( result );
+                    callback_load_more_search_users2( result );
                 }
             });
         });
 
 
 		
-function callback_load_more_search_users( result ) {
+function callback_load_more_search_users2( result ) {
 
     window.ajaxsend = true;
     var btn_text = $('#btn_load_more_search_users').html();

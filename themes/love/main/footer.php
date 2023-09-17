@@ -831,9 +831,10 @@
 <?php } ?>
 </body>
 
+<script>
+	
 	var message_popup = true;
 
-<script>
 	 function audioCall(){
 		
 		message_popup = false;

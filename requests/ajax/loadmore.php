@@ -1024,15 +1024,12 @@ Class Loadmore extends Aj {
                     $mediafilesid = 0;
                     foreach ($mediafiles as $mediafile) {
 						
-						$avater = GetMedia(str_replace('_full.', '_avater.', $mediafile['file']), false);
-						if(!file_exists($avater)){
-							$avater = $config->userDefaultAvatar;
-						}
+						
 						
                         $mf = array(
                             'id' => $mediafile['id'],
                             'full' => GetMedia($mediafile['file'], false),
-                            'avater' => $avater,
+                            'avater' => GetMedia(str_replace('_full.', '_avater.', $mediafile['file']), false),
                             'is_private' => $mediafile['is_private'],
                             'private_file_full' => GetMedia( $mediafile['private_file'], false),
                             'private_file_avater' => GetMedia(str_replace('_full.', '_avatar.', $mediafile['private_file']), false)

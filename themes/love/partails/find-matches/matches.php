@@ -83,7 +83,7 @@
 
                     <?php foreach ($matche->mediafiles as $key => $mfile){?>
                         <div class="carousel-item">
-                            <img alt="<?php echo $matche->username;?>" src="<?php echo $mfile['avater'];?>">
+                            <img alt="<?php echo ''?>" src="<?php echo $mfile['avater'];?>">
                         </div>
                     <?php } ?>
                 </div>

@@ -1383,7 +1383,7 @@ Class Loadmore extends Aj {
                 foreach ($matches as $row) {
                     ob_start();
                     
-                    if(empty($matche->avater)){
+                    if(empty($row->avater)){
 						$row->avater = $config->userDefaultAvatar;
 					}
 					

@@ -161,9 +161,10 @@ Class Loadmore extends Aj {
                 foreach ($random_users as $random_user) {
                     ob_start();
                     
-                    if(empty($random_user->avater)){
+                   if(file_exists($theme_path . $random_user->avater)){
 						$random_user->avater = $config->userDefaultAvatar;
 					}
+
                     if(!is_avatar_approved($random_user->id, $random_user->avater)) {
                         $random_user->avater = $config->userDefaultAvatar;
                     }
@@ -1055,6 +1056,9 @@ Class Loadmore extends Aj {
                 global $config;
                 foreach ($match_users_array as $matche) {
 					
+					if(file_exists($theme_path . $matche->avater)){
+						$matche->avater = $config->userDefaultAvatar;
+					}
 
                     ob_start();
                     if($value['src'] !== 'Fake' ){
@@ -1063,9 +1067,6 @@ Class Loadmore extends Aj {
                         }
                     }
                     
-                    if(empty($matche->avater)){
-						$matche->avater = $config->userDefaultAvatar;
-					}
                     
                     include $template;
                     $matche_first = false;
@@ -1383,7 +1384,7 @@ Class Loadmore extends Aj {
                 foreach ($matches as $row) {
                     ob_start();
                     
-                    if(empty($row->avater)){
+                    if(file_exists($theme_path . $row->avater)){
 						$row->avater = $config->userDefaultAvatar;
 					}
 					

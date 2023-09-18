@@ -932,8 +932,14 @@ Class Loadmore extends Aj {
         $html_all_matches = '';
         $listmode = 'findmatches';
     
+       
         $execludecond = ' `id` > 0';
         $lastid = 0;
+        
+	  if (!empty($_POST['_gender'])){
+			$_SESSION['randomized_ids'] = '-1';
+		}
+		
         if (isset($_GET['lastid']) && !empty($_GET['lastid'])) {
             $lastid = (int) Secure($_GET['lastid']);
             $execludecond = ' `id` < ' . $lastid;
@@ -951,6 +957,10 @@ Class Loadmore extends Aj {
             } else {
                 $page = (int) Secure($_POST[ 'page' ]) - 1;
             }
+            
+            if(!empty($_SESSION['randomized_ids'])){
+					$page = 0;
+			}
         }
 
         if ($error == '') {
@@ -992,8 +1002,14 @@ Class Loadmore extends Aj {
                 $query = 'SELECT * FROM `users` WHERE '. $execludecond .' AND '.$gender_query. ' AND' . ' `active` = "1" AND `verified` = "1" AND `id` NOT IN (SELECT `block_userid` FROM `blocks` WHERE `user_id` = ' . self::ActiveUser()->id . ') '. $execludes .' AND `id` NOT IN (SELECT `like_userid` FROM `likes` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND (SELECT count(*) FROM `mediafiles` WHERE `user_id` = `users`.`id` AND `mediafiles`.`is_private` = 0) > 0 AND `id` NOT IN (SELECT `hot_userid` FROM `hot` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND `id` <> "' . self::ActiveUser()->id . '"  ORDER BY `id` DESC LIMIT ' . $limit;
             }
           
-            
+		ob_start();
+        var_dump("IDS: " . $_SESSSION['randomized_ids']);
+		var_dump($query);
+
+        error_log(ob_get_clean());
+        
             $match_users       = $db->rawQuery($query);
+            
             //print_r($match_users);
 
 
@@ -1001,6 +1017,10 @@ Class Loadmore extends Aj {
 
 
             foreach ($match_users as $key => $value) {
+				
+				if(!empty($_SESSION['randomized_ids'])){
+					$_SESSION['randomized_ids'] .=  (int)$value['id'];
+				}
                 $user = new stdClass();
                 $user->id = $value['id'];
                 $user->online = $value['online'];

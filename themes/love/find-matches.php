@@ -791,13 +791,11 @@ $(document).ready(function(){
 
 		
 function callback_load_more_search_users2( result ) {
-		console.log("Result", result);
 
     window.ajaxsend = true;
     var btn_text = $('#btn_load_more_search_users').html();
     $('#btn_load_more_search_users').removeAttr('data-ajax-params');
     $('#_load_more').remove();
-    console.log("Page", result.page);
     if (result.status == 200) {
       
 		if (result.html_all_matches.length == 0){

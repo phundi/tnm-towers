@@ -4067,7 +4067,7 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
             }
 
             $json['gender'] = $gndr;
-
+            
         }
     }
     elseif($is_xhr){
@@ -4339,10 +4339,13 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
     if(!empty($json['gender'])){
         $gender = implode(',', $json['gender']);
         $where .= ' AND `gender` IN (' . $gender . ') ';
-    }
-
-
+    }	
    
+   
+	if (!empty($_SESSION['randomized_ids'])){
+		$where .= ' AND id NOT IN(' . $_SESSION['randomized_ids']. ')';
+	}
+	
     if(!empty($json['country'])){
         if ($json['country'] != 'all') {
             $where .= ' AND `district` = "' . $json['country'] . '" '; //Query district custom

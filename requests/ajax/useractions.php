@@ -133,8 +133,8 @@ Class UserActions extends Aj {
                             'pro_type' => '1'
                         ));
                                 
-                        sendSMS($phone_number, 
-                            'One week free subscription has been given to your account as we celebrate one week old of malovings.com. We love you');
+                        //sendSMS($phone_number, 
+                        //    'One week free subscription has been given to your account as we celebrate one week old of malovings.com. We love you');
 
                         if (!empty($_POST['invite']) && !empty($regestered_user['userId'])) {
                             $invite = Secure($_POST['invite']);

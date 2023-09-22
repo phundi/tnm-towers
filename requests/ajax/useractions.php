@@ -126,6 +126,16 @@ Class UserActions extends Aj {
                     $regestered_user = $users->register($re_data);
 
                     if ($regestered_user[ 'code' ] == 200) {
+
+                        $db->where('id', $regestered_user['userId'])->update('users', array(
+                            'pro_time' => time(),
+                            'is_pro' => '1',
+                            'pro_type' => '1'
+                        ));
+                                
+                        sendSMS($phone_number, 
+                            'One week free subscription has been given to your account as we celebrate one week old of malovings.com. We love you');
+
                         if (!empty($_POST['invite']) && !empty($regestered_user['userId'])) {
                             $invite = Secure($_POST['invite']);
                             @DeleteAdminInvitation('code', $invite);

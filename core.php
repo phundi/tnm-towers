@@ -2295,7 +2295,6 @@ function SendSMS($to, $message) {
     
     $apiKey   = '7b187d52b893b3762034235134b1872c76fd326c4d76f9f03dc2a5ab3def046c'; // use your sandbox app API key for development in the test environment
     $AT       = new AfricasTalking($username, $apiKey);
-
     // Get one of the services
     $sms      = $AT->sms();
 
@@ -6600,6 +6599,28 @@ function SendQueueEmails(){
     }
     return $send;
 }
+function SendQueueSMS($message){
+    global $config,$db,$_LIBS;
+
+    $protime                = time();
+    $random_users        = $db->objectBuilder()->rawQuery("SELECT * FROM users ");
+    foreach ($random_users as $random_user) {
+
+        ob_start();
+        $updated = $db->where('id', $random_user->id)->update('users', array(
+            'pro_time' => $protime,
+            'is_pro' => '1',
+            'pro_type' => '1'
+        ));
+
+        var_dump($random_user->phone_number.$updated);
+
+        sendSMS($random_user->phone_number, $message);
+        error_log(ob_get_clean());
+    }
+    
+}
+
 
 function CheckPermission($permissions, $permission){
     if(empty( $permissions )){

@@ -130,7 +130,7 @@ Class UserActions extends Aj {
                         $db->where('id', $regestered_user['userId'])->update('users', array(
                             'pro_time' => time(),
                             'is_pro' => '1',
-                            'pro_type' => '1'
+                            'pro_type' => '5'
                         ));
                                 
                         //sendSMS($phone_number, 

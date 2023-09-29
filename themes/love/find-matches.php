@@ -569,9 +569,6 @@ $_gender_text = '';
 					<a href="javascript:void(0);" onclick="nextPage();" style='display: none;' id="btn_load_more_match_users2" 
 									data-lang-loadmore="<?php echo __('Load more...');?>" 
 									data-lang-nomore="<?php echo __('No more users to show.');?>" 
-									data-ajax-post="/loadmore/match_users?profiles=true" 
-									data-ajax-params="page=2" 
-									data-ajax-callback="callback_load_more_search_users" 
 									class="btn waves-effect load_more"><?php echo __('Load more...!');?></a>
 
 					<?php } ?>
@@ -624,9 +621,9 @@ var page = 1;
 
 function nextPage(){
 	page += 1;
-	$("#btn_load_more_match_users2").attr('data-ajax-post', ('/loadmore/match_users?page=' + page));
-	$("#btn_load_more_match_users2").attr('data-ajax-params', ('page=' + page));
-	$("#btn_load_more_match_users2").attr('data-ajax-callback', "");
+	//$("#btn_load_more_match_users2").attr('data-ajax-post', ('/loadmore/match_users?page=' + page));
+	//$("#btn_load_more_match_users2").attr('data-ajax-params', ('page=' + page));
+	//$("#btn_load_more_match_users2").attr('data-ajax-callback', "");
 
 }
 
@@ -780,8 +777,6 @@ $(document).ready(function(){
                 timeout: 60000,
                 dataType: false,
                 success: function(result) {
-
-					$('#nearme').html('Search Results');
 					
                     callback_load_more_search_users2( result );
                 }
@@ -797,12 +792,14 @@ function callback_load_more_search_users2( result ) {
     $('#btn_load_more_search_users').removeAttr('data-ajax-params');
     $('#_load_more').remove();
     if (result.status == 200) {
-      
+		$('#section_match_users').hide();
+		$('#nearme').html('All Searched Users');
+
 		if (result.html_all_matches.length == 0){
 
 			$('#btn_load_more_random_users').hide();
-			$('#btn_load_more_match_users2').html("No more search users found");
-			
+			$('#btn_load_more_match_users2').html("No search users found");
+			$("#random_users_container").html('');
 			
 		}else{
 			$("#random_users_label").show();
@@ -810,7 +807,7 @@ function callback_load_more_search_users2( result ) {
 			$('#btn_load_more_match_users2').show();
 			$('#btn_load_more_match_users2').html("Load more ..!");
 
-			$("#random_users_label").html("All searched users");
+			$("#random_users_label").hide();
 			$('#btn_load_more_random_users').html('');
 		
 		
@@ -832,22 +829,23 @@ function callback_load_more_search_users2( result ) {
         let listHtml = '';
 
         //button.removeClass('hide');
-        let params = button.attr('data-ajax-params' );
-        let search = result.page ;
-        let replacement = "_where=" + encodeURI(result.post) +"&page=" + search;
-        button.attr('data-ajax-params', replacement);
+        //let params = button.attr('data-ajax-params' );
+        //let search = result.page ;
+        //let replacement = "_where=" + encodeURI(result.post) +"&page=" + search;
+        //button.attr('data-ajax-params', replacement);
+
         if (result.html.length == 0) {
-            $('#section_match_users').html(`<div class="dt_sections" style="margin: 14px 0 0;"><h5 id="_load_more" class="empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9,4A4,4 0 0,1 13,8A4,4 0 0,1 9,12A4,4 0 0,1 5,8A4,4 0 0,1 9,4M9,6A2,2 0 0,0 7,8A2,2 0 0,0 9,10A2,2 0 0,0 11,8A2,2 0 0,0 9,6M9,13C11.67,13 17,14.34 17,17V20H1V17C1,14.34 6.33,13 9,13M9,14.9C6.03,14.9 2.9,16.36 2.9,17V18.1H15.1V17C15.1,16.36 11.97,14.9 9,14.9M15,4A4,4 0 0,1 19,8A4,4 0 0,1 15,12C14.53,12 14.08,11.92 13.67,11.77C14.5,10.74 15,9.43 15,8C15,6.57 14.5,5.26 13.67,4.23C14.08,4.08 14.53,4 15,4M23,17V20H19V16.5C19,15.25 18.24,14.1 16.97,13.18C19.68,13.62 23,14.9 23,17Z"></path></svg>${$('#btn_load_more_search_users').attr('data-lang-nomore')}</h5></div>`);
+           // $('#section_match_users').html(`<div class="dt_sections" style="margin: 14px 0 0;"><h5 id="_load_more" class="empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9,4A4,4 0 0,1 13,8A4,4 0 0,1 9,12A4,4 0 0,1 5,8A4,4 0 0,1 9,4M9,6A2,2 0 0,0 7,8A2,2 0 0,0 9,10A2,2 0 0,0 11,8A2,2 0 0,0 9,6M9,13C11.67,13 17,14.34 17,17V20H1V17C1,14.34 6.33,13 9,13M9,14.9C6.03,14.9 2.9,16.36 2.9,17V18.1H15.1V17C15.1,16.36 11.97,14.9 9,14.9M15,4A4,4 0 0,1 19,8A4,4 0 0,1 15,12C14.53,12 14.08,11.92 13.67,11.77C14.5,10.74 15,9.43 15,8C15,6.57 14.5,5.26 13.67,4.23C14.08,4.08 14.53,4 15,4M23,17V20H19V16.5C19,15.25 18.24,14.1 16.97,13.18C19.68,13.62 23,14.9 23,17Z"></path></svg>${$('#btn_load_more_search_users').attr('data-lang-nomore')}</h5></div>`);
         } else {
             if($('#avaters_item_container').length == 0){
-                $('#section_match_users').html(`<div class="dt_home_match_user">
-                <div class="valign-wrapper mtc_usr_avtr" id="avaters_item_container">
-                        ${result.html_imgs}
-                    </div>
-                    <div class="mtc_usr_details" id="match_item_container">
-                        ${result.html}
-                    </div>
-                </div>`);
+                //$('#section_match_users').html(`<div class="dt_home_match_user">
+                //<div class="valign-wrapper mtc_usr_avtr" id="avaters_item_container">
+                 //       ${result.html_imgs}
+                  //  </div>
+                  //  <div class="mtc_usr_details" id="match_item_container">
+                   //     ${result.html}
+                   // </div>
+                //</div>`);
             }
             else{
                 $('#avaters_item_container').html(result.html_imgs);

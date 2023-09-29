@@ -935,10 +935,12 @@ Class Loadmore extends Aj {
        
         $execludecond = ' `id` > 0';
         $lastid = 0;
-        
-	  if (!empty($_POST['_gender'])){
-			$_SESSION['randomized_ids'] = '-1';
-		}
+        ob_start();
+
+		var_dump("IDSs_START: " . $_SESSION['randomized_ids']);
+		error_log(ob_get_clean());
+			
+
 		
         if (isset($_GET['lastid']) && !empty($_GET['lastid'])) {
             $lastid = (int) Secure($_GET['lastid']);
@@ -958,8 +960,14 @@ Class Loadmore extends Aj {
                 $page = (int) Secure($_POST[ 'page' ]) - 1;
             }
             
+			if (!empty($_POST['_gender']) && empty($_SESSION['randomized_ids'])){
+				$_SESSION['randomized_ids'] = '-1';
+			}else if(empty($_POST['_gender'])){
+				$_SESSION['randomized_ids'] = '';
+			}
+				
             if(!empty($_SESSION['randomized_ids'])){
-					$page = 0;
+				$page = 0;
 			}
         }
 
@@ -1002,16 +1010,14 @@ Class Loadmore extends Aj {
                 $query = 'SELECT * FROM `users` WHERE '. $execludecond .' AND '.$gender_query. ' AND' . ' `active` = "1" AND `verified` = "1" AND `id` NOT IN (SELECT `block_userid` FROM `blocks` WHERE `user_id` = ' . self::ActiveUser()->id . ') '. $execludes .' AND `id` NOT IN (SELECT `like_userid` FROM `likes` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND (SELECT count(*) FROM `mediafiles` WHERE `user_id` = `users`.`id` AND `mediafiles`.`is_private` = 0) > 0 AND `id` NOT IN (SELECT `hot_userid` FROM `hot` WHERE `user_id` = ' . self::ActiveUser()->id . ') AND `id` <> "' . self::ActiveUser()->id . '"  ORDER BY `id` DESC LIMIT ' . $limit;
             }
           
-		ob_start();
-        var_dump("IDS: " . $_SESSSION['randomized_ids']);
-		var_dump($query);
+			ob_start();
 
-        error_log(ob_get_clean());
-        
+			var_dump("IDS: " . $_SESSION['randomized_ids']);
+			//var_dump($query);
+			error_log(ob_get_clean());
+
             $match_users       = $db->rawQuery($query);
             
-            //print_r($match_users);
-
 
             $match_users_array = array();
 
@@ -1019,7 +1025,7 @@ Class Loadmore extends Aj {
             foreach ($match_users as $key => $value) {
 				
 				if(!empty($_SESSION['randomized_ids'])){
-					$_SESSION['randomized_ids'] .=  (int)$value['id'];
+					$_SESSION['randomized_ids'] =  $_SESSION['randomized_ids'] . ',' . $value['id'];
 				}
                 $user = new stdClass();
                 $user->id = $value['id'];
@@ -1062,6 +1068,8 @@ Class Loadmore extends Aj {
                         $user->mediafiles[] = $mf;
                     }
                 }
+                
+
                 $img              = 0;
                 foreach ($mediafiles as $k => $v) {
                     if ($img < 4) {

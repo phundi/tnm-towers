@@ -935,12 +935,6 @@ Class Loadmore extends Aj {
        
         $execludecond = ' `id` > 0';
         $lastid = 0;
-        ob_start();
-
-		var_dump("IDSs_START: " . $_SESSION['randomized_ids']);
-		error_log(ob_get_clean());
-			
-
 		
         if (isset($_GET['lastid']) && !empty($_GET['lastid'])) {
             $lastid = (int) Secure($_GET['lastid']);

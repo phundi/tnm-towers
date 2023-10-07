@@ -141,7 +141,7 @@ perfect match for you' );?></p>
 							</div>
 							<div>
 								<h5><?php echo __( 'Start Dating' );?></h5>
-								<p><?php echo __( 'Interact using our user friendly platform, Initiate conversations in mints. Date your best matches.' );?></p>
+								<p><?php echo __( 'Interact using our user friendly platform, Initiate conversations in minutes. Date your best matches.' );?></p>
 							</div>
 						</div>
 					</div>

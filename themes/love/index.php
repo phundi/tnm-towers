@@ -212,7 +212,7 @@ perfect match for you' );?></p>
 							</div>
 							<div>
 								<h5><?php echo __( 'Fully secure & encrypted' );?></h5>
-								<p><?php echo __( 'Your account is safe on Quickdate. We never share your data with third party.' );?></p>
+								<p><?php echo __( 'Your account is safe on Malovings. We never share your data with third party.' );?></p>
 							</div>
 						</div>
 						<div class="list">

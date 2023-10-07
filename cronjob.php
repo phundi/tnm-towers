@@ -1,5 +1,5 @@
 <?php
-require_once realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'bootstrap.php';
+require_once realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'bootstrap_cronjob.php';
 // To delete expired pro membership
 DeleteExpiredProMemebership();
 // To delete expired boost me users in find-matches page

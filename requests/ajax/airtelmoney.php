@@ -496,7 +496,7 @@ Class AirtelMoney extends Aj {
                         'type' => 'CREDITS',
                         'pro_plan' => '0',
                         'credit_amount' => $amount,
-                        'via' => 'airtelmoney'
+                        'via' => 'ctechvisaypay'
                     ));
 
                     $db->where('transaction_id', $_POST['transID'])->update('payment_requests', array(

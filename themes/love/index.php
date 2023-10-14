@@ -280,6 +280,11 @@ perfect match for you' );?></p>
 							<a href="<?php echo 'https://web.facebook.com/profile.php?id=100057366853256' ?>" target="_blank" class="social_btn">
 								<svg xmlns="http://www.w3.org/2000/svg" width="9.436" height="17.973" viewBox="0 0 9.436 17.973"><path id="Path_6060" data-name="Path 6060" d="M3655.291,12537.334h2.247l.9-3.594h-3.145v-1.8c0-.9,0-1.8,1.8-1.8h1.348v-3.056c-.3,0-1.4-.09-2.57-.09a3.916,3.916,0,0,0-4.169,4.224v2.517H3649v3.594h2.7v7.639h3.594Z" transform="translate(-3649 -12527)" fill="currentColor"/></svg>
 							</a>&nbsp;&nbsp;
+							
+							<a href="https://wa.me/+265995555626" style='background: white;cursor: pointer;' target="_blank" class="social_btn">
+								<img width='100' height='50' src="<?php echo $theme_url;?>assets/img/whatsapp_img.png">
+							</a>&nbsp;&nbsp;
+							
 						<?php }?>
 						
 					

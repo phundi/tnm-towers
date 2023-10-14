@@ -16,6 +16,19 @@
             </div>
         </div>
 		
+		
+		<div class="payments_modal modal" id="visa-modal">
+            <div class="modal-dialog">
+                <div class="modal-content dt_bank_trans_modal">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body  credit_pln">
+                        <p id='visapay-status'></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <?php if($config->credit_earn_system == 1){?>
         <div class="payment_modal modal" id="reward_daily_credit_modal">
             <div class="modal-dialog">

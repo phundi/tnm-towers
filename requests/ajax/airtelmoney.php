@@ -7,6 +7,113 @@ error_reporting(E_ALL);
 use GuzzleHttp\Client;
 
 Class AirtelMoney extends Aj {
+	
+	public function createVisaSession(){
+        global $db,$config,$_LIBS;		
+		
+        if (self::ActiveUser() == NULL) {
+            return array(
+                'status' => 403,
+                'message' => __('Forbidden')
+            );
+        }
+        
+        if (empty($_POST[ 'price' ])) {
+            return array(
+                'status' => 400,
+                'message' => __('No Amount Specified')
+            );
+        }
+        
+		ob_start();
+
+        $realprice   = (int)Secure($_POST[ 'price' ]);
+        $price       = (int)Secure($_POST[ 'price' ]);
+        $pro_plan    = Secure($_POST[ 'pro_plan' ]);
+        $amount      = 0;
+        $membershipType      = 0;
+        $payType     = Secure($_POST[ 'payType' ]);
+        $type        = '';
+        if ($payType == 'credits') {
+            if ($realprice == self::Config()->bag_of_credits_price) {
+                $amount = self::Config()->bag_of_credits_amount;
+            } else if ($realprice == self::Config()->box_of_credits_price) {
+                $amount = self::Config()->box_of_credits_amount;
+            } else if ($realprice == self::Config()->chest_of_credits_price) {
+                $amount = self::Config()->chest_of_credits_amount;
+            }
+
+            $type = "CREDITS";
+        } else if ($payType == 'membership') {
+            if ($pro_plan == 'weekly') {
+                $membershipType = 1;
+            } else if ($pro_plan == 'monthly') {
+                $membershipType = 2;
+            } else if ($pro_plan == 'yearly') {
+                $membershipType = 3;
+            } else if ($pro_plan == 'lifetime') {
+                $membershipType = 4;
+            }else if ($pro_plan == 'daily'){
+                $membershipType = 5;
+            }
+
+			$amount = $price;
+			$type = 'PRO';
+		}
+        
+	    require_once($_LIBS . 'africastalking/vendor/autoload.php');
+        $client = new GuzzleHttp\Client();
+        
+        $url         = "https://api-sandbox.ctechpay.com/?endpoint=order";
+        $token       = "NGJjZWM3NmYtMTMyNi00YzhmLWI1ZGMtNmE1ZWM1Mzc3ODA5OjM1MjFiYjA2LThlOTUtNDJmZS04NzQ2LTc1Mzg5NDhmMDM2Nw==";
+        $redirectUrl = "https://staging.malovings.com/pro";
+        
+        
+        $res = $client->request('POST', $url, [
+            'form_params' => [
+                "token" => $token,
+                "amount" => $amount,
+                "merchantAttributes" => true,
+                "redirectUrl" => $redirectUrl,
+                "cancelUrl" => "https://staging.malovings.com",
+                "CancelText" => "Go Back To Malovings Dating Site"
+            ]
+        ]);        
+        
+		$body = json_decode($res->getBody()->getContents());
+	    var_dump($body);
+
+		error_log(ob_get_clean());
+
+       if($res->getStatusCode() == '200'){
+		   
+		   $db->insert('payment_requests', array(
+                'user_id' => self::ActiveUser()->id,
+                'transaction_id' => $body->order_reference,
+                'amount' => $amount,
+                'phone_number' => self::ActiveUser()->phone_number,
+                'status' => '0',  //0=PENDING, 1=SUCCESS, 2=CONFLICT
+                'type' => $type,
+                'pro_plan' => $membershipType,
+                'via' => 'ctechvisapay'
+            ));
+            
+		   return array(
+                'status' => 200,
+                'data' => $body
+            );
+			
+	   }else{
+		
+		   return array(
+                'status' => 400,
+                'message' =>  "Something went wrong!!"
+            );
+	   }
+
+
+	}
+	
     public function createsession(){
         global $db,$config,$_LIBS;
         
@@ -319,5 +426,144 @@ Class AirtelMoney extends Aj {
             );     
         
         }
+    }
+    
+    
+    public function checkVisa(){
+        global $db,$config,$_LIBS;
+     
+        if (self::ActiveUser() == NULL) {
+            return array(
+                'status' => 403,
+                'message' => __('Forbidden')
+            );
+        }
+
+        $payType = Secure($_POST['payType']);
+        $transID = Secure($_POST['ref']);
+
+        require_once($_LIBS . 'africastalking/vendor/autoload.php');
+        $client = new GuzzleHttp\Client();
+
+        $url         = "https://api-sandbox.ctechpay.com/get_order_status/";
+        $token       = "NGJjZWM3NmYtMTMyNi00YzhmLWI1ZGMtNmE1ZWM1Mzc3ODA5OjM1MjFiYjA2LThlOTUtNDJmZS04NzQ2LTc1Mzg5NDhmMDM2Nw==";
+        
+        
+        $res = $client->request('POST', $url, [
+            'form_params' => [
+                "token" => $token,
+                "orderRef" => $transID,
+            ]
+        ]);        
+        
+		$body = json_decode($res->getBody()->__toString());
+
+		ob_start();
+
+	    var_dump($body);
+        error_log(ob_get_clean());
+
+
+		if ($body == null || empty($body) || (!empty($body) && $res->getStatusCode() != 200)){
+			return array(
+				'status' => 501,
+				'message' => __('Transaction Failed !!'),
+			);     
+		}
+               
+		if ($body->status != 'PURCHASED'){
+			return array(
+				'status' => 501,
+				'data' =>  $body,
+				'message' => 'Transaction Failed!!'
+			); 
+		}else{
+
+            $user           = $db->objectBuilder()->where('id', self::ActiveUser()->id)->getOne('users', array('balance'));
+            if ($payType == 'credits') {
+                //done
+                $paymentRequest = $db->objectBuilder()->where('transaction_id', $transID)->getOne("payment_requests");
+                $amount = $paymentRequest->amount;
+                $newbalance = $user->balance + $amount;
+
+                $updated    = $db->where('id', self::ActiveUser()->id)->update('users',
+                                     array('balance' => $newbalance));
+                if ($updated) {
+                    //RegisterAffRevenue(self::ActiveUser()->id,$price / 100);
+                    $db->insert('payments', array(
+                        'user_id' => self::ActiveUser()->id,
+                        'amount' => $amount,
+                        'type' => 'CREDITS',
+                        'pro_plan' => '0',
+                        'credit_amount' => $amount,
+                        'via' => 'airtelmoney'
+                    ));
+
+                    $db->where('transaction_id', $_POST['transID'])->update('payment_requests', array(
+                        'status' => "1",
+                        'verified_at' => date('Y-m-d H:i:s')
+                    ));
+                    
+                    $_SESSION[ 'userEdited' ] = true;
+
+                    return array(
+                        'status' => 200,
+                        'message' => __('Transaction Successful!!'),
+                    ); 
+                    
+                } else {
+                    return array(
+                        'status' => 501,
+                        'message' => __('Transaction failed!!'),
+                    );
+                }
+            } else if ($payType == 'membership') {
+
+                $paymentRequest = $db->objectBuilder()->where('transaction_id', $transID)->getOne("payment_requests");
+                $membershipType = $paymentRequest->pro_plan;   
+
+                $amount = $paymentRequest->amount;
+                
+                $protime                = time();
+                $is_pro                 = "1";
+                $updated                = $db->where('id', self::ActiveUser()->id)->update('users', array(
+                    'pro_time' => $protime,
+                    'is_pro' => $is_pro,
+                    'pro_type' => $membershipType
+                ));
+
+                if ($updated) {
+                   
+                    
+                    $db->insert('payments', array(
+                        'user_id' => self::ActiveUser()->id,
+                        'amount' => $amount,
+                        'type' => 'PRO',
+                        'pro_plan' => $membershipType,
+                        'credit_amount' => '0',
+                        'via' => 'airtelmoney'
+                    ));
+                    
+                    $db->where('transaction_id', $transID)->update('payment_requests', array(
+                        'status' => "1",
+                        'verified_at' => date('Y-m-d H:i:s')
+                    ));
+                    
+                    $_SESSION[ 'userEdited' ] = true;
+                    SuperCache::cache('pro_users')->destroy();
+
+                    return array(
+                        'status' => 200,
+                        'message' => __('Transaction Successful!!'),
+                    ); 
+                }else{
+                    return array(
+                        'status' => 501,
+                        'message' => __('Transaction failed!!'),
+                    ); 
+                }
+
+            } 
+		}
     }
 }

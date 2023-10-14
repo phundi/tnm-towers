@@ -8,6 +8,8 @@
 <?php if( $config->pro_system == 0 ){?><script>window.location = window.site_url;</script><?php } ?>
 <?php if( isGenderFree($profile->gender) === true ){?><script>window.location = window.site_url;</script><?php } ?>
 <!-- Premium  -->
+
+				
 <div class="container container-fluid container_new page-margin find_matches_cont">
 	<div class="row r_margin">
 		<div class="col l3">
@@ -158,7 +160,7 @@
 	</div>
 </div>
 
-<div id="payment-notice" class="modal" tabindex="-1" role="dialog">
+<div id="payment-notice" class="modal" tabindex="-1" role="dialog" style='position: relative; overflow-y: auto; min-height: 200px;'>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -170,9 +172,11 @@
 				<div class="row">
 					
 					<div class="input-field col m12 s12" style="padding: 0% !important;">
-						<select id="payment-method" name="payment-method" data-errmsg="<?php echo __( 'Payment Method');?>" required>
+						<select id="payment-method" name="payment-method" onchange='checkForms(this)' data-errmsg="<?php echo __( 'Payment Method');?>" required>
 						<?php echo DatasetGetSelect( null, "payment-method", __("Choose Payment Method") );?>
-						<option selected >Airtel Money</option>
+							<option selected >Airtel Money</option>
+							<option>Visa Card</option>
+							<option>Other Payment Method</option>
 						</select>
 					</div>
 							
@@ -191,7 +195,7 @@
 						}
 					?>
 
-	  				<div class="row">
+	  				<div class="row" id='airtel-row' >
 						<div class="input-field col m12 s12">
 							<input name="airtel-number" id="airtel-number" type="text"  value=<?php echo  $phone?>
 									class="validate" value="" required >
@@ -215,6 +219,16 @@
 		 	class="btn btn-primary">
           <span>Pay Now</span>
         </button>
+
+
+      </div>
+      
+      <div class="modal-footer">
+
+		<a href="https://wa.me/+265995555626" style='background: white;cursor: pointer;padding: 5px;margin-right: 25%;' target="_blank" class="social_btn">
+				Contact Us On:
+								<img style='padding-top: 8px;' width='60' height='40' src="<?php echo $theme_url;?>assets/img/whatsapp_img.png">
+							</a>&nbsp;&nbsp;
 
 
       </div>
@@ -717,9 +731,18 @@
 
 	}
 
+	
 	function submitAirtelPayment(){
 
+		
 		var method = $("#payment-method").val();
+		
+		if(method == 'Visa Card'){
+			//Submit Order
+			submitVisaOrder();
+			return;
+		}
+		
 		var phone = $("#airtel-number").val();
 
 		if (method == "" || method == null){
@@ -783,5 +806,81 @@
 			}
 		});
 	}
+	
+function submitVisaOrder(){
+		
+		console.log('Submitting CTECH Visa Pay Order');
+		showSpinner();
+		$.post(window.ajax + 'airtelmoney/createVisaSession', {
+            payType: 'membership',
+            description: getDescription(),
+			pro_plan: airtelPeriod, 
+            price: airtelAmount,
+        }, function(data) {
+			if (data.status == 200) {
+				console.log(data);
+				var url = data.data.payment_page_URL; 
+				window.location = url;
+			}
+		});
+
+}
+	
+	
+function checkVisaOrder(){
+		
+		$.post(window.ajax + 'airtelmoney/checkVisa', {
+			payType: 'membership',
+            ref: "<?php echo  $_REQUEST['ref']; ?>",
+        }, function(data) {
+			console.log(data);
+			
+			
+			
+			if (data.status == 200) {
+				$('#visapay-status').html("Transaction successful !!");
+				$('#visa-modal').modal('open');
+
+				window.location = "/find-matches";
+			}else{
+				$('#visapay-status').html("Transaction  !!");
+				$('#visa-modal').modal('open');	
+			}
+		});
+
+}
+	
+	function checkForms(node){
+		var val = node.value;
+		
+		if (val == 'Airtel Money'){
+			
+			$("#airtel-row").show();
+			//$("#other-row").hide();
+		}else if (val == 'Visa Card'){
+		
+			$("#airtel-row").hide();
+			//$("#other-row").hide();
+		}else if(val == 'Other Payment Method'){
+			
+			$("#airtel-number").hide();
+			$("#other-row").show();
+			$("#pop").show();
+		}
+	}
 
 </script>
+
+
+<?php 
+
+if ($profile->is_pro == 0 && !empty($_REQUEST['ref'])) {
+	 ?>
+
+<script>
+		
+		checkVisaOrder();
+		
+</script>
+<?php } ?>
+

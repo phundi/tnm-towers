@@ -23,15 +23,15 @@ function showSpinner(action, clickOnClose, shieldOn) {
 function hideSpinner() {
 
 
-    if (__$("spin")) {
+    if (getElementById('spin')) {
 
-        document.body.removeChild(__$("spin"));
+        document.body.removeChild(getElementById('spin'));
 
     }
 
-    if (__$("shield")) {
+    if (getElementById('shield')) {
 
-        document.body.removeChild(__$("shield"));
+        document.body.removeChild(getElementById('shield'));
 
     }
 

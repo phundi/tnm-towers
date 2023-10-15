@@ -29,6 +29,24 @@
             </div>
         </div>
         
+		<div class="payments_modal modal" id="manual-modal">
+            <div class="modal-dialog">
+                <div class="modal-content dt_bank_trans_modal">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body  credit_pln">
+                        <p id='manual-status'>Requested Submitted Successfully.. Please wait for approval!!</p>
+                    </div>
+                    
+                     <div class="modal-footer">
+						<button onclick="window.location = '/find-matches'; " 
+						class="btn waves-effect waves-light btn-flat btn_primary white-text btn-main"><?php echo __( 'Okay' );?></button>
+					</div>
+					
+                </div>
+            </div>
+        </div>
+        
         <?php if($config->credit_earn_system == 1){?>
         <div class="payment_modal modal" id="reward_daily_credit_modal">
             <div class="modal-dialog">

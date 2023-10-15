@@ -160,7 +160,7 @@
 	</div>
 </div>
 
-<div id="payment-notice" class="modal" tabindex="-1" role="dialog" style='position: relative; overflow-y: auto; min-height: 200px;'>
+<div id="payment-notice" class="modal" tabindex="-1" role="dialog" style='position: absolute; overflow-y: auto; min-height: 250px;top: 5%;'>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -171,18 +171,55 @@
 		<form id='airtel-form'>
 				<div class="row">
 					
-					<div class="input-field col m12 s12" style="padding: 0% !important;">
+					<div class="input-field col m12 s12" style="padding: 0% !important; margin: 0% !important;">
+						 			 
 						<select id="payment-method" name="payment-method" onchange='checkForms(this)' data-errmsg="<?php echo __( 'Payment Method');?>" required>
 						<?php echo DatasetGetSelect( null, "payment-method", __("Choose Payment Method") );?>
-							<option selected >Airtel Money</option>
-							<option>Visa Card</option>
-							<option>Other Payment Method</option>
+							<option value="Airtel Money">Airtel Money</option>
+							<option value="Visa Card">Visa Card</option>
+							<option value="Other Payment Method">Other Payment Method</option>
 						</select>
 					</div>
 							
 				</div>
+				
+				<div class="row" id='other-row' style='display:none; margin: 0px; padding: 0px;'>
+					
+					<div class="input-field col m12 s12" style="padding: 0% !important; margin: 0% !important;">
+						 			 
+						<select onchange="showBankAccount()" id="other-payment-method" name="other-payment-method" data-errmsg="<?php echo __( 'Specify Payment Method');?>" required>
+						<?php echo DatasetGetSelect( null, "payment-method", __("Specify Other Payment Method") );?>
+							<option>TNM Mpamba</option>
+							<option>Mukuru</option>
+							<option>National Bank</option>
+							<option>Standard Bank</option>
+							<option>NBS Bank</option>
+							<option>FDH Bank</option>
+							<option>Centenary Bank</option>
+							<option>First Capital Bank</option>
+						</select>
+					</div>
+						
+					<div class="input-field col m12 s12"
+					 style="padding: 10px; margin: 10px; display: none; " id="bank-account">
+					  <label style="font-size: 1em !important;padding-left: 5%; font-weight: bold;" 
+									 for="other-payment-method"></label>
+					</div>	
+					
+					<div class="input-field col m12 s12"
+					 style="padding: 10px; margin: 10px;" id="pop">
+					 
+					 <label style="font-size: 1em !important;padding-left: 5%; font-weight: bold;" 
+									 for="payment-proof"> Enter/paste proof of payment here</label>
+									 
+					  <textarea id='payment-proof' style="color: black;" ></textarea>
+					</div>
+				</div>
 
-				<div class="row" style="padding: 0% !important; ">
+
+				
+				 
+				<div class="row" id="airtel-amount" style="padding: 0% !important; ">
 					  <label style="font-size: 1em !important;padding-left: 5%; font-weight: bold;" id="airtel-amount"
 									 for="airtel-amount"></label>
 				</div>
@@ -195,7 +232,7 @@
 						}
 					?>
 
-	  				<div class="row" id='airtel-row' >
+	  				<div class="row" id='airtel-row' style="display: none;">
 						<div class="input-field col m12 s12">
 							<input name="airtel-number" id="airtel-number" type="text"  value=<?php echo  $phone?>
 									class="validate" value="" required >
@@ -743,6 +780,7 @@
 			return;
 		}
 		
+		
 		var phone = $("#airtel-number").val();
 
 		if (method == "" || method == null){
@@ -750,7 +788,7 @@
 			return;
 		}
 		
-		if(phone.length != 13){
+		if(method == "Airtel Money" && phone.length != 13){
 			jQuery("#airtel-status-header").html("Invalid  phone number length"); 
 			return;
 		}
@@ -765,6 +803,25 @@
 			return;
 		}
 
+
+		if(method == "Other Payment Method"  && ($('#other-payment-method').val() == '' || $('#other-payment-method').val() == null)){
+			jQuery("#airtel-status-header").html("Specify Other Payment Method"); 
+			return;
+		}
+		
+		if(method == "Other Payment Method"  && ($('#payment-proof').val().trim() == '' || $('#payment-proof').val() == null)){
+			jQuery("#airtel-status-header").html("Please enter/paste proof of payment"); 
+			return;
+		}
+		
+		
+		if(method == 'Other Payment Method'){
+			submitManualOrder();
+			return;
+		}
+		
+		
+		
 		jQuery("#airtel-status-header").html("Please enter pin on your phone and wait ... ");
 		
 		showSpinner();
@@ -826,6 +883,26 @@ function submitVisaOrder(){
 
 }
 	
+function submitManualOrder(){
+		
+		console.log('Submitting Manual Pay Order');
+		showSpinner();
+	
+
+		$.post(window.ajax + 'airtelmoney/createManualSession', {
+            payType: 'membership',
+            description: getDescription(),
+			pro_plan: airtelPeriod, 
+			method: $('#other-payment-method').val(), 
+			payment_proof: $('#payment-proof').val(), 
+            price: airtelAmount,
+        }, function(data) {
+			if (data.status == 200) {
+				console.log(data);
+				$('#manual-modal').modal('open');
+			}
+		});
+}
 	
 function checkVisaOrder(){
 		
@@ -856,17 +933,36 @@ function checkVisaOrder(){
 		if (val == 'Airtel Money'){
 			
 			$("#airtel-row").show();
-			//$("#other-row").hide();
+			$("#other-row").hide();
+			$("#other-row").hide();
 		}else if (val == 'Visa Card'){
 		
 			$("#airtel-row").hide();
-			//$("#other-row").hide();
+			$("#other-row").hide();
 		}else if(val == 'Other Payment Method'){
 			
-			$("#airtel-number").hide();
+			$("#airtel-row").hide();
 			$("#other-row").show();
 			$("#pop").show();
 		}
+	}
+	
+	function showBankAccount(){
+		var banks = {
+				"National Bank": '1111111',
+				"Standard Bank" : '222222',
+				"TNM Mpamba" : '0888000000',
+				"Mukuru" : '0888222111',
+				"Centenary Bank" : '4554433',
+				"FDH Bank" : '993383838',
+				"NBS Bank" : '99393939',
+				"First Capital Bank" : '993939334'
+			}
+			
+		var bank = $('#other-payment-method').val();
+		$('#bank-account').html("Payment Account No: " + banks[bank]);
+
+		$('#bank-account').show();
 	}
 
 </script>

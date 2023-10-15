@@ -3365,6 +3365,82 @@ function DeleteSpamWarning() {
     }
     return true;
 }
+
+
+function CheckFailedSubs() {
+	
+    global $conn, $db, $_LIBS;
+    $data      = array();
+    $query_one = "SELECT * FROM `payment_requests` WHERE `status` = '0' ";
+    $sql       = mysqli_query($conn, $query_one);
+
+	require_once($_LIBS . 'africastalking/vendor/autoload.php');
+	
+    while ($fetched_data = mysqli_fetch_assoc($sql)) {
+        $update_data = false;
+		$url = "https://api-gateway.ctechpay.com/airtel/access/status/?trans_id=".$fetched_data['transaction_id'];
+
+        $client = new GuzzleHttp\Client();
+		$res = $client->request('GET', $url);
+		
+		if ($res->getStatusCode() == 200){
+			
+			$data = json_decode($res->getBody()->getContents(), true);
+			if ($data['transaction_status'] == 'TS'){
+					$update_data = true;
+					array_push($data, $fetched_data['phone_number']);
+			}
+		}
+		
+        if ($update_data == true) {
+			if ($fetched_data['type'] == 'PRO'){
+				var_dump("PRO: ".$fetched_data['phone_number']);
+
+				$db->insert('payments', array(
+							'user_id' => $fetched_data['user_id'],
+							'amount' => $fetched_data['amount'],
+							'type' => $fetched_data['type'],
+							'pro_plan' => $fetched_data['pro_type'],
+							'credit_amount' => '0',
+							'via' => 'airtelmoney'
+						));
+						
+				$db->where('id',$fetched_data['user_id'])->update('users',array('pro_time'=> time(),'pro_type'=> $fetched_data['pro_type'], 'is_pro'=>'1'));
+
+				SendSMS($fetched_data['phone_number'], 'We noticed you did not receive your subscription at Malovings after payment we apologise for that. Please enjoy your subscription here > https://malovings.com');
+
+			}else if ($fetched_data['type'] == 'CREDIT'){
+				var_dump("CREDIT: ".$fetched_data['phone_number']);
+
+				$user           = $db->objectBuilder()->where('id', $fetched_data['user_id'])->getOne('users', array('balance'));
+				$amount = (int)$fetched_data['amount'];
+                $newbalance = $user->balance + $amount;
+				$updated    = $db->where('id', $fetched_data['user_id'])->update('users',
+								 array('balance' => $newbalance));
+								 
+				 $db->insert('payments', array(
+					'user_id' => $fetched_data['user_id'],
+					'amount' => $amount,
+					'type' => 'CREDITS',
+					'pro_plan' => '0',
+					'credit_amount' => $amount,
+					'via' => 'airtelmoney'
+				));
+				
+				SendSMS($fetched_data['phone_number'], 'We noticed you did not receive your credit at Malovings after payment we apologise for that. Please enjoy your credit here > https://malovings.com');
+
+			}
+
+			$db->where('id',$fetched_data['id'])->update('payment_requests',
+				array('status'=> '1',
+					'verified_at'=> date('Y-m-d H:i:s') ));
+			
+        }
+    }
+    return $data;
+}
+
+
 function DeleteExpiredProMemebership() {
     global $conn,$db;
     $day_duration = 86400;
@@ -4451,7 +4527,7 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
         $orderBy .= '`xlikes_created_at` DESC';
         $orderBy .= ',`xvisits_created_at` DESC';
         $orderBy .= ',`xmatches_created_at` DESC';
-        $orderBy .= ',`is_pro` DESC,`hot_count` DESC,`gender` DESC';
+        $orderBy .= ',`is_pro` DESC';
         $orderBy .= ', RAND()';
     }
 

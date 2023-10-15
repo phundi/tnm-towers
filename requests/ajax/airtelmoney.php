@@ -113,6 +113,106 @@ Class AirtelMoney extends Aj {
 
 
 	}
+
+
+	public function createManualSession(){
+        global $db,$config,$_LIBS;		
+		
+        if (self::ActiveUser() == NULL) {
+            return array(
+                'status' => 403,
+                'message' => __('Forbidden')
+            );
+        }
+        
+        if (empty($_POST[ 'price' ])) {
+            return array(
+                'status' => 400,
+                'message' => __('No Amount Specified')
+            );
+        }
+        
+        if (empty($_POST[ 'payment_proof' ])) {
+            return array(
+                'status' => 400,
+                'message' => __('No Proof of Payment Specified')
+            );
+        }
+        
+		if (empty($_POST[ 'method' ])) {
+            return array(
+                'status' => 400,
+                'message' => __('No Payment Method Specified')
+            );
+        }
+        
+
+        $realprice   = (int)Secure($_POST[ 'price' ]);
+        $price       = (int)Secure($_POST[ 'price' ]);
+        $pro_plan    = Secure($_POST[ 'pro_plan' ]);
+        $amount      = 0;
+        $membershipType      = 0;
+        $payType     = Secure($_POST[ 'payType' ]);
+        $type        = '';
+        
+		$pop       	= Secure($_POST[ 'payment_proof' ]);
+		$method     = Secure($_POST[ 'method' ]);
+
+        if ($payType == 'credits') {
+            if ($realprice == self::Config()->bag_of_credits_price) {
+                $amount = self::Config()->bag_of_credits_amount;
+            } else if ($realprice == self::Config()->box_of_credits_price) {
+                $amount = self::Config()->box_of_credits_amount;
+            } else if ($realprice == self::Config()->chest_of_credits_price) {
+                $amount = self::Config()->chest_of_credits_amount;
+            }
+
+            $type = "CREDITS";
+        } else if ($payType == 'membership') {
+            if ($pro_plan == 'weekly') {
+                $membershipType = 1;
+            } else if ($pro_plan == 'monthly') {
+                $membershipType = 2;
+            } else if ($pro_plan == 'yearly') {
+                $membershipType = 3;
+            } else if ($pro_plan == 'lifetime') {
+                $membershipType = 4;
+            }else if ($pro_plan == 'daily'){
+                $membershipType = 5;
+            }
+
+			$amount = $price;
+			$type = 'PRO';
+		}
+        
+		ob_start();
+		var_dump($method);
+		var_dump($pop);
+		error_log(ob_get_clean());
+
+		   
+	   $db->insert('payment_requests', array(
+			'user_id' => self::ActiveUser()->id,
+			'transaction_id' => $pop,
+			'amount' => $amount,
+			'phone_number' => self::ActiveUser()->phone_number,
+			'status' => '0',  //0=PENDING, 1=SUCCESS, 2=CONFLICT
+			'type' => $type,
+			'pro_plan' => $membershipType,
+			'via' => 'other_method:'.$method
+		));
+		
+		$message = $method.' Payment From '.self::ActiveUser()->phone_number. ' Waiting Your Approval on Malovings, Amount Paid: '. $amount. ' MWK'; 
+		SendSMS('+265995555626', $message);
+		//SendSMS('+265991763413', $message);
+		
+	   return array(
+			'status' => 200,
+			'data' => 'SUCCESS'
+		);
+
+	}
+
 	
     public function createsession(){
         global $db,$config,$_LIBS;

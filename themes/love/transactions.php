@@ -36,7 +36,7 @@ $payments = $db->objectbuilder()->where('user_id',$profile->id)->orderBy('id', '
 							<table class="approvals-table highlight responsive-table dt_transaction_table">
 								<thead>
 								<tr>
-									<th><?php echo __('Date </br> Name </br> Phone');?></th>
+									<th><?php echo __('Date & Name </br> & Phone');?></th>
 									<th><?php echo __('Via');?></th>
 									<th><?php echo __('Amount');?></th>
 									<th><?php echo __('Type');?></th>

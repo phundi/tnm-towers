@@ -191,6 +191,7 @@
 						<?php echo DatasetGetSelect( null, "payment-method", __("Specify Other Payment Method") );?>
 							<option>TNM Mpamba</option>
 							<option>Mukuru</option>
+							<option>National Bank</option>
 						</select>
 					</div>
 						
@@ -941,8 +942,10 @@ function checkVisaOrder(){
 	
 	function showBankAccount(){
 		var banks = {
-				"TNM Mpamba" : 'Send Mpamba to number: <b>0888971214 (Chiphetsa Wirima )</b> and paste Proof of Payment below',
-				"Mukuru" : 'Send Mukuru to number: <b>+265995555626 (Chiphetsa Wirima )</b> and paste Proof of Payment below'
+				"TNM Mpamba" : 'Send <b>MK' + airtelAmount + '</b> to TNM Mpamba number: <b>0888971214 (Chiphetsa Wirima )</b> and paste Proof of Payment below',
+				"Mukuru" : 'Send <b>MK' + airtelAmount + '</b> Mukuru to number: <b>+265995555626 (Chiphetsa Wirima )</b> and paste Proof of Payment below',
+				"National Bank" : 'Send <b>MK' + airtelAmount + '</b> to NB Account Number: <b>546348</b> and paste Proof of Payment below'
+
 			}
 			
 		var bank = $('#other-payment-method').val();

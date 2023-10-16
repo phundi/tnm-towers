@@ -199,7 +199,7 @@ Class AirtelMoney extends Aj {
 			'status' => '0',  //0=PENDING, 1=SUCCESS, 2=CONFLICT
 			'type' => $type,
 			'pro_plan' => $membershipType,
-			'via' => 'other_method:'.$method
+			'via' => $method
 		));
 		
 		$message = $method.' Payment From '.self::ActiveUser()->phone_number. ' Waiting Your Approval on Malovings, Amount Paid: '. $amount. ' MWK'; 
@@ -213,6 +213,121 @@ Class AirtelMoney extends Aj {
 
 	}
 
+	public function updateManualSession(){
+        global $db,$config,$_LIBS;		
+		
+        if (self::ActiveUser() == NULL) {
+            return array(
+                'status' => 403,
+                'message' => __('Forbidden')
+            );
+        }
+        
+        if (empty($_POST[ 'transID' ])) {
+            return array(
+                'status' => 400,
+                'message' => __('No Transaction ID Provided')
+            );
+        }
+        
+        if (empty($_POST[ 'actionToDo' ])) {
+            return array(
+                'status' => 400,
+                'message' => __('Missing Action')
+            );
+        }
+		
+		ob_start();
+
+		var_dump($_POST);
+        $transID   	= Secure($_POST[ 'transID' ]);
+        $action     = Secure($_POST[ 'actionToDo' ]);        
+		$request = $db->objectBuilder()->where('id', $transID)->getOne("payment_requests");
+		$message = "";
+		
+		var_dump($request);
+		error_log(ob_get_clean());
+
+		$user = $db->objectBuilder()->where('id', $request->user_id)->getOne('users');
+        if ($action == 'Confirm'){
+			
+			if ($request->type == 'PRO'){
+                $membershipType = $request->pro_plan;   
+                $amount = $request->amount;
+                
+                $protime                = time();
+                $is_pro                 = "1";
+                $updated                = $db->where('id', $user->id)->update('users', array(
+                    'pro_time' => $protime,
+                    'is_pro' => $is_pro,
+                    'pro_type' => $membershipType
+                ));
+
+                if ($updated) {
+                    
+                    $db->insert('payments', array(
+                        'user_id' => $user->id,
+                        'amount' => $amount,
+                        'type' => 'PRO',
+                        'pro_plan' => $membershipType,
+                        'credit_amount' => '0',
+                        'via' => $request->via
+                    ));
+                    
+                    $db->where('id', $transID)->update('payment_requests', array(
+                        'status' => "1",
+                        'verified_at' => date('Y-m-d H:i:s')
+                    ));
+				}
+                 
+				$message = 'Your Subscription Payment From ' . $request->via . ' Has Been Confirmed. Please Login to https://malovings.com to Enjoy!!'; 
+   
+			}else if($request->type == 'CREDIT'){
+				$amount = $request->amount;
+                $newbalance = $user->balance + $amount;
+
+                $updated    = $db->where('id', $user->id)->update('users',
+                                     array('balance' => $newbalance));
+                if ($updated) {
+                    $db->insert('payments', array(
+                        'user_id' => $user->id,
+                        'amount' => $amount,
+                        'type' => 'CREDITS',
+                        'pro_plan' => '0',
+                        'credit_amount' => $amount,
+                        'via' => $request->via
+                    ));
+
+                    $db->where('id', $transID)->update('payment_requests', array(
+                        'status' => "1",
+                        'verified_at' => date('Y-m-d H:i:s')
+                    ));                    
+				}
+				
+				$message = 'Your Credit Payment From ' . $request->via . ' Has Been Confirmed. Please Login to https://malovings.com to Enjoy!!'; 
+
+			}
+		}else if ($action == 'Reject'){
+			
+		
+			$db->where('id', $transID)->update('payment_requests', array(
+                        'status' => "2"
+			));
+			  
+			$message = 'Your Payment From ' . $request->via . ' Has Been Rejected. Please Provide Proper Payment Details!!'; 
+				
+		}
+		 
+		if(!empty($message)){
+			SendSMS($user->phone_number, $message);
+		}
+		
+	   return array(
+			'status' => 200,
+			'data' => 'SUCCESS'
+		);
+
+	}
 	
     public function createsession(){
         global $db,$config,$_LIBS;
@@ -283,11 +398,6 @@ Class AirtelMoney extends Aj {
                 $membershipType = 5;
             }
 
-                   
-        ob_start();
-        var_dump($url);
-        var_dump("Plan: ".$pro_plan);
-        error_log(ob_get_clean());
 
             $amount = $price;
             $type = 'PRO';

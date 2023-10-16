@@ -1513,6 +1513,7 @@ Class Profile extends Aj {
                         'liked',
                         'disliked',
                         'transactions',
+						'pending_transactions',
                         'admin',
                         'about',
                         'contact',

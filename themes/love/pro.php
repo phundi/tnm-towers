@@ -906,8 +906,6 @@ function checkVisaOrder(){
         }, function(data) {
 			console.log(data);
 			
-			
-			
 			if (data.status == 200) {
 				$('#visapay-status').html("Transaction successful !!");
 				$('#visa-modal').modal('open');

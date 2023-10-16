@@ -278,6 +278,10 @@
 		width: 100px;
 		height: 100px;
 	}
+	
+	.modal-backdrop {
+	  z-index: -1;
+	}
 </style>
 
 <!-- End Premium  -->
@@ -956,6 +960,25 @@ function checkVisaOrder(){
 </script>
 
 
+
+<?php 
+
+	global $db;
+	$where = "user_id=" .  $profile->id . " AND status = 0 AND type='PRO' AND via IN ('FDH Bank','First Capital Bank','NBS Bank','Centenary Bank','TNM Mpamba','Mukuru','National Bank','Standard Bank')";
+	$requests= $db->where($where)->getOne('payment_requests');
+	if (!empty($requests)) {
+?>
+
+	<script>
+		setTimeout(function(){
+			$("#subs-modal").modal({dismissible: false});
+			$("#subs-modal").modal('open');
+
+		}, 300);
+	</script>
+<?php } ?>
+
+
 <?php 
 
 if ($profile->is_pro == 0 && !empty($_REQUEST['ref'])) {
@@ -967,4 +990,7 @@ if ($profile->is_pro == 0 && !empty($_REQUEST['ref'])) {
 		
 </script>
 <?php } ?>
+
+
+
 

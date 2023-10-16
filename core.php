@@ -3371,7 +3371,7 @@ function CheckFailedSubs() {
 	
     global $conn, $db, $_LIBS;
     $data      = array();
-    $query_one = "SELECT * FROM `payment_requests` WHERE `status` = '0' ";
+    $query_one = "SELECT * FROM `payment_requests` WHERE `status` = '0' AND via = 'airtelmoney' ";
     $sql       = mysqli_query($conn, $query_one);
 
 	require_once($_LIBS . 'africastalking/vendor/autoload.php');
@@ -3386,15 +3386,22 @@ function CheckFailedSubs() {
 		if ($res->getStatusCode() == 200){
 			
 			$data = json_decode($res->getBody()->getContents(), true);
+			var_dump($fetched_data['phone_number'] . ' :'.$data['transaction_status']);
 			if ($data['transaction_status'] == 'TS'){
 					$update_data = true;
 					array_push($data, $fetched_data['phone_number']);
+			}
+			
+			if ($data['transaction_status'] == 'TF'){
+				
+				$db->where('id',$fetched_data['id'])->update('payment_requests',
+						array('status'=> '2')
+					);
 			}
 		}
 		
         if ($update_data == true) {
 			if ($fetched_data['type'] == 'PRO'){
-				var_dump("PRO: ".$fetched_data['phone_number']);
 
 				$db->insert('payments', array(
 							'user_id' => $fetched_data['user_id'],

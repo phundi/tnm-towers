@@ -169,7 +169,7 @@
       </div>
       <div class="modal-body">
 		<form id='airtel-form'>
-				<div class="row">
+				<div class="row" id='method-row'>
 					
 					<div class="input-field col m12 s12" style="padding: 0% !important; margin: 0% !important;">
 						 			 
@@ -940,6 +940,8 @@ function checkVisaOrder(){
 			
 			$("#airtel-row").hide();
 			$("#other-row").show();
+			$("#method-row").hide();
+
 			$("#pop").show();
 		}
 	}

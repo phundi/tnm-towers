@@ -2,6 +2,14 @@
     if( !isset( $_SESSION['JWT'] ) ){
         exit();
     }
+	
+	global $db;
+	$where = "user_id=" .  $profile->id . " AND status = 0 AND type='PRO' AND via IN ('FDH Bank','First Capital Bank','NBS Bank','Centenary Bank','TNM Mpamba','Mukuru','National Bank','Standard Bank')";
+	$requests= $db->where($where)->getOne('payment_requests');
+	$sub_text = 'Subscribe';
+	if (!empty($requests)) {
+			$sub_text = 'Subscription Pending!';
+	}
 ?>
     <?php //require( $theme_path . 'main' . $_DS . 'onesignal.php' );?>
     <!-- Header  -->
@@ -29,7 +37,7 @@
                                 <?php if( isGenderFree($profile->gender) === false ){ ?>
                                     <li>
 										<a href="<?php echo $site_url;?>/pro" data-ajax="/pro" class="prem">
-											<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2 19h20v2H2v-2zM2 5l5 3.5L12 2l5 6.5L22 5v12H2V5zm2 3.841V15h16V8.841l-3.42 2.394L12 5.28l-4.58 5.955L4 8.84z" fill="currentColor"/></svg></span> <?php echo __( 'go_premium' );?>
+											<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2 19h20v2H2v-2zM2 5l5 3.5L12 2l5 6.5L22 5v12H2V5zm2 3.841V15h16V8.841l-3.42 2.394L12 5.28l-4.58 5.955L4 8.84z" fill="currentColor"/></svg></span> <?php echo $sub_text;?>
 										</a>
 									</li>
                                 <?php }?>

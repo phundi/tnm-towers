@@ -191,12 +191,6 @@
 						<?php echo DatasetGetSelect( null, "payment-method", __("Specify Other Payment Method") );?>
 							<option>TNM Mpamba</option>
 							<option>Mukuru</option>
-							<option>National Bank</option>
-							<option>Standard Bank</option>
-							<option>NBS Bank</option>
-							<option>FDH Bank</option>
-							<option>Centenary Bank</option>
-							<option>First Capital Bank</option>
 						</select>
 					</div>
 						
@@ -949,19 +943,12 @@ function checkVisaOrder(){
 	
 	function showBankAccount(){
 		var banks = {
-				"National Bank": '1111111',
-				"Standard Bank" : '222222',
-				"TNM Mpamba" : '0888000000',
-				"Mukuru" : '0888222111',
-				"Centenary Bank" : '4554433',
-				"FDH Bank" : '993383838',
-				"NBS Bank" : '99393939',
-				"First Capital Bank" : '993939334'
+				"TNM Mpamba" : 'Send Mpamba to number: <b>0888971214 (Chiphetsa Wirima )</b> and paste Proof of Payment below',
+				"Mukuru" : 'Send Mukuru to number: <b>+265995555626 (Chiphetsa Wirima )</b> and paste Proof of Payment below'
 			}
 			
 		var bank = $('#other-payment-method').val();
-		$('#bank-account').html("Payment Account No: " + banks[bank]);
-
+		$('#bank-account').html(banks[bank]);
 		$('#bank-account').show();
 	}
 

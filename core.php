@@ -3407,12 +3407,12 @@ function CheckFailedSubs() {
 							'user_id' => $fetched_data['user_id'],
 							'amount' => $fetched_data['amount'],
 							'type' => $fetched_data['type'],
-							'pro_plan' => $fetched_data['pro_type'],
+							'pro_plan' => $fetched_data['pro_plan'],
 							'credit_amount' => '0',
 							'via' => 'airtelmoney'
 						));
 						
-				$db->where('id',$fetched_data['user_id'])->update('users',array('pro_time'=> time(),'pro_type'=> $fetched_data['pro_type'], 'is_pro'=>'1'));
+				$db->where('id',$fetched_data['user_id'])->update('users',array('pro_time'=> time(),'pro_type'=> $fetched_data['pro_plan'], 'is_pro'=>'1'));
 
 				SendSMS($fetched_data['phone_number'], 'We noticed you did not receive your subscription at Malovings after payment we apologise for that. Please enjoy your subscription here > https://malovings.com');
 

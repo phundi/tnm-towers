@@ -4531,7 +4531,7 @@ function GetFindMatcheQuery($user_id, $limit, $offset, $sort = 'DESC'){
     }
     else{
         $orderBy = ' ORDER BY';
-        $orderBy .= '`xlikes_created_at` DESC';
+        $orderBy .= ' `lastseen` DESC, `xlikes_created_at` DESC';
         $orderBy .= ',`xvisits_created_at` DESC';
         $orderBy .= ',`xmatches_created_at` DESC';
         $orderBy .= ',`is_pro` DESC';
@@ -5106,7 +5106,7 @@ function _GetFindMatcheQuery($user_id, $limit, $offset, $country = true){
     }
 
     $orderBy = ' ORDER BY ';
-    $orderBy .= '`xlikes_created_at` DESC';
+    $orderBy .= ' `lastseen` DESC, `xlikes_created_at` DESC';
     $orderBy .= ',`xvisits_created_at` DESC';
     $orderBy .= ',`xmatches_created_at` DESC';
     $orderBy .= ',`is_pro` DESC,`hot_count` DESC';

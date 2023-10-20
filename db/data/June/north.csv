@@ -1,4 +1,4 @@
-Site Name,Site ID,Region,District,Site Status (Grid/Prime),ESCOM,Tank Size,Opening Litres, Litres Dispensed , Closing Litres , Usage in Litres ,Opening Hours,Closing Hours,Hours Run,Average Usage Per Hour,Opening Readings,Units Bought,Closing Readings,Power Usage
+Sites Name,Site ID,Region,District,Site Status         (Grid/Prime),ESCOM,Tank Size,Opening  Litres,Litres Dispensed,Closing Litres,Usage in Litres,Opening Hours,Closing Hours,Hours Run, Average Usage Per Hour ,Opening Readings,Units Bought,Closing Readings,Power Usage
 LIWALADZI,TN26007,North,NKHOTAKOTA,Grid,Prepaid,1000,870,0,430,440,5319,5494,175, 2.5 ,,,,0
 KASASA,TN26005,North,NKHOTAKOTA,Grid,Prepaid,1000,978,0,915,63,1371,1401,30, 2.1 ,,,,0
 DWANGWA FACTORY,TN26003,North,NKHOTAKOTA,Grid,Prepaid,1000,624,0,530,94,1024,1059,35, 2.7 ,,,,0

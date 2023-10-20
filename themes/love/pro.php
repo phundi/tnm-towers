@@ -176,7 +176,6 @@
 						<select id="payment-method" name="payment-method" onchange='checkForms(this)' data-errmsg="<?php echo __( 'Payment Method');?>" required>
 						<?php echo DatasetGetSelect( null, "payment-method", __("Choose Payment Method") );?>
 							<option value="Airtel Money">Airtel Money</option>
-							<option value="Visa Card">Visa Card</option>
 							<option value="Other Payment Method">Other Payment Method</option>
 						</select>
 					</div>

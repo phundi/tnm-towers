@@ -987,7 +987,10 @@ if ($profile->is_pro == 0 && !empty($_REQUEST['ref'])) {
 
 <script>
 		
-		checkVisaOrder();
+		showSpinner();
+		setTimeout(function(){
+			checkVisaOrder();
+		}, 2000)
 		
 </script>
 <?php } ?>

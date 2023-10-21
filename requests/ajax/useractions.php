@@ -192,8 +192,7 @@ Class UserActions extends Aj {
         if ($users) {
             if (isset($_POST) && !empty($_POST)) {
               
-               
-                
+                               
                 if (isset($_POST[ 'username' ]) && empty($_POST[ 'username' ])) {
                     $error .= '<p>• ' . __('Missing phone number.') . '</p>';
                 }

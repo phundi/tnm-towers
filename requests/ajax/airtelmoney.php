@@ -239,16 +239,15 @@ Class AirtelMoney extends Aj {
 		
 		ob_start();
 
-		var_dump($_POST);
         $transID   	= Secure($_POST[ 'transID' ]);
         $action     = Secure($_POST[ 'actionToDo' ]);        
 		$request = $db->objectBuilder()->where('id', $transID)->getOne("payment_requests");
 		$message = "";
 		
-		var_dump($request);
-		error_log(ob_get_clean());
 
 		$user = $db->objectBuilder()->where('id', $request->user_id)->getOne('users');
+        error_log(ob_get_clean());
+
         if ($action == 'Confirm'){
 			
 			if ($request->type == 'PRO'){
@@ -282,7 +281,7 @@ Class AirtelMoney extends Aj {
                  
 				$message = 'Your Subscription Payment From ' . $request->via . ' Has Been Confirmed. Please Login to https://malovings.com to Enjoy!!'; 
    
-			}else if($request->type == 'CREDIT'){
+			}else if($request->type == 'CREDITS'){
 				$amount = $request->amount;
                 $newbalance = $user->balance + $amount;
 

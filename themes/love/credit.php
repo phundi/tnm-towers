@@ -105,27 +105,61 @@
 <div id="payment-notice" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+	<div class="modal-header">
 	  	<label style="font-weight: bold;font-size: 1em;color: red;text-align: center;padding-left: 5%;" 
 				id="airtel-status-header"> </label>
       </div>
       <div class="modal-body">
 		<form id='airtel-form'>
-				<div class="row">
+				<div class="row" id='method-row'>
 					
-					<div class="input-field col m12 s12" style="padding: 0% !important;">
-						<select id="payment-method" name="payment-method" data-errmsg="<?php echo __( 'Payment Method');?>" required>
+					<div class="input-field col m12 s12" style="padding: 0% !important; margin: 0% !important;">
+						 			 
+						<select id="payment-method" name="payment-method" onchange='checkForms(this)' data-errmsg="<?php echo __( 'Payment Method');?>" required>
 						<?php echo DatasetGetSelect( null, "payment-method", __("Choose Payment Method") );?>
-						<option selected >Airtel Money</option>
+							<option value="Airtel Money">Airtel Money</option>
+							<option value="Other Payment Method">Other Payment Method</option>
 						</select>
 					</div>
 							
 				</div>
+				
+				<div class="row" id='other-row' style='display:none; margin: 0px; padding: 0px;'>
+					
+					<div class="input-field col m12 s12" style="padding: 0% !important; margin: 0% !important;">
+						 			 
+						<select onchange="showBankAccount()" id="other-payment-method" name="other-payment-method" data-errmsg="<?php echo __( 'Specify Payment Method');?>" required>
+						<?php echo DatasetGetSelect( null, "payment-method", __("Specify Other Payment Method") );?>
+							<option>TNM Mpamba</option>
+							<option>Mukuru</option>
+							<option>National Bank</option>
+						</select>
+					</div>
+						
+					<div class="input-field col m12 s12"
+					 style="padding: 10px; margin: 10px; display: none; " id="bank-account">
+					  <label style="font-size: 1em !important;padding-left: 5%; font-weight: bold;" 
+									 for="other-payment-method"></label>
+					</div>	
+					
+					<div class="input-field col m12 s12"
+					 style="padding: 10px; margin: 10px;" id="pop">
+					 
+					 <label style="font-size: 1em !important;padding-left: 5%; font-weight: bold;" 
+									 for="payment-proof"> Enter/paste proof of payment here</label>
+									 
+					  <textarea id='payment-proof' style="color: black;" ></textarea>
+					</div>
+				</div>
 
-				<div class="row" style="padding: 0% !important; ">
+
+				
+				 
+				<div class="row" id="airtel-amount" style="padding: 0% !important; ">
 					  <label style="font-size: 1em !important;padding-left: 5%; font-weight: bold;" id="airtel-amount"
 									 for="airtel-amount"></label>
 				</div>
+
 
 					<?php 
 						$phone = Auth()->phone_number;
@@ -133,10 +167,10 @@
 							$phone = "+265";
 						}
 					?>
-					
-	  				<div class="row">
+
+	  				<div class="row" id='airtel-row' style="display: none;">
 						<div class="input-field col m12 s12">
-							<input name="airtel-number" id="airtel-number" type="text"  value=<?php echo  $phone;?>
+							<input name="airtel-number" id="airtel-number" type="text"  value=<?php echo  $phone?>
 									class="validate" value="" required >
 							<label for="airtel-number"><?php echo __( 'Enter Airtel number to pay' );?></label>
 						</div>
@@ -148,16 +182,26 @@
       <div class="modal-footer">
 
 	  
-	  <button type="button" id="pay-cancel" style="background: darkred;float: left;"
+		<button type="button" id="pay-cancel" style="background: darkred;float: left;"
 			onclick="jQuery('#payment-notice').modal('close');" 	
 		 	class="btn btn-danger danger pull-left;">
           <span>Cancel</span>
-      </button>
+        </button>
 		
 	  	<button type="button"  id="pay-now" onclick="submitAirtelPayment()" data-dismiss="modal"	
 		 	class="btn btn-primary">
           <span>Pay Now</span>
         </button>
+
+
+      </div>
+      
+      <div class="modal-footer">
+
+		<a href="https://wa.me/+265995555626" style='background: white;cursor: pointer;padding: 5px;margin-right: 25%;' target="_blank" class="social_btn">
+				Contact Us On:
+								<img style='padding-top: 8px;' width='60' height='40' src="<?php echo $theme_url;?>assets/img/whatsapp_img.png">
+							</a>&nbsp;&nbsp;
 
 
       </div>
@@ -728,33 +772,62 @@ function payAirtelMoney(plan, price){
 
 function submitAirtelPayment(){
 
+		
 	var method = $("#payment-method").val();
-	var phone = $("#airtel-number").val();
+		
+		if(method == 'Visa Card'){
+			//Submit Order
+			submitVisaOrder();
+			return;
+		}
+		
+		
+		var phone = $("#airtel-number").val();
 
-	if (method == "" || method == null){
-		jQuery("#airtel-status-header").html("Specify payment method"); 
-		return;
-	}
+		if (method == "" || method == null){
+			jQuery("#airtel-status-header").html("Specify payment method"); 
+			return;
+		}
+		
+		if(method == "Airtel Money" && phone.length != 13){
+			jQuery("#airtel-status-header").html("Invalid  phone number length"); 
+			return;
+		}
+		
+		if (method == "Airtel Money" && !phone.startsWith("+2659")){
+			jQuery("#airtel-status-header").html("Invalid Airtel number"); 
+			return;
+		}
+		
+		if (method == "TNM Mpamba" && !phone.startsWith("+2658")){
+			jQuery("#airtel-status-header").html("Invalid TNM number");
+			return;
+		}
 
-	if(phone.length != 13){
-		jQuery("#airtel-status-header").html("Invalid  phone number length"); 
-		return;
-	}
 
-	if (method == "Airtel Money" && !phone.startsWith("+2659")){
-		jQuery("#airtel-status-header").html("Invalid Airtel number"); 
-		return;
-	}
+		if(method == "Other Payment Method"  && ($('#other-payment-method').val() == '' || $('#other-payment-method').val() == null)){
+			jQuery("#airtel-status-header").html("Specify Other Payment Method"); 
+			return;
+		}
+		
+		if(method == "Other Payment Method"  && ($('#payment-proof').val().trim() == '' || $('#payment-proof').val() == null)){
+			jQuery("#airtel-status-header").html("Please enter/paste proof of payment"); 
+			return;
+		}
+		
+		
+		if(method == 'Other Payment Method'){
+			submitManualOrder();
+			return;
+		}
+		
+		
+		
+		jQuery("#airtel-status-header").html("Please enter pin on your phone and wait ... ");
+		
+		showSpinner();
+		$("#pay-now, #pay-cancel").attr('disabled', true);
 
-	if (method == "TNM Mpamba" && !phone.startsWith("+2658")){
-		jQuery("#airtel-status-header").html("Invalid TNM number");
-		return;
-	}
-
-	jQuery("#airtel-status-header").html("Please enter pin on your phone and wait ... ");
-
-	showSpinner();
-	$("#pay-now, #pay-cancel").attr('disabled', true);
 	$.post(window.ajax + 'airtelmoney/createsession', {
 		payType: 'credits',
 		description: getDescription(),
@@ -794,4 +867,138 @@ function submitAirtelPayment(){
 }
 
 
+	
+function submitVisaOrder(){
+		
+		console.log('Submitting CTECH Visa Pay Order');
+		showSpinner();
+		$.post(window.ajax + 'airtelmoney/createVisaSession', {
+            payType: 'credits',
+            description: getDescription(),
+			pro_plan: airtelPeriod, 
+            price: airtelAmount,
+        }, function(data) {
+			if (data.status == 200) {
+				console.log(data);
+				var url = data.data.payment_page_URL; 
+				window.location = url;
+			}
+		});
+
+}
+	
+function submitManualOrder(){
+		
+		console.log('Submitting Manual Pay Order');
+		showSpinner();
+	
+
+		$.post(window.ajax + 'airtelmoney/createManualSession', {
+            payType: 'credits',
+            description: getDescription(),
+			pro_plan: airtelPeriod, 
+			method: $('#other-payment-method').val(), 
+			payment_proof: $('#payment-proof').val(), 
+            price: airtelAmount,
+        }, function(data) {
+			if (data.status == 200) {
+				console.log(data);
+				$('#manual-modal').modal('open');
+			}
+		});
+}
+	
+function checkVisaOrder(){
+		
+		$.post(window.ajax + 'airtelmoney/checkVisa', {
+			payType: 'credits',
+            ref: "<?php echo  $_REQUEST['ref']; ?>",
+        }, function(data) {
+			console.log(data);
+			
+			if (data.status == 200) {
+				$('#visapay-status').html("Transaction successful !!");
+				$('#visa-modal').modal('open');
+
+				window.location = "/find-matches";
+			}else{
+				$('#visapay-status').html("Transaction  !!");
+				$('#visa-modal').modal('open');	
+			}
+		});
+
+}
+	
+	function checkForms(node){
+		var val = node.value;
+		
+		if (val == 'Airtel Money'){
+			
+			$("#airtel-row").show();
+			$("#other-row").hide();
+			$("#other-row").hide();
+		}else if (val == 'Visa Card'){
+		
+			$("#airtel-row").hide();
+			$("#other-row").hide();
+		}else if(val == 'Other Payment Method'){
+			
+			$("#airtel-row").hide();
+			$("#other-row").show();
+			$("#method-row").hide();
+
+			$("#pop").show();
+		}
+	}
+	
+	function showBankAccount(){
+		var banks = {
+				"TNM Mpamba" : 'Send <b>MK' + airtelAmount + '</b> to TNM Mpamba number: <b>0888971214 (Chiphetsa Wirima )</b> and paste Proof of Payment below',
+				"Mukuru" : 'Send <b>MK' + airtelAmount + '</b> Mukuru to number: <b>+265995555626 (Chiphetsa Wirima )</b> and paste Proof of Payment below',
+				"National Bank" : 'Send <b>MK' + airtelAmount + '</b> to NB Account Number: <b>546348</b> and paste Proof of Payment below'
+
+			}
+			
+		var bank = $('#other-payment-method').val();
+		$('#bank-account').html(banks[bank]);
+		$('#bank-account').show();
+	}
+
+
 </script>
+
+
+
+
+<?php 
+
+	global $db;
+	$where = "user_id=" .  $profile->id . " AND status = 0 AND type='CREDITS' AND via IN ('FDH Bank','First Capital Bank','NBS Bank','Centenary Bank','TNM Mpamba','Mukuru','National Bank','Standard Bank')";
+	$requests= $db->where($where)->getOne('payment_requests');
+	if (!empty($requests)) {
+?>
+
+	<script>
+		setTimeout(function(){
+			$("#subs-modal").modal({dismissible: false});
+			$("#subs-modal").modal('open');
+
+		}, 300);
+	</script>
+<?php } ?>
+
+
+<?php 
+
+if (!empty($_REQUEST['ref'])) {
+	 ?>
+
+<script>
+		showSpinner();
+		setTimeout(function(){
+			checkVisaOrder();
+		}, 2000)
+		
+</script>
+<?php } ?>
+

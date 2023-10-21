@@ -5,6 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 use GuzzleHttp\Client;
+require $_BASEPATH . 'config.php';
 
 Class AirtelMoney extends Aj {
 	
@@ -64,8 +65,8 @@ Class AirtelMoney extends Aj {
 	    require_once($_LIBS . 'africastalking/vendor/autoload.php');
         $client = new GuzzleHttp\Client();
         
-        $url         = "https://api-sandbox.ctechpay.com/?endpoint=order";
-        $token       = "NGJjZWM3NmYtMTMyNi00YzhmLWI1ZGMtNmE1ZWM1Mzc3ODA5OjM1MjFiYjA2LThlOTUtNDJmZS04NzQ2LTc1Mzg5NDhmMDM2Nw==";
+        $url         = "https://api-gateway.ctechpay.com/?endpoint=order";
+        //$token       = $config->token;
         $redirectUrl = "https://staging.malovings.com/pro";
         
         
@@ -371,7 +372,7 @@ Class AirtelMoney extends Aj {
         $membershipType      = 0;
         $payType     = Secure($_POST[ 'payType' ]);
         $url         = "https://api-gateway.ctechpay.com/airtel/access/";
-        $token       = "fclcC3IDZtzdTKUG6PniPIbNiKIX3ItWiDseRL1pGWyRWfinlt3n8n8BjsKGCZN5";
+        //$token       = $config->token;
         $type        = '';
 
         if ($payType == 'credits') {
@@ -654,8 +655,8 @@ Class AirtelMoney extends Aj {
         require_once($_LIBS . 'africastalking/vendor/autoload.php');
         $client = new GuzzleHttp\Client();
 
-        $url         = "https://api-sandbox.ctechpay.com/get_order_status/";
-        $token       = "NGJjZWM3NmYtMTMyNi00YzhmLWI1ZGMtNmE1ZWM1Mzc3ODA5OjM1MjFiYjA2LThlOTUtNDJmZS04NzQ2LTc1Mzg5NDhmMDM2Nw==";
+        $url         = "https://api-gateway.ctechpay.com/get_order_status/";
+        //$token       = $config->token;
         
         
         $res = $client->request('POST', $url, [

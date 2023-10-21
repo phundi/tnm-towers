@@ -1,4 +1,4 @@
-Site Name,Site ID,Region,District,Site Status (Grid/Prime),ESCOM,Tank Size,Opening Litres, Litres Dispensed , Closing Litres , Usage in Litres ,Opening Hours,Closing Hours,Hours Run,Average Usage Per Hour,Opening Readings,Units Bought,Closing Readings,Power Usage
+Sites Name,site ID,Region,District,Site Status (Grid/Prime),ESCOM,Tank Size,Opening  Litres,Litres Dispensed,Closing Litres,Usage in Litres,Opening Hours,Closing Hours,Hours Run, Average Usage Per Hour ,Opening Readings,Units Bought,Closing Readings,Power Usage
 WALALA,TN42011,South,Zomba,GRID,PREPAID,1000,505,0,494,11,2973,2978,5, 2.20 ,494,,,
 NASAWA ,TN31023,South,Zomba,GRID,PREPAID,600,420,150,520,50,22744,22778,34, 1.47 ,520,,,
 DZAONE,TN31028,South,Zomba,GRID,PREPAID,600,790,1250,812,1228,5534,6040,506, 2.43 ,812,,,

@@ -1,4 +1,4 @@
-Site Name,Site ID,Region,District,Site Status (Grid/Prime),ESCOM,Tank Size,Opening Litres, Litres Dispensed , Closing Litres , Usage in Litres ,Opening Hours,Closing Hours,Hours Run,Average Usage Per Hour,Opening Readings,Units Bought,Closing Readings,Power Usage
+Site Name,SITE ID,Region,District,Site Status (Grid/Prime),Escom,Tank Size,Opening Litres,Litres Dispensed,Closing Litres,Usage in Litres,Opening Hours,Closing Hours,Hours Run, Average Usage Per Hour ,Opening Readings,Units Bought,Closing Readings,Power Usage
 Area 21,TN20093 ,Lilongwe,Lilongwe,Grid,Prepaid,600,600,0,508,92,212,252,40, 2.3 ,0,0,0,0
 Area 23 ,TN20024 ,Lilongwe,Lilongwe,Grid,Postpaid,500,374,0,364,10,12613,12620,7, 1.4 ,0,0,0,0
 Area 23 Extension,TN20028 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,650,0,633,17,4998,5005,7, 2.4 ,0,0,0,0

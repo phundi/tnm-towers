@@ -5,12 +5,14 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 use GuzzleHttp\Client;
-require $_BASEPATH . 'config.php';
+//$_DS       = DIRECTORY_SEPARATOR;
+//$_BASEPATH = realpath(dirname(__FILE__)) . $_DS;
+//require $_BASEPATH . '/../../config.php';
 
 Class AirtelMoney extends Aj {
 	
 	public function createVisaSession(){
-        global $db,$config,$_LIBS;		
+        global $db,$config,$_LIBS, $token;		
 		
         if (self::ActiveUser() == NULL) {
             return array(
@@ -117,7 +119,7 @@ Class AirtelMoney extends Aj {
 
 
 	public function createManualSession(){
-        global $db,$config,$_LIBS;		
+        global $db,$config,$_LIBS, $token;		
 		
         if (self::ActiveUser() == NULL) {
             return array(
@@ -215,7 +217,7 @@ Class AirtelMoney extends Aj {
 	}
 
 	public function updateManualSession(){
-        global $db,$config,$_LIBS;		
+        global $db,$config,$_LIBS, $token;		
 		
         if (self::ActiveUser() == NULL) {
             return array(
@@ -330,7 +332,7 @@ Class AirtelMoney extends Aj {
 	}
 	
     public function createsession(){
-        global $db,$config,$_LIBS;
+        global $db,$config,$_LIBS, $token;
         
         if (self::ActiveUser() == NULL) {
             return array(
@@ -410,6 +412,7 @@ Class AirtelMoney extends Aj {
         }
      
     
+       
         require_once($_LIBS . 'africastalking/vendor/autoload.php');
         $client = new GuzzleHttp\Client();
         
@@ -422,10 +425,16 @@ Class AirtelMoney extends Aj {
             ]
         ]);
 
-        
+
+
         if ($res->getStatusCode() == 200){
 
             $ussd_data = json_decode($res->getBody()->getContents(), true)['data'];
+            
+            
+            ob_start();
+            var_dump('DATA'.$ussd_data);
+            error_log(ob_get_clean());
 
             $trans_id = $ussd_data['transaction']["id"];
 
@@ -454,7 +463,7 @@ Class AirtelMoney extends Aj {
     }
 
     public function success(){
-        global $db,$config,$_LIBS;
+        global $db,$config,$_LIBS, $token;
      
         if (self::ActiveUser() == NULL) {
             return array(
@@ -640,7 +649,7 @@ Class AirtelMoney extends Aj {
     
     
     public function checkVisa(){
-        global $db,$config,$_LIBS;
+        global $db,$config,$_LIBS, $token;
      
         if (self::ActiveUser() == NULL) {
             return array(

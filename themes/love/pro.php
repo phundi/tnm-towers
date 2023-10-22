@@ -952,9 +952,16 @@ function checkVisaOrder(){
 				"National Bank" : 'Send <b>MK' + airtelAmount + '</b> to NB Account Number: <b>546348</b> and paste Proof of Payment below'
 
 			}
+
+			var banks_chewa = {
+				"TNM Mpamba" : '<br /><br />Tumizan <b>MK' + airtelAmount + '</b> ku <b>0888971214(Chiphetsa Wirima )</b> kenako ikani umboni mu bokosi musimu',
+				"Mukuru" : '',
+				"National Bank" : ''
+
+			}
 			
 		var bank = $('#other-payment-method').val();
-		$('#bank-account').html(banks[bank]);
+		$('#bank-account').html(banks[bank] + '' + banks_chewa[bank]);
 		$('#bank-account').show();
 	}
 

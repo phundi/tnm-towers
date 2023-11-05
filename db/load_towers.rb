@@ -27,7 +27,8 @@ CSV.read(filename).each_with_index do |t, i|
 
     raise "#{towers.count} DUPLICATES FOUND FOR CODE: #{code}" if towers.count > 1
     tower = towers.first 
-
+    tower.id rescue (puts "Failed ON =============== Code #{code}"; next)
+    
     if t[headers.index("Opening Litres")].present?
         frefill = Refill.new 
         frefill.refill_type = "FUEL"

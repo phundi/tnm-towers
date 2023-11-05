@@ -1,0 +1,224 @@
+Site Name,SITE ID,Region,District,Site Status (Grid/Prime),Escom,Tank Size,Opening Litres,Litres Dispensed,Closing Litres,Usage in Litres,Opening Hours,Closing Hours,Hours Run, Average Usage Per Hour ,Opening Readings,Units Bought,Closing Readings,Power Usage,,
+Area 21,TN20093 ,Lilongwe,Lilongwe,Grid,Prepaid,600,508,300,380,428,252,257,5, 85.6 ,0,0,0,0,,Area 21
+Area 23 ,TN20024 ,Lilongwe,Lilongwe,Grid,Postpaid,500,363,200,437,126,12634,12638,4, 31.5 ,0,0,0,0,,Area 23 
+Area 23 Extension,TN20028 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,165,300,334,131,5332,5388,56, 2.3 ,0,0,0,0,,Area 23 Extension
+Biwi Township,TN20084 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,480,646,230,896,2618,2886,268, 3.3 ,0,0,0,0,,Biwi Township
+Mbwatalika,TN23089 ,Lilongwe,Lilongwe,Grid,Prepaid,600,279,300,300,279,18731,19044,313, 0.9 ,0,0,0,0,,Mbwatalika
+Chinsapo T/C,TN20098 ,Lilongwe,Lilongwe,Grid,Prepaid,600,558,20,270,308,3450,3531,81, 3.8 ,0,0,0,0,,Chinsapo T/C
+Chisoso,TN24021 ,Lilongwe,Lilongwe,Grid,Postpaid,1000,690,0,690,0,2747,2638,-109, -   ,0,0,0,0,,Chisoso
+Chitipi,TN20102 ,Lilongwe,Lilongwe,Grid,Prepaid,600,490,1570,120,1940,14034,16065,2031, 1.0 ,0,0,0,0,,Chitipi
+Gologota,TN20026 ,Lilongwe,Lilongwe,Grid,Prepaid,600,395,300,430,265,1533,1679,146, 1.8 ,0,0,0,0,,Gologota
+Kabudula,TN20109 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,685,0,675,10,19904,19909,5, 2.0 ,0,0,0,0,,Kabudula
+Kamuzu Barracks,TN20113 ,Lilongwe,Lilongwe,Grid,Prepaid,600,735,0,736,-1,2314,2314,0,#DIV/0!,0,0,0,0,,Kamuzu Barracks
+Kawale,TN20123 ,Lilongwe,Lilongwe,Grid,Prepaid,500,500,0,350,150,3913,3916,3, 50.0 ,0,0,0,0,,Kawale
+Likuni MTL,TN20128 ,Lilongwe,Lilongwe,Grid,Prepaid,100,150,166,300,16,29681,29582,-99,-0.2 ,0,0,0,0,,Likuni MTL
+Chakhaza,TN24018 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,950,350,680,620,3448,3738,290, 2.1 ,0,0,0,0,,Chakhaza
+Area 23 Midlands,TN20029 ,Lilongwe,Lilongwe,Grid,Prepaid,600,600,0,412,188,22968,23025,57, 3.3 ,0,0,0,0,,Area 23 Midlands
+Mphepo,TN25030 ,Lilongwe,Kasungu,Grid,Prepaid,1000,1000,300,680,620,2428,2638,210, 3.0 ,0,0,0,0,,Mphepo
+Njewa,TN20158 ,Lilongwe,Lilongwe,Grid,Prepaid,600,300,300,370,230,7415,4579,-2836,-0.1 ,0,0,0,0,,Njewa
+NRC,TN20162 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,600,200,480,320,7437,7492,55, 5.8 ,0,0,0,0,,NRC
+Nsalu,TN23164 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,555,0,620,-65,13705,13445,-260, 0.3 ,0,0,0,0,,Nsalu
+Nsundwe,TN23165 ,Lilongwe,Lilongwe,Grid,Prepaid,500,70,0,70,0,17813,17813,0,#DIV/0!,0,0,0,0,,Nsundwe
+Sports Complex,TN20134 ,Lilongwe,Lilongwe,Grid,Prepaid,60,60,0,60,0,66,66,0,#DIV/0!,0,0,0,0,,Sports Complex
+State Residences,TN20115 ,Lilongwe,Lilongwe,Grid,Prepaid,600,591,0,591,0,14470,14470,0,#DIV/0!,0,0,0,0,,State Residences
+ARET,TN20082 ,Lilongwe,Lilongwe,Grid,Prepaid,100,100,50,100,50,30355,30370,15, 3.3 ,0,0,0,0,,ARET
+AOG,TN20005 ,Lilongwe,Lilongwe,Grid,Prepaid,100,100,215,100,215,3603,3603,0,#DIV/0!,0,0,0,0,,AOG
+LL Office,TN20132 ,Lilongwe,Lilongwe,Grid,Prepaid,200,200,362,200,362,5575,5685,110, 3.3 ,0,0,0,0,,LL Office
+Technical centre 1,LLDC001,Lilongwe,Lilongwe,Grid,Prepaid,1000,720,0,720,0,663,663,0,#DIV/0!,0,0,0,0,,Technical centre 1
+Technical centre 2 ,LLDC002,Lilongwe,Lilongwe,Grid,Prepaid,500,170,0,170,0,1944,1944,0,#DIV/0!,0,0,0,0,,Technical centre 2 
+Area 25 Nsungwi,TN20166 ,Lilongwe,Lilongwe,Grid,Prepaid,600,384,0,365,19,562,581,19, 1.0 ,0,0,0,0,,Area 25 Nsungwi
+Mgona,TN20155 ,Lilongwe,Lilongwe,Off Grid,Prepaid,600,310,300,424,186,13226,13325,99, 1.9 ,0,0,0,0,,Mgona
+Area 49 Dubai,TN20072 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,300,0,278,22,7943,7952,9, 2.4 ,0,0,0,0,,Area 49 Dubai
+Dzenza,TN20105 ,Lilongwe,Lilongwe,Grid,Prepaid,500,350,0,315,35,14224,14253,29, 1.2 ,0,0,0,0,,Dzenza
+Area 48,TN20069 ,Lilongwe,Lilongwe,Grid,Prepaid,600,300,1080,320,1060,16440,16711,271, 3.9 ,0,0,0,0,,Area 48
+AREA 4,TN20059 ,Lilongwe,Lilongwe,Grid,Prepaid,600,400,200,400,200,2927,3009,82, 2.4 ,0,0,0,0,,AREA 4
+Mtandile,TN20150 ,Lilongwe,Lilongwe,Grid,Prepaid,600,300,225,245,280,27485,27670,185, 1.5 ,0,0,0,0,,Mtandile
+Area 43 Extension,TN20063 ,Lilongwe,Lilongwe,Grid,Prepaid,600,388,200,200,388,2820,2957,137, 2.8 ,0,0,0,0,,Area 43 Extension
+Chiwamba,TN23103 ,Lilongwe,Lilongwe,Grid,Prepaid,600,300,200,300,200,11072,11167,95, 2.1 ,0,0,0,0,,Chiwamba
+Area 43 Africa House,TN20061 ,Lilongwe,Lilongwe,Grid,Prepaid,600,417,500,378,539,16097,16268,171, 3.2 ,0,0,0,0,,Area 43 Africa House
+Lisandwa,TN25031 ,Lilongwe,Kasungu,Grid,Prepaid,1000,1000,0,500,500,2075,2075,0,#DIV/0!,0,0,0,0,,Lisandwa
+Area 30 Railways,TN20049 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,498,0,323,175,2567,2637,70, 2.5 ,0,0,0,0,,Area 30 Railways
+Area 25 C,TN20041 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,350,300,343,307,16481,16640,159, 1.9 ,0,0,0,0,,Area 25 C
+Kanengo Proper,TN20118 ,Lilongwe,Lilongwe,Grid,Prepaid,600,400,0,345,55,3825,3067,-758,-0.1 ,0,0,0,0,,Kanengo Proper
+Silos,TN20169 ,Lilongwe,Lilongwe,Grid,Prepaid,60,60,47,47,60,937,977,40, 1.5 ,0,0,0,0,,Silos
+KIA,TNMShop,Lilongwe,Lilongwe,Grid,Prepaid,500,500,0,208,292,8934,9067,133, 2.2 ,0,0,0,0,,KIA
+Kanengo MBC,TN20119 ,Lilongwe,Lilongwe,Grid,Prepaid,500,276,0,268,8,3871,3879,8, 1.0 ,0,0,0,0,,Kanengo MBC
+Nambuma,TN24016 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,965,0,965,0,22738,22738,0,#DIV/0!,0,0,0,0,,Nambuma
+Dangalilo,TN24002 ,Lilongwe,Dowa,Grid,Prepaid,600,530,0,380,150,18500,18575,75, 2.0 ,0,0,0,0,,Dangalilo
+Lumbadzi,TN20138 ,Lilongwe,Lilongwe,Grid,Prepaid,500,430,0,390,40,1266,3262,1996, 0.0 ,0,0,0,0,,Lumbadzi
+Area 50,TN20080 ,Lilongwe,Lilongwe,Grid,Prepaid,600,393,0,286,107,4384,4477,93, 1.2 ,0,0,0,0,,Area 50
+Kayembe,TN24007 ,Lilongwe,Dowa,Grid,Prepaid,600,465,256,600,121,16581,16638,57, 2.1 ,0,0,0,0,,Kayembe
+Airport Road,TN20003 ,Lilongwe,Lilongwe,Off Grid,Prepaid,600,278,300,300,278,24036,24138,102, 2.7 ,0,0,0,0,,Airport Road
+Area 49 Gulliver stadium,TN20073 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,500,0,490,10,4645,4655,10, 1.0 ,0,0,0,0,,Area 49 Gulliver stadium
+Area 43 TBS,TNMShop,Lilongwe,Lilongwe,Grid,Prepaid,500,422,600,500,522,12312,12427,115, 4.5 ,0,0,0,0,,Area 43 TBS
+Chiwuzira,TN20215 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,620,800,500,920,2429,2880,451, 2.0 ,0,0,0,0,,Chiwuzira
+Capital Hill,TN20090 ,Lilongwe,Lilongwe,Grid,Prepaid,600,424,300,420,304,1276,1352,76, 4.0 ,0,0,0,0,,Capital Hill
+Area 11,TN20010 ,Lilongwe,Lilongwe,Grid,Prepaid,600,275,200,100,375,6696,6696,0,#DIV/0!,0,0,0,0,,Area 11
+Area 12 Villa,TN20013 ,Lilongwe,Lilongwe,Grid,Prepaid,100,100,159,25,234,7713,7780,67, 3.5 ,0,0,0,0,,Area 12 Villa
+Area 12 PTC,TN20008 ,Lilongwe,Lilongwe,Grid,Prepaid,500,475,0,426,49,4213,4122,-91,-0.5 ,0,0,0,0,,Area 12 PTC
+Area 12 Zikomo,TN20014 ,Lilongwe,Lilongwe,Grid,Prepaid,600,325,0,200,125,13280,13317,37, 3.4 ,0,0,0,0,,Area 12 Zikomo
+Area 18 B,TN20018 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,300,450,610,140,6425,6483,58, 2.4 ,0,0,0,0,,Area 18 B
+Area 18 Senti,TN20168 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,440,0,37,403,4938,4724,-214,-1.9 ,0,0,0,0,,Area 18 Senti
+Bunda Proper,TN23086 ,Lilongwe,Lilongwe,Grid,Prepaid,600,500,0,420,80,8037,7852,-185,-0.4 ,0,0,0,0,,Bunda Proper
+Nathenje,TN22014 ,Lilongwe,Lilongwe,Grid,Prepaid,600,490,0,300,190,9931,10037,106, 1.8 ,0,0,0,0,,Nathenje
+Kamphata,TN23112 ,Lilongwe,Lilongwe,Grid,Prepaid,500,300,160,260,200,18661,18704,43, 4.7 ,0,0,0,0,,Kamphata
+Lobi,TN22010 ,Lilongwe,Dedza,Grid,Prepaid,600,451,0,426,25,16663,16677,14, 1.8 ,0,0,0,0,,Lobi
+Malirana,TN22011 ,Lilongwe,Dedza,Grid,Prepaid,600,528,0,508,20,3152,3172,20, 1.0 ,0,0,0,0,,Malirana
+Dedza Peak,TN22003 ,Lilongwe,Dedza,Grid,Prepaid,600,600,0,600,0,1152,1152,0,#DIV/0!,0,0,0,0,,Dedza Peak
+Area 24,TN20033 ,Lilongwe,Lilongwe,Grid,Prepaid,600,310,200,440,70,21159,21194,35, 2.0 ,0,0,0,0,,Area 24
+Area 24 Market,TN20032 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,440,300,380,360,3332,3464,132, 2.7 ,0,0,0,0,,Area 24 Market
+Mpamantha,TN26016 ,Lilongwe,Nkhotakota,Grid,Prepaid,1000,370,0,370,0,1603,1603,0,#DIV/0!,0,0,0,0,,Mpamantha
+Area 36 TC,TN20055 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,640,0,298,342,8375,8012,-363,-0.9 ,0,0,0,0,,Area 36 TC
+Area 38,TN20057 ,Lilongwe,Lilongwe,Grid,Prepaid,600,500,0,435,65,7945,7971,26, 2.5 ,0,0,0,0,,Area 38
+Area 36 Katantha,TN20052 ,Lilongwe,Lilongwe,Grid,Prepaid,600,300,200,450,50,16277,16299,22, 2.3 ,0,0,0,0,,Area 36 Katantha
+Bunda T/O,TN20087 ,Lilongwe,Lilongwe,Grid,Prepaid,600,415,300,420,295,9459,9562,103, 2.9 ,0,0,0,0,,Bunda T/O
+Bus Depot,TN20130 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,920,0,910,10,2064,2068,4, 2.5 ,0,0,0,0,,Bus Depot
+Bwalo lanjovu,TN20088 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,236,700,670,266,10536,10678,142, 1.9 ,0,0,0,0,,Bwalo lanjovu
+Old Town,TN20133 ,Lilongwe,Lilongwe,Grid,Prepaid,500,120,0,120,0,5738,10342,4604, -   ,0,0,0,0,,Old Town
+Kabwazi,TN22006 ,Lilongwe,Dedza,Grid,Prepaid,600,432,0,420,12,14251,14258,7, 1.7 ,0,0,0,0,,Kabwazi
+Area 3 Proper,TN20043 ,Lilongwe,Lilongwe,Grid,Prepaid,100,100,496,100,496,6998,7259,261, 1.9 ,0,0,0,0,,Area 3 Proper
+Area 3 bwaila,TN20044 ,Lilongwe,Lilongwe,Grid,Prepaid,600,515,0,505,10,8642,8646,4, 2.5 ,0,0,0,0,,Area 3 bwaila
+Area 3 Police,TN20046 ,Lilongwe,Lilongwe,Grid,Prepaid,600,300,300,300,300,6921,6993,72, 4.2 ,0,0,0,0,,Area 3 Police
+MTSILIZA,TN20151 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,510,70,70,510,6061,6203,142, 3.6 ,0,0,0,0,,MTSILIZA
+Area 47 ABC,TN20065 ,Lilongwe,Lilongwe,Grid,Prepaid,600,460,1000,450,1010,14490,14850,360, 2.8 ,0,0,0,0,,Area 47 ABC
+Area 47 Bwandilo,TN20066 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,620,0,610,10,3213,3217,4, 2.5 ,0,0,0,0,,Area 47 Bwandilo
+Area 9,TN20081 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,770,0,720,50,10675,10693,18, 2.8 ,0,0,0,0,,Area 9
+Game shop/Site,TNMShop,Lilongwe,Lilongwe,Grid,Prepaid,200,165,100,110,155,1525,1570,45, 3.4 ,0,0,0,0,,Game shop/Site
+Kaphatenga,TN27007 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,774,0,600,174,10099,10231,132, 1.3 ,0,0,0,0,,Kaphatenga
+Khombedza,TN27009 ,Lilongwe,Salima,Grid,Prepaid,600,600,0,330,270,873,901,28, 9.6 ,0,0,0,0,,Khombedza
+Kapiri,TN26022 ,Lilongwe,Lilongwe,Grid,Prepaid,600,510,0,400,110,8566,8575,9, 12.2 ,0,0,0,0,,Kapiri
+Sani,TN26012 ,Lilongwe,Nkhotakota,Off Grid,Prepaid,600,600,510,600,510,13576,13780,204, 2.5 ,0,0,0,0,,Sani
+Nkhota- kota,TN26010 ,Lilongwe,Nkhotakota,Grid,Prepaid,1000,820,0,668,152,3333,3394,61, 2.5 ,0,0,0,0,,Nkhota- kota
+Airwing,TN20210 ,Lilongwe,Lilongwe,Grid,Prepaid,600,720,300,580,440,7985,8173,188, 2.3 ,0,0,0,0,,Airwing
+Benga,TN26015 ,Lilongwe,Salima,Off Grid,Prepaid,600,462,0,438,24,17275,17304,29, 0.8 ,0,0,0,0,,Benga
+Salima MTL,TN27018 ,Lilongwe,Salima,Grid,Prepaid,600,290,135,290,135,1174,1174,0,#DIV/0!,0,0,0,0,,Salima MTL
+Area 12 Proper,TN20214 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,20,0,20,0,371,371,0,#DIV/0!,0,0,0,0,,Area 12 Proper
+Livingstonia beach,TN27012 ,Lilongwe,Salima,Grid,Prepaid,500,250,0,300,-50,17377,17377,0,#DIV/0!,0,0,0,0,,Livingstonia beach
+Lifidzi,TN27010 ,Lilongwe,Salima,Grid,Prepaid,1000,370,0,370,0,3515,3541,26, -   ,0,0,0,0,,Lifidzi
+Bisai,TN22020 ,Lilongwe,Dedza,Grid,Prepaid,1000,744,0,430,314,2695,2770,75, 4.2 ,0,0,0,0,,Bisai
+Ngodzi,TN27016 ,Lilongwe,Salima,Grid,Prepaid,1000,300,465,515,250,12639,12785,146, 1.7 ,0,0,0,0,,Ngodzi
+Mua,TN27014 ,Lilongwe,Dedza,Grid,Prepaid,600,600,298,600,298,22644,22712,68, 4.4 ,0,0,0,0,,Mua
+Mtakataka,TN27013 ,Lilongwe,Dedza,Grid,Prepaid,600,570,432,600,402,15651,15814,163, 2.5 ,0,0,0,0,,Mtakataka
+Chankhungu,TN25003 ,Lilongwe,Lilongwe,Grid,Prepaid,600,345,0,327,18,16332,16338,6, 3.0 ,0,0,0,0,,Chankhungu
+Mvera Proper,TN24014 ,Lilongwe,Salima,Grid,Prepaid,500,300,0,265,35,8311,8325,14, 2.5 ,0,0,0,0,,Mvera Proper
+Mabulabo,TN25018 ,Lilongwe,Mzimba,Off Grid,Prepaid,800,650,0,650,0,35635,35635,0,#DIV/0!,0,0,0,0,,Mabulabo
+Nkhamenya,TN25021 ,Lilongwe,Kasungu,Grid,Prepaid,500,325,332,500,157,4840,4840,0,#DIV/0!,0,0,0,0,,Nkhamenya
+Chatoloma,TN25004 ,Lilongwe,Kasungu,Grid,Prepaid,1000,800,500,700,600,1080,1152,72, 8.3 ,0,0,0,0,,Chatoloma
+East African Plantation,TN25028 ,Lilongwe,Kasungu,Grid,Prepaid,225,200,0,200,0,3282,3282,0,#DIV/0!,0,0,0,0,,East African Plantation
+Malandi Hill,TN24022 ,Lilongwe,Dowa,Grid,Prepaid,1000,830,0,830,0,2099,2099,0,#DIV/0!,0,0,0,0,,Malandi Hill
+Chayamba,TN25011 ,Lilongwe,Kasungu,Grid,Prepaid,1000,1000,0,400,600,326,73,-253,-2.4 ,0,0,0,0,,Chayamba
+Linyangwa,TN25017 ,Lilongwe,Kasungu,Prime,Prepaid,1000,620,490,790,320,3211,3304,93, 3.4 ,0,0,0,0,,Linyangwa
+Chioko,TN24019 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,790,0,790,0,2656,2656,0,#DIV/0!,0,0,0,0,,Chioko
+Chamama,TN25002 ,Lilongwe,Kasungu,Grid,Prepaid,500,430,200,500,130,17010,17100,90, 1.4 ,0,0,0,0,,Chamama
+Nkhakomisesa,TN25020 ,Lilongwe,Kasungu,Grid,Prepaid,600,500,101,551,50,15939,15991,52, 1.0 ,0,0,0,0,,Nkhakomisesa
+Madisi,TN24009 ,Lilongwe,Dowa,Grid,Prepaid,500,400,230,500,130,15764,15838,74, 1.8 ,0,0,0,0,,Madisi
+Mchinji Town,TN28007 ,Lilongwe,Mchinji,Grid,Prepaid,1000,840,0,740,100,1659,1709,50, 2.0 ,0,0,0,0,,Mchinji Town
+Mwimba,TN25019 ,Lilongwe,Kasungu,Grid,Prepaid,500,360,200,450,110,26567,26667,100, 1.1 ,0,0,0,0,,Mwimba
+Santhe,TN25023 ,Lilongwe,Mchinji,Grid,Prepaid,500,330,200,320,210,15793,15915,122, 1.7 ,0,0,0,0,,Santhe
+Kapirinthema,TN25010 ,Lilongwe,Kasungu,Grid,Prepaid,500,435,300,350,385,19208,19339,131, 2.9 ,0,0,0,0,,Kapirinthema
+Nkanda,TN28009 ,Lilongwe,Mchinji,Grid,Prepaid,500,740,300,730,310,2406,2540,134, 2.3 ,0,0,0,0,,Nkanda
+Kamwendo,TN28004 ,Lilongwe,Mchinji,Grid,Prepaid,1000,472,300,500,272,5152,5276,124, 2.2 ,0,0,0,0,,Kamwendo
+Mchinji,TN28006 ,Lilongwe,Mchinji,Grid,Prepaid,600,600,0,550,50,18256,18304,48, 1.0 ,0,0,0,0,,Mchinji
+Mwami,TN28010 ,Lilongwe,Mchinji,Grid,Prepaid,600,560,226,600,186,12563,12647,84, 2.2 ,0,0,0,0,,Mwami
+Mikundi,TN28008 ,Lilongwe,Mchinji,Grid,Prepaid,500,335,350,500,185,13131,13223,92, 2.0 ,0,0,0,0,,Mikundi
+Mpanda,TN24011 ,Lilongwe,Dowa,Grid,Prepaid,1000,540,0,540,0,5037,5037,0,#DIV/0!,0,0,0,0,,Mpanda
+Kasungu Shop,TNMShop,Lilongwe,Kasungu,Grid,Prepaid,100,100,28,100,28,10392,10392,0,#DIV/0!,0,0,0,0,,Kasungu Shop
+Kanjuchi,TN15038 ,Lilongwe,Kasungu,Grid,Prepaid,1000,1000,0,500,500,2545,2545,0,#DIV/0!,0,0,0,0,,Kanjuchi
+Salima Hospital,TN27020 ,Lilongwe,Salima,Grid,Prepaid,1000,666,0,300,366,8017,8245,228, 1.6 ,0,0,0,0,,Salima Hospital
+Salima Depot,TN27019 ,Lilongwe,Salima,Grid,Prepaid,600,440,297,600,137,12951,105,-12846,-0.0 ,0,0,0,0,,Salima Depot
+Lifuwu,TN27011 ,Lilongwe,Salima,Prime,Prepaid,800,658,500,500,658,23573,23745,172, 3.8 ,0,0,0,0,,Lifuwu
+Silversand,TN27023 ,Lilongwe,Salima,Grid,Prepaid,600,468,0,330,138,13827,13880,53, 2.6 ,0,0,0,0,,Silversand
+Kambiri,TN27005 ,Lilongwe,Salima,Grid,Prepaid,500,295,0,295,0,18644,18644,0,#DIV/0!,0,0,0,0,,Kambiri
+Flea Market,TN20107 ,Lilongwe,Lilongwe,Grid,Prepaid,600,0,0,0,0,3952,3952,0,#DIV/0!,0,0,0,0,,Flea Market
+Salima Shop,TNMShop,Lilongwe,Salima,Grid,Prepaid,120,140,277,168,249,5777,5912,135, 1.8 ,0,0,0,0,,Salima Shop
+Kauma,TN20122 ,Lilongwe,Lilongwe,Grid,Prepaid,600,262,400,300,362,6438,6572,134, 2.7 ,0,0,0,0,,Kauma
+Area 6,TN20206 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,630,500,650,480,5629,5775,146, 3.3 ,0,0,0,0,,Area 6
+Maliri,TN23085 ,Lilongwe,Lilongwe,Grid,Prepaid,100,420,300,480,240,2320,2405,85, 2.8 ,0,0,0,0,,Maliri
+Chisepo,TN24020 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,620,500,1000,120,2310,1963,-347,-0.3 ,0,0,0,0,,Chisepo
+Malangalanga SHOP,TN20140 ,Lilongwe,Lilongwe,Grid,Prepaid,35,22,20,23,19,803,811,8, 2.4 ,0,0,0,0,,Malangalanga SHOP
+M'buka,TN20054 ,Lilongwe,Lilongwe,Grid,Prepaid,600,595,0,595,0,652,652,0,#DIV/0!,0,0,0,0,,M'buka
+Area 49 Mvama,TN20075 ,Lilongwe,Lilongwe,Grid,Prepaid,600,400,60,90,370,16653,16732,79, 4.7 ,0,0,0,0,,Area 49 Mvama
+Chilinde Parish,TN20094 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,500,200,320,380,7658,7748,90, 4.2 ,0,0,0,0,,Chilinde Parish
+Chimutu,TN20099 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,500,300,430,370,4135,4289,154, 2.4 ,0,0,0,0,,Chimutu
+MCP/UNICEF,TN20136 ,Lilongwe,Lilongwe,Grid,Prepaid,600,530,0,530,0,20137,20150,13, -   ,0,0,0,0,,MCP/UNICEF
+Maluwa,TN23202 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,506,275,475,306,1775,1849,74, 4.1 ,0,0,0,0,,Maluwa
+Chawantha,TN28011 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,600,700,500,800,2764,3329,565, 1.4 ,0,0,0,0,,Chawantha
+Kakoma estate,TN23201 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,690,500,440,750,3957,4247,290, 2.6 ,0,0,0,0,,Kakoma estate
+Nthumbidwa,TN17006 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,0,0,0,0,1718,1718,0,#DIV/0!,0,0,0,0,,Nthumbidwa
+TECHNICAL  NEW Dg,LLDC003,Lilongwe,Lilongwe,Grid,Prepaid,1000,1000,0,1000,0,648,648,0,#DIV/0!,0,0,0,0,,TECHNICAL  NEW Dg
+Kabungwe,TN23204 ,Lilongwe,Mchinji,Grid,Prepaid,1000,1000,0,1000,0,2424,2424,0,#DIV/0!,0,0,0,0,,Kabungwe
+Chilinde Mosque,TN20212 ,Lilongwe,Lilongwe,Grid,Prepaid,600,350,0,350,0,411,411,0,#DIV/0!,0,0,0,0,,Chilinde Mosque
+Katete BYPASS,TN20051 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,600,400,150,850,10694,10952,258, 3.3 ,0,0,0,0,,Katete BYPASS
+Area 25 A,TN20039 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,48,100,400,-252,9777,9934,157,-1.6 ,0,0,0,0,,Area 25 A
+LINTHIPE 3,TN22009 ,Lilongwe,Dedza,Grid,Prepaid,1000,1000,330,380,950,8835,9130,295, 3.2 ,0,0,0,0,,LINTHIPE 3
+Area 49 New Shire,TN20076 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,645,1800,645,1800,12303,12303,0,#DIV/0!,0,0,0,0,,Area 49 New Shire
+Chisinga,TN23099 ,Lilongwe,Kasungu,Grid,Prepaid,1000,1000,0,400,600,8530,8530,0,#DIV/0!,0,0,0,0,,Chisinga
+NEW GULLIVER,TN20174 ,Lilongwe,Lilongwe,Grid,Prepaid,600,486,0,374,112,14223,14268,45, 2.5 ,0,0,0,0,,NEW GULLIVER
+LUMBADZI RESIDENTIAL,TN20211 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,400,500,180,720,3176,3409,233, 3.1 ,0,0,0,0,,LUMBADZI RESIDENTIAL
+MALEMBO,TN23135 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,750,0,720,30,4321,4330,9, 3.3 ,0,0,0,0,,MALEMBO
+WAKAWAKA,TN20056 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,480,0,380,100,6842,6890,48, 2.1 ,0,0,0,0,,WAKAWAKA
+KAFUMU,TN27004 ,Lilongwe,Salima,Grid,Prepaid,1000,670,0,400,270,4165,4165,0,#DIV/0!,0,0,0,0,,KAFUMU
+NKHOTA-KOTA NEW,TN26011 ,Lilongwe,Nkhotakota,Grid,Prepaid,600,600,0,590,10,16479,16482,3, 3.3 ,0,0,0,0,,NKHOTA-KOTA NEW
+KASUNTHA,TN24006 ,Lilongwe,Dowa,Grid,Prepaid,1000,118,300,118,300,5106,5173,67, 4.5 ,0,0,0,0,,KASUNTHA
+SALIMA SUGAR,TN27021 ,Lilongwe,Salima,Grid,Prepaid,500,425,0,425,0,32956,32956,0,#DIV/0!,0,0,0,0,,SALIMA SUGAR
+GUEST HOUSE AREA 10,TNMLLRes,Lilongwe,Lilongwe,Grid,Prepaid,60,73,48,60,61,682,704,22, 2.8 ,0,0,0,0,,GUEST HOUSE AREA 10
+AREA 47 MTL,TN20064 ,Lilongwe,Lilongwe,Grid,Prepaid,500,480,0,480,0,9720,9720,0,#DIV/0!,0,0,0,0,,AREA 47 MTL
+BWEMBA,TN20096 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,620,700,590,730,7160,7466,306, 2.4 ,0,0,0,0,,BWEMBA
+AREA 49 BARGDAD,TN20071 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,200,968,330,838,2353,2780,427, 2.0 ,0,0,0,0,,AREA 49 BARGDAD
+AREA10 USAID,TN20009 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,756,0,400,356,5516,12371,6855, 0.1 ,0,0,0,0,,AREA10 USAID
+AREA 25 KABWABWA,TN20035 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,700,0,551,149,16144,16227,83, 1.8 ,0,0,0,0,,AREA 25 KABWABWA
+AREA 25 Zibwenze,TN20042 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,425,0,425,0,7335,7335,0,#DIV/0!,0,0,0,0,,AREA 25 Zibwenze
+AREA 36 LOWER,TN20053 ,Lilongwe,Lilongwe,Grid,Prepaid,600,420,0,455,-35,24484,24436,-48, 0.7 ,0,0,0,0,,AREA 36 LOWER
+UPPER BIWI,TN20172 ,Lilongwe,Lilongwe,Grid,Prepaid,600,50,0,50,0,6778,6778,0,#DIV/0!,0,0,0,0,,UPPER BIWI
+WHITE FALLS,TN20006 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,600,0,600,0,14156,14156,0,#DIV/0!,0,0,0,0,,WHITE FALLS
+AREA 13,TN20012 ,Lilongwe,Lilongwe,Grid,Prepaid,600,400,100,196,304,1605,1755,150, 2.0 ,0,0,0,0,,AREA 13
+Dedza Township,TN22005 ,Lilongwe,Dedza,Grid,Prepaid,1000,540,500,570,470,5207,5518,311, 1.5 ,0,0,0,0,,Dedza Township
+Area 18 Round About,TN20017 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,530,500,600,430,15934,16211,277, 1.6 ,0,0,0,0,,Area 18 Round About
+Kasungu mapuloti,TN25014 ,Lilongwe,Kasungu,Grid,Prepaid,1000,1000,500,700,800,5724,5999,275, 2.9 ,0,0,0,0,,Kasungu mapuloti
+Mponela,TN24012 ,Lilongwe,Ntchisi,Grid,Prepaid,1000,1000,1070,690,1380,13797,14403,606, 2.3 ,0,0,0,0,,Mponela
+AREA 38 EXT,TN20058 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,650,435,435,650,10585,10802,217, 3.0 ,0,0,0,0,,AREA 38 EXT
+AREA 22 A,TN20023 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,400,0,336,64,15127,15160,33, 1.9 ,0,0,0,0,,AREA 22 A
+Nalikule,TN20152 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,500,619,600,519,12297,12581,284, 1.8 ,0,0,0,0,,Nalikule
+AREA 2,TN20020 ,Lilongwe,Lilongwe,Grid,Prepaid,600,415,300,450,265,20081,20178,97, 2.7 ,0,0,0,0,,AREA 2
+AREA 47 sector 3,TN20067 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,500,300,1000,-200,14303,13679,-624, 0.3 ,0,0,0,0,,AREA 47 sector 3
+Kawale PTC,TN20192 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,420,0,190,230,13910,14028,118, 1.9 ,0,0,0,0,,Kawale PTC
+Salima MTL 2,TN27018 ,Lilongwe,Salima,Grid,Prepaid,2000,2000,771,2000,771,2053,92,-1961,-0.4 ,0,0,0,0,,Salima MTL 2
+Dubai 2,TN20191 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,540,200,340,400,15018,15451,433, 0.9 ,0,0,0,0,,Dubai 2
+ADL House,TN20001 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,310,500,500,310,3189,3409,220, 1.4 ,0,0,0,0,,ADL House
+AREA 43 UPPER,TN20062 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,660,0,490,170,8388,8415,27, 6.3 ,0,0,0,0,,AREA 43 UPPER
+MCHESI 2,TN20144 ,Lilongwe,Lilongwe,Grid,Prepaid,600,300,0,290,10,16663,16672,9, 1.1 ,0,0,0,0,,MCHESI 2
+AREA 18 Chatuwa,TN20019 ,Lilongwe,Lilongwe,Grid,Prepaid,600,456,0,420,36,21441,21456,15, 2.4 ,0,0,0,0,,AREA 18 Chatuwa
+MOGASA,TN20148 ,Lilongwe,Lilongwe,Grid,Prepaid,600,586,0,586,0,24651,24669,18, -   ,0,0,0,0,,MOGASA
+CHISEKA,TN23190 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,350,800,590,560,9797,10042,245, 2.3 ,0,0,0,0,,CHISEKA
+MAGOMERO,TN23178 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,440,455,555,340,9324,9458,134, 2.5 ,0,0,0,0,,MAGOMERO
+NDAULA,TN23205 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,660,236,326,570,7359,7564,205, 2.8 ,0,0,0,0,,NDAULA
+AREA 47 sector 2,TN20173 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,525,0,475,50,3759,3783,24, 2.1 ,0,0,0,0,,AREA 47 sector 2
+KAMELA,TN28014 ,Lilongwe,Mchinji,Grid,Prepaid,1000,1000,0,480,520,4801,4996,195, 2.7 ,0,0,0,0,,KAMELA
+TANDANJE,TN17005 ,Lilongwe,Ntchisi,Grid,Prepaid,1000,660,300,320,640,8794,9080,286, 2.2 ,0,0,0,0,,TANDANJE
+KAPELURA,TN25027 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,500,500,750,250,8043,8237,194, 1.3 ,0,0,0,0,,KAPELURA
+LINDE MOTEL,TN24017 ,Lilongwe,Lilongwe,Grid,Prepaid,500,0,0,0,0,25606,25606,0,#DIV/0!,0,0,0,0,,LINDE MOTEL
+LOZI,TN26008 ,Lilongwe,Nkhotakota,Grid,Prepaid,600,600,0,0,600,20691,20691,0,#DIV/0!,0,0,0,0,,LOZI
+AREA 47 SECTOR 4,TN20205 ,Lilongwe,Lilongwe,Grid,Prepaid,500,400,0,400,0,12720,12721,1, -   ,0,0,0,0,,AREA 47 SECTOR 4
+Pondomali,TN23191 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,92,1298,768,622,4300,1681,-2619,-0.2 ,0,0,0,0,,Pondomali
+Area 5 chilambula pagat,TN20079 ,Lilongwe,Lilongwe,Grid,Postpaid,600,20,0,3,17,317,317,0,#DIV/0!,0,0,0,0,,Area 5 chilambula pagat
+Mlale Parish,TN23206 ,Lilongwe,Lilongwe,Grid,Prepaid,50,50,0,50,0,7894,7894,0,#DIV/0!,0,0,0,0,,Mlale Parish
+Mchezi,TN20145 ,Lilongwe,Lilongwe,Grid,Prepaid,65,200,0,200,0,6488,6488,0,#DIV/0!,0,0,0,0,,Mchezi
+Chitipi TC,TN20103 ,Lilongwe,Lilongwe,Grid,Prepaid,600,600,0,600,0,3475,3475,0,#DIV/0!,0,0,0,0,,Chitipi TC
+Msakambewa,TN24008 ,Lilongwe,Lilongwe,Grid,Prepaid,500,500,0,500,0,16487,16487,0,#DIV/0!,0,0,0,0,,Msakambewa
+Area 9 Guest House,TNMLLRes,Lilongwe,Lilongwe,Grid,Postpaid,1000,442,0,375,67,2050,2052,2, 33.5 ,0,0,0,0,,Area 9 Guest House
+Ntchentche,TN20222 ,Lilongwe,Lilongwe,Grid,Prepaid,600,532,625,505,652,19081,19293,212, 3.1 ,0,0,0,0,,Ntchentche
+Tambalale,TN20030 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,600,1271,600,1271,32950,33321,371, 3.4 ,0,0,0,0,,Tambalale
+Area 43 MTL,TN20060 ,Lilongwe,Lilongwe,Grid,Prepaid,1000,570,0,520,50,1960,1977,17, 2.9 ,0,0,0,0,,Area 43 MTL
+Ex Area 24 DG,TN20032 ,Lilongwe,Lilongwe,Grid,Prepaid,100,100,0,100,0,100,100,0,#DIV/0!,0,0,0,0,,Ex Area 24 DG
+Mobile Genset,TNMLLMOB01,Lilongwe,Lilongwe,Grid,Prepaid,200,65,75,60,80,2251,2251,0,#DIV/0!,0,0,0,0,,Mobile Genset
+Dedza Deport,TN22021 ,Lilongwe,Dedza,Grid,Prepaid,1000,646,0,646,0,6739,6739,0,#DIV/0!,0,0,0,0,,Dedza Deport
+Chikho Hotel,TN24025 ,Lilongwe,Kasungu,Grid,Prepaid,500,500,0,500,0,25846,25846,0,#DIV/0!,0,0,0,0,,Chikho Hotel
+SIMBI,TN28002 ,Lilongwe,Mchinji,Grid,Prepaid,50,50,0,50,0,7105,7105,0,#DIV/0!,0,0,0,0,,SIMBI
+Msundwe DG,TN23165 ,Lilongwe,Lilongwe,Grid,Prepaid,50,50,0,50,0,7396,7396,0,#DIV/0!,0,0,0,0,,Msundwe DG
+Chilinde mobile,TN20093 ,Lilongwe,Lilongwe,Grid,Prepaid,12,12,0,12,0,1410,1410,0,#DIV/0!,0,0,0,0,,Chilinde mobile
+Salima DG (Paratude),TN27028 ,Lilongwe,Salima,Grid,Postpaid,250,600,335,410,525,30519,29966,-553,-0.9 ,0,0,0,0,,Salima DG (Paratude)
+Area 17 Genset,TNMLLOff,Lilongwe,Lilongwe,Grid,Postpaid,600,120,0,120,0,2292,2292,0,#DIV/0!,0,0,0,0,,Area 17 Genset
+Chisapo Mobile,TN20095 ,Lilongwe,Lilongwe,Grid,Prepaid,200,200,0,200,0,200,200,0,#DIV/0!,0,0,0,0,,Chisapo Mobile
+kanengo,TN20116 ,Lilongwe,Lilongwe,Grid,Postpaid,600,50,0,50,0,7956,7956,0,#DIV/0!,0,0,0,0,,kanengo
+DZALEKA CAMP,,,,,,,600,910,600,910,4793,1156,-3637,-0.3 ,0,0,0,0,,DZALEKA CAMP
+Bwemba 2,,,,,,,250,200,180,270,5940,6684,744, 0.4 ,0,0,0,0,,Bwemba 2

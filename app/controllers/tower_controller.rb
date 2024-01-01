@@ -35,7 +35,7 @@ class TowerController < ApplicationController
     @types = TowerType.where(voided: 0)
     @label = Date.today.strftime("%d %b, %Y")
     @periods = ["May, 2023", "June, 2023", "July, 2023", "August, 2023", 
-                  "September, 2023", "October, 2023", "November, 2023", "December, 2023"]
+                  "September, 2023", "October, 2023", "November, 2023", "December, 2023", "January, 2024"]
   end
 
   def new
@@ -271,7 +271,7 @@ class TowerController < ApplicationController
   def refills
 
     @periods = ["May, 2023", "June, 2023", "July, 2023", "August, 2023", "September, 2023", 
-                    "October, 2023", "November, 2023", "December, 2023"] 
+                    "October, 2023", "November, 2023", "December, 2023", "January, 2024"] 
     region_filter = " "
 
     if params[:region].present?
